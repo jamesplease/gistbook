@@ -1,0 +1,52 @@
+/*
+ * scaffolding
+ * Sets up the scaffolding for the app, which is
+ * mainly just a simple flexbox layout
+ *
+ *
+ */
+
+html
+  height 100%
+
+*
+  box-sizing border-box
+
+// We use flex box to give us the 'sticky' footer
+body
+  min-height 100%
+  display flex
+  flex-direction column
+
+main
+  flex 1
+
+header
+  height 50px
+  line-height 50px
+  padding 0 5px
+  border-bottom 1px solid $borderColor
+
+  // This gives us the scaffolding of the stuff within the header.
+  div
+    display flex
+    div.menu
+      flex 1
+      justify-content flex-end
+
+footer
+  width $appWidth
+  height 70px
+  line-height 70px
+  padding 0 5px
+  margin 0 auto
+  border-top 1px solid $borderColor
+
+// The header, main, and footer span the whole
+// width so that the borders span the whole width.
+// Each of them has a child div that we place the
+// contents in, which keep the size reasonable
+header, main, footer
+  > div
+    width $appWidth
+    margin 0 auto

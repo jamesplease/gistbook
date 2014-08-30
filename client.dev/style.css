@@ -1,0 +1,128 @@
+/*
+	HTML5 Reset :: style.css
+	----------------------------------------------------------
+	We have learned much from/been inspired by/taken code where offered from:
+	
+	Eric Meyer					:: http://meyerweb.com
+	HTML5 Doctor				:: http://html5doctor.com
+	and the HTML5 Boilerplate	:: http://html5boilerplate.com
+	
+-------------------------------------------------------------------------------*/
+
+/* Let's default this puppy out
+-------------------------------------------------------------------------------*/
+
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-weight: normal;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+article, aside, figure, footer, header, nav, section, details, summary {display: block;}
+
+/* consider resetting the default cursor: https://gist.github.com/murtaugh/5247154 */
+
+/* Apply a natural box layout model to all elements: http://paulirish.com/2012/box-sizing-border-box-ftw/ */
+*, *:before, *:after {box-sizing: border-box; }
+
+/* Responsive images and other embedded objects
+   Note: keeping IMG here will cause problems if you're using foreground images as sprites.
+   If this default setting for images is causing issues, you might want to replace it with a .responsive class instead. */
+img,
+object,
+embed {max-width: 100%;}
+
+/* force a vertical scrollbar to prevent a jumpy page */
+html {overflow-y: scroll;}
+
+/* we use a lot of ULs that aren't bulleted. 
+	don't forget to restore the bullets within content. */
+ul {list-style: none;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before, 
+blockquote:after, 
+q:before, 
+q:after {content: ''; content: none;}
+
+a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+
+del {text-decoration: line-through;}
+
+abbr[title], dfn[title] {border-bottom: 1px dotted #000; cursor: help;}
+
+/* tables still need cellspacing="0" in the markup */
+table {border-collapse: collapse; border-spacing: 0;}
+th {font-weight: bold; vertical-align: bottom;}
+td {font-weight: normal; vertical-align: top;}
+
+hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;}
+
+input, select {vertical-align: middle;}
+
+pre {
+    white-space: pre; /* CSS2 */
+    white-space: pre-wrap; /* CSS 2.1 */
+    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+    word-wrap: break-word; /* IE */
+}
+
+input[type="radio"] {vertical-align: text-bottom;}
+input[type="checkbox"] {vertical-align: bottom;}
+.ie7 input[type="checkbox"] {vertical-align: baseline;}
+.ie6 input {vertical-align: text-bottom;}
+
+select, input, textarea {font: 99% sans-serif;}
+
+table {font-size: inherit; font: 100%;}
+
+small {font-size: 85%;}
+
+strong {font-weight: bold;}
+
+td, td img {vertical-align: top;} 
+
+/* Make sure sup and sub don't mess with your line-heights http://gist.github.com/413930 */
+sub, sup {font-size: 75%; line-height: 0; position: relative;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+
+/* standardize any monospaced elements */
+pre, code, kbd, samp {font-family: monospace, sans-serif;}
+
+/* hand cursor on clickable elements */
+.clickable,
+label, 
+input[type=button], 
+input[type=submit], 
+input[type=file], 
+button {cursor: pointer;}
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea {margin: 0;}
+
+/* make buttons play nice in IE */
+button,
+input[type=button] {width: auto; overflow: visible;}
+ 
+/* scale images in IE7 more attractively */
+.ie7 img {-ms-interpolation-mode: bicubic;}
+
+/* prevent BG image flicker upon hover 
+   (commented out as usage is rare, and the filter syntax messes with some pre-processors)
+.ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
+*/
+
+/* let's clear some floats */
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }  
+.clearfix:after { clear: both; }  
+.clearfix { zoom: 1; }
+@font-face{font-family:'octicons';src:url("/fonts/octicons.eot?#iefix") format('embedded-opentype'),url("/fonts/octicons.woff") format('woff'),url("/fonts/octicons.ttf") format('truetype'),url("/fonts/octicons.svg#octicons") format('svg');font-weight:normal;font-style:normal}.octicon{font:normal normal 16px octicons;line-height:1;display:inline-block;text-decoration:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.mega-octicon{font:normal normal 32px octicons;line-height:1;display:inline-block;text-decoration:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.octicon-alert:before{content:'\f02d'}.octicon-alignment-align:before{content:'\f08a'}.octicon-alignment-aligned-to:before{content:'\f08e'}.octicon-alignment-unalign:before{content:'\f08b'}.octicon-arrow-down:before{content:'\f03f'}.octicon-arrow-left:before{content:'\f040'}.octicon-arrow-right:before{content:'\f03e'}.octicon-arrow-small-down:before{content:'\f0a0'}.octicon-arrow-small-left:before{content:'\f0a1'}.octicon-arrow-small-right:before{content:'\f071'}.octicon-arrow-small-up:before{content:'\f09f'}.octicon-arrow-up:before{content:'\f03d'}.octicon-beer:before{content:'\f069'}.octicon-book:before{content:'\f007'}.octicon-bookmark:before{content:'\f07b'}.octicon-briefcase:before{content:'\f0d3'}.octicon-broadcast:before{content:'\f048'}.octicon-browser:before{content:'\f0c5'}.octicon-bug:before{content:'\f091'}.octicon-calendar:before{content:'\f068'}.octicon-check:before{content:'\f03a'}.octicon-checklist:before{content:'\f076'}.octicon-chevron-down:before{content:'\f0a3'}.octicon-chevron-left:before{content:'\f0a4'}.octicon-chevron-right:before{content:'\f078'}.octicon-chevron-up:before{content:'\f0a2'}.octicon-circle-slash:before{content:'\f084'}.octicon-circuit-board:before{content:'\f0d6'}.octicon-clippy:before{content:'\f035'}.octicon-clock:before{content:'\f046'}.octicon-cloud-download:before{content:'\f00b'}.octicon-cloud-upload:before{content:'\f00c'}.octicon-code:before{content:'\f05f'}.octicon-color-mode:before{content:'\f065'}.octicon-comment-add:before,.octicon-comment:before{content:'\f02b'}.octicon-comment-discussion:before{content:'\f04f'}.octicon-credit-card:before{content:'\f045'}.octicon-dash:before{content:'\f0ca'}.octicon-dashboard:before{content:'\f07d'}.octicon-database:before{content:'\f096'}.octicon-device-camera:before{content:'\f056'}.octicon-device-camera-video:before{content:'\f057'}.octicon-device-desktop:before{content:'\f27c'}.octicon-device-mobile:before{content:'\f038'}.octicon-diff:before{content:'\f04d'}.octicon-diff-added:before{content:'\f06b'}.octicon-diff-ignored:before{content:'\f099'}.octicon-diff-modified:before{content:'\f06d'}.octicon-diff-removed:before{content:'\f06c'}.octicon-diff-renamed:before{content:'\f06e'}.octicon-ellipsis:before{content:'\f09a'}.octicon-eye-unwatch:before,.octicon-eye-watch:before,.octicon-eye:before{content:'\f04e'}.octicon-file-binary:before{content:'\f094'}.octicon-file-code:before{content:'\f010'}.octicon-file-directory:before{content:'\f016'}.octicon-file-media:before{content:'\f012'}.octicon-file-pdf:before{content:'\f014'}.octicon-file-submodule:before{content:'\f017'}.octicon-file-symlink-directory:before{content:'\f0b1'}.octicon-file-symlink-file:before{content:'\f0b0'}.octicon-file-text:before{content:'\f011'}.octicon-file-zip:before{content:'\f013'}.octicon-flame:before{content:'\f0d2'}.octicon-fold:before{content:'\f0cc'}.octicon-gear:before{content:'\f02f'}.octicon-gift:before{content:'\f042'}.octicon-gist:before{content:'\f00e'}.octicon-gist-secret:before{content:'\f08c'}.octicon-git-branch-create:before,.octicon-git-branch-delete:before,.octicon-git-branch:before{content:'\f020'}.octicon-git-commit:before{content:'\f01f'}.octicon-git-compare:before{content:'\f0ac'}.octicon-git-merge:before{content:'\f023'}.octicon-git-pull-request-abandoned:before,.octicon-git-pull-request:before{content:'\f009'}.octicon-globe:before{content:'\f0b6'}.octicon-graph:before{content:'\f043'}.octicon-heart:before{content:'\2665'}.octicon-history:before{content:'\f07e'}.octicon-home:before{content:'\f08d'}.octicon-horizontal-rule:before{content:'\f070'}.octicon-hourglass:before{content:'\f09e'}.octicon-hubot:before{content:'\f09d'}.octicon-inbox:before{content:'\f0cf'}.octicon-info:before{content:'\f059'}.octicon-issue-closed:before{content:'\f028'}.octicon-issue-opened:before{content:'\f026'}.octicon-issue-reopened:before{content:'\f027'}.octicon-jersey:before{content:'\f019'}.octicon-jump-down:before{content:'\f072'}.octicon-jump-left:before{content:'\f0a5'}.octicon-jump-right:before{content:'\f0a6'}.octicon-jump-up:before{content:'\f073'}.octicon-key:before{content:'\f049'}.octicon-keyboard:before{content:'\f00d'}.octicon-law:before{content:'\f0d8'}.octicon-light-bulb:before{content:'\f000'}.octicon-link:before{content:'\f05c'}.octicon-link-external:before{content:'\f07f'}.octicon-list-ordered:before{content:'\f062'}.octicon-list-unordered:before{content:'\f061'}.octicon-location:before{content:'\f060'}.octicon-gist-private:before,.octicon-mirror-private:before,.octicon-git-fork-private:before,.octicon-lock:before{content:'\f06a'}.octicon-logo-github:before{content:'\f092'}.octicon-mail:before{content:'\f03b'}.octicon-mail-read:before{content:'\f03c'}.octicon-mail-reply:before{content:'\f051'}.octicon-mark-github:before{content:'\f00a'}.octicon-markdown:before{content:'\f0c9'}.octicon-megaphone:before{content:'\f077'}.octicon-mention:before{content:'\f0be'}.octicon-microscope:before{content:'\f089'}.octicon-milestone:before{content:'\f075'}.octicon-mirror-public:before,.octicon-mirror:before{content:'\f024'}.octicon-mortar-board:before{content:'\f0d7'}.octicon-move-down:before{content:'\f0a8'}.octicon-move-left:before{content:'\f074'}.octicon-move-right:before{content:'\f0a9'}.octicon-move-up:before{content:'\f0a7'}.octicon-mute:before{content:'\f080'}.octicon-no-newline:before{content:'\f09c'}.octicon-octoface:before{content:'\f008'}.octicon-organization:before{content:'\f037'}.octicon-package:before{content:'\f0c4'}.octicon-paintcan:before{content:'\f0d1'}.octicon-pencil:before{content:'\f058'}.octicon-person-add:before,.octicon-person-follow:before,.octicon-person:before{content:'\f018'}.octicon-pin:before{content:'\f041'}.octicon-playback-fast-forward:before{content:'\f0bd'}.octicon-playback-pause:before{content:'\f0bb'}.octicon-playback-play:before{content:'\f0bf'}.octicon-playback-rewind:before{content:'\f0bc'}.octicon-plug:before{content:'\f0d4'}.octicon-repo-create:before,.octicon-gist-new:before,.octicon-file-directory-create:before,.octicon-file-add:before,.octicon-plus:before{content:'\f05d'}.octicon-podium:before{content:'\f0af'}.octicon-primitive-dot:before{content:'\f052'}.octicon-primitive-square:before{content:'\f053'}.octicon-pulse:before{content:'\f085'}.octicon-puzzle:before{content:'\f0c0'}.octicon-question:before{content:'\f02c'}.octicon-quote:before{content:'\f063'}.octicon-radio-tower:before{content:'\f030'}.octicon-repo-delete:before,.octicon-repo:before{content:'\f001'}.octicon-repo-clone:before{content:'\f04c'}.octicon-repo-force-push:before{content:'\f04a'}.octicon-gist-fork:before,.octicon-repo-forked:before{content:'\f002'}.octicon-repo-pull:before{content:'\f006'}.octicon-repo-push:before{content:'\f005'}.octicon-rocket:before{content:'\f033'}.octicon-rss:before{content:'\f034'}.octicon-ruby:before{content:'\f047'}.octicon-screen-full:before{content:'\f066'}.octicon-screen-normal:before{content:'\f067'}.octicon-search-save:before,.octicon-search:before{content:'\f02e'}.octicon-server:before{content:'\f097'}.octicon-settings:before{content:'\f07c'}.octicon-log-in:before,.octicon-sign-in:before{content:'\f036'}.octicon-log-out:before,.octicon-sign-out:before{content:'\f032'}.octicon-split:before{content:'\f0c6'}.octicon-squirrel:before{content:'\f0b2'}.octicon-star-add:before,.octicon-star-delete:before,.octicon-star:before{content:'\f02a'}.octicon-steps:before{content:'\f0c7'}.octicon-stop:before{content:'\f08f'}.octicon-repo-sync:before,.octicon-sync:before{content:'\f087'}.octicon-tag-remove:before,.octicon-tag-add:before,.octicon-tag:before{content:'\f015'}.octicon-telescope:before{content:'\f088'}.octicon-terminal:before{content:'\f0c8'}.octicon-three-bars:before{content:'\f05e'}.octicon-tools:before{content:'\f031'}.octicon-trashcan:before{content:'\f0d0'}.octicon-triangle-down:before{content:'\f05b'}.octicon-triangle-left:before{content:'\f044'}.octicon-triangle-right:before{content:'\f05a'}.octicon-triangle-up:before{content:'\f0aa'}.octicon-unfold:before{content:'\f039'}.octicon-unmute:before{content:'\f0ba'}.octicon-versions:before{content:'\f064'}.octicon-remove-close:before,.octicon-x:before{content:'\f081'}.octicon-zap:before{content:'\26A1'}html{height:100%}*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}body{min-height:100%;display:-webkit-box;display:-moz-box;display:-webkit-flex;display:-ms-flexbox;display:box;display:flex;-webkit-box-orient:vertical;-moz-box-orient:vertical;-o-box-orient:vertical;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}main{-webkit-box-flex:1;-moz-box-flex:1;-o-box-flex:1;box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1}header{height:50px;line-height:50px;padding:0 5px;border-bottom:1px solid #e5e5e5;}header div{display:-webkit-box;display:-moz-box;display:-webkit-flex;display:-ms-flexbox;display:box;display:flex;}header div div.menu{-webkit-box-flex:1;-moz-box-flex:1;-o-box-flex:1;box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;-webkit-box-pack:end;-moz-box-pack:end;-o-box-pack:end;-ms-flex-pack:end;-webkit-justify-content:flex-end;justify-content:flex-end}footer{width:940px;height:70px;line-height:70px;padding:0 5px;margin:0 auto;border-top:1px solid #e5e5e5}header > div,main > div,footer > div{width:940px;margin:0 auto}html{font-size:14px;line-height:1.3em;font-family:Helvetica,Arial,sans-serif}a{color:#000;text-decoration:none;}a:hover{color:#4183c4}.center{margin:0 auto}button,.button{text-decoration:none;font-size:14px;font-weight:bold;font-family:Arial,sans-serif;color:#000;font-shadow:0 -1px #fff;border:1px solid #d3d3d3;border-top:1px solid #e3e3e3;-webkit-border-radius:3px;border-radius:3px;display:inline-block;outline:none;background:-webkit-linear-gradient(top, #f5f5f5, #eaeaea);background:-moz-linear-gradient(top, #f5f5f5, #eaeaea);background:-o-linear-gradient(top, #f5f5f5, #eaeaea);background:-ms-linear-gradient(top, #f5f5f5, #eaeaea);background:linear-gradient(to bottom, #f5f5f5, #eaeaea);background-color:#f5f5f5;padding:5px 10px;}button:hover,.button:hover{background:-webkit-linear-gradient(top, #ebebeb, #ddd);background:-moz-linear-gradient(top, #ebebeb, #ddd);background:-o-linear-gradient(top, #ebebeb, #ddd);background:-ms-linear-gradient(top, #ebebeb, #ddd);background:linear-gradient(to bottom, #ebebeb, #ddd);background-color:#eaeaea;border:1px solid #cacaca;border-top:1px solid #d3d3d3}button:active,.button:active{background:-webkit-linear-gradient(top, #d8d8d8, #ebebeb);background:-moz-linear-gradient(top, #d8d8d8, #ebebeb);background:-o-linear-gradient(top, #d8d8d8, #ebebeb);background:-ms-linear-gradient(top, #d8d8d8, #ebebeb);background:linear-gradient(to bottom, #d8d8d8, #ebebeb);background-color:#ddd}button.large,.button.large{font-weight:600;font-size:20px;-webkit-border-radius:5px;border-radius:5px;padding:10px 12px;}button.large .fa,.button.large .fa{font-size:20px;padding:0 5px}button.very-large,.button.very-large{font-weight:600;font-size:24px;-webkit-border-radius:7px;border-radius:7px;padding:14px 14px;}button.very-large .fa,.button.very-large .fa{font-size:24px;padding:0 5px}header h1{font-size:21px;font-weight:bold;}header h1 a:hover{color:#000}footer{color:#aaa;font-size:12px}
+
+
+.menu nav ul{list-style:none;display:flex}.menu nav .menu-icon{cursor:pointer;color:#666}.menu nav li{display:flex;align-items:center;margin-right:20px;}.menu nav li:last-child{margin-right:0}.menu nav li.new-button{margin-right:30px}.menu nav li.profile-link a{font-weight:bold}.menu nav li.profile-link img{border-radius:3px;vertical-align:middle;margin-right:2px}

@@ -1,0 +1,26 @@
+<ul>
+  <li class='new-button'>
+    <a href='/new'>
+      <button>
+        <span class='octicon octicon-plus'></span>
+        New Gistbook
+      </button>
+    </a>
+  </li>
+  <li class='profile-link'>
+    <a href='/<%- login %>'>
+      <img src='<%= avatar_url %>&s=20' alt='Gravatar'>
+      <%- login %>
+    </a>
+  </li>
+  <li>
+    <a href='/settings'>
+      <span class="octicon octicon-tools"></span>
+    </a>
+  </li>
+  <li>
+    <a href='/logout'>
+      <span class="octicon octicon-sign-out"></span>  
+    </a>
+  </li>
+</ul>

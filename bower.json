@@ -1,0 +1,40 @@
+{
+  "name": "gistbook",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Gistbook/gistbook",
+  "authors": [
+    "Jmeas <jellyes2@gmail.com>"
+  ],
+  "description": "Social coding",
+  "keywords": [
+    "github",
+    "gist",
+    "gists",
+    "sharing",
+    "code",
+    "programming",
+    "javascript"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client.src/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~1.11.0",
+    "backbone": "~1.1.0",
+    "marionette": "2.1.0",
+    "modernizr": "~2.7.1",
+    "html5-reset": "~2.1.2",
+    "heartbeat.js": "~0.3.0",
+    "jquery-mockjax": "~1.5.3",
+    "nib": "~1.0.2",
+    "font-awesome": "~4.0.3",
+    "github": "michael/github#~0.9.0",
+    "octicons": "~2.1.1"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "name": "gistbook",
+  "version": "0.1.0",
+  "description": "The website for Gistbook.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gistbook/gistbook.git"
+  },
+  "keywords": [
+    "gist",
+    "gistbook",
+    "gists",
+    "github",
+    "javascript",
+    "code",
+    "social",
+    "sharing"
+  ],
+  "author": "Jmeas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gistbook/gistbook/issues"
+  },
+  "homepage": "https://github.com/Gistbook/gistbook",
+  "devDependencies": {
+    "exports-loader": "^0.6.2",
+    "grunt": "~0.4.2",
+    "grunt-concurrent": "^0.5.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-imagemin": "~0.5.0",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-jst": "~0.5.1",
+    "grunt-contrib-less": "~0.9.0",
+    "grunt-contrib-stylus": "^0.15.1",
+    "grunt-contrib-uglify": "~0.3.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-express-server": "~0.4.13",
+    "grunt-newer": "~0.6.1",
+    "grunt-open": "~0.2.3",
+    "grunt-rsync": "^0.6.0",
+    "grunt-spritesmith": "~1.22.0",
+    "grunt-webpack": "^1.0.5",
+    "imports-loader": "^0.6.2",
+    "load-grunt-tasks": "~0.4.0",
+    "watch": "~0.9.0",
+    "webpack": "^1.1.8",
+    "webpack-dev-server": "^1.2.7"
+  },
+  "dependencies": {
+    "backbone": "^1.1.2",
+    "backbone.babysitter": "^0.1.1",
+    "backbone.marionette": "^2.1.0",
+    "backbone.radio": "^0.6.0",
+    "backbone.wreqr": "^1.2.1",
+    "cookies": "^0.4.1",
+    "express": "^4.0.0",
+    "github-api": "^0.7.0",
+    "hogan-express": "~0.5.2",
+    "hogan.js": "~2.0.0",
+    "jquery": "^2.1.0",
+    "octonode": "^0.6.2",
+    "querystring": "^0.2.0",
+    "underscore": "^1.6.0",
+    "url": "^0.10.1"
+  }
+}
