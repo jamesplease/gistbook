@@ -44,13 +44,13 @@ _.extend(Route.prototype, {
   // This is the primary callback that we register on the route change event
   // It's where all of the magic happens: data is fetched, views are rendered
   // and displayed to the user
-  _callback: function(urlData) {
+  _callback: function(urlData, navigateOptions) {
 
     // Update the page title, if one was specified.
     // Otherwise, reset the title to be the default
     this.title ? this._updateTitle() : this._router._resetTitle();
 
-    this._buildDom(urlData);
+    this._buildDom(urlData, navigateOptions);
   },
 
   // Return all of the Regions for this Route
@@ -64,16 +64,16 @@ _.extend(Route.prototype, {
     document.title = this._router.processTitle(this.title);
   },
 
-  _buildDom: function(urlData) {
+  _buildDom: function(urlData, navigateOptions) {
     if (!this.views) { return; }
     this._verifyConfiguration();
-    _.each(this.views, _.partial(this._buildView, urlData));
+    _.each(this.views, _.partial(this._buildView, urlData, navigateOptions));
   },
 
-  _buildView: function(urlData, viewDefinition, viewName) {
+  _buildView: function(urlData, navigateOptions, viewDefinition, viewName) {
     var region = this._getViewRegion(viewDefinition.region);
-    var fetchModel = this._shouldFetch(viewDefinition.model);
-    var fetchCollection = this._shouldFetch(viewDefinition.collection);
+    var fetchModel = this._shouldFetch(viewDefinition.model, navigateOptions);
+    var fetchCollection = this._shouldFetch(viewDefinition.collection, navigateOptions);
     // console.log('should i fetch?', fetchModel, fetchCollection);
     var model = this._getDataObj(viewDefinition.model, urlData);
     var collection = this._getDataObj(viewDefinition.collection, urlData);
@@ -145,10 +145,18 @@ _.extend(Route.prototype, {
       }
   },
 
-  _shouldFetch: function(dataName) {
+  _shouldFetch: function(dataName, navigateOptions) {
 
     // If there's no name given, then there's nothing to fetch!
     if (!dataName) { return false; }
+
+    var resetCache = navigateOptions.resetCache;
+
+    // Always fetch if `resetCache` is true
+    if (resetCache === true) { return true; }
+
+    // Also support an array syntax to `resetCache` for finer control over the cache
+    if (_.isArray(resetCache) && _.contains(resetCache, dataName)) { return true; }
 
     // If the data isn't cached yet, then we know we must fetch
     if (!this._dataCached(dataName)) {

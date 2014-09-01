@@ -130,16 +130,22 @@ _.extend(Router.prototype, {
     }
     if (!callback) callback = this[name];
     var router = this;
-    bb.history.route(route, function(fragment) {
+    bb.history.route(route, function(fragment, options) {
+      options = options || {};
       var req = [router._getUrlData(route, fragment)];
-      var args = router._extractParameters(route, fragment);
-      if (router.execute(callback, req, name) !== false) {
-        router.trigger.apply(router, ['route:' + name].concat(req));
+      if (router.execute(callback, req.concat([options]), name) !== false) {
+        router.trigger.apply(router, ['route:' + name].concat(req, [options]));
         router.trigger('route', name, req);
         bb.history.trigger('route', router, name, req);
       }
     });
     return this;
+  },
+
+  execute: function(callback, args, name) {
+    if (callback) {
+      callback.apply(this, args);
+    }
   },
 
   _generateTree: function(Route, url, baseUrl) {
@@ -179,7 +185,7 @@ _.extend(Router.prototype, {
       this._routes[url] = route;
       route._router = this;
       var self = this;
-      this.listenTo(bb.history, url, function(urlData) {
+      this.route(url, url, function(urlData, navigateOptions) {
         var redirect = result(route, 'redirect', urlData);
 
         if (_.isString(redirect)) {
@@ -190,14 +196,10 @@ _.extend(Router.prototype, {
           self._exitRoute(self.currentRoute);
           route.triggerMethod('enter', urlData);
           self.triggerMethod('before:navigate', route, urlData);
-          route._callback(urlData);
+          route._callback(urlData, navigateOptions);
           self.currentRoute = route;
           self.triggerMethod('navigate', route, urlData);
         }
-
-      });
-      this.route(url, url, function(urlData) {
-        bb.history.trigger(url, urlData);
       });
     }, this);
   },

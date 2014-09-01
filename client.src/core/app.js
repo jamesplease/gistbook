@@ -35,6 +35,9 @@ app.auth = new (require('./lib/auth'))();
 // Set our environment
 app.env = require('./lib/env');
 
+// Load our mock API if we're in dev mode
+if (app.env === 'dev') { require('./lib/dev'); }
+
 // Set up the router
 app.router = require('./router');
 
