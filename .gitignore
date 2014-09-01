@@ -27,5 +27,7 @@ node_modules
 server/config
 tmp
 client.src/bower_components
+client.dev
+client.prod
 
 config/remote.json
