@@ -12,13 +12,16 @@ var authChannel = Radio.channel('auth');
 
 var SettingsRoute = Route.extend({
 
-  // Redirect us to the login page if we're unauthorized
+  title: 'Account Settings',
+
+  // Redirect us to the home page if we're unauthorized
+  // This is the only page that requires that you be authorized
   redirect: function() {
     return !authChannel.request('authorized') ? '' : false;
   },
 
   views: {
-    login: {
+    settings: {
       region: 'main',
       view: SettingsView
     }

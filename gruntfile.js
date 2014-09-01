@@ -60,7 +60,7 @@ module.exports = function(grunt) {
         paths: ['<%= app.src %>/bower_components']
       },
       dev: {
-        src: ['<%= app.src %>/core/assets/styl/index.styl', '<%= app.src %>/subapps/**/*.styl', '<%= app.src %>/lib/**/*.styl'],
+        src: ['<%= app.src %>/core/assets/styl/index.styl', '<%= app.src %>/subapps/**/*.styl', '<%= app.src %>/lib/**/*.styl', '<%= app.src %>/core/lib/**/*.styl'],
         dest: '<%= app.dev %>/style.css'
       },
       prod: {

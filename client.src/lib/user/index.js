@@ -18,12 +18,11 @@ var User = bb.Model.extend({
   },
 
   _configureEvents: function() {
+    userChannel.reply('user', this);
     this.listenTo(authChannel, 'logout', this.clear);
   }
 });
 
 var user = new User(window._initData.user);
-
-userChannel.reply('user', user);
 
 module.exports = user;

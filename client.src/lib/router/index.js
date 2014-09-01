@@ -1,6 +1,15 @@
+/* jshint -W084 */
+
 /*
  * router
- * A custom-made router to support stateful transitions
+ * A heavily modified Backbone Router that's
+ * substantially more powerful. It's a bit
+ * of a Frankenstein right now, as it only
+ * modifies the Backbone.Router. A full
+ * rewrite could clean it up quite a bit.
+ *
+ * Also, it wasn't tested against splats
+ * or optional parameters so don't use 'em!
  *
  */
 
@@ -8,40 +17,50 @@ var _ = require('underscore');
 var bb = require('backbone');
 var mn = require('marionette');
 var Radio = require('radio');
-
 var RegionsMixin = require('../regions-mixin');
 
 var routerChannel = Radio.channel('router');
 
 var routerOptions = ['regions', 'routes', 'processTitle', 'defaultTitle'];
 
-var Router = function(options) {
-  _.bindAll(this, '_registerRoute');
+// An alternate version of _.result that
+// accepts arguments
+function result(obj, prop) {
+  if (!_.isFunction(obj[prop])) {
+    return obj[prop];
+  } else {
+    return obj[prop].apply(obj, _.rest(arguments, 2));
+  }
+}
 
-  _.extend(this, _.pick(options, routerOptions));
+var Router = bb.Router.extend({
+  constructor: function(options) {
+    _.bindAll(this, '_registerRoute');
 
-  // Create our routes if it doesn't exist
-  this.routes = this.routes || [];
+    _.extend(this, _.pick(options, routerOptions));
 
-  this.defaultTitle = this.defaultTitle || document.title;
-  this._resetTitle();
+    this.routeParams = {};
 
-  // We rely on the original router internally
-  this._router = new bb.Router();
+    // Create our routes if it doesn't exist
+    this.routes = this.routes || [];
 
-  // Register our initial routes
-  _.each(this.routes, function(Route, url) {
-    this._registerRoute(Route, url);
-  }, this);
+    this.defaultTitle = this.defaultTitle || document.title;
+    this._resetTitle();
 
-  // Add our initial regions
-  this.addRegions(this.regions);
+    // Register our initial routes
+    _.each(this.routes, function(Route, url) {
+      this._registerRoute(Route, url);
+    }, this);
 
-  this.channel = routerChannel;
-  this._configureEvents();
+    // Add our initial regions
+    this.addRegions(this.regions);
 
-  this.initialize.apply(this, arguments);
-};
+    this.channel = routerChannel;
+    this._configureEvents();
+
+    this.initialize.apply(this, arguments);
+  }
+});
 
 _.extend(Router.prototype, {
 
@@ -51,42 +70,6 @@ _.extend(Router.prototype, {
     this.channel.comply('navigate', function(route) {
       this.navigate(route, {trigger:true});
     }, this);
-  },
-
-  navigate: function(url, options) {
-    options = options || {};
-    options.trigger = true;
-
-    var newRoute = this.getRoute(url);
-
-    if (!newRoute) {
-      this.triggerMethod('unmatchedRoute', url);
-      this._router.navigate(url);
-      return;
-    }
-
-    var redirect = _.result(newRoute, 'redirect');
-
-    // Check if we need to conditionally redirect.
-    if (_.isString(redirect)) {
-      this.navigate(redirect);
-    }
-
-    // If we don't, then we continue along with the routing
-    else {
-      this._exitRoute(this.currentRoute);
-
-      if (newRoute) {
-        newRoute.triggerMethod('enter');
-      }
-
-      this.triggerMethod('before:navigate', newRoute);
-      this._router.navigate(url, {trigger:true});
-      this.currentRoute = newRoute;
-      this.triggerMethod('navigate', newRoute);
-    }
-
-    
   },
 
   // Add a single Route
@@ -102,6 +85,8 @@ _.extend(Router.prototype, {
 
     this._registerRoute(route);
   },
+
+  processTitle: function(title) { return title; },
 
   // Perform the shut down methods of a Route being exited
   _exitRoute: function(route) {
@@ -119,7 +104,6 @@ _.extend(Router.prototype, {
 
   // Get a Route by its URL
   getRoute: function(url) {
-
     url = url.substr(1);
 
     var matchedRoute;
@@ -131,11 +115,6 @@ _.extend(Router.prototype, {
     return matchedRoute;
   },
 
-  // Determine if the routeUrl matches the url
-  _matchRoute: function(routeUrl, url) {
-
-  },
-
   _resetTitle: function() {
     if (document.title === this.defaultTitle) {
       return;
@@ -143,20 +122,44 @@ _.extend(Router.prototype, {
     document.title = this.defaultTitle;
   },
 
-  _registerInternally: function(Route, url, baseUrl) {
+  route: function(route, name, callback) {
+    if (!_.isRegExp(route)) route = this._routeToRegExp(route);
+    if (_.isFunction(name)) {
+      callback = name;
+      name = '';
+    }
+    if (!callback) callback = this[name];
+    var router = this;
+    bb.history.route(route, function(fragment) {
+      var req = [router._getUrlData(route, fragment)];
+      var args = router._extractParameters(route, fragment);
+      if (router.execute(callback, req, name) !== false) {
+        router.trigger.apply(router, ['route:' + name].concat(req));
+        router.trigger('route', name, req);
+        bb.history.trigger('route', router, name, req);
+      }
+    });
+    return this;
+  },
+
+  _generateTree: function(Route, url, baseUrl) {
+    var tree = {};
+
     baseUrl = baseUrl || '';
 
     // Create the full URL for this Route
     var fullUrl = baseUrl + url;
 
     // Add the route to our internal hash
-    this._routes[fullUrl] = new Route();
+    tree[fullUrl] = new Route();
 
     // Lastly, register all of the route's children, too
-    if (!Route.prototype.routes) { return; }
+    if (!Route.prototype.routes) { return tree; }
     _.each(Route.prototype.routes, function(childRoute, childUrl) {
-      this._registerInternally(childRoute, childUrl, url);
+      tree = _.extend(tree, this._generateTree(childRoute, childUrl, url));
     }, this);
+
+    return tree;
   },
 
   // Register the route, and all of its children, with the
@@ -166,16 +169,100 @@ _.extend(Router.prototype, {
     // Instantiate the Route & it's tree of children Routes, storing
     // them internally on the router.
     this._routes = this._routes || {};
-    this._registerInternally(Route, url);
+    var tree = this._generateTree(Route, url);
 
     window.router = this;
     window.historyPls = bb.history;
 
     // Register the Route tree on the router
-    _.each(this._routes, function(route, url) {
+    _.each(tree, function(route, url) {
+      this._routes[url] = route;
       route._router = this;
-      this._router.route(url, url, route._callback);
+      var self = this;
+      this.listenTo(bb.history, url, function(urlData) {
+        var redirect = result(route, 'redirect', urlData);
+
+        if (_.isString(redirect)) {
+          self.navigate(redirect, {trigger:true});
+        }
+
+        else {
+          self._exitRoute(self.currentRoute);
+          route.triggerMethod('enter', urlData);
+          self.triggerMethod('before:navigate', route, urlData);
+          route._callback(urlData);
+          self.currentRoute = route;
+          self.triggerMethod('navigate', route, urlData);
+        }
+
+      });
+      this.route(url, url, function(urlData) {
+        bb.history.trigger(url, urlData);
+      });
     }, this);
+  },
+
+  _routeToRegExp: function(route) {
+
+    // I store it up here originally, which makes it duplicate. This is the non-regex version
+    // What's the use case?
+    this.routeParams[route] = this.routeParams[route] || [];
+    var self = this;
+    var optionalParam = /\((.*?)\)/g;
+    var namedParam    = /(\(\?)?:\w+/g;
+    var splatParam    = /\*\w+/g;
+    var escapeRegExp  = /[\-{}\[\]+?.,\\\^$|#\s]/g;
+    var tmpArray = [];
+    var newRoute = route.replace(escapeRegExp, '\\$&')
+                 .replace(optionalParam, '(?:$1)?')
+                 .replace(namedParam, function(match, optional) {
+                    tmpArray.push(match.substr(1));
+                    return optional ? match : '([^/?]+)';
+                 })
+                 .replace(splatParam, '([^?]*?)');
+    var regexStr = '^' + newRoute + '(?:\\?([\\s\\S]*))?$';
+    self.routeParams[regexStr] = tmpArray;
+    return new RegExp(regexStr);
+  },
+
+  _getUrlData: function(route, fragment) {
+    var routeParams = this._extractParameters(route, fragment);
+    var queryString = routeParams.pop();
+    
+    return {
+      query:  this._getQueryParameters(queryString),
+      params: this._getNamedParams(route, routeParams)
+    };
+  },
+
+  // Decodes the Url query string parameters & and returns them
+  // as an object. Supports empty parameters, but not array-like
+  // parameters (which aren't in the URI specification)
+  _getQueryParameters: function(queryString) {
+    if (!queryString) { return {}; }
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = queryString;
+
+    urlParams = {};
+    while (match = search.exec(query)) {
+       urlParams[decode(match[1])] = decode(match[2]);
+    }
+    return urlParams;
+  },
+
+  // Returns the named parameters of the route
+  _getNamedParams: function(route, routeParams) {
+    var routeString = route.toString();
+    routeString = routeString.substr(1, routeString.length-2);
+    var routeArr = this.routeParams[routeString];
+    var paramObj = {};
+    _.each(routeArr, function(arrVal, i) {
+      paramObj[arrVal] = routeParams[i];
+    });
+    return paramObj;
   },
 
   triggerMethod: mn.triggerMethod

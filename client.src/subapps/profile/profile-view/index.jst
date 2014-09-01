@@ -1,6 +1,8 @@
-<h1>Profile hi</h1>
+<h1>Your Profile</h1>
 <div>
-  yo profile
-  <br><br>
-  You got like, 500 repositories
+  <ul>
+  <% _.each(items, function(item) { %>
+    <li><%- item.description %></li>
+  <% }); %>
+  </ul>
 </div>

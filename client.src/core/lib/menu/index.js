@@ -46,4 +46,4 @@ var Menu = mn.Object.extend({
   }
 });
 
-module.exports = new Menu();
+module.exports = Menu;

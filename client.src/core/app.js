@@ -3,6 +3,12 @@
  * Define our app, which is just a thin container for
  * everything else.
  *
+ * Note that this is a Marionette v3 prototype application! Don't
+ * expect to use any of this code in your app just yet, even if
+ * some of it looks cleaner than what's possible in v2. If you're
+ * feeling really adventurous, check out the ../shims directory
+ * to see all that's changed.
+ *
  * We also set into motion all of the pieces
  * that make the webapp work, like routes, link
  * intercepting, and so on.
@@ -24,10 +30,10 @@ app.on('start', function() {
 });
 
 // Load up authorization
-app.authManager = require('../lib/auth');
+app.auth = new (require('./lib/auth'))();
 
 // Set our environment
-app.env = require('../lib/env');
+app.env = require('./lib/env');
 
 // Set up the router
 app.router = require('./router');
@@ -35,7 +41,7 @@ app.router = require('./router');
 app.user = require('../lib/user');
 
 // Create our menu
-app.menu = require('../lib/menu');
+app.menu = new (require('./lib/menu'))();
 
 // Attach it to the window. This is solely for debugging
 // purposes – nothing else

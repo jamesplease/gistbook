@@ -1,6 +1,6 @@
 /*
  * env
- * Make our environment available to the client
+ * Our environment – one of `dev` or `prod`
  *
  */
 

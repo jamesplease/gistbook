@@ -4,13 +4,15 @@
  *
  */
 
+var $ = require('jquery');
 var mn = require('marionette');
 var Route = require('../../lib/route');
 var HomeView = require('./home-view');
+var GithubCollection = require('../../lib/github-collection');
 
 var HomeRoute = Route.extend({
   views: {
-    login: {
+    home: {
       region: 'main',
       view: HomeView
     }
