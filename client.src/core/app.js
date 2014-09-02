@@ -38,10 +38,10 @@ app.env = require('./lib/env');
 // Load our mock API if we're in dev mode
 if (app.env === 'dev') { require('./lib/dev'); }
 
+app.user = require('../lib/user');
+
 // Set up the router
 app.router = require('./router');
-
-app.user = require('../lib/user');
 
 // Create our menu
 app.menu = new (require('./lib/menu'))();

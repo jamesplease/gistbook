@@ -1,0 +1,75 @@
+.profile-view
+  width 800px
+  margin 0 auto
+  display flex
+
+  .profile-left-bar
+    width 200px
+
+    img
+      width 200px
+      border-radius 7px
+      margin-bottom 10px
+
+  .profile-names
+    padding-bottom 20px
+    margin-bottom 20px
+    border-bottom 1px solid $borderColor
+
+    span
+      display block
+
+      &.full-name
+        font-weight bold
+        font-size 23px
+        margin-bottom 10px
+      &.username
+        font-size 20px
+        font-weight 200
+        color $mediumTextColor
+
+  .gistbook-count
+    padding-bottom 20px
+    margin-bottom 20px
+    border-bottom 1px solid $borderColor
+    color $lightTextColor
+
+    span
+      font-weight bold
+      font-size 28px
+      color $textColor
+
+  .profile-list
+    flex 1
+    margin-left 30px
+
+    > h1
+      padding-left 10px
+      font-size 16px
+      font-weight bold
+      font-color $mediumTextColor
+      border-bottom 1px solid $borderColor
+      padding-bottom 10px
+
+  .gistbook-title
+    flex 1
+
+  .gistbook-list
+    height 40px
+    line-height 40px
+    display flex
+    border-bottom 1px solid $borderColor
+    padding-left 10px
+
+    ul
+      align-self flex-end
+
+    a
+      font-weight bold
+      color $hoverLinkColor
+
+    .octicon
+      color $lightTextColor
+
+    .octicon-trashcan
+      cursor pointer

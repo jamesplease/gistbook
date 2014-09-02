@@ -1,0 +1,33 @@
+.boxed-group
+  width 800px
+  margin 0 auto
+  border 1px solid $borderColor
+  border-radius 3px
+
+  .boxed-group-header
+    border-bottom 1px solid $borderColor
+    height 40px
+    line-height 40px
+    background $lightBackground
+    color $darkTextColor
+    font-weight bold
+    padding 0 10px
+
+  .boxed-group-body
+    padding 10px
+    color $mediumTextColor
+    
+    p
+      font-size 13px
+      margin-bottom 10px
+
+      &:last-child
+        margin 0
+
+    ul
+      list-style-type disc
+      margin-left 20px
+
+      li
+        color $textColor
+        font-weight bold

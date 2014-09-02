@@ -9,6 +9,9 @@ var Route = require('../../lib/route');
 var SettingsView = require('./settings-view');
 
 var authChannel = Radio.channel('auth');
+var userChannel = Radio.channel('user');
+
+var user = userChannel.request('user');
 
 var SettingsRoute = Route.extend({
 
@@ -22,6 +25,7 @@ var SettingsRoute = Route.extend({
 
   views: {
     settings: {
+      model: user,
       region: 'main',
       view: SettingsView
     }

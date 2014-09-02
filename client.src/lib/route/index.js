@@ -37,6 +37,7 @@ var Route = function(options) {
 
   // This is our data cache
   this._data = {};
+  this.data = this.data || {};
 };
 
 _.extend(Route.prototype, {
@@ -86,13 +87,12 @@ _.extend(Route.prototype, {
         model: model,
         collection: collection
       });
-    }
-
-    else {
+    } else {
+      console.log('fetchin some stuff');
       var route = this;
-      console.log('Fetching');
-      // This _.result calls handle the model or collection being undefined
-      $.when(_.result(model, 'fetch'), _.result(collection, 'fetch'))
+      var fetchCollectionPromise = fetchCollection ? _.result(collection, 'fetch') : undefined;
+      var fetchModelPromise = fetchModel ? _.result(model, 'fetch') : undefined;
+      $.when(fetchModelPromise, fetchCollectionPromise)
         .then(function() {
           console.log('Fetch success');
           route._displayView(region, viewDefinition.view, {
@@ -137,10 +137,10 @@ _.extend(Route.prototype, {
   _ensureData: function(viewDefinition, viewName) {
     var model = viewDefinition.model;
       var collection = viewDefinition.collection;
-      if (model && !this.data[model]) {
+      if (model && _.isString(model) && !this.data[model]) {
         throw new Error('The data object "' + model + '" was not found for view "' + viewName + '"');
       }
-      if (collection && !this.data[collection]) {
+      if (collection && _.isString(collection) && !this.data[collection]) {
         throw new Error('The data object "' + collection + '" was not found for view "' + viewName + '"');
       }
   },
@@ -149,6 +149,9 @@ _.extend(Route.prototype, {
 
     // If there's no name given, then there's nothing to fetch!
     if (!dataName) { return false; }
+
+    // If it isn't a string, and it doesn't have a URL, then we can't fetch it
+    if (!_.isString(dataName) && (!_.result(this, 'urlRoot') || !_.result(this.collection, 'url'))) { return false; }
 
     var resetCache = navigateOptions.resetCache;
 
@@ -178,6 +181,10 @@ _.extend(Route.prototype, {
 
   _getDataObj: function(dataName, urlData) {
     if (!dataName) { return; }
+
+    if (!_.isString(dataName)) {
+      return dataName;
+    }
 
     var cachedObj = this._data[dataName];
 
@@ -211,19 +218,6 @@ _.extend(Route.prototype, {
 
     // Otherwise, we don't fetch
     return false;
-  },
-
-  getDataObject: function(dataName) {
-    if (!dataName) { return; }
-
-    this.data = this.data || {};
-    var dataObj = this.data[dataName];
-
-    if (!dataObj) {
-      throw new Error('The data object ' + dataName + ' must exist.');
-    }
-
-    return dataObj;
   },
 
   triggerMethod: mn.triggerMethod

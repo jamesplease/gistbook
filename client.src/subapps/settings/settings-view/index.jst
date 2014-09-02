@@ -1,7 +1,27 @@
-<h1>Account Settings</h1>
-<div>
-  Lalalala
-  <button>
-    Revoke Access
-  </button>
+<div class='boxed-group'>
+  <div class='boxed-group-header'>
+    Github Authorizations
+  </div>
+  <div class='boxed-group-body'>
+    <p>
+      You have granted Gistbook access to certain areas of your Github account.
+    </p>
+    <p>
+      Gistbook can access your:
+    </p>
+    <p>
+      <ul>
+      <% _.each(scopes, function(scope) { %>
+        <li><%- mapScope(scope) %></li>
+      <% }); %>
+      </ul>
+    </p>
+    <p>
+      <a href='https://github.com/settings/applications' target='_blank'>
+        <button class='danger'>
+          Revoke Access
+        </button>
+      </a>
+    </p>
+  </div>
 </div>

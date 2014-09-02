@@ -41,6 +41,7 @@ var verify = function(req, res, next) {
           res.authorized = true;
 
           // Gather useful data from the response
+          body.scopes = scopes;
           res.user = JSON.stringify(body);
           res.rateMax = header['x-ratelimit-limit'];
           res.rateLeft = header['x-ratelimit-remaining'];
