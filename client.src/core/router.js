@@ -8,7 +8,7 @@ var router = new Router({
   },
 
   routes: {
-    'profile/:username': require('../subapps/profile/profile-route'),
+    ':username': require('../subapps/profile/profile-route'),
     '': require('../subapps/home/home-route'),
     'new': require('../subapps/new/new-route'),
     'logout': require('../subapps/logout/logout-route'),

@@ -1,8 +1,22 @@
-<h1>Your Profile</h1>
-<div>
-  <ul>
-  <% _.each(items, function(item) { %>
-    <li><%- item.description %></li>
-  <% }); %>
-  </ul>
+<div class='profile-left-bar'>
+  <img src='<%- avatar_url %>' alt='<%- name %>'>
+  <div class='profile-names'>
+    <span class='full-name'><%- name %></span>
+    <span class='username'><%- login %></span>
+  </div>
+  <div class='gistbook-count'>
+    <span><%- gistbooks.length %></span> <%- gistbookText() %>
+  </div>
+  <a href='<%- html_url %>' target='_blank'>
+    <button>
+      <span class='octicon octicon-octoface'></span>
+      <%- login %> on Github
+    </button>
+  </a>
+</div>
+<div class='profile-list'>
+  <h1>
+    Gistbooks
+  </h1>
+  <ul></ul>
 </div>

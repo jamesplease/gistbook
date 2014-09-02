@@ -29,7 +29,6 @@ var linkUtil = {
       return;
     }
 
-    e.preventDefault();
     var href = $currentTarget.attr('href');
 
     // Return if there's no URL
@@ -37,6 +36,8 @@ var linkUtil = {
 
     // Return if the URL is absolute. `http://` is required.
     if (/^(?:\w+:)?\/\//.test(href)) { return; }
+
+    e.preventDefault();
 
     // Send it off to the router
     routerChannel.command('navigate', href);

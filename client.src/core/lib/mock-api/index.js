@@ -8,8 +8,6 @@ var $ = require('jquery');
 // Load up mockjax
 require('jquery-mockjax');
 
-console.log('ok');
-
 $.mockjax({
   url: '/restful/fortune',
   responseTime: 1500,
