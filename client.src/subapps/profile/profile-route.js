@@ -3,41 +3,48 @@
  *
  */
 
+var bb = require('backbone');
 var mn = require('marionette');
 var Radio = require('radio');
 var Route = require('../../lib/route');
-var ProfileView = require('./profile-view');
-var GistbooksCollection = require('./gistbooks');
+var ProfileView = require('./views/profile-view');
+var Gists = require('./entities/gists');
+var GistbookRoute = require('./subroutes/gistbook/gistbook-route');
+var User = require('../../lib/entities/user');
 
 var user = Radio.request('user', 'user');
 
-// I need a better way to determine if logged in or not.
-// Everything behaves differently in that situation
-
-var ProfileRoute = Route.extend({
+module.exports = Route.extend({
   data: {
     gistbooks: {
-      dataClass: function(urlData) {
+      getDataClass: function(urlData) {
         var dataOptions = {};
         if (urlData.params.username !== user.get('login')) {
-          dataOptions = {
-            collectionUrl: '/users/' + urlData.params.username + '/gists'
-          };
+          dataOptions.collectionUrl = '/users/' + urlData.params.username + '/gists';
         }
 
-        return GistbooksCollection.extend(dataOptions);
+        return Gists.extend(dataOptions);
       }
+    },
+    user: {
+      dataClass: User,
+      initialData: function(urlData) {
+        return { id: urlData.params.username };
+      },
+      cache: false
     }
   },
 
   views: {
     profile: {
-      model: user,
+      model: 'user',
       collection: 'gistbooks',
       region: 'main',
       view: ProfileView
     }
+  },
+
+  routes: {
+    '/:gistbookId': GistbookRoute
   }
 });
-
-module.exports = ProfileRoute;

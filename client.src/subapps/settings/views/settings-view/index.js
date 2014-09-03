@@ -6,10 +6,12 @@
 var _ = require('underscore');
 var mn = require('marionette');
 var templates = require('templates');
-var scopeMap = require('../../../lib/util/scope-map');
+var scopeMap = require('../../../../lib/util/scope-map');
 
 var SettingsView = mn.ItemView.extend({
   template: templates.settingsView,
+
+  className: 'settings',
 
   templateHelpers: {
 

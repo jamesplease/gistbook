@@ -6,9 +6,9 @@
 
 var _ = require('underscore');
 var bb = require('backbone');
-var githubApiUtil = require('../util/github-api-util');
+var githubApiUtil = require('../../util/github-api-util');
 
-var GithubCollection = bb.Collection.extend({
+module.exports = bb.Collection.extend({
   urlRoot: githubApiUtil.url,
 
   // This is the property that we set on a per-collection basis
@@ -18,5 +18,3 @@ var GithubCollection = bb.Collection.extend({
     return this.urlRoot + _.result(this, 'collectionUrl');
   }
 });
-
-module.exports = GithubCollection;
