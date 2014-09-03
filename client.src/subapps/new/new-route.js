@@ -6,11 +6,8 @@
  *
  */
 
-var mn = require('marionette');
 var Route = require('../../lib/route');
 
-var NewRoute = Route.extend({
+module.exports = Route.extend({
   redirect: ''
 });
-
-module.exports = NewRoute;

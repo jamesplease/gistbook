@@ -1,6 +1,6 @@
 /*
- * user
- * An object that represents our user
+ * GithubUser
+ * An object that represents a Github user
  *
  */
 

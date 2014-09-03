@@ -17,12 +17,14 @@ var routeOptions = [
   'onExit',
   'redirect',
   'views',
+  'data',
   'title'
 ];
 
 // An alternate version of _.result that
 // accepts arguments
 function result(obj, prop) {
+  if (obj === null) { return; }
   if (!_.isFunction(obj[prop])) {
     return obj[prop];
   } else {
@@ -75,33 +77,31 @@ _.extend(Route.prototype, {
     var region = this._getViewRegion(viewDefinition.region);
     var fetchModel = this._shouldFetch(viewDefinition.model, navigateOptions);
     var fetchCollection = this._shouldFetch(viewDefinition.collection, navigateOptions);
-    // console.log('should i fetch?', fetchModel, fetchCollection);
-    var model = this._getDataObj(viewDefinition.model, urlData);
-    var collection = this._getDataObj(viewDefinition.collection, urlData);
+    var model = this._getDataObj(viewDefinition.model, urlData, fetchModel);
+    var collection = this._getDataObj(viewDefinition.collection, urlData, fetchCollection);
 
     if (!fetchModel && !fetchCollection) {
       if (model || collection) {
-        console.log('Not fetching; reusing');
+        console.log('The Route is not fetching data.');
       }
       this._displayView(region, viewDefinition.view, {
         model: model,
         collection: collection
       });
     } else {
-      console.log('fetchin some stuff');
       var route = this;
       var fetchCollectionPromise = fetchCollection ? _.result(collection, 'fetch') : undefined;
       var fetchModelPromise = fetchModel ? _.result(model, 'fetch') : undefined;
       $.when(fetchModelPromise, fetchCollectionPromise)
         .then(function() {
-          console.log('Fetch success');
+          console.log('The Route data fetch was a success.');
           route._displayView(region, viewDefinition.view, {
             model: model,
             collection: collection
           });
         })
         .fail(function() {
-          console.log('Fetch fail');
+          console.log('The Route failed to fetch data.');
         });
     }
   },
@@ -179,20 +179,49 @@ _.extend(Route.prototype, {
     return !!this._data[dataName];
   },
 
-  _getDataObj: function(dataName, urlData) {
+  _getDataObj: function(dataName, urlData, avoidCache) {
     if (!dataName) { return; }
 
+    // Functions that return a DataClass
+    if (_.isFunction(dataName)) {
+      return dataName(urlData);
+    }
+
+    // Presumably the DataClass itself
     if (!_.isString(dataName)) {
       return dataName;
     }
 
-    var cachedObj = this._data[dataName];
+    // A cached version of the data object
+    if (!avoidCache) {
+      var cachedObj = this._data[dataName];
 
-    if (!cachedObj) {
-      this._data[dataName] = new (result(this.data[dataName], 'dataClass', urlData))();
+      if (!cachedObj) {
+        this._data[dataName] = this._createNewDataObj(this.data[dataName], urlData);
+      }
+
+      return this._data[dataName];
     }
 
-    return this._data[dataName];
+    // Otherwise, create a new one
+    return this._createNewDataObj(this.data[dataName], urlData);
+  },
+
+  // Build a new object from a function, or constructor function
+  _createNewDataObj: function(dataDefinition, urlData) {
+    var DataClass = dataDefinition.dataClass ? dataDefinition.dataClass : dataDefinition.getDataClass(urlData);
+    var dataOptions = this._getDataOptions(dataDefinition, urlData);
+    var initialData = this._getInitialData(dataDefinition, urlData);
+    return new DataClass(initialData, dataOptions);
+  },
+
+  // Get the options for the class
+  _getDataOptions: function(dataDefinition, urlData) {
+    return result(dataDefinition, 'options', urlData);
+  },
+
+  _getInitialData: function(dataDefinition, urlData) {
+    return result(dataDefinition, 'initialData', urlData);
   },
 
   _getViewRegion: function(regionName) {

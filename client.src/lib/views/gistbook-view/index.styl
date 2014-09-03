@@ -1,0 +1,91 @@
+.gistbook
+  border 1px solid #ccc
+  border-radius 3px
+  width   800px
+  margin  0 auto
+  font-family: Helvetica, arial, sans-serif
+  font-size 14px
+  line-height 1.6
+
+  a i
+    text-decoration none
+
+.gistbook-header
+  padding 5px 10px
+  background $lightBackground
+  border-bottom 1px solid #ccc
+
+.gistbook-body
+  padding 20px 40px
+
+.gistblock-container
+  position relative
+  padding 15px
+  width 600px
+
+.gistblock-container > a
+  position absolute
+  z-index 1000
+  display none
+  top 3px
+  color #30A6F5
+
+  &.gistblock-move
+    cursor -moz-grab
+    cursor -webkit-grab
+    cursor grab
+    left 10px
+
+  &.gistblock-delete
+    right 10px
+
+  &.gistblock-edit
+    right 30px
+
+.gistblock-container
+  &:hover
+    padding 14px
+    border 1px solid #98D0F5
+    border-radius 3px
+
+.gistbook-body > .gistblock
+  margin-top 35px
+  padding-top 35px
+
+  &:first-child
+    margin-top 0
+    padding-top 0
+
+.gistbook-body > .gistblock-text
+  border-top 1px solid #eee
+
+  &:first-child
+    border-top 0
+
+.gistblock-javascript + .gistblock-text
+  border-top 0
+  margin-top 0
+
+.gistbook-output
+  border-top 1px solid #ddd
+  padding 5px
+  position relative
+  background $lightBackground
+
+  div
+    background #fff
+  
+  &:after
+    position absolute
+    top 0
+    right 0
+    display block
+    content 'Output'
+    color #666
+    font-size 13px
+    border 1px solid #ddd
+    border-top 0
+    border-right 0
+    border-radius 0 0 0 7px
+    padding 3px 5px 2px
+    background #fff

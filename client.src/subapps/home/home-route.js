@@ -4,19 +4,19 @@
  *
  */
 
-var $ = require('jquery');
 var mn = require('marionette');
 var Route = require('../../lib/route');
-var HomeView = require('./home-view');
-var GithubCollection = require('../../lib/github-collection');
+var Gist = require('../../lib/entities/gist');
+var GistView = require('../../lib/views/gist-view');
 
-var HomeRoute = Route.extend({
+module.exports = Route.extend({
   views: {
     home: {
+      model: function() {
+        return new Gist();
+      },
       region: 'main',
-      view: HomeView
+      view: GistView
     }
   }
 });
-
-module.exports = HomeRoute;
