@@ -25,6 +25,22 @@
     };
   {{/authorized}}
   </script>
+  <script>
+    window.MathJax = {
+      messageStyle: 'none',
+      skipStartupTypeset: true,
+      config: ['MMLorHTML.js'],
+      inlineMath: [ ['\\(','\\)'] ],
+      displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+      jax: ['input/TeX','input/MathML','output/HTML-CSS','output/NativeMML'],
+      extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+      TeX: {
+        extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js']
+      }
+    };
+  </script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js'></script>
+  <script src='http://cdn.mathjax.org/mathjax/latest/MathJax.js'></script>
   <script src='/script.js'></script>
 </body>
 </html>

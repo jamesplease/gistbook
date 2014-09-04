@@ -18,9 +18,27 @@ var gistbookUtil = {
     return !!files['gistbook.json'];
   },
 
+  // Returns a new, empty Gistbook – like magic!
+  newGistbook: function() {
+    return {
+      title: 'Anonymous Gistbook',
+      author: 'Anonymous',
+      pages: [],
+      public: true
+    };
+  },
+
+  // Create an empty Gistbook page
+  createPage: function() {
+    return {
+      pageName: '',
+      blocks: []
+    };
+  },
+
   // Takes in a Github Gist, get back a Gistbook Javascript object
   gistbookFromGist: function(gist) {
-    return gistbookUtil.parseGistfile(gist.files['gistbook.json']);
+    return gistbookUtil.parseGistfile(gist.get('files')['gistbook.json']);
   },
 
   // Parses the contents of a gistbook.json file
