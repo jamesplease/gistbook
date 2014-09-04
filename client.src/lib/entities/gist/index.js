@@ -1,6 +1,7 @@
 /*
  * Gist
- * A model representing a Github Gist
+ * A model representing a new Github Gist that can
+ * store a Gistbook.
  *
  */
 
@@ -14,6 +15,11 @@ module.exports = bb.Model.extend({
       description: 'Anonymous Gistbook',
       owner: {
         login: this._getLoginName()
+      },
+      files: {
+        "gistbook.json": {
+          content: "{}"
+        }
       }
     };
   },
