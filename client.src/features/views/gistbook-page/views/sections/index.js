@@ -10,8 +10,8 @@ var Radio = require('radio');
 var DisplayTextView = require('../text/display');
 var ControlsWrapper = require('../wrappers/controls-wrapper');
 var AceEditorView = require('../ace-editor');
-var stringUtil = require('../../../../util/string-util');
-var radioUtil = require('../../../../util/radio-util');
+var stringUtil = require('../../../../../util/string-util');
+var radioUtil = require('../../../../../util/radio-util');
 
 module.exports = mn.CollectionView.extend({
   tagName: 'ul',

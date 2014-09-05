@@ -1,3 +1,10 @@
+/*
+ * router
+ * The router loads up our Routes. Our Routes specify which
+ * features are activated whenever the URL changes.
+ *
+ */
+
 var mn = require('marionette');
 
 var router = new mn.Router({

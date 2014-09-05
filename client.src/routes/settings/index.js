@@ -5,7 +5,7 @@
 
 var mn = require('marionette');
 var Radio = require('radio');
-var SettingsView = require('../../subapps/settings/views/settings-view');
+var SettingsView = require('../../features/settings-view');
 
 var authChannel = Radio.channel('auth');
 var userChannel = Radio.channel('user');

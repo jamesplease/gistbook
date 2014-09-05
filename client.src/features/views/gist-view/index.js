@@ -10,10 +10,10 @@ var _ = require('underscore');
 var Radio = require('radio');
 var templates = require('templates');
 var GistbookPage = require('../gistbook-page');
-var Gist = require('../../entities/gist');
+var Gist = require('../../../features/entities/gist');
 var NewGistMenu = require('./new-gist-menu');
 var ExistingMenu = require('./existing-menu');
-var gistbookUtil = require('../../util/gistbook-util');
+var gistbookUtil = require('../../../util/gistbook-util');
 
 module.exports = mn.LayoutView.extend({
   className: 'home',

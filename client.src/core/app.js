@@ -22,7 +22,7 @@ var mn = require('marionette');
 var app = new mn.Application();
 
 // Intercept links when the app starts
-app.on('start', require('../lib/util/link-util').startIntercepting);
+app.on('start', require('../util/link-util').startIntercepting);
 
 // Start history when the app starts
 app.on('start', function() {
@@ -30,24 +30,24 @@ app.on('start', function() {
 });
 
 // Load up authorization
-app.auth = new (require('./lib/auth'))();
+app.auth = new (require('../features/auth'))();
 
 // Set our environment
-app.env = require('./lib/env');
+app.env = require('../features/env');
 
 // Load our mock API if we're in dev mode
-if (app.env === 'dev') { require('./lib/dev'); }
+if (app.env === 'dev') { require('../features/dev'); }
 
 // Our modal window
-app.modal = require('../subapps/modal');
+app.modal = require('../features/modal');
 
-app.user = require('../lib/user');
+app.user = require('../features/entities/user');
 
 // Set up the router
 app.router = require('./router');
 
 // Create our menu
-app.menu = new (require('./lib/menu'))();
+app.menu = new (require('../features/menu'))();
 
 // Attach it to the window. This is solely for debugging
 // purposes – nothing else

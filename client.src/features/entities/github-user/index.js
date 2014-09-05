@@ -5,7 +5,7 @@
  */
 
 var bb = require('backbone');
-var githubApiUtil = require('../../util/github-api-util');
+var githubApiUtil = require('../../../util/github-api-util');
 
 module.exports = bb.Model.extend({
   urlRoot: function() {

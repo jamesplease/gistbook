@@ -6,10 +6,10 @@
 var bb = require('backbone');
 var mn = require('marionette');
 var Radio = require('radio');
-var ProfileView = require('../../subapps/profile/views/profile-view');
-var Gists = require('../../subapps/profile/entities/gists');
+var ProfileView = require('../../features/profile-view');
+var Gists = require('../../features/profile-view/entities/gists');
 var GistbookRoute = require('./gistbook');
-var User = require('../../lib/entities/user');
+var GithubUser = require('../../features/entities/github-user');
 
 var user = Radio.request('user', 'user');
 
@@ -26,7 +26,7 @@ module.exports = mn.Route.extend({
       }
     },
     user: {
-      dataClass: User,
+      dataClass: GithubUser,
       initialData: function(urlData) {
         return { id: urlData.params.username };
       },

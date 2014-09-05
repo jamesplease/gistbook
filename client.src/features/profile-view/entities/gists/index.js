@@ -6,8 +6,8 @@
 
 var _ = require('underscore');
 var bb = require('backbone');
-var GithubCollection = require('../../../../lib/entities/github-collection');
-var gistbookUtil = require('../../../../lib/util/gistbook-util');
+var GithubCollection = require('../../../../features/entities/github-collection');
+var gistbookUtil = require('../../../../util/gistbook-util');
 
 module.exports = GithubCollection.extend({
   constructor: function(options) {

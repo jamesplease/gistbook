@@ -4,8 +4,8 @@
  */
 
 var mn = require('marionette');
-var GistView = require('../../../lib/views/gist-view');
-var Gist = require('../../../lib/entities/gist');
+var GistView = require('../../../features/views/gist-view');
+var Gist = require('../../../features/entities/gist');
 
 var GistbookRoute = mn.Route.extend({
   data: {

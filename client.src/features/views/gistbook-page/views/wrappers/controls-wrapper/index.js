@@ -12,7 +12,7 @@ var mn = require('marionette');
 var templates = require('templates');
 var DisplayWrapper = require('../display-wrapper');
 var EditWrapper = require('../edit-wrapper');
-var radioUtil = require('../../../../../util/radio-util');
+var radioUtil = require('../../../../../../util/radio-util');
 
 module.exports = mn.LayoutView.extend({
   template: templates.controlsWrapper,

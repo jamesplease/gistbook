@@ -60,11 +60,11 @@ module.exports = function(grunt) {
         paths: ['bower_components']
       },
       dev: {
-        src: ['<%= app.src %>/core/assets/styl/index.styl', '<%= app.src %>/subapps/**/*.styl', '<%= app.src %>/lib/**/*.styl', '<%= app.src %>/core/lib/**/*.styl'],
+        src: ['<%= app.src %>/core/assets/styl/index.styl', '<%= app.src %>/features/**/*.styl',  '<%= app.src %>/lib/**/*.styl'],
         dest: '<%= app.dev %>/style.css'
       },
       prod: {
-        src: ['<%= app.src %>/core/assets/styl/index.styl', '<%= app.src %>/subapps/**/*.styl', '<%= app.src %>/lib/**/*.styl'],
+        src: ['<%= app.src %>/core/assets/styl/index.styl', '<%= app.src %>/features/**/*.styl'],
         dest: '<%= app.prod %>/style.css'
       },
     },
@@ -144,7 +144,7 @@ module.exports = function(grunt) {
         tasks: ['jshint', 'webpack:dev']
       },
       styles: {
-        files: ['<%= app.src %>/core/**/*.styl', '<%= app.src %>/subapps/**/*.styl', '<%= app.src %>/lib/**/*.styl'],
+        files: ['<%= app.src %>/**/*.styl'],
         tasks: ['stylus:dev']
       },
       images: {
