@@ -7,7 +7,7 @@
 var mn = require('marionette');
 var _ = require('underscore');
 
-var RegionsMixin = {
+mn.RegionsMixin = {
   addRegions: function(regionDefinitions, defaults) {
     this._regions = this._regions || {};
     if (_.isFunction(regionDefinitions)) {
@@ -116,5 +116,3 @@ var RegionsMixin = {
     this.triggerMethod('remove:region', name, region);
   }
 };
-
-module.exports = RegionsMixin;

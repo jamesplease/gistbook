@@ -6,7 +6,6 @@
 var bb = require('backbone');
 var mn = require('marionette');
 var Radio = require('radio');
-var Route = require('../../lib/route');
 var ProfileView = require('../../subapps/profile/views/profile-view');
 var Gists = require('../../subapps/profile/entities/gists');
 var GistbookRoute = require('./gistbook');
@@ -14,7 +13,7 @@ var User = require('../../lib/entities/user');
 
 var user = Radio.request('user', 'user');
 
-module.exports = Route.extend({
+module.exports = mn.Route.extend({
   data: {
     gistbooks: {
       getDataClass: function(urlData) {

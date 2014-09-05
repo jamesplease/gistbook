@@ -17,7 +17,6 @@ var _ = require('underscore');
 var bb = require('backbone');
 var mn = require('marionette');
 var Radio = require('radio');
-var RegionsMixin = require('../regions-mixin');
 
 var routerChannel = Radio.channel('router');
 
@@ -33,7 +32,7 @@ function result(obj, prop) {
   }
 }
 
-var Router = bb.Router.extend({
+mn.Router = bb.Router.extend({
   constructor: function(options) {
     _.bindAll(this, '_registerRoute');
 
@@ -62,7 +61,7 @@ var Router = bb.Router.extend({
   }
 });
 
-_.extend(Router.prototype, {
+_.extend(mn.Router.prototype, {
 
   initialize: function() {},
 
@@ -268,8 +267,6 @@ _.extend(Router.prototype, {
   },
 
   triggerMethod: mn.triggerMethod
-}, RegionsMixin, bb.Events);
+}, mn.RegionsMixin, bb.Events);
 
-Router.extend = mn.extend;
-
-module.exports = Router;
+mn.Router.extend = mn.extend;

@@ -1,7 +1,6 @@
 var mn = require('marionette');
-var Router = require('../lib/router');
 
-var router = new Router({
+var router = new mn.Router({
 
   regions: {
     main: 'main > div'

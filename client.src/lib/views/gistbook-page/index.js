@@ -6,7 +6,6 @@
 
 var bb = require('backbone');
 var mn = require('marionette');
-var Gistbook = require('../../entities/gistbook');
 var SectionsView = require('./views/sections');
 var OutputView = require('./views/output-view');
 var templates = require('templates');

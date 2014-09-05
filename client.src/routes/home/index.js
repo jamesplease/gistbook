@@ -5,11 +5,10 @@
  */
 
 var mn = require('marionette');
-var Route = require('../../lib/route');
 var Gist = require('../../lib/entities/gist');
 var GistView = require('../../lib/views/gist-view');
 
-module.exports = Route.extend({
+module.exports = mn.Route.extend({
   views: {
     home: {
       model: function() {

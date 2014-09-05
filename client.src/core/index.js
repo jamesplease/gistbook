@@ -9,6 +9,9 @@
 // in a Marionette v3-like state. I cannot suggest you use them
 // unless you're absolutely sure you know what you're doing!
 require('../shims/render-shim');
+require('../shims/regions-mixin-shim');
+require('../shims/router-shim');
+require('../shims/route-shim');
 require('../shims/history-shim');
 require('../shims/radio-shim');
 require('../shims/to-json-shim');

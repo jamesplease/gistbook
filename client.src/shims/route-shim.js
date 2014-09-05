@@ -32,7 +32,7 @@ function result(obj, prop) {
   }
 }
 
-var Route = function(options) {
+mn.Route = function(options) {
   options = options || {};
   _.bindAll(this, '_callback', '_buildView');
   _.extend(this, _.pick(options, routeOptions));
@@ -42,7 +42,7 @@ var Route = function(options) {
   this.data = this.data || {};
 };
 
-_.extend(Route.prototype, {
+_.extend(mn.Route.prototype, {
 
   // This is the primary callback that we register on the route change event
   // It's where all of the magic happens: data is fetched, views are rendered
@@ -252,6 +252,4 @@ _.extend(Route.prototype, {
   triggerMethod: mn.triggerMethod
 }, bb.Events);
 
-Route.extend = mn.extend;
-
-module.exports = Route;
+mn.Route.extend = mn.extend;

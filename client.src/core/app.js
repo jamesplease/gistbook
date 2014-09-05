@@ -6,8 +6,8 @@
  * Note that this is a Marionette v3 prototype application! Don't
  * expect to use any of this code in your app just yet, even if
  * some of it looks cleaner than what's possible in v2. If you're
- * feeling really adventurous, check out the ../shims directory
- * to see all that's changed.
+ * curious, check out the ../shims directory to see all that's
+ * changed.
  *
  * We also set into motion all of the pieces
  * that make the webapp work, like routes, link
