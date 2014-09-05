@@ -8,6 +8,7 @@ var bb = require('backbone');
 var mn = require('marionette');
 var Gistbook = require('../../entities/gistbook');
 var SectionsView = require('./views/sections');
+var OutputView = require('./views/output-view');
 var templates = require('templates');
 var radioUtil = require('../../util/radio-util');
 
@@ -17,19 +18,22 @@ module.exports = mn.LayoutView.extend({
   ui: {
     container: '.gistbook-container',
     header: '.gistbook-header',
-    output: '.gistbook-output-container'
+    output: '.gistbook-output'
   },
 
   regions: {
     sectionsContainer: '.gistbook-body',
     header: '.gistbook-header',
-    output: '.gistbook-output-container'
+    output: '.gistbook-output'
   },
 
   className: 'gistbook',
 
   onBeforeShow: function() {
     this.getRegion('sectionsContainer').show(this._createSectionsView());
+    this.getRegion('output').show(new OutputView({
+      pages: this.pages
+    }));
   },
 
   onBeforeDestroy: function() {

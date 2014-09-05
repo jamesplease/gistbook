@@ -1,0 +1,36 @@
+{
+  "name": "heartbeat.js",
+  "version": "0.3.1",
+  "description": "Execute a function on an interval.",
+  "main": "gruntfile.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmeas/heartbeat.js.git"
+  },
+  "keywords": [
+    "javascript",
+    "interval",
+    "method",
+    "function"
+  ],
+  "author": "Jmeas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmeas/heartbeat.js/issues"
+  },
+  "homepage": "https://github.com/jmeas/heartbeat.js",
+  "devDependencies": {
+    "grunt": "^0.4.2",
+    "grunt-contrib-uglify": "^0.4.0",
+    "load-grunt-tasks": "^0.4.0",
+    "grunt-contrib-jshint": "^0.8.0",
+    "mocha": "~1.17.1",
+    "grunt-blanket-mocha": "~0.4.0",
+    "blanket": "~1.1.6",
+    "connect": "~2.13.0",
+    "grunt-contrib-connect": "^0.7.1"
+  }
+}

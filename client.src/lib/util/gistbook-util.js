@@ -32,7 +32,24 @@ var gistbookUtil = {
   createPage: function() {
     return {
       pageName: '',
-      blocks: []
+      sections: [
+        {
+          type: 'text',
+          source: 'Welcome to Gistbook!'
+        },
+        {
+          type: 'html',
+          source: ''
+        },
+        {
+          type: 'css',
+          source: ''
+        },
+        {
+          type: 'javascript',
+          source: ''
+        }
+      ]
     };
   },
 

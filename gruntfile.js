@@ -16,7 +16,7 @@ module.exports = function(grunt) {
       dev   : 'client.dev',
       prod  : 'client.prod',
       tmp   : 'tmp',
-      bower : grunt.file.readJSON('.bowerrc').directory
+      bower : 'bower_components'
     },
 
     clean: {
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
       options: {
         'include css': true,
         import: ['variables'],
-        paths: ['<%= app.src %>/bower_components']
+        paths: ['bower_components']
       },
       dev: {
         src: ['<%= app.src %>/core/assets/styl/index.styl', '<%= app.src %>/subapps/**/*.styl', '<%= app.src %>/lib/**/*.styl', '<%= app.src %>/core/lib/**/*.styl'],
@@ -215,7 +215,8 @@ module.exports = function(grunt) {
           entry: './<%= app.src %>/core/index.js',
           output: {
             path: './client.dev/',
-            filename: 'script.js'
+            filename: 'script.js',
+            pathinfo: true
           },
           module: {
             loaders: [
@@ -235,7 +236,7 @@ module.exports = function(grunt) {
           cache: true
         },
       dev: {
-        devtool: 'inlinesourcemap',
+        // devtool: 'eval-source-map',
         debug: true
       },
       prod: {
@@ -256,7 +257,7 @@ module.exports = function(grunt) {
         options: {
           ssh: true,
           args: ['--verbose'],
-          exclude: ['.git', '.node_modules', 'node_modules', '.gitignore', '<%= app.prod %>', '<%= app.dev %>', '<%= app.src %>/bower_components'],
+          exclude: ['.git', '.node_modules', 'node_modules', '.gitignore', '<%= app.prod %>', '<%= app.dev %>', 'bower_components'],
           recursive: true,
           syncDestIgnoreExcl: true,
           src: ['.bowerrc', '<%= app.src %>', '.jshintrc', 'bower.json', 'package.json', 'gruntfile.js', 'server'],

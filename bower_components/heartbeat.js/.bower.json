@@ -1,0 +1,39 @@
+{
+  "name": "heartbeat.js",
+  "main": "heartbeat.js",
+  "version": "0.3.1",
+  "homepage": "https://github.com/jmeas/heartbeat.js",
+  "authors": [
+    "Jmeas <jellyes2@gmail.com>"
+  ],
+  "description": "Execute a function on an interval.",
+  "keywords": [
+    "javascript",
+    "interval",
+    "method",
+    "function"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "chai": "~1.9.0",
+    "sinon-chai": "~2.5.0",
+    "mocha": "~1.17.1",
+    "sinonjs": "~1.8.2"
+  },
+  "_release": "0.3.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.3.1",
+    "commit": "f473acc66225f2e64decc6e6ef571e2a98cb7644"
+  },
+  "_source": "git://github.com/jmeas/heartbeat.js.git",
+  "_target": "~0.3.0",
+  "_originalSource": "heartbeat.js"
+}

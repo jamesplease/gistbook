@@ -11,10 +11,16 @@ var viewsDir = path.join(BASE_DIR, 'views');
 var port = process.env.PORT || 300;
 var ENV = process.env.NODE_ENV;
 
+var bodyParser = require('body-parser');
+
 var staticFileLoc = 'client.' + ENV;
 
 // Static files
 app.use(express.static(staticFileLoc));
+
+// Parse JSON bodies
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
 // Templates
 app.set('view engine', 'html');
@@ -35,6 +41,21 @@ app.get(
 app.get(
   '/github/auth',
   require('./middleware/auth-callback')
+);
+
+app.post(
+  '/compile',
+  require('./middleware/compile')
+);
+
+app.param('outputId', function (req, res, next, outputId) {
+  req.outputId = outputId;
+  next();
+});
+
+app.get(
+  '/output/:outputId',
+  require('./middleware/output')
 );
 
 // This might seem like a crazy regex,
