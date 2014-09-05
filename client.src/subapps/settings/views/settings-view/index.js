@@ -5,13 +5,22 @@
 
 var _ = require('underscore');
 var mn = require('marionette');
-var templates = require('templates');
+var Radio = require('radio');
+var RevokeModalView = require('./revoke-modal');
 var scopeMap = require('../../../../lib/util/scope-map');
 
 var SettingsView = mn.ItemView.extend({
-  template: templates.settingsView,
+  template: 'settingsView',
 
   className: 'settings',
+
+  ui: {
+    revoke: 'button.danger'
+  },
+
+  events: {
+    'click @ui.revoke': 'onRevoke'
+  },
 
   templateHelpers: {
 
@@ -19,6 +28,10 @@ var SettingsView = mn.ItemView.extend({
     mapScope: function(scopeName) {
       return _.result(scopeMap, scopeName) || scopeName;
     }
+  },
+
+  onRevoke: function() {
+    Radio.command('modal', 'show', new RevokeModalView());
   }
 });
 

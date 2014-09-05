@@ -38,6 +38,9 @@ app.env = require('./lib/env');
 // Load our mock API if we're in dev mode
 if (app.env === 'dev') { require('./lib/dev'); }
 
+// Our modal window
+app.modal = require('../subapps/modal');
+
 app.user = require('../lib/user');
 
 // Set up the router

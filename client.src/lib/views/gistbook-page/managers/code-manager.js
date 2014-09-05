@@ -18,7 +18,6 @@ module.exports = mn.Object.extend({
 
   initialize: function(options) {
     this.mergeOptions(options, this.codeManagerOptions);
-    console.log('la', this.pages);
   },
 
   // Return a hash of the three source codes.
