@@ -8,11 +8,11 @@ var router = new Router({
   },
 
   routes: {
-    ':username': require('../subapps/profile/profile-route'),
-    '': require('../subapps/home/home-route'),
-    'new': require('../subapps/new/new-route'),
-    'logout': require('../subapps/logout/logout-route'),
-    'settings': require('../subapps/settings/settings-route'),
+    ':username': require('../routes/profile'),
+    '': require('../routes/home'),
+    'new': require('../routes/new'),
+    'logout': require('../routes/logout'),
+    'settings': require('../routes/settings'),
   }
 });
 

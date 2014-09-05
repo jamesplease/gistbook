@@ -7,9 +7,9 @@ var bb = require('backbone');
 var mn = require('marionette');
 var Radio = require('radio');
 var Route = require('../../lib/route');
-var ProfileView = require('./views/profile-view');
-var Gists = require('./entities/gists');
-var GistbookRoute = require('./subroutes/gistbook/gistbook-route');
+var ProfileView = require('../../subapps/profile/views/profile-view');
+var Gists = require('../../subapps/profile/entities/gists');
+var GistbookRoute = require('./gistbook');
 var User = require('../../lib/entities/user');
 
 var user = Radio.request('user', 'user');

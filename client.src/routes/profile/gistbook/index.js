@@ -4,9 +4,9 @@
  */
 
 var mn = require('marionette');
-var Route = require('../../../../lib/route');
-var GistView = require('../../../../lib/views/gist-view');
-var Gist = require('../../../../lib/entities/gist');
+var Route = require('../../../lib/route');
+var GistView = require('../../../lib/views/gist-view');
+var Gist = require('../../../lib/entities/gist');
 
 var GistbookRoute = Route.extend({
   data: {
