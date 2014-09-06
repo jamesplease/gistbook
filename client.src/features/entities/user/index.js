@@ -1,6 +1,6 @@
 /*
- * GithubUser
- * An object that represents a Github user
+ * GistbookUser
+ * An object that represents the user of Gistbook
  *
  */
 

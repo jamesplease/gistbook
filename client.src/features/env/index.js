@@ -1,6 +1,6 @@
 /*
  * env
- * Our environment – one of `dev` or `prod`
+ * The app environment – one of `dev` or `prod`
  *
  */
 

@@ -1,5 +1,5 @@
 /*
- * User
+ * GithubUser
  * A model representing a Github User
  *
  */

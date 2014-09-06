@@ -21,32 +21,13 @@ var mn = require('marionette');
 // Create the app
 var app = new mn.Application();
 
-// Intercept links when the app starts
-app.on('start', require('../util/link-util').startIntercepting);
-
-// Start history when the app starts
-app.on('start', function() {
-  bb.history.start({pushState: true});
-});
-
-// Load up authorization
-app.auth = new (require('../features/auth'))();
-
-// Set our environment
-app.env = require('../features/env');
-
-// Load our mock API if we're in dev mode
+// Load up all the things
 if (app.env === 'dev') { require('../features/dev'); }
-
-// Our modal window
+app.auth = new (require('../features/auth'))();
+app.env = require('../features/env');
 app.modal = require('../features/modal');
-
 app.user = require('../features/entities/user');
-
-// Set up the router
 app.router = require('./router');
-
-// Create our menu
 app.menu = new (require('../features/menu'))();
 
 // Attach it to the window. This is solely for debugging
