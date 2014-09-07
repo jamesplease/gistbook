@@ -102,13 +102,15 @@ module.exports = function(grunt) {
       },
       // For the dev environment only; in prod they are minified
       images: {
-        src:  ['<%= app.src %>/images', '!<%= app.src %>/img/sprite/*'],
-        dest: '<%= app.dev %>/images'
+        expand: true,
+        flatten: true,
+        src:  ['<%= app.src %>/core/assets/img/**/*', '!<%= app.src %>/img/sprite/*'],
+        dest: '<%= app.dev %>/img'
       },
       fonts_dev: {
         expand: true,
         flatten: true,
-        src: '<%= app.bower %>/octicons/octicons/*.{ttf,eot,svg,ttf,woff}',
+        src: ['<%= app.bower %>/octicons/octicons/*.{ttf,eot,svg,woff}', '<%= app.bower %>/entypo/font/*.{ttf,eot,svg,woff}'],
         dest: '<%= app.dev %>/fonts'
       },
       fonts_prod: {
@@ -116,20 +118,6 @@ module.exports = function(grunt) {
         flatten: true,
         src: '<%= app.bower %>/octicons/octicons/*.{ttf,eot,svg,ttf,woff}',
         dest: '<%= app.prod %>/fonts'
-      }
-    },
-
-    // Build our spritesheets
-    sprite: {
-      jpg: {
-        src:     '<%= app.src %>/img/sprite/*.png',
-        destImg: '<%= app.tmp %>/sprites/spritesheet.png',
-        destCSS: '<%= app.tmp %>/spritesheet.png.css'
-      },
-      png: {
-        src:     '<%= app.src %>/img/sprite/*.jpg',
-        destImg: '<%= app.tmp %>/sprites/spritesheet.jpg',
-        destCSS: '<%= app.tmp %>/spritesheet.jpg.css'
       }
     },
 
@@ -282,8 +270,7 @@ module.exports = function(grunt) {
       'webpack:'+target,
       'copy:favicon',
       'copy:fonts_'+target,
-      // images,
-      // 'sprite',
+      images,
       'stylus:'+target
    ];
 

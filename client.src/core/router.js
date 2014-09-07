@@ -19,6 +19,8 @@ var router = new mn.Router({
     'new': require('../routes/new'),
     'logout': require('../routes/logout'),
     'settings': require('../routes/settings'),
+    'about': require('../routes/about'),
+    'terms': require('../routes/terms')
   }
 });
 

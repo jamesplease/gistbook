@@ -35,7 +35,7 @@ var linkUtil = {
     if (!href) { return; }
 
     // Return if the URL is absolute. `http://` is required.
-    if (/^(?:\w+:)?\/\//.test(href)) { return; }
+    if (/^mailto:|(?:\w+:)?\/\//.test(href)) { return; }
 
     e.preventDefault();
 

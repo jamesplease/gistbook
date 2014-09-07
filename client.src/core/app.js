@@ -29,6 +29,7 @@ app.modal = require('../features/modal');
 app.user = require('../features/entities/user');
 app.router = require('./router');
 app.menu = new (require('../features/menu'))();
+app.footer = new (require('../features/footer'))();
 
 // Attach it to the window. This is solely for debugging
 // purposes – nothing else

@@ -4,6 +4,7 @@
  *
  */
 
+var $ = require('jquery');
 var _ = require('underscore');
 var bb = require('backbone');
 var mn = require('marionette');

@@ -23,7 +23,8 @@ _.extend(mn.Application.prototype, {
   // specified to start history
   historyOptions: {},
 
-  start: function() {
+  start: function(options) {
+    this.mergeOptions(options, startOptions);
     this.triggerMethod('before:start', this);
 
     // Starts history if a Router is configured
