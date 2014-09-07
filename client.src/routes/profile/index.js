@@ -6,8 +6,8 @@
 var bb = require('backbone');
 var mn = require('marionette');
 var Radio = require('radio');
-var ProfileView = require('../../features/profile-view');
-var Gists = require('../../features/profile-view/entities/gists');
+var ProfileView = require('../../features/views/profile-view');
+var Gists = require('../../features/views/profile-view/entities/gists');
 var GistbookRoute = require('./gistbook');
 var GithubUser = require('../../features/entities/github-user');
 

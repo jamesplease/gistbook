@@ -6,7 +6,6 @@
 
 var _ = require('underscore');
 var mn = require('marionette');
-var templates = require('templates');
 var CodeManager = require('../../managers/code-manager');
 var Compiler = require('../../managers/compiler');
 
@@ -23,7 +22,7 @@ module.exports = mn.LayoutView.extend({
     output: '.gistbook-output-container'
   },
 
-  template: templates.outputView,
+  template: 'outputView',
 
   className: 'gistbook-compile-view',
 

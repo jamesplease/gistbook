@@ -6,10 +6,9 @@
  */
 
 var mn = require('marionette');
-var templates = require('templates');
 
 var LoginView = mn.ItemView.extend({
-  template: templates.loginView
+  template: 'loginView'
 });
 
 module.exports = LoginView;

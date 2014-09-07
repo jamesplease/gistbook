@@ -6,10 +6,9 @@
  */
 
 var mn = require('marionette');
-var templates = require('templates');
 
 module.exports = mn.ItemView.extend({
-  template: templates.documentView,
+  template: 'documentView',
 
   tagName: 'html',
 

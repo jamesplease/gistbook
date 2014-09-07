@@ -9,13 +9,12 @@
 var _ = require('underscore');
 var bb = require('backbone');
 var mn = require('marionette');
-var templates = require('templates');
 var DisplayWrapper = require('../display-wrapper');
 var EditWrapper = require('../edit-wrapper');
 var radioUtil = require('../../../../../../util/radio-util');
 
 module.exports = mn.LayoutView.extend({
-  template: templates.controlsWrapper,
+  template: 'controlsWrapper',
 
   className: 'controls-wrapper-view',
 

@@ -6,10 +6,9 @@
 
 var _ = require('underscore');
 var mn = require('marionette');
-var templates = require('templates');
 
 module.exports = mn.LayoutView.extend({
-  template: templates.displayWrapper,
+  template: 'displayWrapper',
 
   className: 'gistblock-menu',
 

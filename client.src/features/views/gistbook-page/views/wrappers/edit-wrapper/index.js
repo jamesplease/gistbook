@@ -7,11 +7,10 @@
 
 var _ = require('underscore');
 var mn = require('marionette');
-var templates = require('templates');
 var EditTextView = require('../../text/edit');
 
 module.exports = mn.LayoutView.extend({
-  template: templates.editWrapper,
+  template: 'editWrapper',
 
   className: 'gistblock-editor',
 

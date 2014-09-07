@@ -5,11 +5,10 @@
  */
 
 var mn = require('marionette');
-var templates = require('templates');
 
 var MenuView = mn.ItemView.extend({
   tagName: 'nav',
-  template: templates.menuView
+  template: 'menuView'
 });
 
 module.exports = MenuView;

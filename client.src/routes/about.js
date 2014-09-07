@@ -4,7 +4,7 @@
  */
 
 var mn = require('marionette');
-var AboutView = require('../features/about-view');
+var AboutView = require('../features/views/about-view');
 
 module.exports = mn.Route.extend({
   views: {

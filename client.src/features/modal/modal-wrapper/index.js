@@ -8,7 +8,6 @@
 var _ = require('underscore');
 var mn = require('marionette');
 var Radio = require('radio');
-var templates = require('templates');
 
 var modalChannel = Radio.channel('modal');
 
@@ -17,7 +16,7 @@ module.exports = mn.LayoutView.extend({
     _.bindAll(this, 'show', 'hide');
   },
 
-  template: templates.modalWrapper,
+  template: 'modalWrapper',
 
   className: 'modal-container',
 

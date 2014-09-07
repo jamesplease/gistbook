@@ -8,11 +8,10 @@ var bb = require('backbone');
 var mn = require('marionette');
 var SectionsView = require('./views/sections');
 var OutputView = require('./views/output-view');
-var templates = require('templates');
 var radioUtil = require('../../../util/radio-util');
 
 module.exports = mn.LayoutView.extend({
-  template: templates.gistbookPage,
+  template: 'gistbookPage',
 
   ui: {
     container: '.gistbook-container',

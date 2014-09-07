@@ -8,7 +8,6 @@ var bb = require('backbone');
 var mn = require('marionette');
 var _ = require('underscore');
 var Radio = require('radio');
-var templates = require('templates');
 var GistbookPage = require('../gistbook-page');
 var Gist = require('../../../features/entities/gist');
 var NewGistMenu = require('./new-gist-menu');
@@ -18,7 +17,7 @@ var gistbookUtil = require('../../../util/gistbook-util');
 module.exports = mn.LayoutView.extend({
   className: 'home',
 
-  template: templates.gistView,
+  template: 'gistView',
 
   regions: {
     gistbookContainer: '.gistbook-container',

@@ -5,7 +5,6 @@
 
 var _ = require('underscore');
 var mn = require('marionette');
-var templates = require('templates');
 var GistbookListView = require('./views/gistbook-list-view');
 var NoGistsView = require('./views/no-gists');
 var GistList = require('./views/gist-list');
@@ -13,7 +12,7 @@ var GistList = require('./views/gist-list');
 var ProfileView = mn.LayoutView.extend({
   className: 'profile-view',
 
-  template: templates.profileView,
+  template: 'profileView',
 
   regions: {
     gistsContainer: '.gists-container'
