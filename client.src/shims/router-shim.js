@@ -66,8 +66,10 @@ _.extend(mn.Router.prototype, {
   initialize: function() {},
 
   _configureEvents: function() {
-    this.channel.comply('navigate', function(route) {
-      this.navigate(route, {trigger:true});
+    this.channel.comply('navigate', function(route, options) {
+      options = options || {};
+      options = _.defaults(options, {trigger: true});
+      this.navigate(route, options);
     }, this);
   },
 

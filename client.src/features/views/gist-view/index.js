@@ -35,10 +35,8 @@ module.exports = mn.LayoutView.extend({
   onBeforeShow: function() {
     this.getRegion('gistbookContainer').show(this.createNewGistbook());
 
-    if (Radio.request('auth', 'authorized')) {
-      this.getRegion('menuContainer').show(this.createMenu());
-      this.registerMenuListeners();
-    }
+    this.getRegion('menuContainer').show(this.createMenu());
+    this.registerMenuListeners();
   },
 
   registerMenuListeners: function() {
@@ -91,11 +89,15 @@ module.exports = mn.LayoutView.extend({
     };
     var saveOptions = options.newGist ? undefined : {patch:true};
     this.model.save(attrs, saveOptions)
-      .then(function() {
-        console.log('success!', arguments);
+      .then(function(gistData) {
+        if (options.newGist) {
+          var username = gistData.owner ? gistData.owner.login : 'anonymous';
+          var url = '/' + username + '/' + gistData.id;
+          Radio.command('router', 'navigate', url);
+        }
       })
       .fail(function() {
-        console.log('no', arguments);
+        console.log('Gist not saved', arguments);
       });
   },
 
