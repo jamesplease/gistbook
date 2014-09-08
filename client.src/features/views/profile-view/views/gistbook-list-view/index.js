@@ -5,6 +5,8 @@ var GistbookListView = mn.ItemView.extend({
     this.user = options.user;
   },
 
+  className: 'gistbook-list-view',
+
   template: 'gistbookListView',
 
   events: {
