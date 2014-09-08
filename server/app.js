@@ -8,7 +8,7 @@ var app = express();
 // Paths and variables
 var BASE_DIR = __dirname;
 var viewsDir = path.join(BASE_DIR, 'views');
-var port = process.env.PORT || 300;
+var port = process.env.PORT || 3000;
 var ENV = process.env.NODE_ENV;
 
 var bodyParser = require('body-parser');

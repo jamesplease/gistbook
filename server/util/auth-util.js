@@ -4,8 +4,9 @@
  *
  */
 
+var ENV = process.env.NODE_ENV || 'dev';
 var github = require('octonode');
-var clientInfo = require('../config/client-info.json').dev;
+var clientInfo = require('../config/client-info.json')[ENV];
 
 var authUtil = {
   url: function() {

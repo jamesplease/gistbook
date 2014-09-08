@@ -1,5 +1,5 @@
 .menu nav
-  ul
+  > ul
     list-style none
     display flex
 
@@ -7,7 +7,8 @@
     cursor pointer
     color $mediumTextColor
 
-  li
+  > ul > li
+    position relative
     display flex
     align-items center
     margin-right 20px
@@ -15,10 +16,16 @@
     &:last-child
       margin-right 0
 
-  li.new-button
+    .octicon
+      cursor pointer
+
+      &:hover
+        color $hoverLinkColor
+
+  .new-button
     margin-right 30px
 
-  li.profile-link
+  .profile-link
 
     a
       font-weight bold
@@ -27,3 +34,48 @@
       border-radius 3px
       vertical-align middle
       margin-right 2px
+
+  .dropdown-mask
+    display none
+    z-index 2000
+    position fixed
+    height 100%
+    width 100%
+    left 0
+    top 0
+
+    &.show
+      display block
+
+  .dropdown-menu
+    display none
+    z-index 3000
+    background #fff
+    border-radius 3px
+    position absolute
+    bottom -80px
+    right 0px
+    border 1px solid $borderColor
+    width 170px
+    padding 3px 0
+
+    &.show
+      display block
+
+    li
+      height 40px
+      line-height 40px
+      display block
+
+      &:hover
+        background $lightBackground
+
+      a
+        color #000
+        box-sizing border-box
+        padding-left 15px
+        display block
+        height 100%
+        width 100%
+        line-height 40px
+

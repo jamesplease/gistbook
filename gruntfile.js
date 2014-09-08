@@ -64,43 +64,40 @@ module.exports = function(grunt) {
         dest: '<%= app.dev %>/style.css'
       },
       prod: {
+        options: {
+          compress: true
+        },
         src: ['<%= app.src %>/core/assets/styl/index.styl', '<%= app.src %>/features/**/*.styl'],
         dest: '<%= app.prod %>/style.css'
       },
     },
 
-    uglify: {
-      dev: {
-        options: {
-          sourceMap: true
-        },
-        src: 'js/*',
-        dest: '<%= app.dev %>/js/script.js'
-      },
+    cssmin: {
       prod: {
-        src: 'js/*',
-        dest: '<%= app.prod %>/js/script.prod.js'
+        src: '<%= stylus.prod.dest %>',
+        dest: '<%= stylus.prod.dest %>'
       }
     },
 
     // Only minify images for production. Just copy for dev.
     imagemin: {
       prod: {
-        files: {
-          expand: true,
-          cwd: '<%= app.src %>',
-          src: 'img/**/*.{png,jpg}',
-          dest: '<%= app.prod %>'
-        }
+        expand: true,
+        cwd: '<%= app.src %>/core/assets',
+        src: ['img/**/*.{png,jpg}'],
+        dest: '<%= app.prod %>'
       }
     },
 
     copy: {
-      favicon: {
+      favicon_dev: {
         src:  '<%= app.src %>/core/assets/favicon.ico',
         dest: '<%= app.dev %>/favicon.ico'
       },
-      // For the dev environment only; in prod they are minified
+      favicon_prod: {
+        src:  '<%= app.src %>/core/assets/favicon.ico',
+        dest: '<%= app.prod %>/favicon.ico'
+      },
       images: {
         expand: true,
         flatten: true,
@@ -116,7 +113,7 @@ module.exports = function(grunt) {
       fonts_prod: {
         expand: true,
         flatten: true,
-        src: '<%= app.bower %>/octicons/octicons/*.{ttf,eot,svg,ttf,woff}',
+        src: ['<%= app.bower %>/octicons/octicons/*.{ttf,eot,svg,ttf,woff}', '<%= app.bower %>/entypo/font/*.{ttf,eot,svg,woff}'],
         dest: '<%= app.prod %>/fonts'
       }
     },
@@ -178,55 +175,50 @@ module.exports = function(grunt) {
         options: {
           node_env: 'dev',
         }
-      },
-      prod: {
-        options: {
-          port: 18908,
-          node_env: 'prod'
-        },
-        output: 'Gistbook is listening on port 18908'
       }
     },
 
     webpack: {
       options: {
-          entry: './<%= app.src %>/core/index.js',
-          output: {
-            path: './client.dev/',
-            filename: 'script.js',
-            pathinfo: true
-          },
-          module: {
-            loaders: [
-              {test: /templates/, loader: 'imports?_=underscore!exports?this.JST'},
-              {test: /jquery-mockjax/, loader: 'imports?jQuery=jquery'}
-            ]
-          },
-          resolve: {
-            alias: {
-              marionette: 'backbone.marionette',
-              wreqr: 'backbone.wreqr',
-              radio: 'backbone.radio',
-              _: 'underscore'
-            },
-            modulesDirectories: ['node_modules', '<%= app.tmp %>']
-          },
-          cache: true
+        entry: './<%= app.src %>/core/index.js',
+        module: {
+          loaders: [
+            {test: /templates/, loader: 'imports?_=underscore!exports?this.JST'},
+            {test: /jquery-mockjax/, loader: 'imports?jQuery=jquery'}
+          ]
         },
+        resolve: {
+          alias: {
+            marionette: 'backbone.marionette',
+            wreqr: 'backbone.wreqr',
+            radio: 'backbone.radio',
+            _: 'underscore'
+          },
+          modulesDirectories: ['node_modules', '<%= app.tmp %>']
+        },
+        cache: true
+      },
       dev: {
+        output: {
+          path: './<%= app.dev %>/',
+          filename: 'script.js',
+          pathinfo: true
+        },
         devtool: 'eval-source-map',
         debug: true
       },
       prod: {
-        // plugins: [
-        //   new webpack.optimize.UglifyJsPlugin()
-        //],
-        options: {
-          output: {
-            path: './<%= app.prod %>/',
-            filename: 'script.js'
-          }
+        output: {
+          path: './client.prod/',
+          filename: 'script.js'
         }
+      }
+    },
+
+    uglify: {
+      prod: {
+        src: '<%= app.prod %>/script.js',
+        dest: '<%= app.prod %>/script.js'
       }
     },
 
@@ -235,10 +227,10 @@ module.exports = function(grunt) {
         options: {
           ssh: true,
           args: ['--verbose'],
-          exclude: ['.git', '.node_modules', 'node_modules', '.gitignore', '<%= app.prod %>', '<%= app.dev %>', 'bower_components'],
+          exclude: ['.git', '.node_modules', 'node_modules/', '.gitignore', '<%= app.prod %>/', '<%= app.dev %>/', 'bower_components/', '<%= app.tmp %>'],
           recursive: true,
           syncDestIgnoreExcl: true,
-          src: ['.bowerrc', '<%= app.src %>', '.jshintrc', 'bower.json', 'package.json', 'gruntfile.js', 'server'],
+          src: ['<%= app.src %>', '.jshintrc', 'bower.json', 'package.json', 'gruntfile.js', 'server', 'config'],
           dest: '<%= remote.dest %>',
           host: '<%= remote.host %>'
         }
@@ -258,11 +250,15 @@ module.exports = function(grunt) {
       'clean:'+target,
       'jst',
       'webpack:'+target,
-      'copy:favicon',
+      'copy:favicon_'+target,
       'copy:fonts_'+target,
       images,
       'stylus:'+target
-   ];
+    ];
+
+    if (target === 'prod') {
+      taskArray.push('cssmin:prod', 'uglify:prod');
+    }
 
     grunt.task.run(taskArray);
   });
