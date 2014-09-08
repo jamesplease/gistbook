@@ -24,7 +24,6 @@ var MenuView = mn.ItemView.extend({
   },
 
   toggleMenu: function() {
-    console.log('tiggle toggle');
     this.ui.$dropdownMask.toggleClass('show');
     this.ui.$dropdown.toggleClass('show');
   },
