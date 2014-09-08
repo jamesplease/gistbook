@@ -80,7 +80,9 @@ _.extend(mn.Route.prototype, {
     var model = this._getDataObj(viewDefinition.model, urlData, fetchModel);
     var collection = this._getDataObj(viewDefinition.collection, urlData, fetchCollection);
 
-    var viewOptions = _.extend({}, viewDefinition.options, {
+    var definitionOptions = result(viewDefinition, 'options', urlData);
+
+    var viewOptions = _.extend({}, definitionOptions, {
       model: model, collection: collection
     });
 

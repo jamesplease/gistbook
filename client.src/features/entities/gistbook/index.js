@@ -1,6 +1,6 @@
 /*
  * gistbook
- * A simple nested model.
+ * A Model for a Gistbook
  *
  */
 
@@ -11,19 +11,5 @@ var githubApiUtil = require('../../../util/github-api-util');
 module.exports = bb.Model.extend({
   urlRoot: function() {
     return githubApiUtil.url + '/gists';
-  },
-
-  parse: function(data) {
-    return data;
-  },
-
-  toJSON: function() {
-    this._generateDescription();
-    return _.clone(this.attributes);
-  },
-
-  _generateDescription: function(data) {
-    console.log('got some data!', data);
-    return 'View this Gistbook at http://www.gistbook.io/';
   }
 });

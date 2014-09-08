@@ -14,7 +14,7 @@ var NewGistMenu = require('./new-gist-menu');
 var ExistingMenu = require('./existing-menu');
 var gistbookUtil = require('../../../util/gistbook-util');
 
-var gistViewOptions = ['newGist'];
+var gistViewOptions = ['newGist', 'ownGistbook'];
 
 module.exports = mn.LayoutView.extend({
   className: 'home',
@@ -97,7 +97,8 @@ module.exports = mn.LayoutView.extend({
   createNewGistbook: function() {
     this.gistbookPageView = new GistbookPage({
       model: this.getGistbookPageModel(),
-      newGist: this.newGist
+      newGist: this.newGist,
+      ownGistbook: this.ownGistbook
     });
     return this.gistbookPageView;
   },

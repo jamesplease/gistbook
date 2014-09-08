@@ -13,7 +13,7 @@ var AceEditorView = require('../ace-editor');
 var stringUtil = require('../../../../../util/string-util');
 var radioUtil = require('../../../../../util/radio-util');
 
-var sectionsOptions = ['newGist'];
+var sectionsOptions = ['newGist', 'ownGistbook'];
 
 
 module.exports = mn.CollectionView.extend({
@@ -23,15 +23,13 @@ module.exports = mn.CollectionView.extend({
     this.mergeOptions(options, sectionsOptions);
     this.pageChannel = options.pageChannel;
     this._renderedBefore = false;
-    this.userAuthorized = Radio.request('auth', 'authorized');
   },
 
   // This is a magical method that determines which factory we should use
   // based on the type of the gistbook section and whether we're authorized
   // or not
   getChildView: function(model) {
-    var authorized = Radio.request('auth', 'authorized');
-    var factoryMethod = this._factoryMethodName(model.get('type'), authorized);
+    var factoryMethod = this._factoryMethodName(model.get('type'));
     return this[factoryMethod](model);
   },
 
@@ -40,8 +38,8 @@ module.exports = mn.CollectionView.extend({
     this._renderedBefore = true;
   },
 
-  _factoryMethodName: function(viewType, authorized) {
-    var style = authorized || this.newGist ? 'Edit' : 'View';
+  _factoryMethodName: function(viewType) {
+    var style = this.ownGistbook || this.newGist ? 'Edit' : 'View';
     return '_create' + style + stringUtil.capitalize(viewType) + 'View';
   },
 

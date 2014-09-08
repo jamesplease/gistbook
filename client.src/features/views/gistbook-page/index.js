@@ -10,7 +10,7 @@ var SectionsView = require('./views/sections');
 var OutputView = require('./views/output-view');
 var radioUtil = require('../../../util/radio-util');
 
-var gistbookPageOptions = ['newGist'];
+var gistbookPageOptions = ['newGist', 'ownGistbook'];
 
 module.exports = mn.LayoutView.extend({
   initialize: function(options) {
@@ -49,7 +49,8 @@ module.exports = mn.LayoutView.extend({
     return new SectionsView({
       collection: this._createSectionsCollection(),
       pageChannel: this.pageChannel,
-      newGist: this.newGist
+      newGist: this.newGist,
+      ownGistbook: this.ownGistbook
     });
   },
 
