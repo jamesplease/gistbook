@@ -14,7 +14,9 @@ var GistbookListView = mn.ItemView.extend({
   },
 
   onDelete: function() {
-    this.model.destroy();
+    if (window.confirm('Are you sure you want to delete this Gistbook?')) {
+      this.model.destroy();
+    }
   },
 
   templateHelpers: function() {
