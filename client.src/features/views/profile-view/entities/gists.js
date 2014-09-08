@@ -6,7 +6,8 @@
 
 var _ = require('underscore');
 var bb = require('backbone');
-var GithubCollection = require('../../../../features/entities/github-collection');
+var Gist = require('../../../entities/gist');
+var GithubCollection = require('../../../entities/github-collection');
 var gistbookUtil = require('../../../../util/gistbook-util');
 
 module.exports = GithubCollection.extend({
@@ -15,6 +16,8 @@ module.exports = GithubCollection.extend({
     this.collectionUrl = options.collectionUrl || this.collectionUrl;
     GithubCollection.prototype.constructor.apply(this, arguments);
   },
+
+  model: Gist,
 
   // By default we attempt to get the authenticated user's gistbooks
   collectionUrl: '/gists',
