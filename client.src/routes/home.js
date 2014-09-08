@@ -15,7 +15,10 @@ module.exports = mn.Route.extend({
         return new Gist();
       },
       region: 'main',
-      view: GistView
+      view: GistView,
+      options: {
+        newGist: true
+      }
     }
   }
 });

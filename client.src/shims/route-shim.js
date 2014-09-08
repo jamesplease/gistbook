@@ -80,21 +80,19 @@ _.extend(mn.Route.prototype, {
     var model = this._getDataObj(viewDefinition.model, urlData, fetchModel);
     var collection = this._getDataObj(viewDefinition.collection, urlData, fetchCollection);
 
+    var viewOptions = _.extend({}, viewDefinition.options, {
+      model: model, collection: collection
+    });
+
     if (!fetchModel && !fetchCollection) {
-      this._displayView(region, viewDefinition.view, {
-        model: model,
-        collection: collection
-      });
+      this._displayView(region, viewDefinition.view, viewOptions);
     } else {
       var route = this;
       var fetchCollectionPromise = fetchCollection ? _.result(collection, 'fetch') : undefined;
       var fetchModelPromise = fetchModel ? _.result(model, 'fetch') : undefined;
       $.when(fetchModelPromise, fetchCollectionPromise)
         .then(function() {
-          route._displayView(region, viewDefinition.view, {
-            model: model,
-            collection: collection
-          });
+          route._displayView(region, viewDefinition.view, viewOptions);
         })
         .fail(function() {
           console.log('[Route] Fetch error!');

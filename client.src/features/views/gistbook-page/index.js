@@ -10,7 +10,13 @@ var SectionsView = require('./views/sections');
 var OutputView = require('./views/output-view');
 var radioUtil = require('../../../util/radio-util');
 
+var gistbookPageOptions = ['newGist'];
+
 module.exports = mn.LayoutView.extend({
+  initialize: function(options) {
+    this.mergeOptions(options, gistbookPageOptions);
+  },
+
   template: 'gistbookPage',
 
   ui: {
@@ -42,7 +48,8 @@ module.exports = mn.LayoutView.extend({
     this.pageChannel = radioUtil.objChannel(this.model);
     return new SectionsView({
       collection: this._createSectionsCollection(),
-      pageChannel: this.pageChannel
+      pageChannel: this.pageChannel,
+      newGist: this.newGist
     });
   },
 

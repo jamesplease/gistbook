@@ -13,10 +13,14 @@ var AceEditorView = require('../ace-editor');
 var stringUtil = require('../../../../../util/string-util');
 var radioUtil = require('../../../../../util/radio-util');
 
+var sectionsOptions = ['newGist'];
+
+
 module.exports = mn.CollectionView.extend({
   tagName: 'ul',
 
   initialize: function(options) {
+    this.mergeOptions(options, sectionsOptions);
     this.pageChannel = options.pageChannel;
     this._renderedBefore = false;
     this.userAuthorized = Radio.request('auth', 'authorized');
@@ -37,11 +41,11 @@ module.exports = mn.CollectionView.extend({
   },
 
   _factoryMethodName: function(viewType, authorized) {
-    var auth = authorized ? 'Auth' : 'Unauth';
-    return '_create' + auth + stringUtil.capitalize(viewType) + 'View';
+    var style = authorized || this.newGist ? 'Edit' : 'View';
+    return '_create' + style + stringUtil.capitalize(viewType) + 'View';
   },
 
-  _createAuthTextView: function(model) {
+  _createEditTextView: function(model) {
     this._registerDisplayView(model, DisplayTextView);
     var initialMode = this.initialRender ? 'edit' : 'display';
     this.childViewOptions = {
@@ -50,7 +54,7 @@ module.exports = mn.CollectionView.extend({
     return ControlsWrapper;
   },
 
-  _createAuthJavascriptView: function(model) {
+  _createEditJavascriptView: function(model) {
     var CustomAceEditor = AceEditorView.extend({
       className: 'ace-editor ace-editor-javascript'
     });
@@ -66,7 +70,7 @@ module.exports = mn.CollectionView.extend({
     return ControlsWrapper;
   },
 
-  _createAuthHtmlView: function(model) {
+  _createEditHtmlView: function(model) {
     var CustomAceEditor = AceEditorView.extend({
       className: 'ace-editor ace-editor-html'
     });
@@ -83,7 +87,7 @@ module.exports = mn.CollectionView.extend({
     return ControlsWrapper;
   },
 
-  _createAuthCssView: function(model) {
+  _createEditCssView: function(model) {
     var CustomAceEditor = AceEditorView.extend({
       className: 'ace-editor ace-editor-css'
     });
