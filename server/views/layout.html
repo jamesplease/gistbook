@@ -6,7 +6,9 @@
   <title>Gistbook</title>
   <link rel="shortcut icon" href="/favicon.ico?v" />
   <link rel='stylesheet' href='/style.css'>
+  {{#devMode}}
   <script src='//localhost:35729/livereload.js'></script>
+  {{/devMode}}
 </head>
 <body>
   {{{ yield }}}

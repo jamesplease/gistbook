@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         jshintrc : '.jshintrc'
       },
       source: {
-        src: ['<%= app.src %>/**/*.js', '!<%= app.src %>/bower_components/**/*']
+        src: ['<%= app.src %>/**/*.js']
       }
     },
 
@@ -48,7 +48,7 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          '<%= app.tmp %>/templates.js': ['<%= app.src %>/**/*.jst', '!<%= app.src %>/bower_components/**/*']
+          '<%= app.tmp %>/templates.js': ['<%= app.src %>/**/*.jst']
         }
       }
     },
@@ -128,7 +128,7 @@ module.exports = function(grunt) {
         files: ['gruntfile.js']
       },
       scripts: {
-        files: ['<%= app.src %>/**/*.js', '!<%= app.src %>/bower_components/**/*'],
+        files: ['<%= app.src %>/**/*.js'],
         tasks: ['jshint', 'webpack:dev']
       },
       styles: {
@@ -144,7 +144,7 @@ module.exports = function(grunt) {
         tasks: ['copy:fonts']
       },
       jst: {
-        files: ['<%= app.src %>/**/*.jst', '!<%= app.src %>/bower_components/**/*'],
+        files: ['<%= app.src %>/**/*.jst'],
         tasks: ['jst', 'webpack:dev']
       },
 
@@ -167,7 +167,6 @@ module.exports = function(grunt) {
         files: '<%= app.server %>/**/*',
         tasks: ['express:dev']
       }
-
     },
 
     express: {
@@ -186,15 +185,6 @@ module.exports = function(grunt) {
           node_env: 'prod'
         },
         output: 'Gistbook is listening on port 18908'
-      }
-    },
-
-    concurrent: {
-      target: {
-        tasks: ['express:dev', 'watch'],
-        options: {
-          logConcurrentOutput: true
-        }
       }
     },
 
@@ -224,7 +214,7 @@ module.exports = function(grunt) {
           cache: true
         },
       dev: {
-        // devtool: 'eval-source-map',
+        devtool: 'eval-source-map',
         debug: true
       },
       prod: {

@@ -1,7 +1,8 @@
 /*
  * Application
  * A fancier Marionette.Application that starts history
- * and intercepts links for you
+ * and intercepts links for you. It also gets rid of unnecessary features
+ * like Marionette.Callbacks.
  *
  */
 

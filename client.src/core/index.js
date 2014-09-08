@@ -14,7 +14,6 @@ require('../shims/regions-mixin-shim');
 require('../shims/router-shim');
 require('../shims/route-shim');
 require('../shims/history-shim');
-require('../shims/radio-shim');
 require('../shims/to-json-shim');
 require('../shims/merge-options-shim');
 

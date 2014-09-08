@@ -3,7 +3,6 @@
  *
  */
 
-var bb = require('backbone');
 var mn = require('marionette');
 var Radio = require('radio');
 var ProfileView = require('../../features/views/profile-view');

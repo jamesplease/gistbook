@@ -11,10 +11,8 @@ var LoginView = require('./login-view');
 var MenuView = require('./menu-view');
 
 var authChannel = Radio.channel('auth');
-var userChannel = Radio.channel('user');
 
 var Menu = mn.Object.extend({
-
   initialize: function(options) {
     _.bindAll(this, '_showView');
     this.region = new mn.Region({el: 'header .menu'});
@@ -38,7 +36,7 @@ var Menu = mn.Object.extend({
   },
 
   _getModel: function() {
-    return authChannel.request('authorized') ? userChannel.request('user') : undefined;
+    return authChannel.request('authorized') ? Radio.request('user', 'user') : undefined;
   },
 
   _configureEvents: function() {

@@ -7,16 +7,16 @@
 var _ = require('underscore');
 var mn = require('marionette');
 var Radio = require('radio');
-var ModalWrapperView = require('./modal-wrapper');
+var ModalWrapper = require('./modal-wrapper');
 
 var modalChannel = Radio.channel('modal');
 
 var Modal = mn.Region.extend({
   initialize: function() {
-    this.modalWrapper = new ModalWrapperView();
+    this.modalWrapper = new ModalWrapper();
     this.show(this.modalWrapper);
-    modalChannel.comply('show', this.modalWrapper.show);
-    modalChannel.comply('hide', this.modalWrapper.hide);
+    modalChannel.comply('show', this.modalWrapper.showView);
+    modalChannel.comply('hide', this.modalWrapper.destroyView);
   },
 
   el: '.modal'

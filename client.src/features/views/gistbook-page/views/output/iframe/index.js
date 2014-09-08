@@ -8,7 +8,21 @@ var _ = require('underscore');
 var mn = require('marionette');
 
 module.exports = mn.ItemView.extend({
-  template: _.template('<iframe src="/output/<%= token %>"></iframe>'),
+  tagName: 'iframe',
+
+  template: false,
+
+  attributes: {
+    sandbox: 'allow-scripts allow-popups allow-pointer-lock'
+  },
+
+  onRender: function() {
+    this.$el.attr('src', this._generateSrc());
+  },
+
+  _generateSrc: function() {
+    return '/output/' + this.model.get('token');
+  },
 
   className: 'gistbook-iframe'
 });

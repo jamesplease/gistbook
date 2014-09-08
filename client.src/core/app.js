@@ -10,7 +10,6 @@
  *
  */
 
-var bb = require('backbone');
 var mn = require('marionette');
 
 // Create the app

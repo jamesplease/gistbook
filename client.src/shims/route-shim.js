@@ -81,9 +81,6 @@ _.extend(mn.Route.prototype, {
     var collection = this._getDataObj(viewDefinition.collection, urlData, fetchCollection);
 
     if (!fetchModel && !fetchCollection) {
-      if (model || collection) {
-        console.log('The Route is not fetching data.');
-      }
       this._displayView(region, viewDefinition.view, {
         model: model,
         collection: collection
@@ -94,14 +91,13 @@ _.extend(mn.Route.prototype, {
       var fetchModelPromise = fetchModel ? _.result(model, 'fetch') : undefined;
       $.when(fetchModelPromise, fetchCollectionPromise)
         .then(function() {
-          console.log('The Route data fetch was a success.');
           route._displayView(region, viewDefinition.view, {
             model: model,
             collection: collection
           });
         })
         .fail(function() {
-          console.log('The Route failed to fetch data.');
+          console.log('[Route] Fetch error!');
         });
     }
   },

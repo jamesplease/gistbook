@@ -1,9 +1,8 @@
 /*
  * Backbone.history
- * ...yes, I am modifying Backbone.history.
- * Why? I need the arguments passed to navigate, because I want
- * to add additional options that have repercussions all the way
- * down to the Route; namely, a new 'fetch' option.
+ * History gobbles up options passed to navigate, and I need
+ * them to be returned to the Router. So all of this complexity
+ * is to support this.
  *
  */
 
