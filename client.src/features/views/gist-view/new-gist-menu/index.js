@@ -7,5 +7,13 @@
 var mn = require('marionette');
 
 module.exports = mn.ItemView.extend({
-  template: 'newGistMenu'
+  template: 'newGistMenu',
+
+  ui: {
+    save: '.save-gist'
+  },
+
+  triggers: {
+    'click': 'save'
+  }
 });

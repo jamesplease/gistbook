@@ -23,7 +23,7 @@ var gistbookUtil = {
     return {
       title: 'Anonymous Gistbook',
       author: 'Anonymous',
-      pages: [],
+      pages: [gistbookUtil.createPage()],
       public: true
     };
   },

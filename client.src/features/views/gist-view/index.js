@@ -46,7 +46,7 @@ module.exports = mn.LayoutView.extend({
   },
 
   _registerNewMenuListeners: function() {
-
+    this.listenTo(this.menu, 'save', this._create);
   },
 
   _registerExistingMenuListeners: function() {
@@ -59,7 +59,15 @@ module.exports = mn.LayoutView.extend({
     this.gistbookPage.set('sections', pages.toJSON());
     this.gistbook.pages[0] = this.gistbookPage.toJSON();
     this._setGistbook();
-    this._saveGist();
+    this._saveGist({newGist:false});
+  },
+
+  _create: function() {
+    var pages = this.gistbookPageView.pages;
+    this.gistbookPage.set('sections', pages.toJSON());
+    this.gistbook.pages[0] = this.gistbookPage.toJSON();
+    this._setGistbook();
+    this._saveGist({newGist:true});
   },
 
   // Update the gist with the current gistbook
@@ -75,12 +83,14 @@ module.exports = mn.LayoutView.extend({
   saveAttrs: ['description', 'files'],
 
   // Save the gist to Github
-  _saveGist: function() {
+  _saveGist: function(options) {
     var attrs = {
       description: this.model.get('description'),
-      files: this.model.get('files')
+      files: this.model.get('files'),
+      public: true
     };
-    this.model.save(attrs, {patch: true})
+    var saveOptions = options.newGist ? undefined : {patch:true};
+    this.model.save(attrs, saveOptions)
       .then(function() {
         console.log('success!', arguments);
       })
@@ -107,7 +117,7 @@ module.exports = mn.LayoutView.extend({
   // we first convert our Gist to a Gistbook, then we grab the first page.
   getGistbookPageModel: function() {
     var gistbookData = this.getGistbookData();
-    var gistbookPage = gistbookData.pages ? gistbookData.pages[0] : gistbookUtil.createPage();
+    var gistbookPage = gistbookData.pages[0];
     this.gistbookPage = new bb.Model(gistbookPage);
     return this.gistbookPage;
   },
@@ -118,7 +128,7 @@ module.exports = mn.LayoutView.extend({
   },
 
   _convertGistToGistbook: function(gist) {
-    this.gistbook = gistbookUtil.gistbookFromGist(gist);
+    this.gistbook = !this.isNew() ? gistbookUtil.gistbookFromGist(gist) : gistbookUtil.newGistbook();
     return this.gistbook;
   },
 
