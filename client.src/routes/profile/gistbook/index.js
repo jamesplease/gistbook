@@ -13,7 +13,6 @@ var GistbookRoute = mn.Route.extend({
     gistbook: {
       dataClass: Gist,
       initialData: function(urlData) {
-        console.log('la', urlData);
         return { id: urlData.params.gistbookId };
       }
     }

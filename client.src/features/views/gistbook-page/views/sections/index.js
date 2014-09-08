@@ -35,11 +35,16 @@ module.exports = mn.CollectionView.extend({
 
   // Make it sortable if we're authorized
   onRender: function() {
+    this.$el.addClass('gistbook-'+this._style().toLowerCase());
     this._renderedBefore = true;
   },
 
+  _style: function() {
+    return this.ownGistbook || this.newGist ? 'Edit' : 'Display';
+  },
+
   _factoryMethodName: function(viewType) {
-    var style = this.ownGistbook || this.newGist ? 'Edit' : 'View';
+    var style = this._style();
     return '_create' + style + stringUtil.capitalize(viewType) + 'View';
   },
 
@@ -50,6 +55,14 @@ module.exports = mn.CollectionView.extend({
       initialMode: initialMode
     };
     return ControlsWrapper;
+  },
+
+  _createDisplayTextView: function(model) {
+    this.childViewOptions = {};
+    return DisplayTextView.extend({
+      tagName: 'li',
+      className: 'gistblock gistblock-text gistbook-section-display'
+    });
   },
 
   _createEditJavascriptView: function(model) {
@@ -66,6 +79,17 @@ module.exports = mn.CollectionView.extend({
       }
     };
     return ControlsWrapper;
+  },
+
+  _createDisplayJavascriptView: function(model) {
+    this.childViewOptions = {
+      readOnly: true,
+      hideCursor: true,
+    };
+    return AceEditorView.extend({
+      className: 'ace-editor ace-editor-javascript gistbook-section-display',
+      tagName: 'li'
+    });
   },
 
   _createEditHtmlView: function(model) {
@@ -85,6 +109,18 @@ module.exports = mn.CollectionView.extend({
     return ControlsWrapper;
   },
 
+  _createDisplayHtmlView: function(model) {
+    this.childViewOptions = {
+      readOnly: true,
+      hideCursor: true,
+      mode: 'html'
+    };
+    return AceEditorView.extend({
+      className: 'ace-editor ace-editor-html gistbook-section-display',
+      tagName: 'li'
+    });
+  },
+
   _createEditCssView: function(model) {
     var CustomAceEditor = AceEditorView.extend({
       className: 'ace-editor ace-editor-css'
@@ -100,6 +136,18 @@ module.exports = mn.CollectionView.extend({
       }
     };
     return ControlsWrapper;
+  },
+
+  _createDisplayCssView: function(model) {
+    this.childViewOptions = {
+      readOnly: true,
+      hideCursor: true,
+      mode: 'css'
+    };
+    return AceEditorView.extend({
+      className: 'ace-editor ace-editor-css gistbook-section-display',
+      tagName: 'li'
+    });
   },
 
   // Register the DisplayView for a particular Gistblock on that block's Channel
