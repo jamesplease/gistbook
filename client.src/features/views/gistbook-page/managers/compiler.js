@@ -49,8 +49,7 @@ module.exports = mn.Object.extend({
 
   // When the server responds that we errored, we emit it as an event.
   onPostError: function(err) {
-    console.log('errx');
-    // this.trigger('error', err);
+    this.trigger('compile:error', err);
   },
 
   createDocumentView: function(code) {
