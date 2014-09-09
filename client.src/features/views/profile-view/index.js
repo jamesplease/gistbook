@@ -10,9 +10,18 @@ var NoGistsView = require('./views/no-gists');
 var GistList = require('./views/gist-list');
 
 var ProfileView = mn.LayoutView.extend({
+  initialize: function() {
+    _.bindAll(this, 'onCollectionChange');
+    this.configureEvents();
+  },
+
   className: 'profile-view',
 
   template: 'profileView',
+
+  ui: {
+    $count: '.gistbook-count > span'
+  },
 
   regions: {
     gistsContainer: '.gists-container'
@@ -50,6 +59,14 @@ var ProfileView = mn.LayoutView.extend({
         return self.collection.length === 1 ? 'Gistbook' : 'Gistbooks'; 
       }
     };
+  },
+
+  configureEvents: function() {
+    this.listenTo(this.collection, 'add remove reset', this.onCollectionChange);
+  },
+
+  onCollectionChange: function() {
+    this.ui.$count.text(this.collection.length); 
   }
 });
 
