@@ -21,6 +21,7 @@ var Auth = mn.Object.extend({
     this.token = '';
     this.determineLogin();
     this.configureEvents();
+    this._configureAjax();
   },
 
   // Log us out by destroying the token
@@ -28,7 +29,6 @@ var Auth = mn.Object.extend({
     cookies.expire('token');
     this.authorized = false;
     this.token = '';
-    this._configureAjax({headers: {Authorization: ''}});
     this.channel.trigger('logout');
   },
 
@@ -40,7 +40,6 @@ var Auth = mn.Object.extend({
     if (token) {
       this.authorized = true;
       this.token = token;
-      this._configureAjax({headers: this._generateAuthorizationHeader()});
     } else {
       this.authorized = false;
     }
@@ -63,15 +62,17 @@ var Auth = mn.Object.extend({
     this.channel.comply('logout', this.logout);
   },
 
-  _generateAuthorizationHeader: function() {
-    return {
-      'Authorization': 'token ' + this.token
-    };
-  },
-
   // Include our token in every subsequent request
-  _configureAjax: function(options) {
-    $.ajaxSetup(options);
+  _configureAjax: function() {
+    var self = this;
+    $.ajaxSetup({
+      beforeSend: function (jqXHR, settings) {
+        if (self.authorized) {
+          jqXHR.setRequestHeader('Authorization', 'token ' + self.token);
+        }
+        return true;
+    }
+    });
   }
 });
 
