@@ -8,7 +8,8 @@ var bb = require('backbone');
 var mn = require('marionette');
 var _ = require('underscore');
 var Radio = require('radio');
-var GistbookPage = require('../gistbook-page');
+var GistbookPage = require('../../entities/gistbook-page');
+var GistbookPageView = require('../gistbook-page');
 var Gist = require('../../../features/entities/gist');
 var NewGistMenu = require('./new-gist-menu');
 var ExistingMenu = require('./existing-menu');
@@ -64,7 +65,6 @@ module.exports = mn.LayoutView.extend({
     var pages = this.gistbookPageView.pages;
     this.gistbookPage.set('sections', pages.toJSON());
     this.gistbook.pages[0] = this.gistbookPage.toJSON();
-    console.log('lalala', this.gistbookPage.toJSON());
     this._setGistbook();
     this._saveGist({newGist:true});
   },
@@ -108,7 +108,7 @@ module.exports = mn.LayoutView.extend({
   },
 
   createNewGistbook: function() {
-    this.gistbookPageView = new GistbookPage({
+    this.gistbookPageView = new GistbookPageView({
       model: this.getGistbookPageModel(),
       newGist: this.newGist,
       ownGistbook: this.ownGistbook
@@ -121,7 +121,7 @@ module.exports = mn.LayoutView.extend({
   getGistbookPageModel: function() {
     var gistbookData = this.getGistbookData();
     var gistbookPage = gistbookData.pages[0];
-    this.gistbookPage = new bb.Model(gistbookPage);
+    this.gistbookPage = new GistbookPage(gistbookPage);
     return this.gistbookPage;
   },
 
