@@ -20,7 +20,7 @@ module.exports = mn.LayoutView.extend({
   editOptions: {
     edit: true,
     delete: true,
-    move: true
+    move: false
   },
 
   // Where to render the view

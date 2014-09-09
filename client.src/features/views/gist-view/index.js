@@ -64,6 +64,7 @@ module.exports = mn.LayoutView.extend({
     var pages = this.gistbookPageView.pages;
     this.gistbookPage.set('sections', pages.toJSON());
     this.gistbook.pages[0] = this.gistbookPage.toJSON();
+    console.log('lalala', this.gistbookPage.toJSON());
     this._setGistbook();
     this._saveGist({newGist:true});
   },

@@ -74,7 +74,7 @@ module.exports = mn.CollectionView.extend({
       cache: false,
       editOptions: {
         edit: false,
-        move: true,
+        move: false,
         delete: true
       }
     };
@@ -102,7 +102,7 @@ module.exports = mn.CollectionView.extend({
       mode: 'html',
       editOptions: {
         edit: false,
-        move: true,
+        move: false,
         delete: true
       }
     };
@@ -131,7 +131,7 @@ module.exports = mn.CollectionView.extend({
       mode: 'css',
       editOptions: {
         edit: false,
-        move: true,
+        move: false,
         delete: true
       }
     };

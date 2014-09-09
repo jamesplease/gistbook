@@ -25,7 +25,7 @@ module.exports = mn.LayoutView.extend({
   editOptions: {
     edit: true,
     delete: true,
-    move: true
+    move: false
   },
 
   controlsWrapperOptions: [
