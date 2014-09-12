@@ -24,7 +24,13 @@ var GistbookRoute = mn.Route.extend({
     profile: {
       model: 'gistbook',
       region: 'main',
-      view: GistView,
+      getViewClass: function(options) {
+        var gistData = options.data[0];
+        var gistOwner = gistData.owner;
+        var gistUser = gistOwner ? gistOwner.login : 'anonymous';
+        var username = options.urlData.params.username;
+        return gistUser === username ? GistView : ServerErrorView;
+      },
       errorView: ServerErrorView,
       options: function(urlData) {
         var username = Radio.request('user', 'user').get('login');

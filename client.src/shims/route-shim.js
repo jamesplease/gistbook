@@ -1,7 +1,7 @@
 /*
  * route
  * A Class that ties together data, a view, and a region. Goes with
- * the new Router Class. This is still a really rough draft – lots
+ * the new Router Class. This is still a *really* rough draft – lots
  * of cleanup is necessary!
  *
  */
@@ -73,6 +73,7 @@ _.extend(mn.Route.prototype, {
     _.each(this.views, _.partial(this._buildView, urlData, navigateOptions));
   },
 
+  // Perhaps the ugliest function that mankind has ever seen
   _buildView: function(urlData, navigateOptions, viewDefinition, viewName) {
     var region = this._getViewRegion(viewDefinition.region);
     var fetchModel = this._shouldFetch(viewDefinition.model, navigateOptions);
@@ -89,7 +90,9 @@ _.extend(mn.Route.prototype, {
     var options = {
       region: region,
       viewDefinition: viewDefinition,
-      viewOptions: viewOptions
+      viewOptions: viewOptions,
+      urlData: urlData,
+      navigateOptions: navigateOptions
     };
 
     if (!fetchModel && !fetchCollection) {
@@ -125,7 +128,7 @@ _.extend(mn.Route.prototype, {
 
     // If there was no error, then we show the view.
     if (!options.fail) {
-      var ViewClass = options.viewDefinition.view;
+      var ViewClass = options.viewDefinition.view || options.viewDefinition.getViewClass(options);
       var viewOptions = options.viewOptions;
       region.show(new ViewClass(viewOptions));
     }
@@ -143,8 +146,8 @@ _.extend(mn.Route.prototype, {
 
   _getErrorView: function(options) {
     var viewDef = options.viewDefinition;
-    if (viewDef.errorView) {
-      return viewDef.errorView;
+    if (viewDef.errorView || viewDef.getErrorViewClass) {
+      return viewDef.errorView || viewDef.getErrorViewClass(options);
     }
   },
 
