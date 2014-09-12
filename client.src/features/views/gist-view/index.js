@@ -55,7 +55,9 @@ module.exports = mn.LayoutView.extend({
   // Syncs the 'nested' data structure with the parent
   _sync: function() {
     var sections = this.gistbookView.sections;
-    this.gistbook.pages[0].sections = sections.toJSON();
+    this.gistbook.pages[0].sections = _.filter(sections.toJSON(), function(section) {
+      return !/^\s*$/.test(section.source);
+    });
     this.gistbook.title = this.gistbookModel.get('title');
     this._setGistbook();
     this._saveGist({newGist:false});
@@ -63,7 +65,9 @@ module.exports = mn.LayoutView.extend({
 
   _create: function() {
     var sections = this.gistbookView.sections;
-    this.gistbook.pages[0].sections = sections.toJSON();
+    this.gistbook.pages[0].sections = _.filter(sections.toJSON(), function(section) {
+      return !/^\s*$/.test(section.source);
+    });
     this.gistbook.title = this.gistbookModel.get('title');
     this._setGistbook();
     this._saveGist({newGist:true});
