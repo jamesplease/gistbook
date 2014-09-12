@@ -8,7 +8,7 @@ var _ = require('underscore');
 var mn = require('marionette');
 var CodeManager = require('../../managers/code-manager');
 var Compiler = require('../../managers/compiler');
-var ErrorView = require('./error-view');
+var ErrorView = require('./compile-error-view');
 
 module.exports = mn.LayoutView.extend({
   initialize: function(options) {

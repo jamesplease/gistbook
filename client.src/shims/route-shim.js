@@ -86,25 +86,66 @@ _.extend(mn.Route.prototype, {
       model: model, collection: collection
     });
 
+    var options = {
+      region: region,
+      viewDefinition: viewDefinition,
+      viewOptions: viewOptions
+    };
+
     if (!fetchModel && !fetchCollection) {
-      this._displayView(region, viewDefinition.view, viewOptions);
+      this._displayView(options);
     } else {
       var route = this;
       var fetchCollectionPromise = fetchCollection ? _.result(collection, 'fetch') : undefined;
       var fetchModelPromise = fetchModel ? _.result(model, 'fetch') : undefined;
+
+      options.collectionPromise = fetchCollectionPromise;
+      options.modelPromise = fetchModelPromise;
+
       $.when(fetchModelPromise, fetchCollectionPromise)
-        .then(function() {
-          route._displayView(region, viewDefinition.view, viewOptions);
+        .then(function(data, textStatus, jqXHR) {
+          options.data = data;
+          options.textStatus = textStatus;
+          options.jqXHR = jqXHR;
+          route._displayView(options);
         })
-        .fail(function() {
-          console.log('[Route] Fetch error!');
+        .fail(function(jqXHR, textStatus, errorThrown) {
+          options.errorThrown = errorThrown;
+          options.textStatus = textStatus;
+          options.jqXHR = jqXHR;
+          options.fail = true;
+          route._displayView(options);
         });
     }
   },
 
   // Show a new ViewClass in region, passing viewOptions
-  _displayView: function(region, ViewClass, viewOptions) {
-    region.show(new ViewClass(viewOptions));
+  _displayView: function(options) {
+    var region = options.region;
+
+    // If there was no error, then we show the view.
+    if (!options.fail) {
+      var ViewClass = options.viewDefinition.view;
+      var viewOptions = options.viewOptions;
+      region.show(new ViewClass(viewOptions));
+    }
+
+    // Otherwise, we show the 404 page, if it exists
+    else {
+      var modelPromise = options.modelPromise;
+      var collectionPromise = options.collectionPromise;
+      var ErrorView = this._getErrorView(options);
+      if (ErrorView) {
+        region.show(new ErrorView(_.pick(options, 'jqXHR', 'textStatus', 'errorThrown')));
+      }
+    }
+  },
+
+  _getErrorView: function(options) {
+    var viewDef = options.viewDefinition;
+    if (viewDef.errorView) {
+      return viewDef.errorView;
+    }
   },
 
   // Verify that the user put together a configuration that makes sense.

@@ -9,6 +9,7 @@ var ProfileView = require('../../features/views/profile-view');
 var Gists = require('../../features/views/profile-view/entities/gists');
 var GistbookRoute = require('./gistbook');
 var GithubUser = require('../../features/entities/github-user');
+var ServerErrorView = require('../../features/views/server-error-view');
 
 var user = Radio.request('user', 'user');
 
@@ -38,7 +39,8 @@ module.exports = mn.Route.extend({
       model: 'user',
       collection: 'gistbooks',
       region: 'main',
-      view: ProfileView
+      view: ProfileView,
+      errorView: ServerErrorView
     }
   },
 

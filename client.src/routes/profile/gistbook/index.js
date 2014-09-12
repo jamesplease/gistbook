@@ -3,10 +3,12 @@
  *
  */
 
+var _ = require('underscore');
 var mn = require('marionette');
 var Radio = require('radio');
 var GistView = require('../../../features/views/gist-view');
 var Gist = require('../../../features/entities/gist');
+var ServerErrorView = require('../../../features/views/server-error-view');
 
 var GistbookRoute = mn.Route.extend({
   data: {
@@ -23,6 +25,7 @@ var GistbookRoute = mn.Route.extend({
       model: 'gistbook',
       region: 'main',
       view: GistView,
+      errorView: ServerErrorView,
       options: function(urlData) {
         var username = Radio.request('user', 'user').get('login');
         var thisUser = urlData.params.username;
