@@ -4,6 +4,10 @@
  */
 
 var _ = require('underscore');
+var Radio = require('radio');
+
+var authChannel = Radio.channel('auth');
+var userChannel = Radio.channel('user');
 
 var gistbookUtil = {
 
@@ -20,9 +24,13 @@ var gistbookUtil = {
 
   // Returns a new, empty Gistbook – like magic!
   newGistbook: function() {
+    var author = 'Anonymous';
+    if (authChannel.request('authorized')) {
+      author = userChannel.request('user').get('login');
+    }
     return {
       title: 'Anonymous Gistbook',
-      author: 'Anonymous',
+      author: author,
       pages: [gistbookUtil.createPage()],
       public: true
     };
