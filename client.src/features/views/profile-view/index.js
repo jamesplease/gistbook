@@ -24,7 +24,7 @@ var ProfileView = mn.LayoutView.extend({
   },
 
   regions: {
-    gistsContainer: '.gists-container'
+    gistsContainer: '.boxed-group-body'
   },
 
   onBeforeShow: function() {

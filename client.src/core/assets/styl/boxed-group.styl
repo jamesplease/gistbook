@@ -1,32 +1,37 @@
 .boxed-group
   width 100%
   margin 0 auto
-  border 1px solid $borderColor
-  border-radius 3px
 
   .boxed-group-header
     border-bottom 1px solid $borderColor
-    height 40px
-    line-height 40px
+    height 45px
+    font-size 16px
+    line-height 45px
     background $lightBackground
     color $darkTextColor
     font-weight bold
     padding 0 10px
+    border-radius 3px 3px 0 0
 
   .boxed-group-body
-    padding 10px
     color $mediumTextColor
     
     p
       font-size 13px
-      margin-bottom 10px
+      margin 0 10px 10px
+
+      &:first-child
+        margin-top 10px
 
       &:last-child
         margin 0
 
-    ul
+    button
+      margin-left 10px
+
+    ul.bullet
       list-style-type disc
-      margin-left 20px
+      margin-left 30px
 
       li
         color $textColor
