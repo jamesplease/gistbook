@@ -16,9 +16,9 @@ var mn = require('marionette');
 var app = new mn.Application();
 
 // Load up all the things
+app.env = require('../features/env');
 if (app.env === 'dev') { require('../features/dev'); }
 app.auth = new (require('../features/auth'))();
-app.env = require('../features/env');
 app.modal = require('../features/modal');
 app.user = require('../features/entities/user');
 app.router = require('./router');

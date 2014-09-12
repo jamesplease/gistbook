@@ -10,4 +10,4 @@ var Radio = require('radio');
 require('radio').DEBUG = true;
 
 // Load up our mock API
-require('../mock-api');
+require('./mock-api');
