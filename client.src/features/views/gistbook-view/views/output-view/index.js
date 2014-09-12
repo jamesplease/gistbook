@@ -14,7 +14,7 @@ module.exports = mn.LayoutView.extend({
   initialize: function(options) {
     _.bindAll(this, 'showCompiledView');
 
-    this.pages = options.pages;
+    this.sections = options.sections;
     this.createManagers();
     this.configureListeners();
   },
@@ -55,7 +55,7 @@ module.exports = mn.LayoutView.extend({
 
   createManagers: function() {
     this.codeManager = new CodeManager({
-      pages: this.pages
+      sections: this.sections
     });
 
     this.compiler = new Compiler();

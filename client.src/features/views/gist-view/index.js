@@ -9,7 +9,7 @@ var mn = require('marionette');
 var _ = require('underscore');
 var Radio = require('radio');
 var GistbookPage = require('../../entities/gistbook-page');
-var GistbookPageView = require('../gistbook-page');
+var GistbookView = require('../gistbook-view');
 var Gist = require('../../../features/entities/gist');
 var NewGistMenu = require('./new-gist-menu');
 var ExistingMenu = require('./existing-menu');
@@ -54,7 +54,7 @@ module.exports = mn.LayoutView.extend({
 
   // Syncs the 'nested' data structure with the parent
   _sync: function() {
-    var pages = this.gistbookPageView.pages;
+    var pages = this.gistbookView.sections;
     this.gistbookPage.set('sections', pages.toJSON());
     this.gistbook.pages[0] = this.gistbookPage.toJSON();
     this._setGistbook();
@@ -62,7 +62,7 @@ module.exports = mn.LayoutView.extend({
   },
 
   _create: function() {
-    var pages = this.gistbookPageView.pages;
+    var pages = this.gistbookView.sections;
     this.gistbookPage.set('sections', pages.toJSON());
     this.gistbook.pages[0] = this.gistbookPage.toJSON();
     this._setGistbook();
@@ -108,21 +108,20 @@ module.exports = mn.LayoutView.extend({
   },
 
   createNewGistbook: function() {
-    this.gistbookPageView = new GistbookPageView({
-      model: this.getGistbookPageModel(),
+    this.gistbookView = new GistbookView({
+      model: this.getGistbookModel(),
       newGist: this.newGist,
       ownGistbook: this.ownGistbook
     });
-    return this.gistbookPageView;
+    return this.gistbookView;
   },
 
   // We're only rendering a single page of a Gistbook for now. Thus,
   // we first convert our Gist to a Gistbook, then we grab the first page.
-  getGistbookPageModel: function() {
+  getGistbookModel: function() {
     var gistbookData = this.getGistbookData();
-    var gistbookPage = gistbookData.pages[0];
-    this.gistbookPage = new GistbookPage(gistbookPage);
-    return this.gistbookPage;
+    this.gistbookModel = new bb.Model(gistbookData);
+    return this.gistbookModel;
   },
 
   getGistbookData: function() {

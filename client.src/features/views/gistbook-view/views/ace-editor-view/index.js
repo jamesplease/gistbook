@@ -9,7 +9,7 @@ var _ = require('underscore');
 var mn = require('marionette');
  
 module.exports = mn.ItemView.extend({
-  template: 'aceEditor',
+  template: 'aceEditorView',
 
   // Defaults for the Ace Editorxw
   readOnly: false,

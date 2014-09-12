@@ -41,10 +41,8 @@ module.exports = function(grunt) {
           // This converts our file names into camelCase names.
           // For instance, some-name.okay.ext => someNameOkay
           processName: function(filename) {
-            var dirname = path.dirname(filename);
-            var parts = dirname.split('/');
-            var lastPart = parts[parts.length - 1];
-            return lastPart.replace(/[-\.]([a-z])/g, function (g) { return g[1].toUpperCase(); });
+            var basename = path.basename( filename, path.extname(filename) );
+            return basename.replace(/[-\.]([a-z])/g, function (g) { return g[1].toUpperCase(); });
           }
         },
         files: {

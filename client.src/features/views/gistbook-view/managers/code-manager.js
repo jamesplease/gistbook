@@ -11,7 +11,7 @@ var _ = require('underscore');
 var mn = require('marionette');
 
 module.exports = mn.Object.extend({
-  codeManagerOptions: ['pages', 'join'],
+  codeManagerOptions: ['sections', 'join'],
 
   // The character used to join separate blocks of source code
   join: '\n',
@@ -50,7 +50,7 @@ module.exports = mn.Object.extend({
   // Filter the collection by a particular type. Type should be
   // one of 'html', 'css', or 'javascript'.
   getSectionsOfType: function(type) {
-    return this.pages.where({type: type});
+    return this.sections.where({type: type});
   },
 
   // Returns the concatenated source of a subcollection.
