@@ -11,9 +11,10 @@ var Radio = require('radio');
 var GistbookPage = require('../../entities/gistbook-page');
 var GistbookView = require('../gistbook-view');
 var Gist = require('../../../features/entities/gist');
-var NewGistMenu = require('./new-gist-menu');
 var ExistingMenu = require('./existing-menu');
 var gistbookUtil = require('../../../util/gistbook-util');
+
+var routerChannel = Radio.channel('router');
 
 var gistViewOptions = ['newGist', 'ownGistbook'];
 
@@ -28,7 +29,7 @@ module.exports = mn.LayoutView.extend({
   },
 
   initialize: function(options) {
-    _.bindAll(this, '_sync');
+    _.bindAll(this, '_sync', '_delete');
     this.mergeOptions(options, gistViewOptions);
   },
 
@@ -41,15 +42,8 @@ module.exports = mn.LayoutView.extend({
   },
 
   registerMenuListeners: function() {
-    return this.isNew() ? this._registerNewMenuListeners() : this._registerExistingMenuListeners();
-  },
-
-  _registerNewMenuListeners: function() {
-    this.listenTo(this.menu, 'save', this._create);
-  },
-
-  _registerExistingMenuListeners: function() {
     this.listenTo(this.menu, 'save', this._sync);
+    this.listenToOnce(this.menu, 'delete', this._delete);
   },
 
   // Syncs the 'nested' data structure with the parent
@@ -63,14 +57,14 @@ module.exports = mn.LayoutView.extend({
     this._saveGist({newGist:false});
   },
 
-  _create: function() {
-    var sections = this.gistbookView.sections;
-    this.gistbook.pages[0].sections = _.filter(sections.toJSON(), function(section) {
-      return !/^\s*$/.test(section.source);
-    });
-    this.gistbook.title = this.gistbookModel.get('title');
-    this._setGistbook();
-    this._saveGist({newGist:true});
+  _delete: function() {
+    this.model.destroy()
+      .then(function() {
+        routerChannel.command('navigate', Radio.request('user', 'user').get('login'));
+      })
+      .fail(function() {
+        console.log('Unable to delete the gist');
+      });
   },
 
   // Update the gist with the current gistbook
@@ -87,16 +81,17 @@ module.exports = mn.LayoutView.extend({
   saveAttrs: ['description', 'files'],
 
   // Save the gist to Github
-  _saveGist: function(options) {
+  _saveGist: function() {
     var attrs = {
       description: this.model.get('description'),
       files: this.model.get('files'),
       public: true
     };
-    var saveOptions = options.newGist ? undefined : {patch:true};
+    var isNew = this.isNew();
+    var saveOptions = isNew ? undefined : {patch:true};
     this.model.save(attrs, saveOptions)
       .then(function(gistData) {
-        if (options.newGist) {
+        if (isNew) {
           var username = gistData.owner ? gistData.owner.login : 'anonymous';
           var url = '/' + username + '/' + gistData.id;
           Radio.command('router', 'navigate', url);
@@ -108,7 +103,11 @@ module.exports = mn.LayoutView.extend({
   },
 
   createMenu: function() {
-    this.menu = this.isNew() ? new NewGistMenu() : new ExistingMenu();
+    var menuOptions = {
+      newGist: this.newGist,
+      ownGistbook: this.ownGistbook
+    };
+    this.menu = new ExistingMenu(menuOptions);
     return this.menu;
   },
 
