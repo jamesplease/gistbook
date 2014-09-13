@@ -10,6 +10,8 @@ var Radio = require('radio');
 module.exports = mn.ItemView.extend({
   template: 'newGistMenu',
 
+  className: 'gist-menu-container-view',
+
   ui: {
     save: '.save-gist'
   },

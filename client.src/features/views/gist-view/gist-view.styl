@@ -7,9 +7,17 @@
     margin-bottom 35px
 
   .gist-menu-container
-    align-self flex-end
+    flex 1
 
-    button
+    .compound-button
+      margin-right 10px
+      &:last-child
+        margin-right 0
+
+      button, .button
+        margin-right 0
+
+    button, .button
       margin-right 10px
 
       &:last-child

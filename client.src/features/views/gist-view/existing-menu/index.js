@@ -9,6 +9,8 @@ var mn = require('marionette');
 module.exports = mn.ItemView.extend({
   template: 'existingGistMenu',
 
+  className: 'gist-menu-container-view',
+
   ui: {
     save: '.save-gist'
   },
