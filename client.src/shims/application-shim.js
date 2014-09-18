@@ -9,7 +9,7 @@
 var _ = require('underscore');
 var bb = require('backbone');
 var mn = require('marionette');
-var linkUtil = require('../util/link-util');
+var Intercept = require('backbone.intercept');
 
 var startOptions = ['historyOptions'];
 
@@ -31,7 +31,7 @@ _.extend(mn.Application.prototype, {
     // Starts history if a Router is configured
     if (this.router) {
       bb.history.start(this.historyOptions);
-      linkUtil.startIntercepting();
+      Intercept.start();
     }
 
     this.triggerMethod('start', this);
