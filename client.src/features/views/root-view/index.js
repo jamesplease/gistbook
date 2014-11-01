@@ -10,7 +10,7 @@ var MenuView = require('../menu/menu-view');
 
 var authChannel = Radio.channel('auth');
 
-module.exports = mn.LayoutView.extend({
+var RootView = mn.LayoutView.extend({
   el: $('body'),
 
   regions: {
@@ -34,3 +34,5 @@ module.exports = mn.LayoutView.extend({
     this.getRegion('header').show(new View({model: model}));
   }
 });
+
+module.exports = new RootView();

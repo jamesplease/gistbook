@@ -22,7 +22,7 @@ if (app.env === 'dev') { require('../features/dev'); }
 app.auth = require('../features/auth');
 app.modal = require('../features/modal');
 app.user = require('../features/entities/user');
-app.rootView = require('./root-view');
+app.rootView = require('../features/views/root-view');
 app.router = require('./router');
 
 // Attach it to the window. This is solely for debugging
