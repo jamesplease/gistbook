@@ -9,7 +9,9 @@
 // changed.
 // 
 
+var bb = require('backbone');
 var mn = require('marionette');
+var Intercept = require('backbone.intercept');
 
 // Create the app
 var app = new mn.Application();
@@ -27,5 +29,10 @@ app.footer = new (require('../features/footer'))();
 // Attach it to the window. This is solely for debugging
 // purposes – nothing else
 window.app = app;
+
+app.on('start', function() {
+  bb.history.start({pushState: true});
+  Intercept.start();
+});
 
 module.exports = app;
