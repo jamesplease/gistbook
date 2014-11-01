@@ -9,6 +9,9 @@
 // in a Marionette v3-like state. I cannot suggest you use them
 // unless you're absolutely sure you know what you're doing!
 require('../shims/application-shim');
+require('../shims/is-node-attached-shim');
+require('../shims/get-nested-view-shim');
+require('../shims/trigger-attach-shim');
 require('../shims/render-shim');
 require('../shims/regions-mixin-shim');
 require('../shims/router-shim');

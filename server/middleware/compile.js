@@ -7,7 +7,7 @@
 var cache = require('../helpers/page-cache');
 
 var token = function() {
-  return Math.random().toString(36).substr(2);
+  return Math.random().toString(36).slice(2);
 };
 
 module.exports = function(req, res) {
