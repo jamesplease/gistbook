@@ -60,7 +60,7 @@ module.exports = mn.LayoutView.extend({
       .then(function() {
         routerChannel.command('navigate', Radio.request('user', 'user').get('login'));
       })
-      .fail(function() {
+      .catch(function() {
         console.log('Unable to delete the gist');
       });
   },
@@ -95,7 +95,7 @@ module.exports = mn.LayoutView.extend({
           Radio.command('router', 'navigate', url);
         }
       })
-      .fail(function() {
+      .catch(function() {
         console.log('Gist not saved', arguments);
       });
   },

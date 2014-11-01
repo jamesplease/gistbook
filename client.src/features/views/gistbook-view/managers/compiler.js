@@ -28,11 +28,11 @@ module.exports = mn.Object.extend({
     // Finally, post to the server.
     this.post(serializedView)
       .done(_.bind(this.onPostSuccess, this))
-      .fail(_.bind(this.onPostError, this));
+      .catch(_.bind(this.onPostError, this));
   },
 
   post: function(serializedView) {
-    return $.post(this.url, serializedView);
+    return Promise.resolve($.post(this.url, serializedView));
   },
 
   // If the server responds that we've succeeded, then we
