@@ -1,9 +1,8 @@
-/*
- * dev
- * Features and functionality we want to include when we're
- * developing the application
- *
- */
+//
+// dev
+// Features and functionality we want to include when we're
+// developing the application
+//
 
 // Turn on debug mode
 var Radio = require('radio');

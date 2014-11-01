@@ -1,10 +1,9 @@
-/*
- * controlsWrapper
- * If the user is logged in, then this wraps every view. 
- * It also manages shared cached data between the Display
- * and Edit modes.
- *
- */
+//
+// controlsWrapper
+// If the user is logged in, then this wraps every view. 
+// It also manages shared cached data between the Display
+// and Edit modes.
+//
 
 var _ = require('underscore');
 var bb = require('backbone');

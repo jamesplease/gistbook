@@ -1,8 +1,7 @@
-/*
- * env
- * The app environment – one of `dev` or `prod`
- *
- */
+//
+// env
+// The app environment – one of `dev` or `prod`
+//
 
 var Radio = require('radio');
 var envChannel = Radio.channel('env');

@@ -1,8 +1,7 @@
-/*
- * GistbookUser
- * An object that represents the user of Gistbook
- *
- */
+//
+// GistbookUser
+// An object that represents the user of Gistbook
+//
 
 var bb = require('backbone');
 var _ = require('underscore');

@@ -1,8 +1,7 @@
-/*
- * index
- * Bootstrap & start our application
- *
- */
+//
+// index
+// Bootstrap & start our application
+//
 
 // Load our shims. In general, 'shims' are things that directly modify
 // Backbone or Marionette. These shims set this app up to be

@@ -1,8 +1,7 @@
-/*
- * Display Title View
- * Shows the Gistbook's title, and the text to edit it
- *
- */
+//
+// Display Title View
+// Shows the Gistbook's title, and the text to edit it
+//
 
 var mn = require('marionette');
 

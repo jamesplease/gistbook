@@ -1,8 +1,7 @@
-/*
- * EditHeaderView
- * The edit view for the title.
- *
- */
+//
+// EditHeaderView
+// The edit view for the title.
+//
 
 var mn = require('marionette');
 

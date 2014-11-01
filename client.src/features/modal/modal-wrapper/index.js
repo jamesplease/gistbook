@@ -1,9 +1,8 @@
-/*
- * ModalWrapper
- * Wraps views that are displayed as modals. Provides the
- * overlay mask for closing modals.
- *
- */
+//
+// ModalWrapper
+// Wraps views that are displayed as modals. Provides the
+// overlay mask for closing modals.
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

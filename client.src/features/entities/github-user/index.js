@@ -1,8 +1,7 @@
-/*
- * GithubUser
- * A model representing a Github User
- *
- */
+//
+// GithubUser
+// A model representing a Github User
+//
 
 var bb = require('backbone');
 var githubApiUtil = require('../../../util/github-api-util');

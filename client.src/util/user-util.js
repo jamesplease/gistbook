@@ -1,7 +1,6 @@
-/*
- * userUtil
- *
- */
+//
+// userUtil
+//
 
 var Radio = require('radio');
 

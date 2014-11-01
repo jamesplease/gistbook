@@ -1,7 +1,7 @@
-/*
- * ProfileView
- *
- */
+//
+// NoGistsView
+// Displayed when a user doesn't have any Gistbooks
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

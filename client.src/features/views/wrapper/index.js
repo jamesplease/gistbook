@@ -1,10 +1,9 @@
-/*
- * Wrapper
- * A LayoutView that only supports a single child, typically
- * because it 'wraps' that child to provide additional
- * functionality. This is a handy class to make the API simpler
- *
- */
+//
+// Wrapper
+// A LayoutView that only supports a single child, typically
+// because it 'wraps' that child to provide additional
+// functionality. This is a handy class to make the API simpler
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

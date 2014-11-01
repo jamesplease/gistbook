@@ -1,7 +1,6 @@
-/*
- * ProfileRoute
- *
- */
+//
+// ProfileRoute
+//
 
 var mn = require('marionette');
 var Radio = require('radio');

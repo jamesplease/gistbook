@@ -1,10 +1,9 @@
-/*
- * Application
- * A fancier Marionette.Application that starts history
- * and intercepts links for you. It also gets rid of unnecessary features
- * like Marionette.Callbacks.
- *
- */
+//
+// Application
+// A fancier Marionette.Application that starts history
+// and intercepts links for you. It also gets rid of unnecessary features
+// like Marionette.Callbacks.
+//
 
 var _ = require('underscore');
 var bb = require('backbone');

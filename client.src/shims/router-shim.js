@@ -1,17 +1,16 @@
 /* jshint -W084 */
 
-/*
- * router
- * A heavily modified Backbone Router that's
- * substantially more powerful. It's a bit
- * of a Frankenstein right now, as it only
- * modifies the Backbone.Router. A full
- * rewrite could clean it up quite a bit.
- *
- * Also, it wasn't tested against splats
- * or optional parameters so don't use 'em!
- *
- */
+//
+// router
+// A heavily modified Backbone Router that's
+// substantially more powerful. It's a bit
+// of a Frankenstein right now, as it only
+// modifies the Backbone.Router. A full
+// rewrite could clean it up quite a bit.
+//
+// Also, it wasn't tested against splats
+// or optional parameters so don't use 'em!
+//
 
 var _ = require('underscore');
 var bb = require('backbone');

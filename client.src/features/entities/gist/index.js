@@ -1,9 +1,8 @@
-/*
- * Gist
- * A model representing a new Github Gist that can
- * store a Gistbook.
- *
- */
+//
+// Gist
+// A model representing a new Github Gist that can
+// store a Gistbook.
+//
 
 var _ = require('underscore');
 var bb = require('backbone');

@@ -1,9 +1,8 @@
-/*
- * toJsonShim
- * Marionette v2.x Views use toJSON for serialization, which isn't
- * the intended use. This fixes that issue.
- *
- */
+//
+// toJsonShim
+// Marionette v2.x Views use toJSON for serialization, which isn't
+// the intended use. This fixes that issue.
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

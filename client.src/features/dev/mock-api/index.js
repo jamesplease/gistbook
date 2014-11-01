@@ -1,8 +1,7 @@
-/*
- * mockApi
- * A fake API to include in the dev build
- *
- */
+//
+// mockApi
+// A fake API to include in the dev build
+//
 
 var $ = require('jquery');
 require('jquery-mockjax');

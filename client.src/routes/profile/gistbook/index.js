@@ -1,7 +1,6 @@
-/*
- * GistbookRoute
- *
- */
+//
+// GistbookRoute
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

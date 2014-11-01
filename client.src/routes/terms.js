@@ -1,7 +1,6 @@
-/*
- * TermsRoute
- *
- */
+//
+// TermsRoute
+//
 
 var mn = require('marionette');
 var TermsView = require('../features/views/terms-view');

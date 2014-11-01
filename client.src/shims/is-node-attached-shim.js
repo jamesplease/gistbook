@@ -1,3 +1,9 @@
+//
+// getNestedViews
+// A shim for a Marionette 2.3 feature
+// Determines if a node is a child of the document
+//
+
 var bb = require('backbone');
 var mn = require('marionette');
 

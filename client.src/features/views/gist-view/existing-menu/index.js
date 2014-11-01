@@ -1,8 +1,7 @@
-/*
- * ExistingMenu
- * The menu to be displayed for a new Gistbook
- *
- */
+//
+// ExistingMenu
+// The menu to be displayed for a new Gistbook
+//
 
 var mn = require('marionette');
 var Radio = require('radio');

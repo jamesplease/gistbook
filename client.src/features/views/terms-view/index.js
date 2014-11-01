@@ -1,7 +1,6 @@
-/*
- * TermsView
- *
- */
+//
+// TermsView
+//
 
 var mn = require('marionette');
 

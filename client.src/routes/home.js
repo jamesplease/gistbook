@@ -1,8 +1,7 @@
-/*
- * HomeRoute
- * Home is where we make a Gistbook
- *
- */
+//
+// HomeRoute
+// Home is where we make a Gistbook
+//
 
 var mn = require('marionette');
 var Gist = require('../features/entities/gist');

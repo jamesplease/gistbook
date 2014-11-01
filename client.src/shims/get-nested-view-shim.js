@@ -1,3 +1,8 @@
+//
+// getNestedViews
+// A shim for a Marionette 2.3 feature
+//
+
 var _ = require('underscore');
 var mn = require('marionette');
 

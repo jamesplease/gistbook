@@ -1,8 +1,6 @@
-/*
- * RevokeModal
- *
- *
- */
+//
+// RevokeModal
+//
 
 var mn = require('marionette');
 var Radio = require('radio');

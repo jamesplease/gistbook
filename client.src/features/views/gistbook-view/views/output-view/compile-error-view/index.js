@@ -1,7 +1,6 @@
-/*
- * ErrorView
- *
- */
+//
+// CompileErrorView
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

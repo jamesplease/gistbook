@@ -1,9 +1,8 @@
-/*
- * Server Error View
- * Displayed in the main region whenever there's an error
- * response from the server. Ruh roh!
- *
- */
+//
+// Server Error View
+// Displayed in the main region whenever there's an error
+// response from the server. Ruh roh!
+//
 
 var mn = require('marionette');
 

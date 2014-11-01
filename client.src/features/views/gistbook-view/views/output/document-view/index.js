@@ -1,9 +1,8 @@
-/*
- * documentView
- * The HTML document that we build with the user's input. It is injected
- * into the iFrame view to render the output.
- *
- */
+//
+// documentView
+// The HTML document that we build with the user's input. It is injected
+// into the iFrame view to render the output.
+//
 
 var mn = require('marionette');
 

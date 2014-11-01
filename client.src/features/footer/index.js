@@ -1,7 +1,6 @@
-/*
- * Footer
- *
- */
+//
+// Footer
+//
 
 var mn = require('marionette');
 var FooterView = require('./footer-view');

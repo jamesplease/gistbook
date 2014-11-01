@@ -1,8 +1,7 @@
-/*
- * Sections
- * A CollectionView that renders all of the Gistbook's sections
- *
- */
+//
+// Sections
+// A CollectionView that renders all of the Gistbook's sections
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

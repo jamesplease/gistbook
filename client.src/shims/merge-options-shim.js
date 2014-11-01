@@ -1,9 +1,8 @@
-/*
- * mergeOptionsShim
- * this.getOption is a terrible pattern. This keeps one from
- * having to use that.
- *
- */
+//
+// mergeOptionsShim
+// this.getOption is a terrible pattern. This keeps one from
+// having to use that.
+//
 
 var mn = require('marionette');
 var _ = require('underscore');

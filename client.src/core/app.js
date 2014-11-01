@@ -1,14 +1,13 @@
-/*
- * app
- * Define our app, which is just a thin container for
- * everything else.
- *
- * Note that this is a Marionette v3 prototype application! Don't
- * expect to use all of these patterns in your app just yet. If you're
- * curious, check out the ../shims directory to see all that's
- * changed.
- *
- */
+//
+// app
+// Define our app, which is just a thin container for
+// everything else.
+//
+// Note that this is a Marionette v3 prototype application! Don't
+// expect to use all of these patterns in your app just yet. If you're
+// curious, check out the ../shims directory to see all that's
+// changed.
+// 
 
 var mn = require('marionette');
 
