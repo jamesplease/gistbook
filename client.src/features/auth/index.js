@@ -6,17 +6,19 @@
 
 var $ = require('jquery');
 var _ = require('underscore');
+var bb = require('backbone');
 var mn = require('marionette');
 var Radio = require('radio');
 var cookies = require('cookies-js');
 
-var Auth = mn.Object.extend({
+var Auth = bb.Model.extend({
+  defaults: {
+    token: '',
+    authorized: false
+  },
 
-  // Start things up here
   initialize: function() {
     this.channel = Radio.channel('auth');
-    this.authorized = false;
-    this.token = '';
     this.determineLogin();
     this.configureEvents();
     this._configureAjax();
@@ -25,8 +27,8 @@ var Auth = mn.Object.extend({
   // Log us out by destroying the token
   logout: function() {
     cookies.expire('token');
-    this.authorized = false;
-    this.token = '';
+    this.set('authorized', false);
+    this.set('token', '');
     this.channel.trigger('logout');
   },
 
@@ -36,26 +38,26 @@ var Auth = mn.Object.extend({
 
     // Set the status of our authorization
     if (token) {
-      this.authorized = true;
-      this.token = token;
+      this.set('authorized', true);
+      this.set('token', token);
     } else {
-      this.authorized = false;
+      this.set('authorized', false);
     }
 
     // Trigger it on the channel, and register it as a request
-    this.channel.trigger('authorize', {
-      token: this.token,
-      authorized: this.authorized
+    this.trigger('authorize', {
+      token: this.get('token'),
+      authorized: this.get('authorized')
     });
   },
 
   // Register our events on the channel
   configureEvents: function() {
     this.channel.reply('authorized', function() {
-      return this.authorized;
+      return this.get('authorized');
     }, this);
     this.channel.reply('token', function() {
-      return this.token;
+      return this.get('token');
     }, this);
     this.channel.comply('logout', this.logout, this);
   },
@@ -65,8 +67,8 @@ var Auth = mn.Object.extend({
     var self = this;
     $.ajaxSetup({
       beforeSend: function (jqXHR, settings) {
-        if (self.authorized) {
-          jqXHR.setRequestHeader('Authorization', 'token ' + self.token);
+        if (self.get('authorized')) {
+          jqXHR.setRequestHeader('Authorization', 'token ' + self.get('token'));
         }
         return true;
     }
@@ -74,4 +76,4 @@ var Auth = mn.Object.extend({
   }
 });
 
-module.exports = Auth;
+module.exports = new Auth();
