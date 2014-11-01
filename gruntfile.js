@@ -261,7 +261,7 @@ module.exports = function(grunt) {
     grunt.task.run(taskArray);
   });
 
-  grunt.registerTask('dev', 'Develop the app', ['jshint', 'build:dev', 'express:dev', 'watch']);
+  grunt.registerTask('work', 'Develop the app', ['jshint', 'build:dev', 'express:dev', 'watch']);
 
   // For running the site on a production server
   grunt.registerTask('deploy', 'Deploy the app', ['jshint', 'build:prod', 'express:prod']);

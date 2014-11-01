@@ -7,7 +7,6 @@
 // Backbone or Marionette. These shims set this app up to be
 // in a Marionette v3-like state. I cannot suggest you use them
 // unless you're absolutely sure you know what you're doing!
-require('../shims/application-shim');
 require('../shims/is-node-attached-shim');
 require('../shims/get-nested-view-shim');
 require('../shims/trigger-attach-shim');
