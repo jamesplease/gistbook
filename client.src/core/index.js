@@ -12,10 +12,9 @@ require('../shims/get-nested-view-shim');
 require('../shims/trigger-attach-shim');
 require('../shims/render-shim');
 require('../shims/regions-mixin-shim');
-require('../shims/router-shim');
-require('../shims/route-shim');
-require('../shims/history-shim');
 require('../shims/to-json-shim');
+require('../shims/route-shim');
+require('../shims/router-shim');
 require('../shims/merge-options-shim');
 
 // Load & start our app

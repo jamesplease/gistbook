@@ -9,37 +9,28 @@ var GistView = require('../../../features/views/gist-view');
 var Gist = require('../../../features/entities/gist');
 var ServerErrorView = require('../../../features/views/server-error-view');
 
-var GistbookRoute = mn.Route.extend({
-  data: {
-    gistbook: {
-      dataClass: Gist,
-      initialData: function(urlData) {
-        return { id: urlData.params.gistbookId };
-      }
-    }
+module.exports = mn.Route.extend({
+  fetch: function(urlData) {
+    this.gistbook = new Gist({
+      id: urlData.params.gistbookId
+    });
+    return this.gistbook.fetch();
   },
 
-  views: {
-    profile: {
-      model: 'gistbook',
-      region: 'main',
-      getViewClass: function(options) {
-        var gistData = options.data[0];
-        var gistOwner = gistData.owner;
-        var gistUser = gistOwner ? gistOwner.login : 'anonymous';
-        var username = options.urlData.params.username;
-        return gistUser === username ? GistView : ServerErrorView;
-      },
-      errorView: ServerErrorView,
-      options: function(urlData) {
-        var username = Radio.request('user', 'user').get('login');
-        var thisUser = urlData.params.username;
-        return {
-          ownGistbook: username === thisUser
-        };
-      }
-    }
+  onFetchError: function() {
+    Radio.command('rootView', 'showIn:container', new ServerErrorView());
+  },
+
+  show: function(data, urlData) {
+    var gistOwner = this.gistbook.get('owner');
+    var gistUser = gistOwner ? gistOwner.login : 'anonymous';
+    var username = urlData.params.username;
+    var View = gistUser === username ? GistView : ServerErrorView;
+    var user = Radio.request('user', 'user');
+    var view = new View({
+      model: this.gistbook,
+      ownGistbook: user.get('login') === username
+    });
+    Radio.command('rootView', 'showIn:container', view);
   }
 });
-
-module.exports = GistbookRoute;

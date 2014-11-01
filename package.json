@@ -53,6 +53,7 @@
   "dependencies": {
     "backbone": "^1.1.2",
     "backbone.babysitter": "^0.1.1",
+    "backbone.base-router": "^0.4.1",
     "backbone.intercept": "^0.2.0",
     "backbone.marionette": "^2.1.0",
     "backbone.radio": "^0.6.0",

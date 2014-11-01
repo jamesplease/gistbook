@@ -3,13 +3,11 @@
 //
 
 var mn = require('marionette');
+var Radio = require('radio');
 var TermsView = require('../features/views/terms-view');
 
 module.exports = mn.Route.extend({
-  views: {
-    home: {
-      region: 'main',
-      view: TermsView
-    }
+  show: function() {
+    Radio.command('rootView', 'showIn:container', new TermsView());
   }
 });
