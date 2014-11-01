@@ -16,11 +16,6 @@ module.exports = mn.ItemView.extend({
   // times, the CSS is overwritten.
   className: 'gistblock gistblock-text',
 
-  // Bind some context when initialized
-  initialize: function() {
-    _.bindAll(this, '_parseMarked');
-  },
-
   // After render, check if the user has inputted any text. If so,
   // pass it along to be rendered by Mathjax and Marked.
   onRender: function() {
@@ -37,7 +32,7 @@ module.exports = mn.ItemView.extend({
   // Parse the text of the element as Mathjax, and then pass it along to Marked.
   _parseText: function(text) {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, this.$el[0]]);
-    MathJax.Hub.Queue(this._parseMarked);
+    MathJax.Hub.Queue(_.bind(this._parseMarked, this));
   },
 
   // Parse the element's HTML as Markdown, then set the element's text.

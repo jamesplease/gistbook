@@ -13,10 +13,6 @@ var IFrameView = require('../views/output/iframe');
 module.exports = mn.Object.extend({
   url: '/compile',
 
-  initialize: function() {
-    _.bindAll(this, 'onPostSuccess', 'onPostError');
-  },
-
   compile: function(code) {
 
     // Create our document view. This is ultimately what
@@ -31,8 +27,8 @@ module.exports = mn.Object.extend({
 
     // Finally, post to the server.
     this.post(serializedView)
-      .done(this.onPostSuccess)
-      .fail(this.onPostError);
+      .done(_.bind(this.onPostSuccess, this))
+      .fail(_.bind(this.onPostError, this));
   },
 
   post: function(serializedView) {

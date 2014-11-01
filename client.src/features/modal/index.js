@@ -14,8 +14,8 @@ var Modal = mn.Region.extend({
   initialize: function() {
     this.modalWrapper = new ModalWrapper();
     this.show(this.modalWrapper);
-    modalChannel.comply('show', this.modalWrapper.showView);
-    modalChannel.comply('hide', this.modalWrapper.destroyView);
+    modalChannel.comply('show', this.modalWrapper.showView, this.modalWrapper);
+    modalChannel.comply('hide', this.modalWrapper.destroyView, this.modalWrapper);
   },
 
   el: '.modal'

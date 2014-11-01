@@ -12,7 +12,6 @@ var authChannel = Radio.channel('auth');
 
 var User = bb.Model.extend({
   initialize: function() {
-    _.bindAll(this, 'clear');
     this._configureEvents();
   },
 

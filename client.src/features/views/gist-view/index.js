@@ -28,7 +28,6 @@ module.exports = mn.LayoutView.extend({
   },
 
   initialize: function(options) {
-    _.bindAll(this, '_sync', '_delete');
     this.mergeOptions(options, gistViewOptions);
   },
 

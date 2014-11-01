@@ -11,8 +11,6 @@ var ErrorView = require('./compile-error-view');
 
 module.exports = mn.LayoutView.extend({
   initialize: function(options) {
-    _.bindAll(this, 'showCompiledView');
-
     this.sections = options.sections;
     this.createManagers();
     this.configureListeners();

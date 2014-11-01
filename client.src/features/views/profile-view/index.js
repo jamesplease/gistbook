@@ -10,7 +10,6 @@ var GistList = require('./views/gist-list');
 
 var ProfileView = mn.LayoutView.extend({
   initialize: function() {
-    _.bindAll(this, 'onCollectionChange');
     this.configureEvents();
   },
 
