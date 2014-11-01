@@ -1,8 +1,7 @@
-/*
- * modal
- * A singleton that stores our modal
- *
- */
+//
+// modal
+// A singleton that stores our modal
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

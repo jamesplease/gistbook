@@ -1,9 +1,8 @@
-/*
- * editWrapper
- * A wrapper for an editable View; it provides the controls to toggle
- * between source/preview, and the buttons to cancel/save the changes.
- *
- */
+//
+// editWrapper
+// A wrapper for an editable View; it provides the controls to toggle
+// between source/preview, and the buttons to cancel/save the changes.
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

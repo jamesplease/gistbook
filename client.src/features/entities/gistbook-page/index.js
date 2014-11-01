@@ -1,8 +1,7 @@
-/*
- * GistbookPage
- * A Model for a Gistbook Page
- *
- */
+//
+// GistbookPage
+// A Model for a Gistbook Page
+//
 
 var _ = require('underscore');
 var bb = require('backbone');

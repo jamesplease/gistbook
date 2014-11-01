@@ -1,7 +1,6 @@
-/*
- * SettingsRoute
- *
- */
+//
+// SettingsRoute
+//
 
 var mn = require('marionette');
 var Radio = require('radio');

@@ -1,3 +1,7 @@
+//
+// GistbookListView
+//
+
 var mn = require('marionette');
 
 var GistbookListView = mn.ItemView.extend({

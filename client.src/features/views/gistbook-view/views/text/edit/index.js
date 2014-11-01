@@ -1,8 +1,7 @@
-/*
- * textEditView
- * Modify text based on a textarea
- *
- */
+//
+// textEditView
+// Modify text based on a textarea
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

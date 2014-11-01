@@ -1,8 +1,7 @@
-/*
- * compiler
- * Builds our output iFrame view.
- *
- */
+//
+// compiler
+// Builds our output iFrame view.
+//
 
 var $ = require('jquery');
 var _ = require('underscore');

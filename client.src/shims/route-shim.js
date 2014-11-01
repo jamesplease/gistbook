@@ -1,10 +1,9 @@
-/*
- * route
- * A Class that ties together data, a view, and a region. Goes with
- * the new Router Class. This is still a *really* rough draft – lots
- * of cleanup is necessary!
- *
- */
+//
+// route
+// A Class that ties together data, a view, and a region. Goes with
+// the new Router Class. This is still a *really* rough draft – lots
+// of cleanup is necessary!
+//
 
 var $ = require('jquery');
 var _ = require('underscore');

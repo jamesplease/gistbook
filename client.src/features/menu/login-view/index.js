@@ -1,9 +1,8 @@
-/*
- * LoginView
- * A view that displays our login button in the
- * header
- *
- */
+//
+// LoginView
+// A view that displays our login button in the
+// header
+//
 
 var mn = require('marionette');
 

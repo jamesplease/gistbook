@@ -1,8 +1,7 @@
-/*
- * GistbookView
- * A LayoutView that renders a Gistbook
- *
- */
+//
+// GistbookView
+// A LayoutView that renders a Gistbook
+//
 
 var _ = require('underscore');
 var bb = require('backbone');

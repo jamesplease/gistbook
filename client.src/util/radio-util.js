@@ -1,7 +1,6 @@
-/*
- * radioUtil
- *
- */
+//
+// radioUtil
+//
 
 var _ = require('underscore');
 var Radio = require('radio');

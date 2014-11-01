@@ -1,7 +1,6 @@
-/*
- * SettingsView
- *
- */
+//
+// SettingsView
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

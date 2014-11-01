@@ -1,9 +1,8 @@
-/*
- * aceEditor
- * A view for the ace editor, which is used
- * when editing code
- *
- */
+//
+// aceEditor
+// A view for the ace editor, which is used
+// when editing code
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

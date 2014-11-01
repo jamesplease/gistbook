@@ -1,7 +1,6 @@
-/*
- * LogoutRoute
- *
- */
+//
+// LogoutRoute
+//
 
 var mn = require('marionette');
 var Radio = require('radio');

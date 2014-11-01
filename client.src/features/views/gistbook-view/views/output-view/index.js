@@ -1,8 +1,7 @@
-/*
- * compileView
- * Manages compiling a Gistbook Page
- *
- */
+//
+// compileView
+// Manages compiling a Gistbook Page
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

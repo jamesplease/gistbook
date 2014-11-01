@@ -1,8 +1,7 @@
-/*
- * GistView
- * Displays a Github Gist that contains a Gistbook
- *
- */
+//
+// GistView
+// Displays a Github Gist that contains a Gistbook
+//
 
 var bb = require('backbone');
 var mn = require('marionette');

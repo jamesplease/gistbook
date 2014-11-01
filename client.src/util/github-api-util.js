@@ -1,7 +1,6 @@
-/*
- * githubApiUtil
- *
- */
+//
+// githubApiUtil
+//
 
 var githubApiUtil = {
   url: 'https://api.github.com',

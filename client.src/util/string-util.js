@@ -1,7 +1,6 @@
-/*
- * stringUtil
- *
- */
+//
+// stringUtil
+//
 
 var stringUtil = {
 

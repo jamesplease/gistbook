@@ -1,3 +1,9 @@
+//
+// getNestedViews
+// A shim for a Marionette 2.3 feature.
+// Triggers the attach method on children views
+//
+
 var _ = require('underscore');
 var mn = require('marionette');
 

@@ -1,9 +1,8 @@
-/*
- * auth
- * Manages anything and everything related to 
- * authorization
- *
- */
+//
+// auth
+// Manages anything and everything related to 
+// authorization
+//
 
 var $ = require('jquery');
 var _ = require('underscore');

@@ -1,10 +1,10 @@
-/*
- * render
- * Overrides the render to support string-based templates
- * pulled from the `templates` module, which are the
- * pre-compiled JST templates.
- *
- */
+//
+// render
+// Overrides the render to support string-based templates
+// pulled from the `templates` module, which are the
+// pre-compiled JST templates.
+//
+//
 
 var mn = require('marionette');
 var templates = require('templates');

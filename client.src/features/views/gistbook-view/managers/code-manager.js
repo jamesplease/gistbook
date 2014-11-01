@@ -1,11 +1,10 @@
-/*
- * codeManager
- * A gistbook page stores a collection of Models for each type of
- * code: HTML, JS, and CSS.
- * This manager has methods to loop through the page to get all
- * of that data in a form that we can use for sending to the server.
- *
- */
+//
+// codeManager
+// A gistbook page stores a collection of Models for each type of
+// code: HTML, JS, and CSS.
+// This manager has methods to loop through the page to get all
+// of that data in a form that we can use for sending to the server.
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

@@ -1,7 +1,6 @@
-/*
- * AboutView
- *
- */
+//
+// AboutView
+//
 
 var mn = require('marionette');
 

@@ -1,7 +1,6 @@
-/*
- * GistList
- *
- */
+//
+// GistList
+//
 
 var mn = require('marionette');
 var GistbookListView = require('../gistbook-list-view');

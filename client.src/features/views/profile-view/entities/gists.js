@@ -1,8 +1,7 @@
-/*
- * Gists
- * A Collection of a user's Gists that store Gistbooks
- *
- */
+//
+// Gists
+// A Collection of a user's Gists that store Gistbooks
+//
 
 var _ = require('underscore');
 var bb = require('backbone');

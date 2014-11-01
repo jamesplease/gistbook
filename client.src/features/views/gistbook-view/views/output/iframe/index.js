@@ -1,8 +1,7 @@
-/*
- * iframe
- * The iFrame that renders the user's code.
- *
- */
+//
+// iframe
+// The iFrame that renders the user's code.
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

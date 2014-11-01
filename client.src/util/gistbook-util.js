@@ -1,7 +1,6 @@
-/*
- * gistbookUtil
- *
- */
+//
+// gistbookUtil
+//
 
 var _ = require('underscore');
 var Radio = require('radio');

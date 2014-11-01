@@ -1,8 +1,7 @@
-/*
- * menu
- * Manages the application's menu
- *
- */
+//
+// menu
+// Manages the application's menu
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

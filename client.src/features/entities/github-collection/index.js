@@ -1,8 +1,7 @@
-/*
- * GithubCollection
- * A collection that represents a Github API resource
- *
- */
+//
+// GithubCollection
+// A collection that represents a Github API resource
+//
 
 var _ = require('underscore');
 var bb = require('backbone');

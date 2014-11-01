@@ -1,8 +1,7 @@
-/*
- * displayWrapper
- * This provides our edit menu when you're logged in
- *
- */
+//
+// displayWrapper
+// This provides our edit menu when you're logged in
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

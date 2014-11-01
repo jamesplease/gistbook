@@ -1,7 +1,6 @@
-/*
- * AboutRoute
- *
- */
+//
+// AboutRoute
+//
 
 var mn = require('marionette');
 var AboutView = require('../features/views/about-view');

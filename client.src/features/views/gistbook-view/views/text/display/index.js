@@ -1,8 +1,7 @@
-/*
- * DisplayTextView
- * Displays text, first formatted with Markdown, and then Latex.
- *
- */
+//
+// DisplayTextView
+// Displays text, first formatted with Markdown, and then Latex.
+//
 
 var _ = require('underscore');
 var mn = require('marionette');

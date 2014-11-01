@@ -1,8 +1,7 @@
-/*
- * RegionsMixin
- * It's like RegionManager, except it's a mixin
- *
- */
+//
+// RegionsMixin
+// It's like RegionManager, except it's a mixin
+//
 
 var mn = require('marionette');
 var _ = require('underscore');

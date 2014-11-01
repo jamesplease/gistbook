@@ -1,8 +1,7 @@
-/*
- * MenuView
- * The menu that's displayed once you're logged in
- *
- */
+//
+// MenuView
+// The menu that's displayed once you're logged in
+//
 
 var mn = require('marionette');
 
