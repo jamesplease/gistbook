@@ -7,7 +7,7 @@
 var mn = require('marionette');
 var Radio = require('radio');
 
-module.exports = new mn.Router({
+var Router = mn.Router.extend({
   initialize: function() {
     Radio.comply('router', 'navigate', function(route) {
       this.navigate(route, {trigger:true});
@@ -25,3 +25,5 @@ module.exports = new mn.Router({
     ':username/:gistbookId': new (require('../routes/profile/gistbook'))()
   }
 });
+
+module.exports = new Router();
