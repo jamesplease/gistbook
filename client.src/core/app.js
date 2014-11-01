@@ -19,7 +19,7 @@ var app = new mn.Application();
 // Load up all the things
 app.env = require('../features/env');
 if (app.env === 'dev') { require('../features/dev'); }
-app.auth = require('./auth');
+app.auth = require('../features/auth');
 app.modal = require('../features/modal');
 app.user = require('../features/entities/user');
 app.rootView = require('./root-view');
