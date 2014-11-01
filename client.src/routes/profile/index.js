@@ -10,40 +10,35 @@ var GistbookRoute = require('./gistbook');
 var GithubUser = require('../../features/entities/github-user');
 var ServerErrorView = require('../../features/views/server-error-view');
 
-var user = Radio.request('user', 'user');
-
 module.exports = mn.Route.extend({
-  data: {
-    gistbooks: {
-      getDataClass: function(urlData) {
-        var dataOptions = {};
-        if (urlData.params.username !== user.get('login')) {
-          dataOptions.collectionUrl = '/users/' + urlData.params.username + '/gists';
-        }
-
-        return Gists.extend(dataOptions);
-      }
-    },
-    user: {
-      dataClass: GithubUser,
-      initialData: function(urlData) {
-        return { id: urlData.params.username };
-      },
-      cache: false
+  fetch: function(urlData) {
+    var user = Radio.request('user', 'user');
+    var dataOptions = {};
+    if (urlData.params.username !== user.get('login')) {
+      dataOptions.collectionUrl = '/users/' + urlData.params.username + '/gists';
     }
+    var Gistbooks = Gists.extend(dataOptions);
+    this.gistbooks = new Gistbooks();
+
+    this.githubUser = new GithubUser({
+      id: urlData.params.username
+    });
+
+    return Promise.all([
+      this.githubUser.fetch(),
+      this.gistbooks.fetch()
+    ]);
   },
 
-  views: {
-    profile: {
-      model: 'user',
-      collection: 'gistbooks',
-      region: 'main',
-      view: ProfileView,
-      errorView: ServerErrorView
-    }
+  onFetchError: function() {
+    Radio.command('rootView', 'showIn:container', new ServerErrorView());
   },
 
-  routes: {
-    '/:gistbookId': GistbookRoute
+  show: function(data) {
+    var profileView = new ProfileView({
+      model: this.githubUser,
+      collection: this.gistbooks
+    });
+    Radio.command('rootView', 'showIn:container', profileView);
   }
 });

@@ -4,20 +4,16 @@
 //
 
 var mn = require('marionette');
+var Radio = require('radio');
 var Gist = require('../features/entities/gist');
 var GistView = require('../features/views/gist-view');
 
 module.exports = mn.Route.extend({
-  views: {
-    home: {
-      model: function() {
-        return new Gist();
-      },
-      region: 'main',
-      view: GistView,
-      options: {
-        newGist: true
-      }
-    }
+  show: function() {
+    var gistView = new GistView({
+      model: new Gist(),
+      newGist: true
+    });
+    Radio.command('rootView', 'showIn:container', gistView);
   }
 });

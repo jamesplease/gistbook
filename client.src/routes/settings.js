@@ -8,9 +8,7 @@ var SettingsView = require('../features/views/settings-view');
 
 var user = Radio.request('user', 'user');
 
-var SettingsRoute = mn.Route.extend({
-
-  title: 'Account Settings',
+module.exports = mn.Route.extend({
 
   // Redirect us to the home page if we're unauthorized
   // This is the only page that requires that you be authorized
@@ -18,13 +16,7 @@ var SettingsRoute = mn.Route.extend({
     return !Radio.request('auth', 'authorized') ? '' : false;
   },
 
-  views: {
-    settings: {
-      model: user,
-      region: 'main',
-      view: SettingsView
-    }
+  show: function() {
+    Radio.command('rootView', 'showIn:container', new SettingsView({ model: user}));
   }
 });
-
-module.exports = SettingsRoute;

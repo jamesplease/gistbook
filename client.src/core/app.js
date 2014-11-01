@@ -19,12 +19,11 @@ var app = new mn.Application();
 // Load up all the things
 app.env = require('../features/env');
 if (app.env === 'dev') { require('../features/dev'); }
-app.auth = new (require('../features/auth'))();
+app.auth = require('./auth');
 app.modal = require('../features/modal');
 app.user = require('../features/entities/user');
+app.rootView = require('./root-view');
 app.router = require('./router');
-app.menu = new (require('../features/menu'))();
-app.footer = new (require('../features/footer'))();
 
 // Attach it to the window. This is solely for debugging
 // purposes – nothing else

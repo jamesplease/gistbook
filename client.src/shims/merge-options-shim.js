@@ -13,6 +13,3 @@ var mergeOptions = function(options, mergeOptions) {
 
 mn.View.prototype.mergeOptions = mergeOptions;
 mn.Object.prototype.mergeOptions = mergeOptions;
-mn.Application.prototype.mergeOptions = mergeOptions;
-mn.Route.prototype.mergeOptions = mergeOptions;
-mn.Router.prototype.mergeOptions = mergeOptions;

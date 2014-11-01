@@ -5,22 +5,23 @@
 //
 
 var mn = require('marionette');
+var Radio = require('radio');
 
-var router = new mn.Router({
-
-  regions: {
-    main: 'main > div'
+module.exports = new mn.Router({
+  initialize: function() {
+    Radio.comply('router', 'navigate', function(route) {
+      this.navigate(route, {trigger:true});
+    }, this);
   },
 
   routes: {
-    ':username': require('../routes/profile'),
-    '': require('../routes/home'),
-    'new': require('../routes/new'),
-    'logout': require('../routes/logout'),
-    'settings': require('../routes/settings'),
-    'about': require('../routes/about'),
-    'terms': require('../routes/terms')
+    '': new (require('../routes/home'))(),
+    'new': new (require('../routes/new'))(),
+    'about': new (require('../routes/about'))(),
+    'terms': new (require('../routes/terms'))(),
+    'logout': new (require('../routes/logout'))(),
+    'settings': new (require('../routes/settings'))(),
+    ':username': new (require('../routes/profile'))(),
+    ':username/:gistbookId': new (require('../routes/profile/gistbook'))()
   }
 });
-
-module.exports = router;
