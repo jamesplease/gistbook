@@ -9,6 +9,7 @@
 // unless you're absolutely sure you know what you're doing!
 require('../shims/is-node-attached-shim');
 require('../shims/get-nested-view-shim');
+require('../shims/backbone-sync-shim');
 require('../shims/trigger-attach-shim');
 require('../shims/render-shim');
 require('../shims/regions-mixin-shim');
