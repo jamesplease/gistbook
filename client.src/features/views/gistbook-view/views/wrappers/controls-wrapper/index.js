@@ -52,13 +52,6 @@ module.exports = mn.LayoutView.extend({
   // a cached model for users to mess around with
   initialize: function(options) {
     this.mergeOptions(options, this.controlsWrapperOptions);
-
-    _.bindAll(this,
-      'onEdit', 'onDelete',
-      'onCancel', 'onUpdate',
-      'onAddText', 'onAddJavascript'
-    );
-
     this._createCache();
   },
 

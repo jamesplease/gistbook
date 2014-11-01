@@ -14,7 +14,6 @@ var Auth = mn.Object.extend({
 
   // Start things up here
   initialize: function() {
-    _.bindAll(this, 'logout');
     this.channel = Radio.channel('auth');
     this.authorized = false;
     this.token = '';
@@ -58,7 +57,7 @@ var Auth = mn.Object.extend({
     this.channel.reply('token', function() {
       return this.token;
     }, this);
-    this.channel.comply('logout', this.logout);
+    this.channel.comply('logout', this.logout, this);
   },
 
   // Include our token in every subsequent request

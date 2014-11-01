@@ -12,7 +12,6 @@ var wrapperOptions = ['region'];
 
 module.exports = mn.LayoutView.extend({
   initialize: function() {
-    _.bindAll(this, 'showView', 'destroyView');
     this._createRegions();
     this._setEvents();
   },
@@ -22,7 +21,7 @@ module.exports = mn.LayoutView.extend({
   },
 
   _setEvents: function() {
-    this.on('before:show', this.showWrappedView);
+    this.on('before:show', this.showWrappedView, this);
   },
 
   // Show the view in the region

@@ -13,7 +13,6 @@ var authChannel = Radio.channel('auth');
 
 var Menu = mn.Object.extend({
   initialize: function(options) {
-    _.bindAll(this, '_showView');
     this.region = new mn.Region({el: 'header .menu'});
     this._showView();
     this._configureEvents();

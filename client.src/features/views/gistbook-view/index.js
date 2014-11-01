@@ -16,7 +16,6 @@ var gistbookViewOptions = ['newGist', 'ownGistbook'];
 
 module.exports = mn.LayoutView.extend({
   initialize: function(options) {
-    _.bindAll(this, '_showDisplayTitle', '_showEditTitle');
     this.mergeOptions(options, gistbookViewOptions);
   },
 
