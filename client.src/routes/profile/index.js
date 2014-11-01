@@ -12,6 +12,7 @@ var ServerErrorView = require('../../features/views/server-error-view');
 
 module.exports = mn.Route.extend({
   fetch: function(urlData) {
+    console.log('requesting!');
     var user = Radio.request('user', 'user');
     var dataOptions = {};
     if (urlData.params.username !== user.get('login')) {
