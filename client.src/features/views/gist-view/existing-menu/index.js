@@ -3,10 +3,10 @@
 // The menu to be displayed for a new Gistbook
 //
 
-var mn = require('marionette');
-var Radio = require('radio');
+import * as mn from 'marionette';
+import * as Radio from 'radio';
 
-module.exports = mn.ItemView.extend({
+export default mn.ItemView.extend({
   existingMenuOptions: ['newGist', 'ownGistbook'],
 
   template: 'existingGistMenu',

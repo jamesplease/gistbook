@@ -3,21 +3,21 @@
 // Displays a Github Gist that contains a Gistbook
 //
 
-var bb = require('backbone');
-var mn = require('marionette');
-var _ = require('underscore');
-var Radio = require('radio');
-var GistbookPage = require('../../entities/gistbook-page');
-var GistbookView = require('../gistbook-view');
-var Gist = require('../../../features/entities/gist');
-var ExistingMenu = require('./existing-menu');
-var gistbookUtil = require('../../../util/gistbook-util');
+import * as _ from 'underscore';
+import * as bb from 'backbone';
+import * as mn from 'marionette';
+import * as Radio from 'radio';
+import GistbookPage from '../../entities/gistbook-page';
+import GistbookView from '../gistbook-view';
+import Gist from '../../../features/entities/gist';
+import ExistingMenu from './existing-menu';
+import gistbookUtil from '../../../util/gistbook-util';
 
 var routerChannel = Radio.channel('router');
 
 var gistViewOptions = ['newGist', 'ownGistbook'];
 
-module.exports = mn.LayoutView.extend({
+export default mn.LayoutView.extend({
   className: 'home',
 
   template: 'gistView',

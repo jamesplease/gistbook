@@ -5,8 +5,9 @@
 //
 
 // Turn on debug mode
-var Radio = require('radio');
-require('radio').DEBUG = true;
+import * as Radio from 'radio';
+
+Radio.DEBUG = true;
 
 // Load up our mock API
-require('./mock-api');
+import './mock-api';

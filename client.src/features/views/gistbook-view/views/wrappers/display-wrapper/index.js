@@ -3,10 +3,10 @@
 // This provides our edit menu when you're logged in
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
 
-module.exports = mn.LayoutView.extend({
+export default mn.LayoutView.extend({
   template: 'displayWrapper',
 
   className: 'gistblock-menu',

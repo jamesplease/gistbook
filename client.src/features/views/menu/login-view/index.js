@@ -4,10 +4,8 @@
 // header
 //
 
-var mn = require('marionette');
+import * as mn from 'marionette';
 
-var LoginView = mn.ItemView.extend({
+export default mn.ItemView.extend({
   template: 'loginView'
 });
-
-module.exports = LoginView;

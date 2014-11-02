@@ -3,19 +3,18 @@
 // A CollectionView that renders all of the Gistbook's sections
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
-var Radio = require('radio');
-var DisplayTextView = require('../text/display');
-var ControlsWrapper = require('../wrappers/controls-wrapper');
-var AceEditorView = require('../ace-editor-view');
-var stringUtil = require('../../../../../util/string-util');
-var radioUtil = require('../../../../../util/radio-util');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
+import * as Radio from 'radio';
+import DisplayTextView from '../text/display';
+import ControlsWrapper from '../wrappers/controls-wrapper';
+import AceEditorView from '../ace-editor-view';
+import stringUtil from '../../../../../util/string-util';
+import radioUtil from '../../../../../util/radio-util';
 
 var sectionsOptions = ['newGist', 'ownGistbook'];
 
-
-module.exports = mn.CollectionView.extend({
+export default mn.CollectionView.extend({
   tagName: 'ul',
 
   initialize: function(options) {

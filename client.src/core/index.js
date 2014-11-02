@@ -7,18 +7,17 @@
 // Backbone or Marionette. These shims set this app up to be
 // in a Marionette v3-like state. I cannot suggest you use them
 // unless you're absolutely sure you know what you're doing!
-require('../shims/is-node-attached-shim');
-require('../shims/get-nested-view-shim');
-require('../shims/backbone-sync-shim');
-require('../shims/trigger-attach-shim');
-require('../shims/render-shim');
-require('../shims/regions-mixin-shim');
-require('../shims/to-json-shim');
-require('../shims/route-shim');
-require('../shims/router-shim');
-require('../shims/merge-options-shim');
+import '../shims/is-node-attached-shim';
+import '../shims/get-nested-view-shim';
+import '../shims/backbone-sync-shim';
+import '../shims/trigger-attach-shim';
+import '../shims/render-shim';
+import '../shims/regions-mixin-shim';
+import '../shims/to-json-shim';
+import '../shims/route-shim';
+import '../shims/router-shim';
+import '../shims/merge-options-shim';
 
 // Load & start our app
-require('./app').start({
-  historyOptions: {pushState: true}
-});
+import app from './app';
+app.start();

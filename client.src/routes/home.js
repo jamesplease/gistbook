@@ -3,12 +3,12 @@
 // Home is where we make a Gistbook
 //
 
-var mn = require('marionette');
-var Radio = require('radio');
-var Gist = require('../features/entities/gist');
-var GistView = require('../features/views/gist-view');
+import * as mn from 'marionette';
+import * as Radio from 'radio';
+import Gist from '../features/entities/gist';
+import GistView from '../features/views/gist-view';
 
-module.exports = mn.Route.extend({
+export default mn.Route.extend({
   show: function() {
     var gistView = new GistView({
       model: new Gist(),

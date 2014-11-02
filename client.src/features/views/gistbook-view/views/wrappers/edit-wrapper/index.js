@@ -4,11 +4,11 @@
 // between source/preview, and the buttons to cancel/save the changes.
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
-var EditTextView = require('../../text/edit');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
+import EditTextView from '../../text/edit';
 
-module.exports = mn.LayoutView.extend({
+export default mn.LayoutView.extend({
   template: 'editWrapper',
 
   className: 'gistblock-editor',

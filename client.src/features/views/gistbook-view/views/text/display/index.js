@@ -3,11 +3,11 @@
 // Displays text, first formatted with Markdown, and then Latex.
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
-var marked = require('marked');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
+import * as marked from 'marked';
 
-module.exports = mn.ItemView.extend({
+export default mn.ItemView.extend({
 
   template: false,
 

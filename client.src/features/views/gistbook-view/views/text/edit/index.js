@@ -3,10 +3,10 @@
 // Modify text based on a textarea
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
 
-module.exports = mn.ItemView.extend({
+export default mn.ItemView.extend({
   template: _.template('<%- source %>'),
 
   tagName: 'textarea',

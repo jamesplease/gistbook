@@ -6,10 +6,10 @@
 // of that data in a form that we can use for sending to the server.
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
 
-module.exports = mn.Object.extend({
+export default mn.Object.extend({
   codeManagerOptions: ['sections', 'join'],
 
   // The character used to join separate blocks of source code

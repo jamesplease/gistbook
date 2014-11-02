@@ -3,9 +3,9 @@
 // An object that represents the user of Gistbook
 //
 
-var bb = require('backbone');
-var _ = require('underscore');
-var Radio = require('radio');
+import * as bb from 'backbone';
+import * as _ from 'underscore';
+import * as Radio from 'radio';
 
 var userChannel = Radio.channel('user');
 var authChannel = Radio.channel('auth');
@@ -23,4 +23,4 @@ var User = bb.Model.extend({
 
 var user = new User(window._initData.user);
 
-module.exports = user;
+export default user;

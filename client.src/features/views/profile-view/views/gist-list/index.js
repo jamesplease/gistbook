@@ -2,10 +2,10 @@
 // GistList
 //
 
-var mn = require('marionette');
-var GistbookListView = require('../gistbook-list-view');
+import * as mn from 'marionette';
+import GistbookListView from '../gistbook-list-view';
 
-module.exports = mn.CollectionView.extend({
+export default mn.CollectionView.extend({
   initialize: function(options) {
     this.model = options.model;
   },

@@ -4,11 +4,11 @@
 // response from the server. Ruh roh!
 //
 
-var mn = require('marionette');
+import * as mn from 'marionette';
 
 var errorViewOptions = ['jqXHR', 'textStatus', 'errorThrown'];
 
-module.exports = mn.ItemView.extend({
+export default mn.ItemView.extend({
   template: 'serverErrorView',
 
   className: 'server-error',

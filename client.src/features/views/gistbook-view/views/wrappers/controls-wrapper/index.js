@@ -5,14 +5,14 @@
 // and Edit modes.
 //
 
-var _ = require('underscore');
-var bb = require('backbone');
-var mn = require('marionette');
-var DisplayWrapper = require('../display-wrapper');
-var EditWrapper = require('../edit-wrapper');
-var radioUtil = require('../../../../../../util/radio-util');
+import * as _ from 'underscore';
+import * as bb from 'backbone';
+import * as mn from 'marionette';
+import DisplayWrapper from '../display-wrapper';
+import EditWrapper from '../edit-wrapper';
+import radioUtil from '../../../../../../util/radio-util';
 
-module.exports = mn.LayoutView.extend({
+export default mn.LayoutView.extend({
   template: 'controlsWrapper',
 
   className: 'controls-wrapper-view',

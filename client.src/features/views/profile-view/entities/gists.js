@@ -3,13 +3,13 @@
 // A Collection of a user's Gists that store Gistbooks
 //
 
-var _ = require('underscore');
-var bb = require('backbone');
-var Gist = require('../../../entities/gist');
-var GithubCollection = require('../../../entities/github-collection');
-var gistbookUtil = require('../../../../util/gistbook-util');
+import * as _ from 'underscore';
+import * as bb from 'backbone';
+import Gist from '../../../entities/gist';
+import GithubCollection from '../../../entities/github-collection';
+import gistbookUtil from '../../../../util/gistbook-util';
 
-module.exports = GithubCollection.extend({
+export default GithubCollection.extend({
   constructor: function(options) {
     options = options || {};
     this.collectionUrl = options.collectionUrl || this.collectionUrl;

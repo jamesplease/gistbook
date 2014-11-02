@@ -2,8 +2,8 @@
 // radioUtil
 //
 
-var _ = require('underscore');
-var Radio = require('radio');
+import * as _ from 'underscore';
+import * as Radio from 'radio';
 
 var radioUtil = {
 
@@ -25,4 +25,4 @@ var radioUtil = {
   }
 };
 
-module.exports = radioUtil;
+export default radioUtil;
