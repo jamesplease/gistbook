@@ -4,8 +4,16 @@
 // features are activated whenever the URL changes.
 //
 
-var mn = require('marionette');
-var Radio = require('radio');
+import * as mn from 'marionette';
+import * as Radio from 'radio';
+import HomeRoute from '../routes/home';
+import NewGistbookRoute from '../routes/new';
+import AboutRoute from '../routes/about';
+import TermsRoute from '../routes/terms';
+import LogoutRoute from '../routes/logout';
+import SettingsRoute from '../routes/settings';
+import ProfileRoute from '../routes/profile';
+import GistbookRoute from '../routes/profile/gistbook';
 
 var Router = mn.Router.extend({
   initialize: function() {
@@ -15,15 +23,15 @@ var Router = mn.Router.extend({
   },
 
   routes: {
-    '': new (require('../routes/home'))(),
-    'new': new (require('../routes/new'))(),
-    'about': new (require('../routes/about'))(),
-    'terms': new (require('../routes/terms'))(),
-    'logout': new (require('../routes/logout'))(),
-    'settings': new (require('../routes/settings'))(),
-    ':username': new (require('../routes/profile'))(),
-    ':username/:gistbookId': new (require('../routes/profile/gistbook'))()
+    '': new HomeRoute(),
+    'new': new NewGistbookRoute(),
+    'about': new AboutRoute(),
+    'terms': new TermsRoute(),
+    'logout': new LogoutRoute(),
+    'settings': new SettingsRoute(),
+    ':username': new ProfileRoute(),
+    ':username/:gistbookId': new GistbookRoute()
   }
 });
 
-module.exports = new Router();
+export default new Router();

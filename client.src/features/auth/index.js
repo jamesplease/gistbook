@@ -4,12 +4,12 @@
 // authorization
 //
 
-var $ = require('jquery');
-var _ = require('underscore');
-var bb = require('backbone');
-var mn = require('marionette');
-var Radio = require('radio');
-var cookies = require('cookies-js');
+import * as $ from 'jquery';
+import * as _ from 'underscore';
+import * as bb from 'backbone';
+import * as mn from 'marionette';
+import * as Radio from 'radio';
+import * as cookies from 'cookies-js';
 
 var Auth = bb.Model.extend({
   defaults: {
@@ -76,4 +76,4 @@ var Auth = bb.Model.extend({
   }
 });
 
-module.exports = new Auth();
+export default new Auth();

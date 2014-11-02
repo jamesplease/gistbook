@@ -2,8 +2,8 @@
 // FooterView
 //
 
-var mn = require('marionette');
+import * as mn from 'marionette';
 
-module.exports = mn.LayoutView.extend({
+export default mn.LayoutView.extend({
   template: 'footerView'
 });

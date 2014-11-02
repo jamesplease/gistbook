@@ -5,8 +5,8 @@
 // over there.
 //
 
-var mn = require('marionette');
+import * as mn from 'marionette';
 
-module.exports = mn.Route.extend({
+export default mn.Route.extend({
   redirect: ''
 });

@@ -4,12 +4,12 @@
 // store a Gistbook.
 //
 
-var _ = require('underscore');
-var bb = require('backbone');
-var Radio = require('radio');
-var githubApiUtil = require('../../../util/github-api-util');
+import * as _ from 'underscore';
+import * as bb from 'backbone';
+import * as Radio from 'radio';
+import githubApiUtil from '../../../util/github-api-util';
 
-module.exports = bb.Model.extend({
+export default bb.Model.extend({
   defaults: function() {
     return {
       description: 'Anonymous Gistbook',

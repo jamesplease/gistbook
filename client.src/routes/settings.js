@@ -2,13 +2,13 @@
 // SettingsRoute
 //
 
-var mn = require('marionette');
-var Radio = require('radio');
-var SettingsView = require('../features/views/settings-view');
+import * as mn from 'marionette';
+import * as Radio from 'radio';
+import SettingsView from '../features/views/settings-view';
 
 var user = Radio.request('user', 'user');
 
-module.exports = mn.Route.extend({
+export default mn.Route.extend({
 
   // Redirect us to the home page if we're unauthorized
   // This is the only page that requires that you be authorized

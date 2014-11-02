@@ -4,8 +4,8 @@
 // Triggers the attach method on children views
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
 
 _.extend(mn.Region.prototype, {
   show: function(view, options){
@@ -101,4 +101,3 @@ _.extend(mn.Region.prototype, {
     }, this);
   }
 });
-

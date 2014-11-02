@@ -6,8 +6,8 @@
 //
 //
 
-var mn = require('marionette');
-var templates = require('templates');
+import * as mn from 'marionette';
+import * as templates from 'templates';
 
 mn.Renderer.render = function(template, data) {
   if (!template) {

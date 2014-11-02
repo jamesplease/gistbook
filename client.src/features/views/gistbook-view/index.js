@@ -3,18 +3,18 @@
 // A LayoutView that renders a Gistbook
 //
 
-var _ = require('underscore');
-var bb = require('backbone');
-var mn = require('marionette');
-var SectionsView = require('./views/sections');
-var OutputView = require('./views/output-view');
-var DisplayTitleView = require('./views/title/display');
-var EditTitleView = require('./views/title/edit');
-var radioUtil = require('../../../util/radio-util');
+import * as _ from 'underscore';
+import * as bb from 'backbone';
+import * as mn from 'marionette';
+import SectionsView from './views/sections';
+import OutputView from './views/output-view';
+import DisplayTitleView from './views/title/display';
+import EditTitleView from './views/title/edit';
+import radioUtil from '../../../util/radio-util';
 
 var gistbookViewOptions = ['newGist', 'ownGistbook'];
 
-module.exports = mn.LayoutView.extend({
+export default mn.LayoutView.extend({
   initialize: function(options) {
     this.mergeOptions(options, gistbookViewOptions);
   },

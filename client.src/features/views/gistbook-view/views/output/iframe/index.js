@@ -3,10 +3,10 @@
 // The iFrame that renders the user's code.
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
 
-module.exports = mn.ItemView.extend({
+export default mn.ItemView.extend({
   tagName: 'iframe',
 
   template: false,

@@ -4,8 +4,8 @@
 // Determines if a node is a child of the document
 //
 
-var bb = require('backbone');
-var mn = require('marionette');
+import * as bb from 'backbone';
+import * as mn from 'marionette';
 
 mn.isNodeAttached = function(el) {
   return bb.$.contains(document.documentElement, el);

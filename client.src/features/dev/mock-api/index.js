@@ -3,8 +3,8 @@
 // A fake API to include in the dev build
 //
 
-var $ = require('jquery');
-require('jquery-mockjax');
+import * as $ from 'jquery';
+import 'jquery-mockjax';
 
 // Attach jQuery to the window for testing
 window.$ = $;

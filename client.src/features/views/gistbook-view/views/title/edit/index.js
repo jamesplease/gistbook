@@ -3,9 +3,9 @@
 // The edit view for the title.
 //
 
-var mn = require('marionette');
+import * as mn from 'marionette';
 
-module.exports = mn.ItemView.extend({
+export default mn.ItemView.extend({
   template: 'editTitleView',
 
   className: 'edit-title-view',

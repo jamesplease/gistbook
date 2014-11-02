@@ -4,15 +4,17 @@
 // the app's state when a URI is matched
 //
 
-var mn = require('marionette');
+import * as mn from 'marionette';
 
 function onFail(e) {
   if (!console || !console.assert) { return; }
   console.assert(false, e);
 }
 
-module.exports = mn.Route = mn.Object.extend({
+mn.Route = mn.Object.extend({
   show: function() {},
   onFetchError: onFail,
   onShowError: onFail
 });
+
+export default mn.Route;

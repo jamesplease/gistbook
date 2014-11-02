@@ -3,14 +3,14 @@
 // Builds our output iFrame view.
 //
 
-var $ = require('jquery');
-var _ = require('underscore');
-var bb = require('backbone');
-var mn = require('marionette');
-var DocumentView = require('../views/output/document-view');
-var IFrameView = require('../views/output/iframe');
+import * as $ from 'jquery';
+import * as _ from 'underscore';
+import * as bb from 'backbone';
+import * as mn from 'marionette';
+import DocumentView from '../views/output/document-view';
+import IFrameView from '../views/output/iframe';
 
-module.exports = mn.Object.extend({
+export default mn.Object.extend({
   url: '/compile',
 
   compile: function(code) {

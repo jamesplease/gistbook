@@ -2,9 +2,9 @@
 // GistbookListView
 //
 
-var mn = require('marionette');
+import * as mn from 'marionette';
 
-var GistbookListView = mn.ItemView.extend({
+export default mn.ItemView.extend({
   initialize: function(options) {
     this.user = options.user;
   },
@@ -29,5 +29,3 @@ var GistbookListView = mn.ItemView.extend({
     };
   }
 });
-
-module.exports = GistbookListView;

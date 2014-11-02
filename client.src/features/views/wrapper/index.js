@@ -5,12 +5,12 @@
 // functionality. This is a handy class to make the API simpler
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
 
 var wrapperOptions = ['region'];
 
-module.exports = mn.LayoutView.extend({
+export default mn.LayoutView.extend({
   initialize: function() {
     this._createRegions();
     this._setEvents();

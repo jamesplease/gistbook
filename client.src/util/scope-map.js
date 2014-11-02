@@ -6,12 +6,10 @@
 // to use.
 //
 
-var scopeMap = {
+export default {
   user: 'Profile information',
   'user:email': 'Email address',
   public_repo: 'Public repositories',
   repo: 'All repositories',
   gist: 'Gists'
 };
-
-module.exports = scopeMap;

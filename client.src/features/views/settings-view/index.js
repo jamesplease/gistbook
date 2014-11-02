@@ -2,13 +2,13 @@
 // SettingsView
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
-var Radio = require('radio');
-var RevokeModalView = require('./revoke-modal');
-var scopeMap = require('../../../util/scope-map');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
+import * as Radio from 'radio';
+import RevokeModalView from './revoke-modal';
+import scopeMap from '../../../util/scope-map';
 
-var SettingsView = mn.ItemView.extend({
+export default mn.ItemView.extend({
   template: 'settingsView',
 
   className: 'settings',
@@ -33,5 +33,3 @@ var SettingsView = mn.ItemView.extend({
     Radio.command('modal', 'show', new RevokeModalView());
   }
 });
-
-module.exports = SettingsView;

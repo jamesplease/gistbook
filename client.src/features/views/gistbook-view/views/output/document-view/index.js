@@ -4,9 +4,9 @@
 // into the iFrame view to render the output.
 //
 
-var mn = require('marionette');
+import * as mn from 'marionette';
 
-module.exports = mn.ItemView.extend({
+export default mn.ItemView.extend({
   template: 'documentView',
 
   tagName: 'html',

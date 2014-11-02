@@ -3,13 +3,13 @@
 // Manages compiling a Gistbook Page
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
-var CodeManager = require('../../managers/code-manager');
-var Compiler = require('../../managers/compiler');
-var ErrorView = require('./compile-error-view');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
+import CodeManager from '../../managers/code-manager';
+import Compiler from '../../managers/compiler';
+import ErrorView from './compile-error-view';
 
-module.exports = mn.LayoutView.extend({
+export default mn.LayoutView.extend({
   initialize: function(options) {
     this.sections = options.sections;
     this.createManagers();

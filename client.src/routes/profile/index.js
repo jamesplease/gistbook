@@ -2,15 +2,15 @@
 // ProfileRoute
 //
 
-var mn = require('marionette');
-var Radio = require('radio');
-var ProfileView = require('../../features/views/profile-view');
-var Gists = require('../../features/views/profile-view/entities/gists');
-var GistbookRoute = require('./gistbook');
-var GithubUser = require('../../features/entities/github-user');
-var ServerErrorView = require('../../features/views/server-error-view');
+import * as mn from 'marionette';
+import * as Radio from 'radio';
+import GistbookRoute from './gistbook';
+import ProfileView from '../../features/views/profile-view';
+import Gists from '../../features/views/profile-view/entities/gists';
+import GithubUser from '../../features/entities/github-user';
+import ServerErrorView from '../../features/views/server-error-view';
 
-module.exports = mn.Route.extend({
+export default mn.Route.extend({
   fetch: function(urlData) {
     var user = Radio.request('user', 'user');
     var dataOptions = {};
