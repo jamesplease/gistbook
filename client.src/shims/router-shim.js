@@ -1,3 +1,5 @@
+/* jshint maxstatements: 20 */
+
 import * as _ from 'underscore';
 import * as mn from 'marionette';
 import * as Radio from 'radio';

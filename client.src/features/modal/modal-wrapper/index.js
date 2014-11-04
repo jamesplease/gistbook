@@ -4,9 +4,6 @@
 // overlay mask for closing modals.
 //
 
-import * as _ from 'underscore';
-import * as mn from 'marionette';
-import * as Radio from 'radio';
 import Wrapper from '../../views/wrapper';
 
 export default Wrapper.extend({

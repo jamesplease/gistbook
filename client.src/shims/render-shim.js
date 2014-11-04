@@ -11,7 +11,7 @@ import * as templates from 'templates';
 
 mn.Renderer.render = function(template, data) {
   if (!template) {
-    throwError('Cannot render the template since its false, null or undefined.',
+    throw new Error('Cannot render the template since its false, null or undefined.',
       'TemplateNotFoundError');
   }
 

@@ -5,7 +5,6 @@
 
 import * as _ from 'underscore';
 import * as mn from 'marionette';
-import * as Radio from 'radio';
 import DisplayTextView from '../text/display';
 import ControlsWrapper from '../wrappers/controls-wrapper';
 import AceEditorView from '../ace-editor-view';

@@ -1,3 +1,8 @@
+/* jshint
+  maxcomplexity: 20,
+  maxstatements: 40
+*/
+
 //
 // getNestedViews
 // A shim for a Marionette 2.3 feature.

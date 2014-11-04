@@ -240,7 +240,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', 'An alias of test', ['test']);
 
-  grunt.registerTask('test', 'Runs unit tests', []);
+  grunt.registerTask('test', 'Runs unit tests', ['jshint']);
 
   grunt.registerTask('build', 'Build the application', function(target) {
     target = target || 'dev';

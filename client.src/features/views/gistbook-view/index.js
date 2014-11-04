@@ -3,7 +3,6 @@
 // A LayoutView that renders a Gistbook
 //
 
-import * as _ from 'underscore';
 import * as bb from 'backbone';
 import * as mn from 'marionette';
 import SectionsView from './views/sections';

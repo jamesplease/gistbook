@@ -5,7 +5,6 @@
 // and Edit modes.
 //
 
-import * as _ from 'underscore';
 import * as bb from 'backbone';
 import * as mn from 'marionette';
 import DisplayWrapper from '../display-wrapper';
@@ -101,7 +100,6 @@ export default mn.LayoutView.extend({
   // from the AceEditor. Then persist those changes to the actual model.
   // Finally, take them to the preview view.
   onUpdate: function() {
-    console.log('updating');
     this._updateCache();
     this._saveCache();
     this.showDisplay();
@@ -109,7 +107,11 @@ export default mn.LayoutView.extend({
 
   // Determine which view to show
   onRender: function() {
-    this.initialMode === 'edit' ? this.showActive() : this.showDisplay();
+    if (this.initialMode === 'edit') {
+      this.showActive();
+    } else {
+      this.showDisplay();
+    }
   },
 
   getDisplayWrapper: function() {

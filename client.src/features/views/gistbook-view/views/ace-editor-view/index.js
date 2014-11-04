@@ -1,10 +1,11 @@
+/* jshint maxstatements: 20 */
+
 //
 // aceEditor
 // A view for the ace editor, which is used
 // when editing code
 //
 
-import * as _ from 'underscore';
 import * as mn from 'marionette';
  
 export default mn.ItemView.extend({
@@ -93,8 +94,8 @@ export default mn.ItemView.extend({
     this.editor.getSession().setMode(modePath);
     this.editor.setTheme(themePath);
     this.editor.setShowPrintMargin(false);
-    this.editor.setOption("maxLines", this.maxLines);
-    this.editor.setOption("minLines", this.minLines);
+    this.editor.setOption('maxLines', this.maxLines);
+    this.editor.setOption('minLines', this.minLines);
 
     this.editor.setReadOnly(this.readOnly);
     session.setTabSize(this.tabSize);

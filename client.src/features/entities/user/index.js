@@ -4,7 +4,6 @@
 //
 
 import * as bb from 'backbone';
-import * as _ from 'underscore';
 import * as Radio from 'radio';
 
 var userChannel = Radio.channel('user');

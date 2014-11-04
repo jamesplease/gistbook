@@ -2,9 +2,7 @@
 // ProfileView
 //
 
-import * as _ from 'underscore';
 import * as mn from 'marionette';
-import GistbookListView from './views/gistbook-list-view';
 import NoGistsView from './views/no-gists';
 import GistList from './views/gist-list';
 

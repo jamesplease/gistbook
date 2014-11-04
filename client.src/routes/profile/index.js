@@ -4,7 +4,6 @@
 
 import * as mn from 'marionette';
 import * as Radio from 'radio';
-import GistbookRoute from './gistbook';
 import ProfileView from '../../features/views/profile-view';
 import Gists from '../../features/views/profile-view/entities/gists';
 import GithubUser from '../../features/entities/github-user';

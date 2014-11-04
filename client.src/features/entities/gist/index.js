@@ -17,8 +17,8 @@ export default bb.Model.extend({
         login: this._getLoginName()
       },
       files: {
-        "gistbook.json": {
-          content: "{}"
+        'gistbook.json': {
+          content: '{}'
         }
       }
     };

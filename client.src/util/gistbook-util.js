@@ -2,7 +2,6 @@
 // gistbookUtil
 //
 
-import * as _ from 'underscore';
 import * as Radio from 'radio';
 
 var authChannel = Radio.channel('auth');

@@ -1,6 +1,6 @@
 //
 // env
-// The app environment – one of `dev` or `prod`
+// The app environment – one of `dev` or `prod`
 //
 
 import * as Radio from 'radio';

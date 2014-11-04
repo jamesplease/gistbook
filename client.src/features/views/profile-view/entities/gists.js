@@ -4,7 +4,6 @@
 //
 
 import * as _ from 'underscore';
-import * as bb from 'backbone';
 import Gist from '../../../entities/gist';
 import GithubCollection from '../../../entities/github-collection';
 import gistbookUtil from '../../../../util/gistbook-util';

@@ -2,7 +2,6 @@
 // GistbookRoute
 //
 
-import * as _ from 'underscore';
 import * as mn from 'marionette';
 import * as Radio from 'radio';
 import GistView from '../../../features/views/gist-view';

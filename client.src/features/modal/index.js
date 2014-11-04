@@ -3,7 +3,6 @@
 // A singleton that stores our modal
 //
 
-import * as _ from 'underscore';
 import * as mn from 'marionette';
 import * as Radio from 'radio';
 import ModalWrapper from './modal-wrapper';

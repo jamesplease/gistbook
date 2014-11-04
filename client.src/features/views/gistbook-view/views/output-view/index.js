@@ -3,7 +3,6 @@
 // Manages compiling a Gistbook Page
 //
 
-import * as _ from 'underscore';
 import * as mn from 'marionette';
 import CodeManager from '../../managers/code-manager';
 import Compiler from '../../managers/compiler';

@@ -5,13 +5,13 @@
 // functionality. This is a handy class to make the API simpler
 //
 
-import * as _ from 'underscore';
 import * as mn from 'marionette';
 
 var wrapperOptions = ['region'];
 
 export default mn.LayoutView.extend({
-  initialize: function() {
+  initialize: function(options) {
+    this.mergeOptions(options, wrapperOptions);
     this._createRegions();
     this._setEvents();
   },
