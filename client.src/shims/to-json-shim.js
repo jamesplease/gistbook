@@ -4,8 +4,8 @@
 // the intended use. This fixes that issue.
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
 
 mn.View.prototype.serializeModel = function(model) {
   model = model || this.model;

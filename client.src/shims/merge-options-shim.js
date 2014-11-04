@@ -4,8 +4,8 @@
 // having to use that.
 //
 
-var mn = require('marionette');
-var _ = require('underscore');
+import * as mn from 'marionette';
+import * as _ from 'underscore';
 
 var mergeOptions = function(options, mergeOptions) {
   _.extend(this, _.pick(options, mergeOptions));

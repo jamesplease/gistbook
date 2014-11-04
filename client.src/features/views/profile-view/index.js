@@ -2,13 +2,13 @@
 // ProfileView
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
-var GistbookListView = require('./views/gistbook-list-view');
-var NoGistsView = require('./views/no-gists');
-var GistList = require('./views/gist-list');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
+import GistbookListView from './views/gistbook-list-view';
+import NoGistsView from './views/no-gists';
+import GistList from './views/gist-list';
 
-var ProfileView = mn.LayoutView.extend({
+export default mn.LayoutView.extend({
   initialize: function() {
     this.configureEvents();
   },
@@ -67,5 +67,3 @@ var ProfileView = mn.LayoutView.extend({
     this.ui.$count.text(this.collection.length); 
   }
 });
-
-module.exports = ProfileView;

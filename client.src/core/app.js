@@ -7,31 +7,36 @@
 // expect to use all of these patterns in your app just yet. If you're
 // curious, check out the ../shims directory to see all that's
 // changed.
-// 
+//
 
-var bb = require('backbone');
-var mn = require('marionette');
-var Intercept = require('backbone.intercept');
+import * as bb from 'backbone';
+import * as mn from 'marionette';
+import * as Intercept from 'backbone.intercept';
+import env from '../features/env';
+import auth from '../features/auth';
+import user from '../features/entities/user';
+import modal from '../features/modal';
+import router from './router';
+import RootView from '../features/views/root-view';
 
 // Create the app
 var app = new mn.Application();
 
-// Load up all the things
-app.env = require('../features/env');
-if (app.env === 'dev') { require('../features/dev'); }
-app.auth = require('../features/auth');
-app.modal = require('../features/modal');
-app.user = require('../features/entities/user');
-app.rootView = require('../features/views/root-view');
-app.router = require('./router');
+// Attach all of the things
+app.env = env;
+app.auth = auth;
+app.user = user;
+app.modal = modal;
+app.router = router;
+app.rootView = new RootView();
 
-// Attach it to the window. This is solely for debugging
-// purposes – nothing else
+// Attach it to the window for debugging
 window.app = app;
 
+// Once the app is ready, start history and interception
 app.on('start', function() {
   bb.history.start({pushState: true});
   Intercept.start();
 });
 
-module.exports = app;
+export default app;

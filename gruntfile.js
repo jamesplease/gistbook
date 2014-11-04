@@ -122,10 +122,10 @@ module.exports = function(grunt) {
       grunt: {
         files: ['gruntfile.js']
       },
-      scripts: {
-        files: ['<%= app.src %>/**/*.js'],
-        tasks: ['jshint', 'webpack:dev']
-      },
+      // scripts: {
+      //   files: ['<%= app.src %>/**/*.js'],
+      //   tasks: ['jshint', 'webpack:dev']
+      // },
       styles: {
         files: ['<%= app.src %>/**/*.styl'],
         tasks: ['stylus:dev']
@@ -182,7 +182,8 @@ module.exports = function(grunt) {
         module: {
           loaders: [
             {test: /templates/, loader: 'imports?_=underscore!exports?this.JST'},
-            {test: /jquery-mockjax/, loader: 'imports?jQuery=jquery'}
+            {test: /\.js$/, loader: '6to5-loader'},
+            // {test: /jquery-mockjax/, loader: 'imports?jQuery=jquery'}
           ]
         },
         resolve: {
@@ -194,7 +195,8 @@ module.exports = function(grunt) {
           },
           modulesDirectories: ['node_modules', '<%= app.tmp %>']
         },
-        cache: true
+        cache: true,
+        watch: true
       },
       dev: {
         output: {

@@ -3,9 +3,9 @@
 // Shows the Gistbook's title, and the text to edit it
 //
 
-var mn = require('marionette');
+import * as mn from 'marionette';
 
-module.exports = mn.ItemView.extend({
+export default mn.ItemView.extend({
   template: 'displayTitleView',
 
   className: 'display-title-view',

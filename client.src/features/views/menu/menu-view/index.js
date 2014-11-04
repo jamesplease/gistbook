@@ -3,9 +3,9 @@
 // The menu that's displayed once you're logged in
 //
 
-var mn = require('marionette');
+import * as mn from 'marionette';
 
-var MenuView = mn.ItemView.extend({
+export default mn.ItemView.extend({
   tagName: 'nav',
   template: 'menuView',
 
@@ -37,5 +37,3 @@ var MenuView = mn.ItemView.extend({
     this.ui.$dropdown.removeClass('show');
   }
 });
-
-module.exports = MenuView;

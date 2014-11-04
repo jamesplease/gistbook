@@ -2,12 +2,12 @@
 // RevokeModal
 //
 
-var mn = require('marionette');
-var Radio = require('radio');
+import * as mn from 'marionette';
+import * as Radio from 'radio';
 
 var modalChannel = Radio.channel('modal');
 
-module.exports = mn.ItemView.extend({
+export default mn.ItemView.extend({
   template: 'revokeModal',
 
   ui: {

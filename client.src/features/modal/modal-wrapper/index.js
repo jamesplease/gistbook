@@ -4,12 +4,12 @@
 // overlay mask for closing modals.
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
-var Radio = require('radio');
-var Wrapper = require('../../views/wrapper');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
+import * as Radio from 'radio';
+import Wrapper from '../../views/wrapper';
 
-module.exports = Wrapper.extend({
+export default Wrapper.extend({
   template: 'modalWrapper',
 
   className: 'modal-container',

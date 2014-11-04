@@ -2,10 +2,10 @@
 // CompileErrorView
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
 
-module.exports = mn.ItemView.extend({
+export default mn.ItemView.extend({
   template: 'compileErrorView',
   className: 'notification notification-danger error-view'
 });

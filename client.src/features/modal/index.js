@@ -3,10 +3,10 @@
 // A singleton that stores our modal
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
-var Radio = require('radio');
-var ModalWrapper = require('./modal-wrapper');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
+import * as Radio from 'radio';
+import ModalWrapper from './modal-wrapper';
 
 var modalChannel = Radio.channel('modal');
 
@@ -21,5 +21,5 @@ var Modal = mn.Region.extend({
   el: '.modal'
 });
 
-var modal = module.exports = new Modal();
+export default new Modal();
 

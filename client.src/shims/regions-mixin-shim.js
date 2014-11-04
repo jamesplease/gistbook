@@ -3,8 +3,8 @@
 // It's like RegionManager, except it's a mixin
 //
 
-var mn = require('marionette');
-var _ = require('underscore');
+import * as mn from 'marionette';
+import * as _ from 'underscore';
 
 mn.RegionsMixin = {
   addRegions: function(regionDefinitions, defaults) {

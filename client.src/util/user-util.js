@@ -2,11 +2,11 @@
 // userUtil
 //
 
-var Radio = require('radio');
+import * as Radio from 'radio';
 
 var userChannel = Radio.channel('user');
 
-var userUtil = module.exports = {
+export default {
 
   // Determine whether the url is referencing data of the current user
   // using the urlData

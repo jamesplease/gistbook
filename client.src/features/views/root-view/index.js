@@ -2,16 +2,17 @@
 // RootView
 //
 
-var mn = require('backbone.marionette');
-var Radio = require('radio');
-var FooterView = require('../footer-view');
-var LoginView = require('../menu/login-view');
-var MenuView = require('../menu/menu-view');
+import * as bb from 'backbone';
+import * as mn from 'marionette';
+import * as Radio from 'radio';
+import FooterView from '../footer-view';
+import LoginView from '../menu/login-view';
+import MenuView from '../menu/menu-view';
 
 var authChannel = Radio.channel('auth');
 
-var RootView = mn.LayoutView.extend({
-  el: $('body'),
+export default mn.LayoutView.extend({
+  el: bb.$('body'),
 
   regions: {
     header: '.menu',
@@ -34,5 +35,3 @@ var RootView = mn.LayoutView.extend({
     this.getRegion('header').show(new View({model: model}));
   }
 });
-
-module.exports = new RootView();

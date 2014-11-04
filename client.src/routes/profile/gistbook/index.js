@@ -2,14 +2,14 @@
 // GistbookRoute
 //
 
-var _ = require('underscore');
-var mn = require('marionette');
-var Radio = require('radio');
-var GistView = require('../../../features/views/gist-view');
-var Gist = require('../../../features/entities/gist');
-var ServerErrorView = require('../../../features/views/server-error-view');
+import * as _ from 'underscore';
+import * as mn from 'marionette';
+import * as Radio from 'radio';
+import GistView from '../../../features/views/gist-view';
+import Gist from '../../../features/entities/gist';
+import ServerErrorView from '../../../features/views/server-error-view';
 
-module.exports = mn.Route.extend({
+export default mn.Route.extend({
   fetch: function(urlData) {
     this.gistbook = new Gist({
       id: urlData.params.gistbookId

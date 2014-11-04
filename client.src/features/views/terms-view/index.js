@@ -2,9 +2,9 @@
 // TermsView
 //
 
-var mn = require('marionette');
+import * as mn from 'marionette';
 
-module.exports = mn.ItemView.extend({
+export default mn.ItemView.extend({
   className: 'terms-of-service',
   template: 'termsView'
 });

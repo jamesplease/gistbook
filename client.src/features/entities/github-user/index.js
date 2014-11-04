@@ -3,10 +3,10 @@
 // A model representing a Github User
 //
 
-var bb = require('backbone');
-var githubApiUtil = require('../../../util/github-api-util');
+import * as bb from 'backbone';
+import githubApiUtil from '../../../util/github-api-util';
 
-module.exports = bb.Model.extend({
+export default bb.Model.extend({
   urlRoot: function() {
     return githubApiUtil.url + '/users';
   }

@@ -2,8 +2,8 @@
 // gistbookUtil
 //
 
-var _ = require('underscore');
-var Radio = require('radio');
+import * as _ from 'underscore';
+import * as Radio from 'radio';
 
 var authChannel = Radio.channel('auth');
 var userChannel = Radio.channel('user');
@@ -71,4 +71,4 @@ var gistbookUtil = {
   }
 };
 
-module.exports = gistbookUtil;
+export default gistbookUtil;
