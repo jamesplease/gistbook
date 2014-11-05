@@ -4,9 +4,9 @@ import * as _ from 'underscore';
 import * as mn from 'marionette';
 import * as Radio from 'radio';
 import * as BaseRouter from 'backbone.base-router';
-import Route from './route-shim';
+import Route from './route';
 
-mn.Router = BaseRouter.extend({
+export default BaseRouter.extend({
   onNavigate: function(routeData) {
     var newRoute = routeData.linked;
 
@@ -53,5 +53,3 @@ mn.Router = BaseRouter.extend({
     }
   }
 });
-
-export default mn.Router;

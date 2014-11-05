@@ -6,7 +6,8 @@
 //
 
 import * as mn from 'marionette';
+import Route from '../lib/routing/route';
 
-export default mn.Route.extend({
+export default Route.extend({
   redirect: ''
 });

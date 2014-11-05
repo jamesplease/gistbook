@@ -11,10 +11,8 @@ function onFail(e) {
   console.assert(false, e);
 }
 
-mn.Route = mn.Object.extend({
+export default mn.Object.extend({
   show: function() {},
   onFetchError: onFail,
   onShowError: onFail
 });
-
-export default mn.Route;

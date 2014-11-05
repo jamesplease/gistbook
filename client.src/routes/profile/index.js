@@ -4,12 +4,13 @@
 
 import * as mn from 'marionette';
 import * as Radio from 'radio';
+import Route from '../../lib/routing/route';
 import ProfileView from '../../features/views/profile-view';
 import Gists from '../../features/views/profile-view/entities/gists';
 import GithubUser from '../../features/entities/github-user';
 import ServerErrorView from '../../features/views/server-error-view';
 
-export default mn.Route.extend({
+export default Route.extend({
   fetch: function(urlData) {
     var user = Radio.request('user', 'user');
     var dataOptions = {};
