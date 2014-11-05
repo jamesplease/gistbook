@@ -12,7 +12,6 @@ import '../shims/get-nested-view-shim';
 import '../shims/backbone-sync-shim';
 import '../shims/trigger-attach-shim';
 import '../shims/render-shim';
-import '../shims/regions-mixin-shim';
 import '../shims/to-json-shim';
 import '../shims/merge-options-shim';
 
