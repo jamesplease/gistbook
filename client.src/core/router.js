@@ -6,6 +6,7 @@
 
 import * as mn from 'marionette';
 import * as Radio from 'radio';
+import Router from '../lib/routing/router';
 import HomeRoute from '../routes/home';
 import NewGistbookRoute from '../routes/new';
 import AboutRoute from '../routes/about';
@@ -15,7 +16,7 @@ import SettingsRoute from '../routes/settings';
 import ProfileRoute from '../routes/profile';
 import GistbookRoute from '../routes/profile/gistbook';
 
-var Router = mn.Router.extend({
+var GistbookRouter = Router.extend({
   initialize: function() {
     Radio.comply('router', 'navigate', function(route) {
       this.navigate(route, {trigger:true});
@@ -34,4 +35,4 @@ var Router = mn.Router.extend({
   }
 });
 
-export default new Router();
+export default new GistbookRouter();

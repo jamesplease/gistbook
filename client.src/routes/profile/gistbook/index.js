@@ -4,11 +4,12 @@
 
 import * as mn from 'marionette';
 import * as Radio from 'radio';
+import Route from '../../../lib/routing/route';
 import GistView from '../../../features/views/gist-view';
 import Gist from '../../../features/entities/gist';
 import ServerErrorView from '../../../features/views/server-error-view';
 
-export default mn.Route.extend({
+export default Route.extend({
   fetch: function(urlData) {
     this.gistbook = new Gist({
       id: urlData.params.gistbookId

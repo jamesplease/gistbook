@@ -4,7 +4,7 @@
 // overlay mask for closing modals.
 //
 
-import Wrapper from '../../views/wrapper';
+import Wrapper from '../../wrapper';
 
 export default Wrapper.extend({
   template: 'modalWrapper',

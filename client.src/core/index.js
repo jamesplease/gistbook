@@ -14,8 +14,6 @@ import '../shims/trigger-attach-shim';
 import '../shims/render-shim';
 import '../shims/regions-mixin-shim';
 import '../shims/to-json-shim';
-import '../shims/route-shim';
-import '../shims/router-shim';
 import '../shims/merge-options-shim';
 
 // Load & start our app
