@@ -6,14 +6,14 @@
 
 import * as mn from 'marionette';
 
-var errorViewOptions = ['jqXHR', 'textStatus', 'errorThrown'];
-
 export default mn.ItemView.extend({
+  errorViewOptions: ['jqXHR', 'textStatus', 'errorThrown'],
+
   template: 'serverErrorView',
 
   className: 'server-error',
 
   initialize: function(options) {
-    this.mergeOptions(options, errorViewOptions);
+    this.mergeOptions(options, this.errorViewOptions);
   }
 });

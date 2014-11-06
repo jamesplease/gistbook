@@ -11,11 +11,11 @@ import DisplayTitleView from './views/title/display';
 import EditTitleView from './views/title/edit';
 import radioHelpers from './helpers/radio-helpers';
 
-var gistbookViewOptions = ['newGist', 'ownGistbook'];
-
 export default mn.LayoutView.extend({
+  gistbookViewOptions: ['newGist', 'ownGistbook'],
+
   initialize: function(options) {
-    this.mergeOptions(options, gistbookViewOptions);
+    this.mergeOptions(options, this.gistbookViewOptions);
   },
 
   template: 'gistbookView',

@@ -14,9 +14,9 @@ import gistbookHelpers from '../../../helpers/gistbook-helpers';
 
 var routerChannel = Radio.channel('router');
 
-var gistViewOptions = ['newGist', 'ownGistbook'];
-
 export default mn.LayoutView.extend({
+  gistViewOptions: ['newGist', 'ownGistbook'],
+
   className: 'home',
 
   template: 'gistView',
@@ -27,7 +27,7 @@ export default mn.LayoutView.extend({
   },
 
   initialize: function(options) {
-    this.mergeOptions(options, gistViewOptions);
+    this.mergeOptions(options, this.gistViewOptions);
   },
 
   // Show a new Gistbook

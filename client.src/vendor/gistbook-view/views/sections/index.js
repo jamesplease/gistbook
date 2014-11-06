@@ -11,13 +11,13 @@ import AceEditorView from '../ace-editor-view';
 import stringHelpers from '../../helpers/string-helpers';
 import radioHelpers from '../../helpers/radio-helpers';
 
-var sectionsOptions = ['newGist', 'ownGistbook'];
-
 export default mn.CollectionView.extend({
+  sectionsOptions: ['newGist', 'ownGistbook'],
+
   tagName: 'ul',
 
   initialize: function(options) {
-    this.mergeOptions(options, sectionsOptions);
+    this.mergeOptions(options, this.sectionsOptions);
     this.pageChannel = options.pageChannel;
     this._renderedBefore = false;
   },

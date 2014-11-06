@@ -7,11 +7,11 @@
 
 import * as mn from 'marionette';
 
-var wrapperOptions = ['region'];
-
 export default mn.LayoutView.extend({
+  wrapperOptions: ['region'],
+
   initialize: function(options) {
-    this.mergeOptions(options, wrapperOptions);
+    this.mergeOptions(options, this.wrapperOptions);
     this._createRegions();
     this._setEvents();
   },
