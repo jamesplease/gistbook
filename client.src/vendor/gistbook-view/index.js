@@ -9,7 +9,7 @@ import SectionsView from './views/sections';
 import OutputView from './views/output-view';
 import DisplayTitleView from './views/title/display';
 import EditTitleView from './views/title/edit';
-import radioHelpers from '../../helpers/radio-helpers';
+import radioHelpers from './helpers/radio-helpers';
 
 var gistbookViewOptions = ['newGist', 'ownGistbook'];
 

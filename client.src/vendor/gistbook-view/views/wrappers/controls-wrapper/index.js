@@ -9,7 +9,7 @@ import * as bb from 'backbone';
 import * as mn from 'marionette';
 import DisplayWrapper from '../display-wrapper';
 import EditWrapper from '../edit-wrapper';
-import radioHelpers from '../../../../../helpers/radio-helpers';
+import radioHelpers from '../../../helpers/radio-helpers';
 
 export default mn.LayoutView.extend({
   template: 'controlsWrapper',

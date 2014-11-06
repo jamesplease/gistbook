@@ -8,8 +8,8 @@ import * as mn from 'marionette';
 import DisplayTextView from '../text/display';
 import ControlsWrapper from '../wrappers/controls-wrapper';
 import AceEditorView from '../ace-editor-view';
-import stringHelpers from '../../../../helpers/string-helpers';
-import radioHelpers from '../../../../helpers/radio-helpers';
+import stringHelpers from '../../helpers/string-helpers';
+import radioHelpers from '../../helpers/radio-helpers';
 
 var sectionsOptions = ['newGist', 'ownGistbook'];
 
