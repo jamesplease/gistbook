@@ -7,7 +7,7 @@
 import * as _ from 'underscore';
 import * as bb from 'backbone';
 import * as Radio from 'radio';
-import githubApiUtil from '../../../util/github-api-util';
+import githubApiUtil from '../../util/github-api-util';
 
 export default bb.Model.extend({
   defaults: function() {

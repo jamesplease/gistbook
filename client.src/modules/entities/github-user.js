@@ -4,7 +4,7 @@
 //
 
 import * as bb from 'backbone';
-import githubApiUtil from '../../../util/github-api-util';
+import githubApiUtil from '../../util/github-api-util';
 
 export default bb.Model.extend({
   urlRoot: function() {
