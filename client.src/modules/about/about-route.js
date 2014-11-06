@@ -2,10 +2,9 @@
 // AboutRoute
 //
 
-import * as mn from 'marionette';
 import * as Radio from 'radio';
-import Route from '../lib/routing/route';
-import AboutView from '../features/views/about-view';
+import Route from '../../lib/routing/route';
+import AboutView from './views/about-view';
 
 export default Route.extend({
   show: function() {

@@ -5,8 +5,7 @@
 // over there.
 //
 
-import * as mn from 'marionette';
-import Route from '../lib/routing/route';
+import Route from '../../lib/routing/route';
 
 export default Route.extend({
   redirect: ''

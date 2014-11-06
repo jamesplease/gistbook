@@ -8,8 +8,8 @@ import * as bb from 'backbone';
 import * as mn from 'marionette';
 import * as Radio from 'radio';
 import GistbookView from '../../../lib/gistbook-view';
-import Gist from '../../entities/gist';
-import ExistingMenu from './existing-menu';
+import Gist from '../../../modules/entities/gist';
+import ExistingMenu from '../existing-menu';
 import gistbookUtil from '../../../util/gistbook-util';
 
 var routerChannel = Radio.channel('router');

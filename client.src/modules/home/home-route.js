@@ -3,11 +3,10 @@
 // Home is where we make a Gistbook
 //
 
-import * as mn from 'marionette';
 import * as Radio from 'radio';
-import Route from '../lib/routing/route';
-import Gist from '../features/entities/gist';
-import GistView from '../features/views/gist-view';
+import Route from '../../lib/routing/route';
+import Gist from '../entities/gist';
+import GistView from '../../shared/views/gist-view';
 
 export default Route.extend({
   show: function() {

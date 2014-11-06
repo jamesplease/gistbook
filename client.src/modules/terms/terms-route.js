@@ -2,10 +2,9 @@
 // TermsRoute
 //
 
-import * as mn from 'marionette';
 import * as Radio from 'radio';
-import Route from '../lib/routing/route';
-import TermsView from '../features/views/terms-view';
+import Route from '../../lib/routing/route';
+import TermsView from './views/terms-view';
 
 export default Route.extend({
   show: function() {

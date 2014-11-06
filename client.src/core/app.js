@@ -12,12 +12,12 @@
 import * as bb from 'backbone';
 import * as mn from 'marionette';
 import * as Intercept from 'backbone.intercept';
-import env from '../features/env';
+import env from './env';
 import auth from '../lib/auth';
-import user from '../features/entities/user';
+import user from '../modules/entities/user';
 import modal from '../lib/modal';
 import router from './router';
-import RootView from '../features/views/root-view';
+import RootView from './views/root-view';
 
 // Create the app
 var app = new mn.Application();

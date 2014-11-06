@@ -3,8 +3,8 @@
 //
 
 import * as mn from 'marionette';
-import NoGistsView from './views/no-gists';
-import GistList from './views/gist-list';
+import NoGistsView from '../no-gists';
+import GistList from '../gist-list';
 
 export default mn.LayoutView.extend({
   initialize: function() {

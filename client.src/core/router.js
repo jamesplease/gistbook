@@ -4,17 +4,16 @@
 // features are activated whenever the URL changes.
 //
 
-import * as mn from 'marionette';
 import * as Radio from 'radio';
 import Router from '../lib/routing/router';
-import HomeRoute from '../routes/home';
-import NewGistbookRoute from '../routes/new';
-import AboutRoute from '../routes/about';
-import TermsRoute from '../routes/terms';
-import LogoutRoute from '../routes/logout';
-import SettingsRoute from '../routes/settings';
-import ProfileRoute from '../routes/profile';
-import GistbookRoute from '../routes/profile/gistbook';
+import HomeRoute from '../modules/home/home-route';
+import NewGistbookRoute from '../modules/new/new-route';
+import AboutRoute from '../modules/about/about-route';
+import TermsRoute from '../modules/terms/terms-route';
+import LogoutRoute from '../modules/logout/logout-route';
+import SettingsRoute from '../modules/settings/settings-route';
+import ProfileRoute from '../modules/profile/profile-route';
+import GistbookRoute from '../modules/profile/gistbook-route';
 
 var GistbookRouter = Router.extend({
   initialize: function() {

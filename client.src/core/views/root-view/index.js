@@ -6,8 +6,8 @@ import * as bb from 'backbone';
 import * as mn from 'marionette';
 import * as Radio from 'radio';
 import FooterView from '../footer-view';
-import LoginView from '../menu/login-view';
-import MenuView from '../menu/menu-view';
+import AuthMenuView from '../menu-views/auth-menu-view';
+import UnauthMenuView from '../menu-views/unauth-menu-view';
 
 var authChannel = Radio.channel('auth');
 
@@ -31,7 +31,7 @@ export default mn.LayoutView.extend({
   showMenu: function() {
     var auth = authChannel.request('authorized');
     var model = auth ? Radio.request('user', 'user') : undefined;
-    var View = auth ? MenuView : LoginView;
+    var View = auth ? AuthMenuView : UnauthMenuView;
     this.getRegion('header').show(new View({model: model}));
   }
 });
