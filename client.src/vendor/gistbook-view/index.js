@@ -9,7 +9,7 @@ import SectionsView from './views/sections';
 import OutputView from './views/output-view';
 import DisplayTitleView from './views/title/display';
 import EditTitleView from './views/title/edit';
-import radioUtil from '../../util/radio-util';
+import radioHelpers from '../../helpers/radio-helpers';
 
 var gistbookViewOptions = ['newGist', 'ownGistbook'];
 
@@ -77,7 +77,7 @@ export default mn.LayoutView.extend({
   },
 
   _createSectionsView: function() {
-    this.pageChannel = radioUtil.objChannel(this.model);
+    this.pageChannel = radioHelpers.objChannel(this.model);
     return new SectionsView({
       collection: this._createSectionsCollection(),
       pageChannel: this.pageChannel,

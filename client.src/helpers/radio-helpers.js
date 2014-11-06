@@ -1,11 +1,11 @@
 //
-// radioUtil
+// radioHelpersHelpers
 //
 
 import * as _ from 'underscore';
 import * as Radio from 'radio';
 
-var radioUtil = {
+var radioHelpers = {
 
   // Returns a unique channel
   uniqueChannel: function() {
@@ -21,8 +21,8 @@ var radioUtil = {
 
   // Get the channel from an obj
   objChannel: function(obj) {
-    return Radio.channel(radioUtil.objChannelName(obj));
+    return Radio.channel(radioHelpers.objChannelName(obj));
   }
 };
 
-export default radioUtil;
+export default radioHelpers;

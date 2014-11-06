@@ -10,7 +10,7 @@ import * as Radio from 'radio';
 import GistbookView from '../../../vendor/gistbook-view';
 import Gist from '../../entities/gist';
 import ExistingMenu from '../existing-menu';
-import gistbookUtil from '../../../util/gistbook-util';
+import gistbookHelpers from '../../../helpers/gistbook-helpers';
 
 var routerChannel = Radio.channel('router');
 
@@ -131,7 +131,7 @@ export default mn.LayoutView.extend({
   },
 
   _convertGistToGistbook: function(gist) {
-    this.gistbook = !this.isNew() ? gistbookUtil.gistbookFromGist(gist) : gistbookUtil.newGistbook();
+    this.gistbook = !this.isNew() ? gistbookHelpers.gistbookFromGist(gist) : gistbookHelpers.newGistbook();
     return this.gistbook;
   },
 

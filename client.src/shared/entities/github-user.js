@@ -4,10 +4,10 @@
 //
 
 import * as bb from 'backbone';
-import githubApiUtil from '../../util/github-api-util';
+import githubApiHelpers from '../../helpers/github-api-helpers';
 
 export default bb.Model.extend({
   urlRoot: function() {
-    return githubApiUtil.url + '/users';
+    return githubApiHelpers.url + '/users';
   }
 });

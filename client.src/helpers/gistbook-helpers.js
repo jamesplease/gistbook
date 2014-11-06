@@ -1,5 +1,5 @@
 //
-// gistbookUtil
+// gistbookHelpers
 //
 
 import * as Radio from 'radio';
@@ -7,7 +7,7 @@ import * as Radio from 'radio';
 var authChannel = Radio.channel('auth');
 var userChannel = Radio.channel('user');
 
-var gistbookUtil = {
+var gistbookHelpers = {
 
   // Determine if `gist` is a Gistbook
   isGistbook: function(gist) {
@@ -29,7 +29,7 @@ var gistbookUtil = {
     return {
       title: 'Anonymous Gistbook',
       author: author,
-      pages: [gistbookUtil.createPage()],
+      pages: [gistbookHelpers.createPage()],
       public: true
     };
   },
@@ -61,7 +61,7 @@ var gistbookUtil = {
 
   // Takes in a Github Gist, get back a Gistbook Javascript object
   gistbookFromGist: function(gist) {
-    return gistbookUtil.parseGistfile(gist.get('files')['gistbook.json']);
+    return gistbookHelpers.parseGistfile(gist.get('files')['gistbook.json']);
   },
 
   // Parses the contents of a gistbook.json file
@@ -70,4 +70,4 @@ var gistbookUtil = {
   }
 };
 
-export default gistbookUtil;
+export default gistbookHelpers;

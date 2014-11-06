@@ -1,5 +1,5 @@
 //
-// stringUtil
+// stringHelpers
 //
 
 export default {

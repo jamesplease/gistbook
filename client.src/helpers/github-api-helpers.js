@@ -1,5 +1,5 @@
 //
-// githubApiUtil
+// githubApiHelpers
 //
 
 export default {

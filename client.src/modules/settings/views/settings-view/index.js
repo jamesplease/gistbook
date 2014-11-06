@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 import * as mn from 'marionette';
 import * as Radio from 'radio';
 import RevokeModalView from '../revoke-modal';
-import scopeMap from '../../../../util/scope-map';
+import scopeMap from '../../../../helpers/scope-map';
 
 export default mn.ItemView.extend({
   template: 'settingsView',

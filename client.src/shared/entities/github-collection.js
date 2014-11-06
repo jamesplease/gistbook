@@ -5,10 +5,10 @@
 
 import * as _ from 'underscore';
 import * as bb from 'backbone';
-import githubApiUtil from '../../util/github-api-util';
+import githubApiHelpers from '../../helpers/github-api-helpers';
 
 export default bb.Collection.extend({
-  urlRoot: githubApiUtil.url,
+  urlRoot: githubApiHelpers.url,
 
   // This is the property that we set on a per-collection basis
   collectionUrl: '',

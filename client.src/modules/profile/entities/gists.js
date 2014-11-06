@@ -6,7 +6,7 @@
 import * as _ from 'underscore';
 import Gist from '../../../shared/entities/gist';
 import GithubCollection from '../../../shared/entities/github-collection';
-import gistbookUtil from '../../../util/gistbook-util';
+import gistbookHelpers from '../../../helpers/gistbook-helpers';
 
 export default GithubCollection.extend({
   constructor: function(options) {
@@ -22,6 +22,6 @@ export default GithubCollection.extend({
 
   // Only some gists are gistbooks, so we need to filter those out
   parse: function(gists) {
-    return _.filter(gists, gistbookUtil.isGistbook);
+    return _.filter(gists, gistbookHelpers.isGistbook);
   }
 });

@@ -9,7 +9,7 @@ import * as bb from 'backbone';
 import * as mn from 'marionette';
 import DisplayWrapper from '../display-wrapper';
 import EditWrapper from '../edit-wrapper';
-import radioUtil from '../../../../../util/radio-util';
+import radioHelpers from '../../../../../helpers/radio-helpers';
 
 export default mn.LayoutView.extend({
   template: 'controlsWrapper',
@@ -119,7 +119,7 @@ export default mn.LayoutView.extend({
       mode: this.mode,
       editOptions: this.editOptions,
       model: this.getModel(),
-      blockChannel: radioUtil.objChannel(this.model)
+      blockChannel: radioHelpers.objChannel(this.model)
     });
   },
 
@@ -138,7 +138,7 @@ export default mn.LayoutView.extend({
   getEditWrapper: function() {
     return new EditWrapper({
       model: this.cachedModel,
-      blockChannel: radioUtil.objChannel(this.model)
+      blockChannel: radioHelpers.objChannel(this.model)
     });
   },
 

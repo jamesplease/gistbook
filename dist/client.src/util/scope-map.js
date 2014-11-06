@@ -6,7 +6,9 @@
 // to use.
 //
 
-export default {
+"use strict";
+
+exports.default = {
   user: 'Profile information',
   'user:email': 'Email address',
   public_repo: 'Public repositories',

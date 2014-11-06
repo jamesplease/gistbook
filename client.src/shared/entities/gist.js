@@ -7,7 +7,7 @@
 import * as _ from 'underscore';
 import * as bb from 'backbone';
 import * as Radio from 'radio';
-import githubApiUtil from '../../util/github-api-util';
+import githubApiHelpers from '../../helpers/github-api-helpers';
 
 export default bb.Model.extend({
   defaults: function() {
@@ -35,6 +35,6 @@ export default bb.Model.extend({
   },
 
   urlRoot: function() {
-    return githubApiUtil.url + '/gists';
+    return githubApiHelpers.url + '/gists';
   }
 });

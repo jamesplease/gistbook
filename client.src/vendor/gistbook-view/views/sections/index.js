@@ -8,8 +8,8 @@ import * as mn from 'marionette';
 import DisplayTextView from '../text/display';
 import ControlsWrapper from '../wrappers/controls-wrapper';
 import AceEditorView from '../ace-editor-view';
-import stringUtil from '../../../../util/string-util';
-import radioUtil from '../../../../util/radio-util';
+import stringHelpers from '../../../../helpers/string-helpers';
+import radioHelpers from '../../../../helpers/radio-helpers';
 
 var sectionsOptions = ['newGist', 'ownGistbook'];
 
@@ -42,7 +42,7 @@ export default mn.CollectionView.extend({
 
   _factoryMethodName: function(viewType) {
     var style = this._style();
-    return '_create' + style + stringUtil.capitalize(viewType) + 'View';
+    return '_create' + style + stringHelpers.capitalize(viewType) + 'View';
   },
 
   _createEditTextView: function(model) {
@@ -150,7 +150,7 @@ export default mn.CollectionView.extend({
   // Register the DisplayView for a particular Gistblock on that block's Channel
   _registerDisplayView: function(model, ViewClass) {
     var self = this;
-    radioUtil.objChannel(model).reply('displayView', function(model) {
+    radioHelpers.objChannel(model).reply('displayView', function(model) {
       var options = _.extend({}, self.childViewOptions, {model:model});
       return new ViewClass(options);
     });

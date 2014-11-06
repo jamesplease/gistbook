@@ -58,14 +58,14 @@ module.exports = function(grunt) {
         paths: ['bower_components']
       },
       dev: {
-        src: ['<%= app.src %>/core/assets/styl/index.styl', '<%= app.src %>/core/views/**/*.styl', '<%= app.src %>/modules/**/*.styl', '<%= app.src %>/lib/**/*.styl', '<%= app.src %>/shared/**/*.styl'],
+        src: ['<%= app.src %>/core/assets/styl/index.styl', '<%= app.src %>/core/views/**/*.styl', '<%= app.src %>/modules/**/*.styl', '<%= app.src %>/vendor/**/*.styl', '<%= app.src %>/shared/**/*.styl'],
         dest: '<%= app.dev %>/style.css'
       },
       prod: {
         options: {
           compress: true
         },
-        src: ['<%= app.src %>/core/assets/styl/index.styl', '<%= app.src %>/cores/views/**/*.styl', '<%= app.src %>/modules/**/*.styl', '<%= app.src %>/lib/**/*.styl', '<%= app.src %>/shared/**/*.styl'],
+        src: ['<%= app.src %>/core/assets/styl/index.styl', '<%= app.src %>/cores/views/**/*.styl', '<%= app.src %>/modules/**/*.styl', '<%= app.src %>/vendor/**/*.styl', '<%= app.src %>/shared/**/*.styl'],
         dest: '<%= app.prod %>/style.css'
       },
     },
