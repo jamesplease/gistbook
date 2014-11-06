@@ -27,7 +27,7 @@ export default mn.Object.extend({
 
     // Finally, post to the server.
     this.post(serializedView)
-      .done(_.bind(this.onPostSuccess, this))
+      .then(_.bind(this.onPostSuccess, this))
       .catch(_.bind(this.onPostError, this));
   },
 
