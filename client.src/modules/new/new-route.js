@@ -5,7 +5,7 @@
 // over there.
 //
 
-import Route from '../../lib/routing/route';
+import Route from '../../vendor/routing/route';
 
 export default Route.extend({
   redirect: ''

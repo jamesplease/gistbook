@@ -3,7 +3,7 @@
 //
 
 import * as Radio from 'radio';
-import Route from '../../lib/routing/route';
+import Route from '../../vendor/routing/route';
 import TermsView from './views/terms-view';
 
 export default Route.extend({

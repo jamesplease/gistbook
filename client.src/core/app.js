@@ -13,9 +13,9 @@ import * as bb from 'backbone';
 import * as mn from 'marionette';
 import * as Intercept from 'backbone.intercept';
 import env from './env';
-import auth from '../lib/auth';
+import auth from '../vendor/auth';
 import user from '../shared/entities/user';
-import modal from '../lib/modal';
+import modal from '../vendor/modal';
 import router from './router';
 import RootView from './views/root-view';
 

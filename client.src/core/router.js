@@ -5,7 +5,7 @@
 //
 
 import * as Radio from 'radio';
-import Router from '../lib/routing/router';
+import Router from '../vendor/routing/router';
 import HomeRoute from '../modules/home/home-route';
 import NewGistbookRoute from '../modules/new/new-route';
 import AboutRoute from '../modules/about/about-route';

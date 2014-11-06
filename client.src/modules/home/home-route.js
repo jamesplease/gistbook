@@ -4,7 +4,7 @@
 //
 
 import * as Radio from 'radio';
-import Route from '../../lib/routing/route';
+import Route from '../../vendor/routing/route';
 import Gist from '../../shared/entities/gist';
 import GistView from '../../shared/views/gist-view';
 
