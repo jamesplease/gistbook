@@ -4,8 +4,8 @@
 //
 
 import * as _ from 'underscore';
-import Gist from '../../entities/gist';
-import GithubCollection from '../../entities/github-collection';
+import Gist from '../../../shared/entities/gist';
+import GithubCollection from '../../../shared/entities/github-collection';
 import gistbookUtil from '../../../util/gistbook-util';
 
 export default GithubCollection.extend({

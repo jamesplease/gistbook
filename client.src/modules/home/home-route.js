@@ -5,7 +5,7 @@
 
 import * as Radio from 'radio';
 import Route from '../../lib/routing/route';
-import Gist from '../entities/gist';
+import Gist from '../../shared/entities/gist';
 import GistView from '../../shared/views/gist-view';
 
 export default Route.extend({
