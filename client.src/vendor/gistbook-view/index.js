@@ -79,6 +79,7 @@ export default mn.LayoutView.extend({
   _createSectionsView: function() {
     this.pageChannel = radioHelpers.objChannel(this.model);
     return new SectionsView({
+      sort: false,
       collection: this._createSectionsCollection(),
       pageChannel: this.pageChannel,
       newGist: this.newGist,

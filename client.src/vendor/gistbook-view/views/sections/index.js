@@ -3,13 +3,17 @@
 // A CollectionView that renders all of the Gistbook's sections
 //
 
+import * as Sortable from 'sortable';
 import * as _ from 'underscore';
 import * as mn from 'marionette';
+import * as Radio from 'radio';
 import DisplayTextView from '../text/display';
 import ControlsWrapper from '../wrappers/controls-wrapper';
 import AceEditorView from '../ace-editor-view';
 import stringHelpers from '../../helpers/string-helpers';
 import radioHelpers from '../../helpers/radio-helpers';
+
+var aceChannel = Radio.channel('ace');
 
 export default mn.CollectionView.extend({
   sectionsOptions: ['newGist', 'ownGistbook'],
@@ -28,6 +32,41 @@ export default mn.CollectionView.extend({
   getChildView: function(model) {
     var factoryMethod = this._factoryMethodName(model.get('type'));
     return this[factoryMethod](model);
+  },
+
+  onAttach: function() {
+    var self = this;
+    this._sortable = new Sortable(this.el, {
+      setData: false,
+      handle: '.gistblock-move',
+      draggable: '.controls-wrapper-view',
+      ghostClass: 'gistblock-placeholder',
+      onStart: function() {
+        aceChannel.trigger('dragStart');
+      },
+      onEnd: function() {
+        aceChannel.trigger('dragEnd');
+        self._resortByDom();
+      }
+    });
+  },
+
+  // Silently update the collection based on the new DOM indices
+  _resortByDom: function() {
+    var newCollection = {};
+    var newArray = [];
+    var index, $children = this.$el.children();
+
+    this.children.each(function(view, i) {
+      index = $children.index(view.el);
+      newCollection[index] = view.model;
+      newArray = _.sortBy(newCollection, function(key, i) {
+        return i;
+      });
+      view._index = index;
+    }, this);
+    
+    this.collection.reset(newArray, {silent: true});
   },
 
   // Make it sortable if we're authorized
@@ -71,7 +110,7 @@ export default mn.CollectionView.extend({
       cache: false,
       editOptions: {
         edit: false,
-        move: false,
+        move: true,
         delete: true
       }
     };
@@ -99,7 +138,7 @@ export default mn.CollectionView.extend({
       mode: 'html',
       editOptions: {
         edit: false,
-        move: false,
+        move: true,
         delete: true
       }
     };
@@ -128,7 +167,7 @@ export default mn.CollectionView.extend({
       mode: 'css',
       editOptions: {
         edit: false,
-        move: false,
+        move: true,
         delete: true
       }
     };

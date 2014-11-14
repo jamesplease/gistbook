@@ -7,6 +7,9 @@
 //
 
 import * as mn from 'marionette';
+import * as Radio from 'radio';
+
+var aceChannel = Radio.channel('ace');
  
 export default mn.ItemView.extend({
   template: 'aceEditorView',
@@ -69,6 +72,22 @@ export default mn.ItemView.extend({
   // Merge the options
   initialize: function(options) {
     this.mergeOptions(options, this.aceEditorViewOptions);
+    this.listenTo(aceChannel, {
+      dragStart: this._onDragStart,
+      dragEnd: this._onDragEnd
+    });
+  },
+
+  // These two methods are here because the $fontMetrics element
+  // is absolutely positioned, which shifts the ghost image
+  // that appears during drag and drop interface. Ideally this
+  // won't always be the case. Related issue: ace#2240
+  // https://github.com/ajaxorg/ace/issues/2240
+  _onDragStart: function() {
+    this.editor.renderer.$fontMetrics.el.style.display = 'none';
+  },
+  _onDragEnd: function() {
+    this.editor.renderer.$fontMetrics.el.style.display = 'block';
   },
 
   // Create the editor and configure it

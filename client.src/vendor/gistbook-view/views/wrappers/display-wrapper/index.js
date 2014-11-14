@@ -19,7 +19,7 @@ export default mn.LayoutView.extend({
   editOptions: {
     edit: true,
     delete: true,
-    move: false
+    move: true
   },
 
   // Where to render the view

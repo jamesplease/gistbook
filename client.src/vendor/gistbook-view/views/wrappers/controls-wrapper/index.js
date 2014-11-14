@@ -23,7 +23,7 @@ export default mn.LayoutView.extend({
   editOptions: {
     edit: true,
     delete: true,
-    move: false
+    move: true
   },
 
   controlsWrapperOptions: [
@@ -38,11 +38,13 @@ export default mn.LayoutView.extend({
   },
 
   ui: {
+    addRow: '.gistbook-add-row',
     addText: '.add-text',
     addJavascript: '.add-javascript'
   },
 
   triggers: {
+    'click @ui.addRow': 'add:row',
     'click @ui.addText': 'add:text',
     'click @ui.addJavascript': 'add:javascript'
   },
@@ -171,13 +173,17 @@ export default mn.LayoutView.extend({
   },
 
   _configureEditListeners: function() {
-    this.listenTo(this.currentView, 'cancel', this.onCancel);
-    this.listenTo(this.currentView, 'update', this.onUpdate);
-    this.listenTo(this.currentView, 'updateCache', this._updateCache);
+    this.listenTo(this.currentView, {
+      cancel: this.onCancel,
+      update: this.onUpdate,
+      updateCache: this._updateCache
+    });
   },
 
   _configurePreviewListeners: function() {
-    this.listenTo(this.currentView, 'edit', this.onEdit);
-    this.listenTo(this.currentView, 'delete', this.onDelete);
+    this.listenTo(this.currentView, {
+      edit: this.onEdit,
+      delete: this.onDelete
+    });
   }
 });
