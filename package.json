@@ -34,7 +34,7 @@
   "homepage": "https://github.com/Gistbook/gistbook",
   "devDependencies": {
     "6to5": "^1.10.10",
-    "6to5-loader": "git://github.com/jmeas/6to5-loader.git#ignore-node-modules",
+    "6to5-loader": "^0.2.3",
     "exports-loader": "^0.6.2",
     "grunt": "~0.4.2",
     "grunt-contrib-clean": "~0.5.0",
