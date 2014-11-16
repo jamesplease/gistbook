@@ -182,7 +182,7 @@ module.exports = function(grunt) {
         module: {
           loaders: [
             {test: /templates/, loader: 'imports?_=underscore!exports?this.JST'},
-            {test: /\.js$/, loader: '6to5-loader'},
+            {test: /\.js$/, exclude: /node_modules/, loader: '6to5-loader'},
             // {test: /jquery-mockjax/, loader: 'imports?jQuery=jquery'}
           ]
         },
