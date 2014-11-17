@@ -2,14 +2,39 @@
 
   .gistbook-add-row
     cursor pointer
-    opacity .3
-    background #eee
-    color #666
+    position relative
+    background #f3f3f3
+    color #999
     height 30px
     width 35px
     line-height 30px
     text-align center
     margin-bottom 3px
-
+    
+    &:hover, &.active
+      color #666
+      background #eee
+    
+.add-section-menu
+  display none
+  z-index 20000
+  width 150px
+  padding 5px 0
+  position absolute
+  background #fff
+  border 1px solid #ddd
+  border-radius 2px
+  box-shadow 0 2px 3px rgba(0,0,0,.2)
+  right -150px
+  top 0
+  
+  a
+    padding 2px 0
+    display block
+    
     &:hover
-      opacity 1
+      background #f3f3f3
+      color #000
+    
+  &.visible
+    display block

@@ -7,9 +7,12 @@
 
 import * as bb from 'backbone';
 import * as mn from 'marionette';
+import * as Radio from 'radio';
 import DisplayWrapper from '../display-wrapper';
 import EditWrapper from '../edit-wrapper';
 import radioHelpers from '../../../helpers/radio-helpers';
+
+var overlayChannel = Radio.channel('overlay');
 
 export default mn.LayoutView.extend({
   template: 'controlsWrapper',
@@ -39,21 +42,40 @@ export default mn.LayoutView.extend({
 
   ui: {
     addRow: '.gistbook-add-row',
-    addText: '.add-text',
-    addJavascript: '.add-javascript'
+    addSectionMenu: '.add-section-menu',
+    addText: '.gistbook-add-text',
+    addJavascript: '.gistbook-add-js',
+    addCss: '.gistbook-add-css',
+    addHtml: '.gistbook-add-html'
   },
 
   triggers: {
-    'click @ui.addRow': 'add:row',
+    'click @ui.addRow': 'click:add:row',
     'click @ui.addText': 'add:text',
+    'click @ui.addHtml': 'add:html',
+    'click @ui.addCss': 'add:css',
     'click @ui.addJavascript': 'add:javascript'
   },
 
   // Sets our options, binds callback context, and creates
   // a cached model for users to mess around with
   initialize: function(options) {
+    this.gistSections = this.model.collection;
     this.mergeOptions(options, this.controlsWrapperOptions);
     this._createCache();
+  },
+
+  hideAddOptions: function() {
+    this.ui.addRow.removeClass('active');
+    overlayChannel.command('hide');
+    this.ui.addSectionMenu.removeClass('visible');
+  },
+
+  onClickAddRow: function() {
+    this.ui.addRow.addClass('active');
+    this.listenToOnce(overlayChannel, 'click', this.hideAddOptions);
+    overlayChannel.command('show');
+    this.ui.addSectionMenu.addClass('visible');
   },
 
   onEdit: function() {
@@ -73,17 +95,30 @@ export default mn.LayoutView.extend({
   },
 
   onAddText: function() {
-    console.log('Adding Text!');
-    // this.gistbookChannel.trigger('add:block', 'text', this.model);
+    this._addSection('text');
+  },
+
+  onAddHtml: function() {
+    this._addSection('html');
+  },
+
+  onAddCss: function() {
+    this._addSection('css');
   },
 
   onAddJavascript: function() {
-    console.log('Adding JS!');
-    // this.gistbookChannel.trigger('add:block', 'javascript', this.model);
+    this._addSection('javascript');
+  },
+
+  _addSection: function(type) {
+    var index = this.gistSections.indexOf(this.model);
+    var newSection = this._createNewSection(type);
+    this.gistSections.add(newSection, {at: index});
+    this.hideAddOptions();
   },
 
   showDisplay: function() {
-    this.stopListening();
+    if (this.currentView) { this.stopListening(this.currentView); }
     var displayWrapper = this.getDisplayWrapper();
     this.getRegion('wrapper').show(displayWrapper);
     this.currentView = displayWrapper;
@@ -91,7 +126,7 @@ export default mn.LayoutView.extend({
   },
 
   showActive: function() {
-    this.stopListening();
+    if (this.currentView) { this.stopListening(this.currentView); }
     var editWrapper = this.getEditWrapper();
     this.getRegion('wrapper').show(editWrapper);
     this.currentView = editWrapper;
@@ -163,6 +198,13 @@ export default mn.LayoutView.extend({
   // call this
   _resetCache: function() {
     this.cachedModel.set(this.model.toJSON());
+  },
+
+  _createNewSection: function(type) {
+    return new bb.Model({
+      type: type,
+      source: ''
+    });
   },
 
   // Update the cache with the latest content of the text editor. Only
