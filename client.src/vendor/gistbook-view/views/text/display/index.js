@@ -8,7 +8,6 @@ import * as mn from 'marionette';
 import * as marked from 'marked';
 
 export default mn.ItemView.extend({
-
   template: false,
 
   // They're not always displayed as sole gistblocks, such as
@@ -19,11 +18,9 @@ export default mn.ItemView.extend({
   // After render, check if the user has inputted any text. If so,
   // pass it along to be rendered by Mathjax and Marked.
   onRender: function() {
-    var text = this.model.escape('source');
+    var text = this.model.get('source');
 
-    if (!text) {
-      return;
-    }
+    if (!text) { return; }
 
     this.$el.html(text);
     this._parseText(text);

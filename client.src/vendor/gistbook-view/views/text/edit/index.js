@@ -7,7 +7,7 @@ import * as _ from 'underscore';
 import * as mn from 'marionette';
 
 export default mn.ItemView.extend({
-  template: _.template('<%- source %>'),
+  template: _.template('<%= source %>'),
 
   tagName: 'textarea',
 
