@@ -17,6 +17,7 @@ import auth from '../vendor/auth';
 import user from '../shared/entities/user';
 import modal from '../vendor/modal';
 import router from './router';
+import overlay from '../vendor/overlay';
 import RootView from './views/root-view';
 
 // Create the app
@@ -28,6 +29,7 @@ app.auth = auth;
 app.user = user;
 app.modal = modal;
 app.router = router;
+app.overlay = overlay;
 app.rootView = new RootView();
 
 // Attach it to the window for debugging
