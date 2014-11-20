@@ -15,10 +15,10 @@ import * as Intercept from 'backbone.intercept';
 import env from './env';
 import auth from '../vendor/auth';
 import user from '../shared/entities/user';
-import modal from '../vendor/modal';
 import router from './router';
 import overlay from '../vendor/overlay';
 import RootView from './views/root-view';
+import modalWrapper from '../vendor/modal-wrapper';
 
 // Create the app
 var app = new mn.Application();
@@ -27,10 +27,10 @@ var app = new mn.Application();
 app.env = env;
 app.auth = auth;
 app.user = user;
-app.modal = modal;
 app.router = router;
 app.overlay = overlay;
 app.rootView = new RootView();
+app.modalWrapper = modalWrapper;
 
 // Attach it to the window for debugging
 window.app = app;

@@ -15,10 +15,10 @@ var Overlay = mn.ItemView.extend({
   template: false,
 
   initialize: function() {
-    this.listenTo(overlayChannel, {
+    overlayChannel.comply({
       show: this.show,
       hide: this.hide
-    });
+    }, this);
   },
 
   triggers: {

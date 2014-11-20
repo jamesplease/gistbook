@@ -10,7 +10,8 @@ import * as mn from 'marionette';
 export default mn.LayoutView.extend({
   wrapperOptions: ['region'],
 
-  initialize: function(options) {
+  constructor: function(options) {
+    mn.LayoutView.prototype.constructor.apply(this, arguments);
     this.mergeOptions(options, this.wrapperOptions);
     this._createRegions();
     this._setEvents();
