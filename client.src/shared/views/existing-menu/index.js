@@ -17,11 +17,13 @@ export default mn.ItemView.extend({
     save: '.save-gist',
     delete: '.delete-gist',
     fork: '.fork-gist',
+    forkCount: '.fork-count',
     forkContainer: '.compound-fork-gist'
   },
 
   triggers: {
     'click @ui.save': 'save',
+    'click @ui.fork': 'fork'
   },
 
   events: {
@@ -43,6 +45,7 @@ export default mn.ItemView.extend({
       this.ui.delete.removeClass('hide');
     } else if (Radio.request('auth', 'authorized')) {
       this.ui.forkContainer.removeClass('hide');
+      this.ui.forkCount.text(this.model.get('forks').length);
     }
   },
 

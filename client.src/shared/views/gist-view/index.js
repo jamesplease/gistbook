@@ -7,6 +7,7 @@ import * as _ from 'underscore';
 import * as bb from 'backbone';
 import * as mn from 'marionette';
 import * as Radio from 'radio';
+import githubApiHelpers from '../../../helpers/github-api-helpers';
 import GistbookView from '../../../vendor/gistbook-view';
 import Gist from '../../entities/gist';
 import ExistingMenu from '../existing-menu';
@@ -39,7 +40,10 @@ export default mn.LayoutView.extend({
   },
 
   registerMenuListeners: function() {
-    this.listenTo(this.menu, 'save', this._sync);
+    this.listenTo(this.menu, {
+      save: this._sync,
+      fork: this._fork
+    });
     this.listenToOnce(this.menu, 'delete', this._delete);
   },
 
@@ -52,6 +56,16 @@ export default mn.LayoutView.extend({
     this.gistbook.title = this.gistbookModel.get('title');
     this._setGistbook();
     this._saveGist({newGist:false});
+  },
+
+  _fork: function() {
+    bb.$.post(githubApiHelpers.url + '/gists/' + this.model.get('id') + '/forks')
+      .then(this._onFork);
+  },
+
+  _onFork: function(resp) {
+    var currentUser = Radio.request('user', 'user').get('login');
+    Radio.command('router', 'navigate', currentUser + '/' + resp.id);
   },
 
   _delete: function() {
@@ -101,6 +115,7 @@ export default mn.LayoutView.extend({
 
   createMenu: function() {
     var menuOptions = {
+      model: this.model,
       newGist: this.newGist,
       ownGistbook: this.ownGistbook
     };
