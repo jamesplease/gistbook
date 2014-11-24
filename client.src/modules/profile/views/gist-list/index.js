@@ -8,6 +8,7 @@ import GistbookListView from '../gistbook-list-view';
 export default mn.CollectionView.extend({
   initialize: function(options) {
     this.model = options.model;
+    this.isSelf = options.isSelf;
   },
 
   tagName: 'ul',
@@ -16,7 +17,8 @@ export default mn.CollectionView.extend({
 
   childViewOptions: function() {
     return {
-      user: this.model
+      user: this.model,
+      isSelf: this.isSelf
     };
   },
 });

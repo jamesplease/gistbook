@@ -7,7 +7,10 @@ import NoGistsView from '../no-gists';
 import GistList from '../gist-list';
 
 export default mn.LayoutView.extend({
-  initialize: function() {
+  profileViewOptions: ['isSelf'],
+
+  initialize: function(options) {
+    this.mergeOptions(options, this.profileViewOptions);
     this.configureEvents();
   },
 
@@ -39,7 +42,8 @@ export default mn.LayoutView.extend({
       model: this.model
     } : {
       model: this.model,
-      collection: this.collection
+      collection: this.collection,
+      isSelf: this.isSelf
     };
   },
 

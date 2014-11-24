@@ -33,10 +33,13 @@ export default Route.extend({
     Radio.command('rootView', 'showIn:container', new ServerErrorView());
   },
 
-  show: function(data) {
+  show: function(data, urlData) {
+    var user = Radio.request('user', 'user');
+    var username = urlData.params.username;
     var profileView = new ProfileView({
       model: this.githubUser,
-      collection: this.gistbooks
+      collection: this.gistbooks,
+      isSelf: user.get('login') === username
     });
     Radio.command('rootView', 'showIn:container', profileView);
   }
