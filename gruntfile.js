@@ -1,13 +1,16 @@
+var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
 
-module.exports = function(grunt) {
+var remoteConfigFile = fs.existsSync('./config/remote.json') ? './config/remote.json' : './config/_remote.json';
+var remoteConfig = require(remoteConfigFile);
 
+module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
 
-    remote: require('./config/remote.json'),
+    remote: remoteConfig,
 
     // Specify where you'd like to keep your files
     app: {
