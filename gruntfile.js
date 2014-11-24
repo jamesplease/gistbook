@@ -189,7 +189,7 @@ module.exports = function(grunt) {
         resolve: {
           alias: {
             marionette: 'backbone.marionette',
-            wreqr: 'backbone.wreqr',
+            'backbone.wreqr': 'backbone.radio',
             radio: 'backbone.radio',
             _: 'underscore'
           },
