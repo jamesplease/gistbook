@@ -8,6 +8,7 @@ import * as mn from 'marionette';
 import * as _ from 'underscore';
 
 var mergeOptions = function(options, mergeOptions) {
+  if (!options) { return; }
   _.extend(this, _.pick(options, mergeOptions));
 };
 
