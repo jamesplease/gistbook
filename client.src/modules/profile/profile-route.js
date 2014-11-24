@@ -12,21 +12,25 @@ import ServerErrorView from '../../shared/views/server-error-view';
 export default Route.extend({
   fetch: function(urlData) {
     var user = Radio.request('user', 'user');
+    var isSelf = urlData.params.username === user.get('login');
+
     var dataOptions = {};
-    if (urlData.params.username !== user.get('login')) {
+    if (!isSelf) {
       dataOptions.collectionUrl = '/users/' + urlData.params.username + '/gists';
     }
+
     var Gistbooks = Gists.extend(dataOptions);
     this.gistbooks = new Gistbooks();
 
-    this.githubUser = new GithubUser({
-      id: urlData.params.username
-    });
+    this.githubUser = this._getUser(isSelf, urlData);
 
-    return Promise.all([
-      this.githubUser.fetch(),
-      this.gistbooks.fetch()
-    ]);
+    var fetch = [this.gistbooks.fetch()];
+
+    if (!isSelf) {
+      fetch.push(this.githubUser.fetch());
+    }
+
+    return Promise.all(fetch);
   },
 
   onFetchError: function() {
@@ -42,5 +46,15 @@ export default Route.extend({
       isSelf: user.get('login') === username
     });
     Radio.command('rootView', 'showIn:container', profileView);
+  },
+
+  _getUser: function(isSelf, urlData) {
+    if (isSelf) {
+      return Radio.request('user', 'user');
+    } else {
+      return new GithubUser({
+        id: urlData.params.username
+      });
+    }
   }
 });
