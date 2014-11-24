@@ -16,11 +16,8 @@ export default mn.ItemView.extend({
   ui: {
     save: '.save-gist',
     delete: '.delete-gist',
-    star: '.star-gist',
     fork: '.fork-gist',
-    forkContainer: '.compound-fork-gist',
-    starContainer: '.compound-star-gist',
-    display: '.display-view'
+    forkContainer: '.compound-fork-gist'
   },
 
   triggers: {
@@ -47,12 +44,6 @@ export default mn.ItemView.extend({
     } else if (Radio.request('auth', 'authorized')) {
       this.ui.forkContainer.removeClass('hide');
     }
-
-    if (Radio.request('auth', 'authorized')) {
-      this.ui.starContainer.removeClass('hide');
-    }
-
-    this.ui.display.removeClass('hide');
   },
 
   onDelete: function() {
