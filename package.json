@@ -71,6 +71,6 @@
     "marked": "^0.3.2",
     "octonode": "^0.6.2",
     "sortable": "git://github.com/jmeas/Sortable.git#optional-set-text",
-    "underscore": "^1.6.0"
+    "underscore": "1.6.0"
   }
 }
