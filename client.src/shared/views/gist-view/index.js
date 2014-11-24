@@ -59,11 +59,26 @@ export default mn.LayoutView.extend({
   },
 
   _fork: function() {
-    bb.$.post(githubApiHelpers.url + '/gists/' + this.model.get('id') + '/forks')
-      .then(this._onFork);
+    var baseUrl = githubApiHelpers.url + '/gists';
+    var oldDescription = this.model.get('description');
+
+    // First, we fork the old Gist
+    bb.$.post(baseUrl + '/' + this.model.get('id') + '/forks')
+
+    // Now we need to update the Gist's description
+      .then(function(resp) {
+        return bb.$.ajax({
+          type: 'PATCH',
+          url: baseUrl + '/' + resp.id,
+          data: JSON.stringify({description: oldDescription, files: {}})
+        });
+      })
+
+    // Lastly, we redirect to the newly created fork
+      .then(this._onForkComplete);
   },
 
-  _onFork: function(resp) {
+  _onForkComplete: function(resp) {
     var currentUser = Radio.request('user', 'user').get('login');
     Radio.command('router', 'navigate', currentUser + '/' + resp.id);
   },
