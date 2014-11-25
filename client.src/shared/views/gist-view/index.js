@@ -22,6 +22,10 @@ export default mn.LayoutView.extend({
 
   template: 'gistView',
 
+  ui: {
+    gistHeader: '.gist-header'
+  },
+
   regions: {
     gistbookContainer: '.gistbook-container',
     menuContainer: '.gist-menu-container'
@@ -33,6 +37,9 @@ export default mn.LayoutView.extend({
 
   // Show a new Gistbook
   onBeforeShow: function() {
+    if (!Radio.request('auth', 'authorized') && !this.newGist) {
+      this.ui.gistHeader.addClass('hide');
+    }
     this.getRegion('gistbookContainer').show(this.createNewGistbook());
 
     this.getRegion('menuContainer').show(this.createMenu());
