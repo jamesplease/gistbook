@@ -16,6 +16,13 @@ import '../shims/render-shim';
 import '../shims/to-json-shim';
 import '../shims/merge-options-shim';
 
+import * as emojify from 'emojify.js';
+
+emojify.setConfig({
+  ignore_emoticons: true,
+  img_dir: '/img/emoji'
+});
+
 // Load & start our app
 import app from './app';
 app.start();

@@ -99,8 +99,20 @@ module.exports = function(grunt) {
       images: {
         expand: true,
         flatten: true,
-        src:  ['<%= app.src %>/core/assets/img/**/*', '!<%= app.src %>/img/sprite/*'],
+        src:  '<%= app.src %>/core/assets/img/**/*',
         dest: '<%= app.dev %>/img'
+      },
+      emoji_dev: {
+        expand: true,
+        flatten: true,
+        src: 'node_modules/emojify.js/images/**/*',
+        dest: '<%= app.dev %>/img/emoji'
+      },
+      emoji_prod: {
+        expand: true,
+        flatten: true,
+        src: 'node_modules/emojify.js/images/**/*',
+        dest: '<%= app.prod %>/img/emoji'
       },
       fonts_dev: {
         expand: true,
@@ -251,6 +263,7 @@ module.exports = function(grunt) {
       'jst',
       'webpack:'+target,
       'copy:favicon_'+target,
+      'copy:emoji_'+target,
       'copy:fonts_'+target,
       images,
       'stylus:'+target
