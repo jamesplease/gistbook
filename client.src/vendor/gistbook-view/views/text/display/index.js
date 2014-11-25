@@ -6,6 +6,7 @@
 import * as _ from 'underscore';
 import * as mn from 'marionette';
 import * as marked from 'marked';
+import * as emojify from 'emojify.js';
 
 export default mn.ItemView.extend({
   template: false,
@@ -35,8 +36,14 @@ export default mn.ItemView.extend({
   // Parse the element's HTML as Markdown, then set the element's text.
   _parseMarked: function() {
     var $el = this.$el;
+    var self = this;
     marked($el.html(), function(err, content) {
       $el.html(content);
+      self._parseEmoji(self.el);
     });
+  },
+
+  _parseEmoji: function(el) {
+    emojify.run(el);
   }
 });

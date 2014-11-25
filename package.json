@@ -64,6 +64,7 @@
     "body-parser": "^1.7.0",
     "cookies": "^0.4.1",
     "cookies-js": "^0.4.0",
+    "emojify.js": "^0.9.5",
     "express": "^4.0.0",
     "hogan-express": "~0.5.2",
     "jquery": "^2.1.0",
