@@ -6,4 +6,3 @@ import dev from './env';
 if (dev && window.__agent && window.__agent.start) {
   window.__agent.start(bb, mn);
 }
-
