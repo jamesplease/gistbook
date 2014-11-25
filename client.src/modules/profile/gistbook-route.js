@@ -24,7 +24,7 @@ export default Route.extend({
     var gistOwner = this.gistbook.get('owner');
     var gistUser = gistOwner ? gistOwner.login : 'anonymous';
     var username = urlData.params.username;
-    var View = gistUser === username ? GistView : ServerErrorView;
+    var View = gistUser.toLowerCase() === username.toLowerCase() ? GistView : ServerErrorView;
     var user = Radio.request('user', 'user');
     var view = new View({
       model: this.gistbook,
