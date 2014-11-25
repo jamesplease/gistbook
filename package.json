@@ -1,6 +1,6 @@
 {
   "name": "gistbook",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The website for Gistbook.io",
   "main": "index.js",
   "scripts": {
