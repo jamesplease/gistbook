@@ -65,10 +65,7 @@ module.exports = function(grunt) {
         dest: '<%= app.dev %>/style.css'
       },
       prod: {
-        options: {
-          compress: true
-        },
-        src: ['<%= app.src %>/core/assets/styl/index.styl', '<%= app.src %>/cores/views/**/*.styl', '<%= app.src %>/modules/**/*.styl', '<%= app.src %>/vendor/**/*.styl', '<%= app.src %>/shared/**/*.styl'],
+        src: ['<%= app.src %>/core/assets/styl/index.styl', '<%= app.src %>/core/views/**/*.styl', '<%= app.src %>/modules/**/*.styl', '<%= app.src %>/vendor/**/*.styl', '<%= app.src %>/shared/**/*.styl'],
         dest: '<%= app.prod %>/style.css'
       },
     },
@@ -269,6 +266,6 @@ module.exports = function(grunt) {
   grunt.registerTask('work', 'Develop the app', ['jshint', 'build:dev', 'express:dev', 'watch']);
 
   // For running the site on a production server
-  grunt.registerTask('deploy', 'Deploy the app', ['jshint', 'build:prod', 'express:prod']);
+  grunt.registerTask('deploy', 'Deploy the app', ['jshint', 'build:prod']);
 
 };
