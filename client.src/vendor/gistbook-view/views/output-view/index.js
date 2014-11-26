@@ -7,6 +7,7 @@ import * as _ from 'underscore';
 import * as mn from 'marionette';
 import * as Spinner from 'spin.js';
 import CodeManager from '../../managers/code-manager';
+import moduleBundler from '../../managers/module-bundler';
 import Compiler from '../../managers/compiler';
 import ErrorView from './compile-error-view';
 
@@ -54,7 +55,11 @@ export default mn.LayoutView.extend({
     this.ui.compile.prop('disabled', true);
     _.delay(_.bind(this._showSpinner, this), 250);
     var code = this.codeManager.getCode();
-    this.compiler.compile(code);
+    var self = this;
+    moduleBundler.getBundle(code.javascript).then(function(js) {
+      code.javascript = js;
+      self.compiler.compile(code);
+    });
   },
 
   _showSpinner: function() {
