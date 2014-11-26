@@ -1,11 +1,11 @@
 {
   "name": "gistbook",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/Gistbook/gistbook",
   "authors": [
     "Jmeas <jellyes2@gmail.com>"
   ],
-  "description": "Social coding",
+  "description": "Create and share interactive code snippets.",
   "keywords": [
     "gist",
     "gistbook",
