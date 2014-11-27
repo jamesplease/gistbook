@@ -18,9 +18,12 @@ var staticFileLoc = 'client.' + ENV;
 // Static files
 app.use(express.static(staticFileLoc));
 
+// The maximum size of a request (5mb)
+const bodyLimit = 5000000;
+
 // Parse JSON bodies
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.json({ limit: bodyLimit }));
+app.use(bodyParser.urlencoded({ limit: bodyLimit }));
 
 // Templates
 app.set('view engine', 'html');
