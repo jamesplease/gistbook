@@ -16,8 +16,7 @@
     padding 0 7px
     display block
 
-button,
-.button
+button, .button
   height 28px
   text-decoration none
   font-size 14px
@@ -35,7 +34,6 @@ button,
   padding 5px 10px
 
   &:hover
-    // background-color #eaeaea
     border 1px solid #cacaca
     border-top 1px solid #d3d3d3
     border-width 2px
@@ -68,3 +66,11 @@ button,
 
   &.danger
     color $danger
+    
+  &:disabled
+    color #aaa
+    background #ededed
+    border-color #e3e3e3
+    
+    &:hover
+      border-width 1px

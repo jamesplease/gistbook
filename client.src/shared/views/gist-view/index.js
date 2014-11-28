@@ -48,10 +48,10 @@ export default mn.LayoutView.extend({
 
   registerMenuListeners: function() {
     this.listenTo(this.menu, {
-      save: this._sync,
-      fork: this._fork
+      'click:save': this._sync,
+      'click:fork': this._fork
     });
-    this.listenToOnce(this.menu, 'delete', this._delete);
+    this.listenToOnce(this.menu, 'click:delete', this._delete);
   },
 
   // Syncs the 'nested' data structure with the parent
@@ -91,8 +91,10 @@ export default mn.LayoutView.extend({
   },
 
   _delete: function() {
+    var self = this;
     this.model.destroy()
       .then(function() {
+        self.menu.trigger('delete');
         routerChannel.command('navigate', Radio.request('user', 'user').get('login'));
       })
       .catch(function() {
@@ -122,8 +124,10 @@ export default mn.LayoutView.extend({
     };
     var isNew = this.isNew();
     var saveOptions = isNew ? undefined : {patch:true};
+    var self = this;
     this.model.save(attrs, saveOptions)
       .then(function(gistData) {
+        self.menu.triggerMethod('save');
         if (isNew) {
           var username = gistData.owner ? gistData.owner.login : 'anonymous';
           var url = '/' + username + '/' + gistData.id;

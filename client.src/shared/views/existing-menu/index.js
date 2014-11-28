@@ -22,12 +22,12 @@ export default mn.ItemView.extend({
   },
 
   triggers: {
-    'click @ui.save': 'save',
-    'click @ui.fork': 'fork'
+    'click @ui.save': 'click:save',
+    'click @ui.fork': 'click:fork'
   },
 
   events: {
-    'click @ui.delete': 'onDelete'
+    'click @ui.delete': 'onClickDelete'
   },
 
   initialize: function(options) {
@@ -49,9 +49,42 @@ export default mn.ItemView.extend({
     }
   },
 
-  onDelete: function() {
+  onClickFork: function() {
+    this.ui.fork
+      .html('Forking...')
+      .prop('disabled', true);
+  },
+
+  onClickSave: function() {
+    this._cachedSaveHtml = this.ui.save.html();
+    this.ui.save
+      .width(this.ui.save.width())
+      .html('Saving...')
+      .prop('disabled', true);
+  },
+
+  onSave: function() {
+    this.ui.save
+      .width('auto')
+      .html(this._cachedSaveHtml)
+      .prop('disabled', false);
+    this._cachedSaveHtml = null;
+  },
+
+  onClickDelete: function() {
     if (window.confirm('Are you sure you want to delete this Gist?')) {
-      this.trigger('delete');
+      this._cachedDeleteHtml = this.ui.delete.html();
+      this.ui.delete
+        .html('Deleting...')
+        .prop('disabled', true);
+      this.trigger('click:delete');
     }
+  },
+
+  onDelete: function() {
+    this.ui.delete
+      .html(this._cachedDeleteHtml)
+      .prop('disabled', false);
+    this._cachedDeleteHtml = null;
   }
 });
