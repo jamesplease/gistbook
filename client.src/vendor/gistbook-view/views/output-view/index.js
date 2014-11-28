@@ -3,7 +3,9 @@
 // Manages compiling a Gistbook Page
 //
 
+import * as _ from 'underscore';
 import * as mn from 'marionette';
+import * as Spinner from 'spin.js';
 import CodeManager from '../../managers/code-manager';
 import Compiler from '../../managers/compiler';
 import ErrorView from './compile-error-view';
@@ -24,28 +26,60 @@ export default mn.LayoutView.extend({
   className: 'gistbook-compile-view',
 
   ui: {
-    compile: 'button'
+    compile: 'button',
+    spinnerContainer: '.spinner-container'
   },
 
   events: {
-    'click @ui.compile': 'onCompile'
+    'click @ui.compile': 'onClickCompile'
   },
 
-  onCompile: function() {
+  spinnerOptions: {
+    color: '#777',
+    lines: 7,
+    length: 3,
+    width: 3,
+    radius: 4
+  },
+
+  configureListeners: function() {
+    this.listenTo(this.compiler, {
+      compile: this.showCompiledView,
+      'compile:error': this.showErrorView
+    });
+  },
+
+  onClickCompile: function() {
+    this._compiling = true;
+    this.ui.compile.prop('disabled', true);
+    _.delay(_.bind(this._showSpinner, this), 250);
     var code = this.codeManager.getCode();
     this.compiler.compile(code);
   },
 
-  configureListeners: function() {
-    this.listenTo(this.compiler, 'compile', this.showCompiledView);
-    this.listenTo(this.compiler, 'compile:error', this.showErrorView);
+  _showSpinner: function() {
+    if (!this._compiling) { return; }
+    this.ui.spinnerContainer.addClass('show');
+  },
+
+  _resetBtn: function() {
+    this.ui.compile.prop('disabled', false);
+    this.ui.spinnerContainer.removeClass('show');
+  },
+
+  onRender: function() {
+    new Spinner(this.spinnerOptions).spin(this.ui.spinnerContainer[0]);
   },
 
   showCompiledView: function(iFrameView) {
+    this._compiling = false;
+    this._resetBtn();
     this.getRegion('output').show(iFrameView);
   },
 
   showErrorView: function() {
+    this._compiling = false;
+    this._resetBtn();
     this.getRegion('output').show(new ErrorView());
   },
 

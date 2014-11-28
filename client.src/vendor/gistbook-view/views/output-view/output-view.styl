@@ -1,5 +1,36 @@
-.gistbook-output-container
-  padding 20px
+.gistbook-compile-view
+
+  .gistbook-output-title
+    padding 10px
+    display flex
+    align-items center
+
+    > span
+      flex 1
+      font-weight bold
+      color #aaa
+      letter-spacing 1px
+      text-transform uppercase
+      font-size 13px
+      
+    .spinner-container
+      opacity 0
+      height 28px
+      width 28px
+      margin-right 1px
+      align-self flex-end
+      position relative
+      transition opacity .05s ease-in-out
+
+      &.show
+        opacity 1
+        transition-duration .2s
+
+    button
+      align-self flex-end
   
-  .notification
-    text-align center
+  .gistbook-output-container
+    padding 20px
+    
+    .notification
+      text-align center
