@@ -3,7 +3,7 @@
 //
 
 import * as Radio from 'radio';
-import Route from '../../vendor/routing/route';
+import Route from '../../base/route';
 
 var authChannel = Radio.channel('auth');
 

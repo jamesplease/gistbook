@@ -1,4 +1,4 @@
-/* jshint maxstatements: 20 */
+/* jshint maxstatements: 20, maxcomplexity: 7 */
 
 import * as _ from 'underscore';
 import * as Radio from 'radio';
@@ -12,6 +12,9 @@ export default BaseRouter.extend({
     if (!(newRoute instanceof Route)) {
       throw new Error('A Route object must be associated with each route.');
     }
+
+    // Do nothing if it's the same route
+    if (newRoute === this.currentRoute) { return; }
 
     var redirect = _.result(newRoute, 'redirect');
     if (_.isString(redirect)) {

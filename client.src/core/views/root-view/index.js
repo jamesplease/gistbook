@@ -11,7 +11,7 @@ import UnauthMenuView from '../menu-views/unauth-menu-view';
 
 var authChannel = Radio.channel('auth');
 
-export default mn.LayoutView.extend({
+var RootView = mn.LayoutView.extend({
   el: bb.$('body'),
 
   regions: {
@@ -35,3 +35,5 @@ export default mn.LayoutView.extend({
     this.getRegion('header').show(new View({model: model}));
   }
 });
+
+export default new RootView();

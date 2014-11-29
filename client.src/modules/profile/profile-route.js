@@ -3,7 +3,7 @@
 //
 
 import * as Radio from 'radio';
-import Route from '../../vendor/routing/route';
+import Route from '../../base/route';
 import ProfileView from './views/profile-view';
 import Gists from './entities/gists';
 import GithubUser from '../../shared/entities/github-user';
