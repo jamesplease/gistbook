@@ -3,7 +3,7 @@
 //
 
 import * as Radio from 'radio';
-import Route from '../../vendor/routing/route';
+import Route from '../../base/route';
 import GistView from '../../shared/views/gist-view';
 import Gist from '../../shared/entities/gist';
 import ServerErrorView from '../../shared/views/server-error-view';

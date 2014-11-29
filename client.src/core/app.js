@@ -12,7 +12,7 @@ import auth from '../vendor/auth';
 import user from '../shared/entities/user';
 import router from './router';
 import overlay from '../vendor/overlay';
-import RootView from './views/root-view';
+import rootView from './views/root-view';
 import modalWrapper from '../vendor/modal-wrapper';
 import './dev';
 
@@ -25,7 +25,7 @@ app.auth = auth;
 app.user = user;
 app.router = router;
 app.overlay = overlay;
-app.rootView = new RootView();
+app.rootView = rootView;
 app.modalWrapper = modalWrapper;
 
 // Attach it to the window for debugging
