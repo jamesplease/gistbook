@@ -1,0 +1,17 @@
+---
+# configure base machine
+
+- name: make sure apt list is updated
+  apt: update_cache=yes
+
+- name: make sure nginx is installed
+  apt: name=nginx state=present
+
+- name: make sure node ppa is available
+  apt_repository: repo='ppa:chris-lea/node.js'
+
+- name: make sure apt list is updated
+  apt: update_cache=yes
+
+- name: make sure nodejs is installed
+  apt: name=nodejs state=present

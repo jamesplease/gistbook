@@ -1,22 +1,22 @@
 // Load dependencies
-var express = require('express');
-var path = require('path');
+const path = require('path');
+const express = require('express');
+const bodyParser = require('body-parser');
+
+// Paths and variables
+const ENV = process.env.NODE_ENV;
+const BASE_DIR = __dirname;
+const BASE_PATH = path.normalize(BASE_DIR+'/..');
+const ASSETS_PATH = BASE_PATH + '/client.' + ENV;
+
+const VIEWS_DIR = path.join(BASE_DIR, 'views');
+const PORT = process.env.PORT || 3000;
 
 // Start the app
 var app = express();
 
-// Paths and variables
-var BASE_DIR = __dirname;
-var viewsDir = path.join(BASE_DIR, 'views');
-var port = process.env.PORT || 3000;
-var ENV = process.env.NODE_ENV;
-
-var bodyParser = require('body-parser');
-
-var staticFileLoc = 'client.' + ENV;
-
 // Static files
-app.use(express.static(staticFileLoc));
+app.use(express.static(ASSETS_PATH));
 
 // The maximum size of a request (5mb)
 const bodyLimit = 5000000;
@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ limit: bodyLimit }));
 
 // Templates
 app.set('view engine', 'html');
-app.set('views', viewsDir);
+app.set('views', VIEWS_DIR);
 app.set('layout', 'layout');
 app.engine('html', require('hogan-express'));
 
@@ -73,5 +73,5 @@ app.get(
 );
 
 // Start the app
-app.listen(port);
-console.log('Gistbook is listening on port ' + port + '.');
+app.listen(PORT);
+console.log('Gistbook is listening on port ' + PORT + '.');

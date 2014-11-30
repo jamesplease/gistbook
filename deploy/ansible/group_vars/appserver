@@ -1,0 +1,8 @@
+---
+# configuration for production
+
+app_base_path: "/mnt/gistbook/"
+app_fqdn: "gistbook.io"
+node_env: "prod"
+default_user: "ubuntu"
+ansible_ssh_private_key_file: "{{ lookup('env', 'PWD') }}/config/secrets/Gistbook.pem"

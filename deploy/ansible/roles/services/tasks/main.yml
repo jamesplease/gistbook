@@ -1,0 +1,5 @@
+---
+# configure services
+
+- name: Make sure the gistbook daemon is on the box
+  template: src=gistbook.conf dest=/etc/init/gistbook.conf backup=no

@@ -1,0 +1,5 @@
+---
+# start it up.
+
+- name: Make sure the node app server is running
+  service: name=gistbook state=restarted
