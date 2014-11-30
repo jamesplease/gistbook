@@ -32,6 +32,11 @@ export default mn.ItemView.extend({
 
   initialize: function(options) {
     this.mergeOptions(options, this.existingMenuOptions);
+    this.on({
+      'save save:fail': '_resetSaveBtn',
+      'delete delete:fail': '_resetDeleteBtn',
+      'fork:fail': '_resetForkBtn'
+    }, this);
   },
 
   onRender: function() {
@@ -49,26 +54,12 @@ export default mn.ItemView.extend({
     }
   },
 
-  onClickFork: function() {
-    this.ui.fork
-      .html('Forking...')
-      .prop('disabled', true);
-  },
-
   onClickSave: function() {
     this._cachedSaveHtml = this.ui.save.html();
     this.ui.save
       .width(this.ui.save.width())
       .html('Saving...')
       .prop('disabled', true);
-  },
-
-  onSave: function() {
-    this.ui.save
-      .width('auto')
-      .html(this._cachedSaveHtml)
-      .prop('disabled', false);
-    this._cachedSaveHtml = null;
   },
 
   onClickDelete: function() {
@@ -81,10 +72,32 @@ export default mn.ItemView.extend({
     }
   },
 
-  onDelete: function() {
+  onClickFork: function() {
+    this._cachedForkHtml = this.ui.fork.html();
+    this.ui.fork
+      .html('Forking...')
+      .prop('disabled', true);
+  },
+
+  _resetSaveBtn: function() {
+    this.ui.save
+      .width('auto')
+      .html(this._cachedSaveHtml)
+      .prop('disabled', false);
+    this._cachedSaveHtml = null;
+  },
+
+  _resetDeleteBtn: function() {
     this.ui.delete
       .html(this._cachedDeleteHtml)
       .prop('disabled', false);
     this._cachedDeleteHtml = null;
+  },
+
+  _resetForkBtn: function() {
+    this.ui.fork
+      .html(this._cachedForkHtml)
+      .prop('disabled', false);
+    this._cachedForkHtml = null;
   }
 });
