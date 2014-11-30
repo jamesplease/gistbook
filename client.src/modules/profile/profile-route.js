@@ -24,10 +24,10 @@ export default Route.extend({
 
     this.githubUser = this._getUser(isSelf, urlData);
 
-    var fetch = [this.gistbooks.fetch()];
+    var fetch = [this.gistbooks.fetch({ cache: false })];
 
     if (!isSelf) {
-      fetch.push(this.githubUser.fetch());
+      fetch.push(this.githubUser.fetch({ cache: false }));
     }
 
     return Promise.all(fetch);
