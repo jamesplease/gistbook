@@ -46,7 +46,7 @@ export default mn.LayoutView.extend({
   configureListeners: function() {
     this.listenTo(this.compiler, {
       compile: this.showCompiledView,
-      'compile:error': this.showErrorView
+      'error:compile': this.showErrorView
     });
   },
 
@@ -56,10 +56,14 @@ export default mn.LayoutView.extend({
     _.delay(_.bind(this._showSpinner, this), 250);
     var code = this.codeManager.getCode();
     var self = this;
-    moduleBundler.getBundle(code.javascript).then(function(js) {
-      code.javascript = js;
-      self.compiler.compile(code);
-    });
+    moduleBundler.getBundle(code.javascript)
+      .then(function(js) {
+        code.javascript = js;
+        self.compiler.compile(code);
+      })
+      .catch(function() {
+        self._resetBtn();
+      });
   },
 
   _showSpinner: function() {

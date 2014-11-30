@@ -68,11 +68,12 @@ export default mn.LayoutView.extend({
   _fork: function() {
     var baseUrl = githubApiHelpers.url + '/gists';
     var oldDescription = this.model.get('description');
+    var self = this;
 
     // First, we fork the old Gist
     bb.$.post(baseUrl + '/' + this.model.get('id') + '/forks')
 
-    // Now we need to update the Gist's description
+      // Now we need to update the Gist's description
       .then(function(resp) {
         return bb.$.ajax({
           type: 'PATCH',
@@ -81,8 +82,11 @@ export default mn.LayoutView.extend({
         });
       })
 
-    // Lastly, we redirect to the newly created fork
-      .then(this._onForkComplete);
+      // Lastly, we redirect to the newly created fork
+      .then(this._onForkComplete)
+      .fail(function() {
+        self.menu.trigger('error:fork');
+      });
   },
 
   _onForkComplete: function(resp) {
@@ -98,7 +102,7 @@ export default mn.LayoutView.extend({
         routerChannel.command('navigate', Radio.request('user', 'user').get('login'));
       })
       .catch(function() {
-        console.log('Unable to delete the gist');
+        self.menu.trigger('error:delete');
       });
   },
 
@@ -127,7 +131,7 @@ export default mn.LayoutView.extend({
     var self = this;
     this.model.save(attrs, saveOptions)
       .then(function(gistData) {
-        self.menu.triggerMethod('save');
+        self.menu.trigger('save');
         if (isNew) {
           var username = gistData.owner ? gistData.owner.login : 'anonymous';
           var url = '/' + username + '/' + gistData.id;
@@ -135,6 +139,7 @@ export default mn.LayoutView.extend({
         }
       })
       .catch(function() {
+        self.menu.trigger('error:save');
         console.log('Gist not saved', arguments);
       });
   },
