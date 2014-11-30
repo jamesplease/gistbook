@@ -26,7 +26,7 @@ export default {
       dependencies: dependencies
     };
 
-    return bb.$.post('http://wzrd.in/multi', JSON.stringify(body)).then(function(data) {
+    return bb.$.post('http://wzrd.bocoup.com/multi', JSON.stringify(body)).then(function(data) {
       var js = '';
       _.each(data, function(datum) {
         js += datum.bundle;
