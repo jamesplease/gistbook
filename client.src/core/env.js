@@ -11,7 +11,8 @@ var env = window._initData.env;
 envChannel.reply({
   env: env,
   dev: env === 'dev',
-  prod: env === 'prod'
+  production: env === 'production',
+  staging: env === 'staging'
 });
 
 export default env;

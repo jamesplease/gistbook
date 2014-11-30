@@ -6,8 +6,9 @@ const bodyParser = require('body-parser');
 // Paths and variables
 const ENV = process.env.NODE_ENV;
 const BASE_DIR = __dirname;
-const BASE_PATH = path.normalize(BASE_DIR+'/..');
-const ASSETS_PATH = BASE_PATH + '/client.' + ENV;
+const BASE_PATH = path.normalize(BASE_DIR + '/..');
+const ASSETS_DIR = ENV === 'dev' ? 'client.dev' : 'client.prod';
+const ASSETS_PATH = BASE_PATH + '/' + ASSETS_DIR;
 
 const VIEWS_DIR = path.join(BASE_DIR, 'views');
 const PORT = process.env.PORT || 3000;

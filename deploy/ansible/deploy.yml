@@ -1,7 +1,9 @@
 ---
 # deploy production machine for live use
 
-- hosts: appserver
+- hosts:
+    - appserver
+    - staging
   remote_user: ubuntu
   sudo: yes
   roles:

@@ -2,7 +2,9 @@
 # gistbook.yml
 # Ubuntu 12.04 required due to a bug with fastcgi in 14.04
 -
-  hosts: appserver
+  hosts:
+    - appserver
+    - staging
   remote_user: ubuntu
   sudo: yes
   roles:
