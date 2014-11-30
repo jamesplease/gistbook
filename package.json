@@ -7,8 +7,8 @@
     "test": "grunt test",
     "get-secrets": "./.bin/get-secrets",
     "provision": "ansible-playbook -i deploy/ansible/hosts deploy/ansible/provision.yml",
-    "deploy": "ansible-playbook -i deploy/ansible/hosts deploy/ansible/deploy.yml",
-    "deploy-staging": "ansible-playbook -i deploy/ansible/hosts deploy/ansible/deploy.yml --limit staging"
+    "deploy": "grunt build:prod && ansible-playbook -i deploy/ansible/hosts deploy/ansible/deploy.yml",
+    "deploy-staging": "grunt build:prod && ansible-playbook -i deploy/ansible/hosts deploy/ansible/deploy.yml --limit staging"
   },
   "repository": {
     "type": "git",
