@@ -18,12 +18,12 @@ var app = express();
 // Static files
 app.use(express.static(ASSETS_PATH));
 
-// The maximum size of a request (5mb)
-const bodyLimit = 5000000;
+// The maximum size of a request
+const BODY_LIMIT = '5mb';
 
 // Parse JSON bodies
-app.use(bodyParser.json({ limit: bodyLimit }));
-app.use(bodyParser.urlencoded({ limit: bodyLimit }));
+app.use(bodyParser.json({ limit: BODY_LIMIT }));
+app.use(bodyParser.urlencoded({ limit: BODY_LIMIT, extended: true }));
 
 // Templates
 app.set('view engine', 'html');
