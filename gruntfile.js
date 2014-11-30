@@ -2,15 +2,10 @@ var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
 
-var remoteConfigFile = fs.existsSync('./config/remote.json') ? './config/remote.json' : './config/_remote.json';
-var remoteConfig = require(remoteConfigFile);
-
 module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
-
-    remote: remoteConfig,
 
     // Specify where you'd like to keep your files
     app: {
@@ -231,21 +226,6 @@ module.exports = function(grunt) {
       prod: {
         src: '<%= app.prod %>/script.js',
         dest: '<%= app.prod %>/script.js'
-      }
-    },
-
-    rsync: {
-      server: {
-        options: {
-          ssh: true,
-          args: ['--verbose'],
-          exclude: ['.git', '.node_modules', 'node_modules/', '.gitignore', '<%= app.prod %>/', '<%= app.dev %>/', 'bower_components/', '<%= app.tmp %>'],
-          recursive: true,
-          syncDestIgnoreExcl: true,
-          src: ['<%= app.src %>', '.jshintrc', 'bower.json', 'package.json', 'gruntfile.js', 'server', 'config'],
-          dest: '<%= remote.dest %>',
-          host: '<%= remote.host %>'
-        }
       }
     }
   });

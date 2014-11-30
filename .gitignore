@@ -30,5 +30,4 @@ bower_components
 client.dev
 client.prod
 
-config/remote.json
 config/secrets
