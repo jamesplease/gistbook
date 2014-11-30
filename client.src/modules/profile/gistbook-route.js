@@ -13,7 +13,7 @@ export default Route.extend({
     this.gistbook = new Gist({
       id: urlData.params.gistbookId
     });
-    return this.gistbook.fetch();
+    return this.gistbook.fetch({ cache: false });
   },
 
   onFetchError: function() {
