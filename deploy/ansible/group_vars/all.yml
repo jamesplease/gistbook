@@ -1,8 +1,6 @@
 ---
-# configuration for staging
+# defaults for all groups
 
 app_base_path: "/mnt/gistbook/"
-app_fqdn: "staging.gistbook.io"
-node_env: "staging"
 default_user: "ubuntu"
 ansible_ssh_private_key_file: "{{ lookup('env', 'PWD') }}/config/secrets/Gistbook.pem"

@@ -6,9 +6,10 @@
   "scripts": {
     "test": "grunt test",
     "get-secrets": "./.bin/get-secrets",
-    "provision": "ansible-playbook -i deploy/ansible/hosts deploy/ansible/provision.yml",
-    "deploy": "grunt build:prod && ansible-playbook -i deploy/ansible/hosts deploy/ansible/deploy.yml",
-    "deploy-staging": "grunt build:prod && ansible-playbook -i deploy/ansible/hosts deploy/ansible/deploy.yml --limit staging"
+    "provision": "ansible-playbook -i deploy/ansible/production deploy/ansible/provision.yml",
+    "provision-staging": "ansible-playbook -i deploy/ansible/staging deploy/ansible/provision.yml",
+    "deploy": "grunt build:prod && ansible-playbook -i deploy/ansible/production deploy/ansible/deploy.yml",
+    "deploy-staging": "grunt build:prod && ansible-playbook -i deploy/ansible/staging deploy/ansible/deploy.yml"
   },
   "repository": {
     "type": "git",
