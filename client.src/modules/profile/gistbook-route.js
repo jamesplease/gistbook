@@ -23,5 +23,10 @@ export default Route.extend({
       ownGistbook: user.get('login') === username
     });
     Radio.command('rootView', 'showIn:container', view);
+  },
+
+  cancel: function() {
+    console.log('canceling');
+    return true;
   }
 });
