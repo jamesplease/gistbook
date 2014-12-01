@@ -39,4 +39,5 @@ Run the `npm run deploy-staging` command from the root directory of the project.
 
 #### To Production
 
-Execute the `npm run deploy` command from the root directory of the project.
+Execute the `npm run deploy` command from the root directory of the project. Tag a new release
+on Github with the new version number.
