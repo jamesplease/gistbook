@@ -21,6 +21,16 @@ Navigate into the root directory of the project and install the dependencies.
 cd gistbook && bower install && npm install
 ```
 
+### Developing locally
+
+If this is your first time setting up Gistbook locally, run `sudo npm run provision-hosts-local`.
+
+*Note: You will only ever need to run that a single time.*
+
+To build and start the development version of the app, run `grunt work -f`.
+
+Once the app is built, you can access it at `http://gistbook.loc:3000`.
+
 ### Deploying
 
 #### To Staging
