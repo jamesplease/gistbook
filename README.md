@@ -33,6 +33,8 @@ Once the app is built, you can access it at `http://gistbook.loc:3000`.
 
 ### Deploying
 
+Run `npm run get-secrets` if you haven't already. You'll only need to do this once.
+
 #### To Staging
 
 Run the `npm run deploy-staging` command from the root directory of the project.
