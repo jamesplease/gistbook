@@ -13,9 +13,6 @@ export default BaseRouter.extend({
       throw new Error('A Route object must be associated with each route.');
     }
 
-    // Do nothing if it's the same route
-    if (newRoute === this.currentRoute) { return; }
-
     var redirect = _.result(newRoute, 'redirect');
     if (_.isString(redirect)) {
       this.navigate(redirect, {trigger:true});
