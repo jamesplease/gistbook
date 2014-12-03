@@ -12,6 +12,8 @@ loadingView.render();
 
 export default Route.extend({
   onEnter: function() {
+    // Share with Google analytics that the page transition has occurred
+    if (window.ga) { window.ga('send', 'pageview'); }
     rootView.getRegion('container').$el.prepend(loadingView.$el);
   },
 
