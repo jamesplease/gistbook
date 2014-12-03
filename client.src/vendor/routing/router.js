@@ -38,16 +38,13 @@ export default BaseRouter.extend({
       // show the view if the route is still active.
       var router = this;
       Promise.resolve(newRoute.fetch(routeData))
-        .catch(function(e) {
-          if (newRoute !== router.currentRoute) { return; }
-          newRoute.onFetchError(e, routeData);
-        })
         .then(function(data) {
           if (newRoute !== router.currentRoute) { return; }
           newRoute.show(data, routeData);
         })
         .catch(function(e) {
-          newRoute.onShowError(e, routeData);
+          if (newRoute !== router.currentRoute) { return; }
+          newRoute.onError(e, routeData);
         });
     }
   }
