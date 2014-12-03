@@ -7,10 +7,10 @@
     "test": "grunt test",
     "get-secrets": "./.bin/get-secrets",
     "configure-hosts-local": "hostile set 127.0.0.1 gistbook.loc",
-    "provision": "ansible-playbook -i deploy/ansible/production deploy/ansible/provision.yml",
-    "provision-staging": "ansible-playbook -i deploy/ansible/staging deploy/ansible/provision.yml",
-    "deploy": "grunt build:prod && ansible-playbook -i deploy/ansible/production deploy/ansible/deploy.yml",
-    "deploy-staging": "grunt build:prod && ansible-playbook -i deploy/ansible/staging deploy/ansible/deploy.yml"
+    "provision": "ansible-playbook -i deploy/ansible/inventory/production deploy/ansible/provision.yml",
+    "provision-staging": "ansible-playbook -i deploy/ansible/inventory/staging deploy/ansible/provision.yml",
+    "deploy": "grunt build:prod && ansible-playbook -i deploy/ansible/inventory/production deploy/ansible/deploy.yml",
+    "deploy-staging": "grunt build:prod && ansible-playbook -i deploy/ansible/inventory/staging deploy/ansible/deploy.yml"
   },
   "repository": {
     "type": "git",
