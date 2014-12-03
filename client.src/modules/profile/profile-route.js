@@ -7,7 +7,6 @@ import Route from '../../base/route';
 import ProfileView from './views/profile-view';
 import Gists from './entities/gists';
 import GithubUser from '../../shared/entities/github-user';
-import ServerErrorView from '../../shared/views/server-error-view';
 
 export default Route.extend({
   fetch: function(urlData) {
@@ -31,10 +30,6 @@ export default Route.extend({
     }
 
     return Promise.all(fetch);
-  },
-
-  onFetchError: function() {
-    Radio.command('rootView', 'showIn:container', new ServerErrorView());
   },
 
   show: function(data, urlData) {

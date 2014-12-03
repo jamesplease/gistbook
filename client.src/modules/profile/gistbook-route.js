@@ -6,7 +6,6 @@ import * as Radio from 'radio';
 import Route from '../../base/route';
 import GistView from '../../shared/views/gist-view';
 import Gist from '../../shared/entities/gist';
-import ServerErrorView from '../../shared/views/server-error-view';
 
 export default Route.extend({
   fetch: function(urlData) {
@@ -16,17 +15,10 @@ export default Route.extend({
     return this.gistbook.fetch({ cache: false });
   },
 
-  onFetchError: function() {
-    Radio.command('rootView', 'showIn:container', new ServerErrorView());
-  },
-
   show: function(data, urlData) {
-    var gistOwner = this.gistbook.get('owner');
-    var gistUser = gistOwner ? gistOwner.login : 'anonymous';
     var username = urlData.params.username;
-    var View = gistUser.toLowerCase() === username.toLowerCase() ? GistView : ServerErrorView;
     var user = Radio.request('user', 'user');
-    var view = new View({
+    var view = new GistView({
       model: this.gistbook,
       ownGistbook: user.get('login') === username
     });
