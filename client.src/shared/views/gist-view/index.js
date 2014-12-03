@@ -11,6 +11,7 @@ import * as Radio from 'radio';
 import githubApiHelpers from 'helpers/github-api-helpers';
 import GistbookView from '../gistbook-view';
 import Gist from '../../entities/gist';
+import Gistbook from '../../entities/gistbook';
 import ExistingMenu from '../existing-menu';
 import gistbookHelpers from 'helpers/gistbook-helpers';
 
@@ -170,7 +171,7 @@ export default LayoutView.extend({
   // we first convert our Gist to a Gistbook, then we grab the first page.
   getGistbookModel() {
     var gistbookData = this.getGistbookData();
-    this.gistbookModel = new bb.Model(gistbookData);
+    this.gistbookModel = new Gistbook(gistbookData, {parse: true});
     return this.gistbookModel;
   },
 
@@ -195,6 +196,11 @@ export default LayoutView.extend({
   // Determine whether this is a new Gist or an existing one
   isNew() {
     return !this.model.get('id');
+  },
+
+  // Whether or not the gist has been saved
+  isSaved: function() {
+    return !this.gistbookModel.isDirty();
   }
 });
 

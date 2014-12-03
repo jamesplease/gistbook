@@ -3,7 +3,6 @@
 // A LayoutView that renders a Gistbook
 //
 
-import * as bb from 'backbone';
 import * as mn from 'marionette';
 import LayoutView from 'base/layout-view';
 import SectionsView from './views/sections';
@@ -84,7 +83,7 @@ export default LayoutView.extend({
   },
 
   _createSectionsCollection() {
-    this.sections = new bb.Collection(this.model.get('pages')[0].sections);
+    this.sections = this.model.get('pages').at(0).get('sections');
     return this.sections;
   }
 });
