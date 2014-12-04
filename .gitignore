@@ -31,3 +31,4 @@ client.dev
 client.prod
 
 config/secrets
+config/personal-access-token.json

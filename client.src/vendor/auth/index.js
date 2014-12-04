@@ -9,6 +9,8 @@ import * as bb from 'backbone';
 import * as Radio from 'radio';
 import * as cookies from 'cookies-js';
 
+var COOKIE_NAME = 'token';
+
 var Auth = bb.Model.extend({
   defaults: {
     token: '',
@@ -24,7 +26,7 @@ var Auth = bb.Model.extend({
 
   // Log us out by destroying the token
   logout: function() {
-    cookies.expire('token');
+    cookies.expire(COOKIE_NAME);
     this.set('authorized', false);
     this.set('token', '');
     this.channel.trigger('logout');
@@ -32,7 +34,7 @@ var Auth = bb.Model.extend({
 
   // Determine if we're authorized based on the cookie
   determineLogin: function() {
-    var token = cookies.get('token');
+    var token = cookies.get(COOKIE_NAME);
 
     // Set the status of our authorization
     if (token) {

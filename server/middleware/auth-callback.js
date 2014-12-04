@@ -12,7 +12,7 @@ var Cookies = require('cookies');
 var tokenUtil = require('../util/token-util');
 
 // Redirect us to the Github login URL
-var authCallback = function( req, res, next ) {
+var authCallback = function(req, res, next) {
   var cookies = new Cookies(req, res);
 
   github.auth.login(req.query.code, function(err, token) {

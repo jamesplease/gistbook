@@ -2,11 +2,6 @@
 
 This is the development repository for [Gistbook.io](https://gistbook.io/).
 
-### Contributing
-
-Right now it is not possible to run Gistbook locally unless you have its Github App secret. This is
-[a known issue](https://github.com/jmeas/gistbook/issues/169) that I'm working on resolving.
-
 ### Installation
 
 Clone this repository.
@@ -25,7 +20,10 @@ cd gistbook && bower install && npm install
 
 If this is your first time setting up Gistbook locally, run `sudo npm run provision-hosts-local`.
 
-*Note: You will only ever need to run that a single time.*
+Next, create a personal access token for your Github account. You can generate one from
+your [Settings page](https://github.com/settings/applications). Make sure that it has `user` and `gist` access,
+otherwise it won't work. Copy the token down and place it in a file `config/personal-access-token.json`. There's
+an example file in the directory that shows you the format.
 
 To build and start the development version of the app, run `grunt work -f`.
 

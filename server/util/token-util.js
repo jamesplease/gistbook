@@ -36,7 +36,7 @@ var tokenUtil = {
       overwrite: true
     };
 
-    cookies.set( 'token', token, cookieOptions);
+    cookies.set('token', token, cookieOptions);
   }
 };
 

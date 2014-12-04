@@ -32,6 +32,8 @@ app.set('views', VIEWS_DIR);
 app.set('layout', 'layout');
 app.engine('html', require('hogan-express'));
 
+app.use(require('./middleware/env'));
+
 app.get(
   '/login',
   require('./middleware/login')
@@ -62,14 +64,9 @@ app.get(
   require('./middleware/output')
 );
 
-// This might seem like a crazy regex,
-// but it matches the root directory,
-// and one-level deep directories that
-// contain letters, numbers, -, or .
 app.get(
   '*',
   require('./middleware/verify'),
-  require('./middleware/env'),
   require('./middleware/render')
 );
 
