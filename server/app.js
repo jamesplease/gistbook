@@ -1,6 +1,7 @@
 // Load dependencies
 const path = require('path');
 const express = require('express');
+const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 
 // Paths and variables
@@ -29,10 +30,14 @@ app.use(bodyParser.json({ limit: BODY_LIMIT }));
 app.use(bodyParser.urlencoded({ limit: BODY_LIMIT, extended: true }));
 
 // Templates
-app.set('view engine', 'html');
+const hbsOptions = {
+  extname: '.hbs',
+  layoutsDir: VIEWS_DIR + '/layouts',
+  defaultLayout: 'main'
+};
+app.set('view engine', '.hbs');
 app.set('views', VIEWS_DIR);
-app.set('layout', 'layout');
-app.engine('html', require('hogan-express'));
+app.engine('.hbs', exphbs(hbsOptions));
 
 app.locals.VERSION = VERSION;
 
