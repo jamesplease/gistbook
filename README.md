@@ -31,7 +31,13 @@ Once the app is built, you can access it at `http://gistbook.loc:3000`.
 
 ### Deploying
 
-Run `npm run get-secrets` if you haven't already. You'll only need to do this once.
+Gistbook is deployed to AWS using Ansible. Install it via:
+
+- All platforms: `pip install ansible` via [pip](http://pip.readthedocs.org/en/latest/installing.html)
+- OSX: `brew install ansible` via [homebrew](http://brew.sh/)
+- Linux: `apt-get/yum install ansible`
+
+Next, run `npm run get-secrets` if you haven't already. You'll only need to do this once.
 
 #### To Staging
 
