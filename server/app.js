@@ -33,6 +33,7 @@ app.use(bodyParser.urlencoded({ limit: BODY_LIMIT, extended: true }));
 const hbsOptions = {
   extname: '.hbs',
   layoutsDir: VIEWS_DIR + '/layouts',
+  partialsDir: VIEWS_DIR + '/partials',
   defaultLayout: 'main'
 };
 app.set('view engine', '.hbs');

@@ -1,0 +1,17 @@
+<script>
+  {{#if authorized}}
+    var _initData = {
+      rateMax: {{ rateMax }},
+      rateLeft: {{ rateLeft }},
+      rateReset: {{ rateReset }},
+      env: '{{ env }}',
+      user: {{{ user }}},
+      VERSION: '{{ VERSION }}'
+    };
+  {{else}}
+    var _initData = {
+      env: '{{ env }}',
+      VERSION: '{{ VERSION }}'
+    };
+  {{/if}}
+</script>
