@@ -14,7 +14,6 @@ import router from './router';
 import overlay from '../vendor/overlay';
 import rootView from './views/root-view';
 import modalWrapper from '../vendor/modal-wrapper';
-import './dev';
 
 // Create the app
 var app = new mn.Application();
