@@ -14,7 +14,7 @@ var login = function(req, res, next) {
   var redirectUrl = '/';
 
   // If we're not in development mode, then we redirect to Github to authenticate
-  if (res.locals.env !== 'dev') {
+  if (res.locals.env !== 'development') {
     redirectUrl = authUtil.url();
   }
 

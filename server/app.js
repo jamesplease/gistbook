@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const ENV = process.env.NODE_ENV;
 const BASE_DIR = __dirname;
 const BASE_PATH = path.normalize(BASE_DIR + '/..');
-const ASSETS_DIR = ENV === 'dev' ? 'client.dev' : 'client.prod';
+const ASSETS_DIR = ENV === 'development' ? 'client.dev' : 'client.prod';
 const ASSETS_PATH = BASE_PATH + '/' + ASSETS_DIR;
 const MANIFEST = require('../package.json');
 const VERSION = MANIFEST.version;

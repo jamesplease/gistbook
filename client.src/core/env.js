@@ -10,7 +10,7 @@ var env = window._initData.env;
 
 envChannel.reply({
   env: env,
-  dev: env === 'dev',
+  dev: env === 'development',
   production: env === 'production',
   staging: env === 'staging'
 });

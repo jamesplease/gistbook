@@ -4,7 +4,7 @@
  *
  */
 
-var ENV = process.env.NODE_ENV || 'dev';
+var ENV = process.env.NODE_ENV || 'development';
 var github = require('octonode');
 
 var authUtil = {

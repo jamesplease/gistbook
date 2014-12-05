@@ -178,7 +178,7 @@ module.exports = function(grunt) {
       },
       dev: {
         options: {
-          node_env: 'dev',
+          node_env: 'development',
         }
       }
     },
