@@ -1,6 +1,6 @@
 {
   "name": "gistbook",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Create and share interactive code snippets.",
   "main": "index.js",
   "scripts": {
