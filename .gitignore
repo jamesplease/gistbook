@@ -24,7 +24,6 @@ build/Release
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 node_modules
 
-server/config
 tmp
 bower_components
 client.dev
@@ -32,3 +31,4 @@ client.prod
 
 config/secrets
 config/personal-access-token.json
+config/client-info.json
