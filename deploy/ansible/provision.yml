@@ -1,7 +1,7 @@
 ---
 # provision machine and deploy code
 
-  hosts: all
+- hosts: all
   remote_user: ubuntu
   sudo: yes
   roles:
