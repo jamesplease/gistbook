@@ -10,8 +10,9 @@
 - name: Make sure the server code is on the box
   synchronize: src=../../server dest={{app_base_path}}
 
+- name: Make sure a project config directory exists
+  file: path={{app_base_path}}/config state=directory
+
 - name: Make sure the config code is on the box
   synchronize: src=../../config/client-info.json dest={{app_base_path}}/config/client-info.json
 
-- name: Make sure a project config directory exists
-  file: path={{app_base_path}}/config state=directory
