@@ -8,5 +8,5 @@
     - ami
     - nginx
     - services
-    - production
+    - copy
     - startup

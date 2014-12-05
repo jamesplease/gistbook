@@ -5,5 +5,5 @@
   remote_user: ubuntu
   sudo: yes
   roles:
-    - production
+    - copy
     - startup

@@ -1,5 +1,5 @@
 ---
-# configure for production
+# copy files to the box
 
 - name: Make sure the base directory exsists
   file: path={{app_base_path}} state=directory
