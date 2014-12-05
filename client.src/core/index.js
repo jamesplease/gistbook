@@ -23,6 +23,9 @@ emojify.setConfig({
   img_dir: '/img/emoji'
 });
 
+// Setup dev environment
+import './dev';
+
 // Load & start our app
 import app from './app';
 app.start();
