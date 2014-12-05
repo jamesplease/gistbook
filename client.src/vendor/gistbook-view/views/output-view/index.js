@@ -61,7 +61,7 @@ export default mn.LayoutView.extend({
         code.javascript = js;
         self.compiler.compile(code);
       })
-      .catch(function() {
+      .fail(function() {
         self._resetBtn();
       });
   },
