@@ -19,12 +19,14 @@
       rateLeft: {{ rateLeft }},
       rateReset: {{ rateReset }},
       env: '{{ env }}',
-      user: {{{ user }}}
+      user: {{{ user }}},
+      VERSION: '{{ VERSION }}'
     };
   {{/authorized}}
   {{^authorized}}
     var _initData = {
-      env: '{{ env }}'
+      env: '{{ env }}',
+      VERSION: '{{ VERSION }}'
     };
   {{/authorized}}
   </script>

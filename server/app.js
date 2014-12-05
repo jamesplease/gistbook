@@ -9,6 +9,8 @@ const BASE_DIR = __dirname;
 const BASE_PATH = path.normalize(BASE_DIR + '/..');
 const ASSETS_DIR = ENV === 'dev' ? 'client.dev' : 'client.prod';
 const ASSETS_PATH = BASE_PATH + '/' + ASSETS_DIR;
+const MANIFEST = require('../package.json');
+const VERSION = MANIFEST.version;
 
 const VIEWS_DIR = path.join(BASE_DIR, 'views');
 const PORT = process.env.PORT || 3000;
@@ -31,6 +33,8 @@ app.set('view engine', 'html');
 app.set('views', VIEWS_DIR);
 app.set('layout', 'layout');
 app.engine('html', require('hogan-express'));
+
+app.locals.VERSION = VERSION;
 
 app.use(require('./middleware/env'));
 

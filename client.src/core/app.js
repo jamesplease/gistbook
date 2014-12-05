@@ -28,6 +28,8 @@ app.overlay = overlay;
 app.rootView = rootView;
 app.modalWrapper = modalWrapper;
 
+app.VERSION = window._initData.VERSION;
+
 // Attach it to the window for debugging
 window.app = app;
 
