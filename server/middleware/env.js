@@ -5,8 +5,8 @@
  */
 
 var env = function(req, res, next) {
-  res.env = process.env.NODE_ENV;
-  res.devMode = res.env === 'dev';
+  res.locals.env = process.env.NODE_ENV;
+  res.locals.devMode = res.locals.env === 'dev';
   next();
 };
 
