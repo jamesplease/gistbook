@@ -12,7 +12,7 @@ var verify = function(req, res, next) {
   var cookies = new Cookies(req, res);
   var token = cookies.get('token');
 
-  res.authorized = false;
+  res.locals.authorized = false;
 
   // If we have no token, move along
   if (!token) {
@@ -25,7 +25,6 @@ var verify = function(req, res, next) {
     req.client = client;
 
     client.get('/user', {}, function(err, status, body, header) {
-      
       if (err) {
         tokenUtil.destroyToken(cookies);
       }
@@ -38,14 +37,14 @@ var verify = function(req, res, next) {
           tokenUtil.destroyToken(cookies);
         } else {
           req.authorized = true;
-          res.authorized = true;
+          res.locals.authorized = true;
 
           // Gather useful data from the response
           body.scopes = scopes;
-          res.user = JSON.stringify(body);
-          res.rateMax = header['x-ratelimit-limit'];
-          res.rateLeft = header['x-ratelimit-remaining'];
-          res.rateReset = header['x-ratelimit-reset'];
+          res.locals.user = JSON.stringify(body);
+          res.locals.rateMax = header['x-ratelimit-limit'];
+          res.locals.rateLeft = header['x-ratelimit-remaining'];
+          res.locals.rateReset = header['x-ratelimit-reset'];
         }
       }
       next();

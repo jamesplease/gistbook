@@ -6,7 +6,7 @@
  */
 
 var render = function(req, res) {
-  return res.render('template', res);
+  return res.render('template');
 };
 
 module.exports = render;
