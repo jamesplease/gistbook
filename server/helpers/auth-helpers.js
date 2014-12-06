@@ -1,12 +1,12 @@
 //
-// authUtil
+// authHelpers
 // Useful things for authentication
 //
 
 var ENV = process.env.NODE_ENV || 'development';
 var github = require('octonode');
 
-var authUtil = {
+var authHelpers = {
   url: function() {
     var clientInfo = require('../../config/client-info.json')[ENV];
     return github.auth.config({
@@ -16,4 +16,4 @@ var authUtil = {
   }
 };
 
-module.exports = authUtil;
+module.exports = authHelpers;

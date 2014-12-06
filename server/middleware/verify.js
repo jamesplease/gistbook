@@ -5,7 +5,7 @@
 
 var github = require('octonode');
 var Cookies = require('cookies');
-var tokenUtil = require('../util/token-util');
+var tokenHelpers = require('../helpers/token-helpers');
 
 var verify = function(req, res, next) {
   var cookies = new Cookies(req, res);
@@ -25,7 +25,7 @@ var verify = function(req, res, next) {
 
     client.get('/user', {}, function(err, status, body, header) {
       if (err) {
-        tokenUtil.destroyToken(cookies);
+        tokenHelpers.destroyToken(cookies);
       }
       else {
 
@@ -33,7 +33,7 @@ var verify = function(req, res, next) {
         var scopes = header['x-oauth-scopes'].split(',');
         // If it's not there, destroy the cookie
         if (scopes.indexOf('gist') == -1) {
-          tokenUtil.destroyToken(cookies);
+          tokenHelpers.destroyToken(cookies);
         } else {
           req.authorized = true;
           res.locals.authorized = true;

@@ -4,7 +4,7 @@
 // the user to the login page
 //
 
-var tokenUtil = require('../util/token-util');
+var tokenHelpers = require('../helpers/token-helpers');
 var Cookies = require('cookies');
 
 // Destroys our token, then redirects us home
@@ -14,7 +14,7 @@ var logout = function(req, res, next) {
   var cookies = new Cookies(req, res);
 
   // Destroy the token. It's no problem if it doesn't exist
-  tokenUtil.destroyToken(cookies);
+  tokenHelpers.destroyToken(cookies);
 
   // Finally, redirect the user and conclude our response
   res.writeHead(301, {'Content-Type': 'text/plain', 'Location': '/'});

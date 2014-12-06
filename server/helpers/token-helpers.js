@@ -1,5 +1,5 @@
 //
-// tokenUtil
+// tokenHelpers
 // Useful functions for working with our token. To use them,
 // pass in the instance of cookies.
 //
@@ -7,7 +7,7 @@
 // How many years til the token expires
 const TOKEN_EXPIRATION = 1;
 
-var tokenUtil = {
+var tokenHelpers = {
 
   // Destroy the auth token
   destroyToken: function(cookies) {
@@ -39,4 +39,4 @@ var tokenUtil = {
   }
 };
 
-module.exports = tokenUtil;
+module.exports = tokenHelpers;

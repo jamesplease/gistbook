@@ -8,7 +8,7 @@
 // Get the URL for the Github login
 var github = require('octonode');
 var Cookies = require('cookies');
-var tokenUtil = require('../util/token-util');
+var tokenHelpers = require('../helpers/token-helpers');
 
 // Redirect us to the Github login URL
 var authCallback = function(req, res, next) {
@@ -17,7 +17,7 @@ var authCallback = function(req, res, next) {
   github.auth.login(req.query.code, function(err, token) {
     // If we got a token, save it to a cookie
     if (token) {
-      tokenUtil.setToken(cookies, token);
+      tokenHelpers.setToken(cookies, token);
     }
     // Then redirect the user
     res.writeHead(301, {'Content-Type': 'text/plain', 'Location': '/'});

@@ -5,16 +5,16 @@
 //
 
 // Get the URL for the Github login
-var authUtil = require('../util/auth-util');
+var authHelpers = require('../helpers/auth-helpers');
 var Cookies = require('cookies');
-var tokenUtil = require('../util/token-util');
+var tokenHelpers = require('../helpers/token-helpers');
 
 var login = function(req, res, next) {
   var redirectUrl = '/';
 
   // If we're not in development mode, then we redirect to Github to authenticate
   if (res.locals.env !== 'development') {
-    redirectUrl = authUtil.url();
+    redirectUrl = authHelpers.url();
   }
 
   // Otherwise, we use hardcoded user data as the token and redirect home
@@ -27,7 +27,7 @@ var login = function(req, res, next) {
       console.log('Please make a personal access token.');
       console.log('For more info, read: https://github.com/jmeas/gistbook#developing-locally');
     }
-    tokenUtil.setToken(cookies, token);
+    tokenHelpers.setToken(cookies, token);
   }
   res.writeHead(301, {'Content-Type': 'text/plain', 'Location': redirectUrl});
   res.end();
