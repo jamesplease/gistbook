@@ -1,10 +1,9 @@
-/*
- * authCallback
- * This is the endpoint that Github redirects us to after
- * we attempt a login. All that it does is forward you along
- * to the base route.
- *
- */
+//
+// authCallback
+// This is the endpoint that Github redirects us to after
+// we attempt a login. All that it does is forward you along
+// to the base route.
+//
 
 // Get the URL for the Github login
 var github = require('octonode');

@@ -1,9 +1,8 @@
-/*
- * logout
- * This bit of middleware destroys our cookie before redirecting
- * the user to the login page
- *
- */
+//
+// logout
+// This bit of middleware destroys our cookie before redirecting
+// the user to the login page
+//
 
 var tokenUtil = require('../util/token-util');
 var Cookies = require('cookies');

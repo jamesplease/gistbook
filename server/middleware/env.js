@@ -1,8 +1,7 @@
-/*
- * env
- * Passes the env along to the client
- *
- */
+//
+// env
+// Passes the env along to the client
+//
 
 var env = function(req, res, next) {
   res.locals.env = process.env.NODE_ENV;

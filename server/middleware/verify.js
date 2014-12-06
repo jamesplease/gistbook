@@ -1,8 +1,7 @@
-/*
- * verify
- * Verifies that our login token still works
- *
- */
+//
+// verify
+// Verifies that our login token still works
+//
 
 var github = require('octonode');
 var Cookies = require('cookies');

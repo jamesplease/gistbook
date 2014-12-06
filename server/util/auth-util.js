@@ -1,8 +1,7 @@
-/*
- * authUtil
- * Useful things for authentication
- *
- */
+//
+// authUtil
+// Useful things for authentication
+//
 
 var ENV = process.env.NODE_ENV || 'development';
 var github = require('octonode');

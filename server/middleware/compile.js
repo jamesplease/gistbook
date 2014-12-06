@@ -1,8 +1,7 @@
-/*
- * compile
- * Returns a URL to access the HTML that you send over
- *
- */
+//
+// compile
+// Returns a URL to access the HTML that you send over
+//
 
 var cache = require('../helpers/page-cache');
 

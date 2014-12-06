@@ -1,9 +1,8 @@
-/*
- * tokenUtil
- * Useful functions for working with our token. To use them,
- * pass in the instance of cookies.
- *
- */
+//
+// tokenUtil
+// Useful functions for working with our token. To use them,
+// pass in the instance of cookies.
+//
 
 // How many years til the token expires
 const TOKEN_EXPIRATION = 1;

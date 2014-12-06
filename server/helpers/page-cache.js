@@ -1,8 +1,7 @@
-/*
- * pageCache
- * Caches our pages
- * 
- */
+//
+// pageCache
+// Caches our pages
+// 
 
 // Our cache
 var cache = {};

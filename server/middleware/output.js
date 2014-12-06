@@ -1,3 +1,8 @@
+//
+// output
+// Returns a cached Gistbook
+//
+
 var cache = require('../helpers/page-cache');
 
 module.exports = function(req, res) {

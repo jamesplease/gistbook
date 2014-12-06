@@ -1,9 +1,8 @@
-/*
- * login
- * A simple endpoint that redirects to Github
- * to request authorization
- *
- */
+//
+// login
+// A simple endpoint that redirects to Github
+// to request authorization
+//
 
 // Get the URL for the Github login
 var authUtil = require('../util/auth-util');
