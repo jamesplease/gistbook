@@ -1,6 +1,7 @@
 // Load dependencies
 const path = require('path');
 const express = require('express');
+const routeBuilder = require('./helpers/route-builder');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 
@@ -42,43 +43,32 @@ app.engine('.hbs', exphbs(hbsOptions));
 
 app.locals.VERSION = VERSION;
 
-app.use(require('./middleware/env'));
+var routes = {
+  all: {
+    '*': require('./middleware/env')
+  },
+  get: {
+    '/login': require('./middleware/login'),
+    '/logout': require('./middleware/logout'),
+    '/github/auth': require('./middleware/auth-callback'),
+    '/output/:outputId': require('./middleware/output'),
+    '*': [
+      require('./middleware/verify'),
+      require('./middleware/render')
+    ]
+  },
+  post: {
+    '/compile': require('./middleware/compile')
+  },
+  param: {
+    outputId: function (req, res, next, outputId) {
+      req.outputId = outputId;
+      next();
+    }
+  }
+};
 
-app.get(
-  '/login',
-  require('./middleware/login')
-);
-
-app.get(
-  '/logout',
-  require('./middleware/logout')
-);
-
-app.get(
-  '/github/auth',
-  require('./middleware/auth-callback')
-);
-
-app.post(
-  '/compile',
-  require('./middleware/compile')
-);
-
-app.param('outputId', function (req, res, next, outputId) {
-  req.outputId = outputId;
-  next();
-});
-
-app.get(
-  '/output/:outputId',
-  require('./middleware/output')
-);
-
-app.get(
-  '*',
-  require('./middleware/verify'),
-  require('./middleware/render')
-);
+app.use(routeBuilder(express, routes));
 
 // Start the app
 app.listen(PORT);
