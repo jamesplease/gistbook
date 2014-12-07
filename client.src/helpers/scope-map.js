@@ -7,7 +7,7 @@
 //
 
 export default {
-  user: 'Profile information',
+  user: 'User information',
   'user:email': 'Email address',
   public_repo: 'Public repositories',
   repo: 'All repositories',

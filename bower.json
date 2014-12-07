@@ -5,7 +5,7 @@
   "authors": [
     "Jmeas <jellyes2@gmail.com>"
   ],
-  "description": "Create and share interactive code snippets.",
+  "description": "A place to share code snippets on the web.",
   "keywords": [
     "gist",
     "gistbook",
@@ -18,9 +18,7 @@
     "snippets",
     "code",
     "social",
-    "sharing",
-    "presentation",
-    "slides"
+    "sharing"
   ],
   "license": "MIT",
   "ignore": [
