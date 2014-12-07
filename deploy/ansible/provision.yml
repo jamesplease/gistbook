@@ -5,8 +5,8 @@
   remote_user: ubuntu
   sudo: yes
   roles:
-    - ami
+    - base
     - nginx
     - services
-    - copy
+    - deploy
     - startup

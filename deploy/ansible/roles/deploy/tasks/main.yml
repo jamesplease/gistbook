@@ -1,5 +1,5 @@
 ---
-# copy files to the box
+# deploy it
 
 - name: Make sure the base directory exsists
   file: path={{app_base_path}} state=directory
