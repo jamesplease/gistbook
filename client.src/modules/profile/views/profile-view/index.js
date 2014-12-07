@@ -10,7 +10,7 @@ export default mn.LayoutView.extend({
   profileViewOptions: ['isSelf'],
 
   initialize: function(options) {
-    this.mergeOptions(options, this.profileViewOptions);
+    mn.mergeOptions(this, options, this.profileViewOptions);
     this.configureEvents();
   },
 

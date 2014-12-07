@@ -24,7 +24,7 @@ export default mn.ItemView.extend({
   displayTitleViewOptions: ['editable'],
 
   initialize: function(options) {
-    this.mergeOptions(options, this.displayTitleViewOptions);
+    mn.mergeOptions(this, options, this.displayTitleViewOptions);
     this._setClass();
   },
 

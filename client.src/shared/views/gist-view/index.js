@@ -32,7 +32,7 @@ export default mn.LayoutView.extend({
   },
 
   initialize: function(options) {
-    this.mergeOptions(options, this.gistViewOptions);
+    mn.mergeOptions(this, options, this.gistViewOptions);
   },
 
   // Show a new Gistbook

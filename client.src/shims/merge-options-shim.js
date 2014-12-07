@@ -7,10 +7,7 @@
 import * as mn from 'marionette';
 import * as _ from 'underscore';
 
-var mergeOptions = function(options, mergeOptions) {
+mn.mergeOptions = function(target, options, mergeOptions) {
   if (!options) { return; }
-  _.extend(this, _.pick(options, mergeOptions));
+  _.extend(target, _.pick(options, mergeOptions));
 };
-
-mn.View.prototype.mergeOptions = mergeOptions;
-mn.Object.prototype.mergeOptions = mergeOptions;

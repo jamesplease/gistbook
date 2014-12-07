@@ -12,7 +12,7 @@ export default mn.LayoutView.extend({
 
   constructor: function(options) {
     mn.LayoutView.prototype.constructor.apply(this, arguments);
-    this.mergeOptions(options, this.wrapperOptions);
+    mn.mergeOptions(this, options, this.wrapperOptions);
     this._createRegions();
     this._setEvents();
   },

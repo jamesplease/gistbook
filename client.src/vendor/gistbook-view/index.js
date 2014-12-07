@@ -15,7 +15,7 @@ export default mn.LayoutView.extend({
   gistbookViewOptions: ['newGist', 'ownGistbook'],
 
   initialize: function(options) {
-    this.mergeOptions(options, this.gistbookViewOptions);
+    mn.mergeOptions(this, options, this.gistbookViewOptions);
   },
 
   template: 'gistbookView',

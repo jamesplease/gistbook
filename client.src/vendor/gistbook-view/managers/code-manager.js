@@ -16,7 +16,7 @@ export default mn.Object.extend({
   join: '\n',
 
   initialize: function(options) {
-    this.mergeOptions(options, this.codeManagerOptions);
+    mn.mergeOptions(this, options, this.codeManagerOptions);
   },
 
   // Return a hash of the three source codes.
