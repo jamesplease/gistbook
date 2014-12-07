@@ -3,7 +3,6 @@
 // Manages compiling a Gistbook Page
 //
 
-import * as _ from 'underscore';
 import * as mn from 'marionette';
 import * as Spinner from 'spin.js';
 import CodeExtractor from './services/code-extractor';
@@ -53,7 +52,7 @@ export default mn.LayoutView.extend({
   onClickCompile: function() {
     this._compiling = true;
     this.ui.compile.prop('disabled', true);
-    _.delay(_.bind(this._showSpinner, this), 250);
+    this._showSpinner();
     var code = this.codeExtractor.getCode();
     var self = this;
     this.listenToOnce(moduleBundler, 'retrieve', function(js) {
