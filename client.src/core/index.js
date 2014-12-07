@@ -24,7 +24,8 @@ emojify.setConfig({
 });
 
 // Setup dev environment
-import './dev';
+import dev from './dev';
+dev.start();
 
 // Load & start our app
 import app from './app';

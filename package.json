@@ -82,7 +82,6 @@
     "express": "^4.0.0",
     "express-handlebars": "^1.1.0",
     "jquery": "^2.1.0",
-    "jquery-mockjax": "git://github.com/appendto/jquery-mockjax.git#master",
     "json-loader": "^0.5.1",
     "marked": "^0.3.2",
     "octonode": "^0.6.2",

@@ -5,9 +5,19 @@
 
 import * as bb from 'backbone';
 import * as mn from 'marionette';
-import dev from './env';
+import * as Radio from 'radio';
+import env from './env';
 
-// This is for the Marionette inspector
-if (dev && window.__agent && window.__agent.start) {
-  window.__agent.start(bb, mn);
-}
+export default {
+  start() {
+    if (env !== 'development') { return; }
+
+    // Configure for the Marionette Inspector
+    if (window.__agent && window.__agent.start) {
+      window.__agent.start(bb, mn);
+    }
+
+    // Turn on DEBUG mode for Radio
+    Radio.DEBUG = true;
+  }
+};
