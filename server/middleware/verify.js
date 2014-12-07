@@ -30,7 +30,7 @@ var verify = function(req, res, next) {
       else {
 
         // Check to see if gists are included in our scopes
-        var scopes = header['x-oauth-scopes'].split(',');
+        var scopes = header['x-oauth-scopes'].split(', ');
         // If it's not there, destroy the cookie
         if (scopes.indexOf('gist') == -1) {
           tokenHelpers.destroyToken(cookies);
