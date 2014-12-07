@@ -13,14 +13,14 @@ export default Route.extend({
   // We check to see if the user has a cached uri fragment in session storage.
   // If they do, then that means they logged in from some other page. If that's the case,
   // then we want to redirect them to that page.
-  redirect: function() {
+  redirect() {
     var cachedUriFragment = sessionStorage.getItem('cachedFragment');
     if (!cachedUriFragment) { return; }
     sessionStorage.removeItem('cachedFragment');
     return cachedUriFragment;
   },
 
-  show: function() {
+  show() {
     var gistView = new GistView({
       model: new Gist(),
       newGist: true

@@ -10,7 +10,7 @@ var userChannel = Radio.channel('user');
 var gistbookHelpers = {
 
   // Determine if `gist` is a Gistbook
-  isGistbook: function(gist) {
+  isGistbook(gist) {
     var files = gist.files;
 
     // Gistbooks are always single JSON file
@@ -21,7 +21,7 @@ var gistbookHelpers = {
   },
 
   // Returns a new, empty Gistbook – like magic!
-  newGistbook: function() {
+  newGistbook() {
     var author = 'Anonymous';
     if (authChannel.request('authorized')) {
       author = userChannel.request('user').get('login');
@@ -35,7 +35,7 @@ var gistbookHelpers = {
   },
 
   // Create an empty Gistbook page
-  createPage: function() {
+  createPage() {
     return {
       pageName: '',
       sections: [
@@ -60,12 +60,12 @@ var gistbookHelpers = {
   },
 
   // Takes in a Github Gist, get back a Gistbook Javascript object
-  gistbookFromGist: function(gist) {
+  gistbookFromGist(gist) {
     return gistbookHelpers.parseGistfile(gist.get('files')['gistbook.json']);
   },
 
   // Parses the contents of a gistbook.json file
-  parseGistfile: function(file) {
+  parseGistfile(file) {
     return JSON.parse(file.content);
   }
 };

@@ -8,7 +8,7 @@ import * as bb from 'backbone';
 import * as mn from 'marionette';
 import * as Radio from 'radio';
 import githubApiHelpers from '../../../helpers/github-api-helpers';
-import GistbookView from '../../../vendor/gistbook-view';
+import GistbookView from '../gistbook-view';
 import Gist from '../../entities/gist';
 import ExistingMenu from '../existing-menu';
 import gistbookHelpers from '../../../helpers/gistbook-helpers';
@@ -31,12 +31,12 @@ export default mn.LayoutView.extend({
     menuContainer: '.gist-menu-container'
   },
 
-  initialize: function(options) {
-    this.mergeOptions(options, this.gistViewOptions);
+  initialize(options) {
+    mn.mergeOptions(this, options, this.gistViewOptions);
   },
 
   // Show a new Gistbook
-  onBeforeShow: function() {
+  onBeforeShow() {
     if (!Radio.request('auth', 'authorized') && !this.newGist) {
       this.ui.gistHeader.addClass('hide');
     }
@@ -46,7 +46,7 @@ export default mn.LayoutView.extend({
     this.registerMenuListeners();
   },
 
-  registerMenuListeners: function() {
+  registerMenuListeners() {
     this.listenTo(this.menu, {
       'click:save': this._sync,
       'click:fork': this._fork
@@ -55,7 +55,7 @@ export default mn.LayoutView.extend({
   },
 
   // Syncs the 'nested' data structure with the parent
-  _sync: function() {
+  _sync() {
     var sections = this.gistbookView.sections;
     this.gistbook.pages[0].sections = _.filter(sections.toJSON(), function(section) {
       return !/^\s*$/.test(section.source);
@@ -65,7 +65,7 @@ export default mn.LayoutView.extend({
     this._saveGist({newGist:false});
   },
 
-  _fork: function() {
+  _fork() {
     var baseUrl = githubApiHelpers.url + '/gists';
     var oldDescription = this.model.get('description');
     var self = this;
@@ -89,12 +89,12 @@ export default mn.LayoutView.extend({
       });
   },
 
-  _onForkComplete: function(resp) {
+  _onForkComplete(resp) {
     var currentUser = Radio.request('user', 'user').get('login');
     Radio.command('router', 'navigate', currentUser + '/' + resp.id);
   },
 
-  _delete: function() {
+  _delete() {
     var self = this;
     this.model.destroy()
       .then(function() {
@@ -107,7 +107,7 @@ export default mn.LayoutView.extend({
   },
 
   // Update the gist with the current gistbook
-  _setGistbook: function() {
+  _setGistbook() {
     this.model.set('description', this.gistbook.title);
     this.model.set('files', {
       'gistbook.json': {
@@ -120,7 +120,7 @@ export default mn.LayoutView.extend({
   saveAttrs: ['description', 'files'],
 
   // Save the gist to Github
-  _saveGist: function() {
+  _saveGist() {
     var attrs = {
       description: this.model.get('description'),
       files: this.model.get('files'),
@@ -144,7 +144,7 @@ export default mn.LayoutView.extend({
       });
   },
 
-  createMenu: function() {
+  createMenu() {
     var menuOptions = {
       model: this.model,
       newGist: this.newGist,
@@ -154,7 +154,7 @@ export default mn.LayoutView.extend({
     return this.menu;
   },
 
-  createNewGistbook: function() {
+  createNewGistbook() {
     this.gistbookView = new GistbookView({
       model: this.getGistbookModel(),
       newGist: this.newGist,
@@ -165,24 +165,24 @@ export default mn.LayoutView.extend({
 
   // We're only rendering a single page of a Gistbook for now. Thus,
   // we first convert our Gist to a Gistbook, then we grab the first page.
-  getGistbookModel: function() {
+  getGistbookModel() {
     var gistbookData = this.getGistbookData();
     this.gistbookModel = new bb.Model(gistbookData);
     return this.gistbookModel;
   },
 
-  getGistbookData: function() {
+  getGistbookData() {
     var gist = !this.isNew() ? this.model : new Gist();
     return this._convertGistToGistbook(gist);
   },
 
-  _convertGistToGistbook: function(gist) {
+  _convertGistToGistbook(gist) {
     this.gistbook = !this.isNew() ? gistbookHelpers.gistbookFromGist(gist) : gistbookHelpers.newGistbook();
     return this.gistbook;
   },
 
   // Determine whether this is a new Gist or an existing one
-  isNew: function() {
+  isNew() {
     return !this.model.get('id');
   }
 });

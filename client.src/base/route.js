@@ -11,13 +11,13 @@ import ServerErrorView from '../shared/views/server-error-view';
 loadingView.render();
 
 export default Route.extend({
-  onEnter: function() {
+  onEnter() {
     // Share with Google analytics that the page transition has occurred
     if (window.ga) { window.ga('send', 'pageview'); }
     rootView.getRegion('container').$el.prepend(loadingView.$el);
   },
 
-  onError: function() {
+  onError() {
     rootView.getRegion('container').show(new ServerErrorView());
   }
 });

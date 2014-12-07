@@ -9,7 +9,7 @@ import * as mn from 'marionette';
 import * as Intercept from 'backbone.intercept';
 import env from './env';
 import auth from '../vendor/auth';
-import user from '../shared/entities/user';
+import user from './entities/user';
 import router from './router';
 import overlay from '../vendor/overlay';
 import rootView from './views/root-view';

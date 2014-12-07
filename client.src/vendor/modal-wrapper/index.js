@@ -25,7 +25,7 @@ var ModalWrapper = Wrapper.extend({
 
   region: '.modal-window',
 
-  initialize: function() {
+  initialize() {
     this.listenTo(overlayChannel, 'click', this.destroyView);
     modalChannel.comply({
       show: this.showView,
@@ -33,12 +33,12 @@ var ModalWrapper = Wrapper.extend({
     }, this);
   },
 
-  onShowView: function(view) {
+  onShowView(view) {
     overlayChannel.command('show');
     this.$el.addClass('show');
   },
 
-  onBeforeDestroyView: function() {
+  onBeforeDestroyView() {
     overlayChannel.command('hide');
     this.$el.removeClass('show');
   }

@@ -13,7 +13,7 @@ import * as _ from 'underscore';
 import * as mn from 'marionette';
 
 _.extend(mn.Region.prototype, {
-  show: function(view, options){
+  show(view, options){
     this._ensureElement();
 
     var showOptions     = options || {};
@@ -99,7 +99,7 @@ _.extend(mn.Region.prototype, {
   triggerBeforeAttach: true,
   triggerAttach: true,
 
-  _triggerAttach: function(views, prefix) {
+  _triggerAttach(views, prefix) {
     var eventName = (prefix || '') + 'attach';
     _.each(views, function(view) {
       mn.triggerMethodOn(view, eventName, view, this);

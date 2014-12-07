@@ -24,12 +24,12 @@ export default mn.ItemView.extend({
   templateHelpers: {
 
     // Attempts to find a user-friendly version of the scope name
-    mapScope: function(scopeName) {
+    mapScope(scopeName) {
       return _.result(scopeMap, scopeName) || scopeName;
     }
   },
 
-  onRevoke: function() {
+  onRevoke() {
     Radio.command('modal', 'show', new RevokeModalView());
   }
 });

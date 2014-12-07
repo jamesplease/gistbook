@@ -10,7 +10,7 @@ import * as Radio from 'radio';
 import githubApiHelpers from '../../helpers/github-api-helpers';
 
 export default bb.Model.extend({
-  defaults: function() {
+  defaults() {
     return {
       description: 'Anonymous Gistbook',
       owner: {
@@ -24,17 +24,17 @@ export default bb.Model.extend({
     };
   },
 
-  parse: function(data) {
+  parse(data) {
     var defaults = _.result(this, 'defaults');
     data.description = data.description ? data.description : defaults.description;
     return data;
   },
 
-  _getLoginName: function() {
+  _getLoginName() {
     return Radio.request('user', 'user').get('login') || 'Anonymous';
   },
 
-  urlRoot: function() {
+  urlRoot() {
     return githubApiHelpers.url + '/gists';
   }
 });

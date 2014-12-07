@@ -15,7 +15,7 @@ export default mn.ItemView.extend({
   },
 
   // Save the current page in sessionStorage
-  onClickLogin: function() {
+  onClickLogin() {
     if (!bb.history.fragment) { return; }
     sessionStorage.setItem('cachedFragment', bb.history.fragment);
   }

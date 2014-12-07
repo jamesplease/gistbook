@@ -10,30 +10,30 @@ import * as mn from 'marionette';
 export default mn.LayoutView.extend({
   wrapperOptions: ['region'],
 
-  constructor: function(options) {
+  constructor(options) {
     mn.LayoutView.prototype.constructor.apply(this, arguments);
-    this.mergeOptions(options, this.wrapperOptions);
+    mn.mergeOptions(this, options, this.wrapperOptions);
     this._createRegions();
     this._setEvents();
   },
 
-  _createRegions: function() {
+  _createRegions() {
     this.addRegion('wrapRegion', this.region);
   },
 
-  _setEvents: function() {
+  _setEvents() {
     this.on('before:show', this.showWrappedView, this);
   },
 
   // Show the view in the region
-  showView: function(view) {
+  showView(view) {
     this.triggerMethod('before:show:view', view);
     this.getRegion('wrapRegion').show(view);
     this.triggerMethod('show:view', view);
   },
 
   // Destroy the view in the region
-  destroyView: function() {
+  destroyView() {
     var currentView = this.getRegion('wrapRegion').currentView;
     if (!currentView) { return false; }
     this.triggerMethod('before:destroy:view', currentView);

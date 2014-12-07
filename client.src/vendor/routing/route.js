@@ -7,8 +7,8 @@
 import * as mn from 'marionette';
 
 export default mn.Object.extend({
-  show: function() {},
-  onError: function(e) {
+  show() {},
+  onError(e) {
     if (!console || !console.assert) { return; }
     console.assert(false, e);
   }

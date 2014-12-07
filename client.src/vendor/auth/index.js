@@ -17,7 +17,7 @@ var Auth = bb.Model.extend({
     authorized: false
   },
 
-  initialize: function() {
+  initialize() {
     this.channel = Radio.channel('auth');
     this.determineLogin();
     this.configureEvents();
@@ -25,7 +25,7 @@ var Auth = bb.Model.extend({
   },
 
   // Log us out by destroying the token
-  logout: function() {
+  logout() {
     cookies.expire(COOKIE_NAME);
     this.set('authorized', false);
     this.set('token', '');
@@ -33,7 +33,7 @@ var Auth = bb.Model.extend({
   },
 
   // Determine if we're authorized based on the cookie
-  determineLogin: function() {
+  determineLogin() {
     var token = cookies.get(COOKIE_NAME);
 
     // Set the status of our authorization
@@ -52,7 +52,7 @@ var Auth = bb.Model.extend({
   },
 
   // Register our events on the channel
-  configureEvents: function() {
+  configureEvents() {
     this.channel.reply('authorized', function() {
       return this.get('authorized');
     }, this);
@@ -63,10 +63,10 @@ var Auth = bb.Model.extend({
   },
 
   // Include our token in every subsequent request
-  _configureAjax: function() {
+  _configureAjax() {
     var self = this;
     $.ajaxSetup({
-      beforeSend: function (jqXHR, settings) {
+      beforeSend (jqXHR, settings) {
         if (self.get('authorized')) {
           jqXHR.setRequestHeader('Authorization', 'token ' + self.get('token'));
         }

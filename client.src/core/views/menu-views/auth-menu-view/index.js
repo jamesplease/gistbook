@@ -22,17 +22,17 @@ export default mn.ItemView.extend({
     'click @ui.$menuToggle': 'toggleMenu'
   },
 
-  toggleMenu: function() {
+  toggleMenu() {
     this.ui.$dropdownMask.toggleClass('show');
     this.ui.$dropdown.toggleClass('show');
   },
 
-  showMenu: function() {
+  showMenu() {
     this.ui.$dropdownMask.addClass('show');
     this.ui.$dropdown.addClass('show');
   },
 
-  hideMenu: function() {
+  hideMenu() {
     this.ui.$dropdownMask.removeClass('show');
     this.ui.$dropdown.removeClass('show');
   }

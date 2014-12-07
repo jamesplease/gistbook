@@ -13,7 +13,7 @@ export default mn.ItemView.extend({
 
   className: 'server-error',
 
-  initialize: function(options) {
-    this.mergeOptions(options, this.errorViewOptions);
+  initialize(options) {
+    mn.mergeOptions(this, options, this.errorViewOptions);
   }
 });

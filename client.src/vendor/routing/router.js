@@ -6,7 +6,7 @@ import * as BaseRouter from 'backbone.base-router';
 import Route from './route';
 
 export default BaseRouter.extend({
-  onNavigate: function(routeData) {
+  onNavigate(routeData) {
     var newRoute = routeData.linked;
 
     if (!(newRoute instanceof Route)) {

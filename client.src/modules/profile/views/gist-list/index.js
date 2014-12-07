@@ -6,7 +6,7 @@ import * as mn from 'marionette';
 import GistbookListView from '../gistbook-list-view';
 
 export default mn.CollectionView.extend({
-  initialize: function(options) {
+  initialize(options) {
     this.model = options.model;
     this.isSelf = options.isSelf;
   },
@@ -15,7 +15,7 @@ export default mn.CollectionView.extend({
 
   childView: GistbookListView,
 
-  childViewOptions: function() {
+  childViewOptions() {
     return {
       user: this.model,
       isSelf: this.isSelf

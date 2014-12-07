@@ -5,11 +5,11 @@
 
 import * as _ from 'underscore';
 import Gist from '../../../shared/entities/gist';
-import GithubCollection from '../../../shared/entities/github-collection';
+import GithubCollection from './github-collection';
 import gistbookHelpers from '../../../helpers/gistbook-helpers';
 
 export default GithubCollection.extend({
-  constructor: function(options) {
+  constructor(options) {
     options = options || {};
     this.collectionUrl = options.collectionUrl || this.collectionUrl;
     GithubCollection.prototype.constructor.apply(this, arguments);
@@ -21,7 +21,7 @@ export default GithubCollection.extend({
   collectionUrl: '/gists',
 
   // Only some gists are gistbooks, so we need to filter those out
-  parse: function(gists) {
+  parse(gists) {
     return _.filter(gists, gistbookHelpers.isGistbook);
   }
 });

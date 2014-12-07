@@ -5,7 +5,7 @@
 import * as mn from 'marionette';
 
 export default mn.ItemView.extend({
-  initialize: function(options) {
+  initialize(options) {
     this.user = options.user;
     this.isSelf = options.isSelf;
   },
@@ -22,19 +22,19 @@ export default mn.ItemView.extend({
     'click @ui.delete': 'onDelete'
   },
 
-  onDelete: function() {
+  onDelete() {
     if (window.confirm('Are you sure you want to delete this Gistbook?')) {
       this.model.destroy();
     }
   },
 
-  templateHelpers: function() {
+  templateHelpers() {
     return {
       username: this.user.escape('login')
     };
   },
 
-  onRender: function() {
+  onRender() {
     if (this.isSelf) {
       this.ui.delete.removeClass('hide');
     }
