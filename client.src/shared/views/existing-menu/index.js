@@ -31,7 +31,7 @@ export default mn.ItemView.extend({
   },
 
   initialize: function(options) {
-    this.mergeOptions(options, this.existingMenuOptions);
+    mn.mergeOptions(this, options, this.existingMenuOptions);
     this.on({
       'save error:save': this._resetSaveBtn,
       'delete error:delete': this._resetDeleteBtn,

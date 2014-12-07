@@ -61,7 +61,7 @@ export default mn.LayoutView.extend({
   // a cached model for users to mess around with
   initialize: function(options) {
     this.gistSections = this.model.collection;
-    this.mergeOptions(options, this.controlsWrapperOptions);
+    mn.mergeOptions(this, options, this.controlsWrapperOptions);
     this._createCache();
   },
 

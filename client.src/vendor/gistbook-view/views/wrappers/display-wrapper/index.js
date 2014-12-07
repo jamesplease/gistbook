@@ -44,7 +44,7 @@ export default mn.LayoutView.extend({
 
   // Store our options on the object itself
   initialize: function(options) {
-    this.mergeOptions(options, this.menuWrapperOptions);
+    mn.mergeOptions(this, options, this.menuWrapperOptions);
   },
 
   createDisplayView: function() {

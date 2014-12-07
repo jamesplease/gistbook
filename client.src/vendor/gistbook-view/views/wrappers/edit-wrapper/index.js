@@ -34,10 +34,8 @@ export default mn.LayoutView.extend({
   // Store our options on the object itself.
   // Also set the initial mode to be code.
   initialize: function(options) {
-    this.mergeOptions(options, this.editWrapperOptions);
-
+    mn.mergeOptions(this, options, this.editWrapperOptions);
     this.cache = this.model.toJSON();
-
     this.mode = 'write';
   },
 

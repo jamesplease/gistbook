@@ -21,7 +21,7 @@ export default mn.CollectionView.extend({
   tagName: 'ul',
 
   initialize: function(options) {
-    this.mergeOptions(options, this.sectionsOptions);
+    mn.mergeOptions(this, options, this.sectionsOptions);
     this.pageChannel = options.pageChannel;
     this._renderedBefore = false;
   },

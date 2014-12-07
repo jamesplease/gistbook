@@ -71,7 +71,7 @@ export default mn.ItemView.extend({
 
   // Merge the options
   initialize: function(options) {
-    this.mergeOptions(options, this.aceEditorViewOptions);
+    mn.mergeOptions(this, options, this.aceEditorViewOptions);
     this.listenTo(aceChannel, {
       dragStart: this._onDragStart,
       dragEnd: this._onDragEnd
