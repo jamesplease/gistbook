@@ -30,7 +30,7 @@ export default mn.ItemView.extend({
     'click @ui.delete': 'onClickDelete'
   },
 
-  initialize: function(options) {
+  initialize(options) {
     mn.mergeOptions(this, options, this.existingMenuOptions);
     this.on({
       'save error:save': this._resetSaveBtn,
@@ -39,7 +39,7 @@ export default mn.ItemView.extend({
     }, this);
   },
 
-  onRender: function() {
+  onRender() {
     if (this.newGist) {
       this.ui.save.removeClass('hide');
       return;
@@ -54,7 +54,7 @@ export default mn.ItemView.extend({
     }
   },
 
-  onClickSave: function() {
+  onClickSave() {
     this._cachedSaveHtml = this.ui.save.html();
     this.ui.save
       .width(this.ui.save.width())
@@ -62,7 +62,7 @@ export default mn.ItemView.extend({
       .prop('disabled', true);
   },
 
-  onClickDelete: function() {
+  onClickDelete() {
     if (window.confirm('Are you sure you want to delete this Gist?')) {
       this._cachedDeleteHtml = this.ui.delete.html();
       this.ui.delete
@@ -72,14 +72,14 @@ export default mn.ItemView.extend({
     }
   },
 
-  onClickFork: function() {
+  onClickFork() {
     this._cachedForkHtml = this.ui.fork.html();
     this.ui.fork
       .html('Forking...')
       .prop('disabled', true);
   },
 
-  _resetSaveBtn: function() {
+  _resetSaveBtn() {
     this.ui.save
       .width('auto')
       .html(this._cachedSaveHtml)
@@ -87,14 +87,14 @@ export default mn.ItemView.extend({
     this._cachedSaveHtml = null;
   },
 
-  _resetDeleteBtn: function() {
+  _resetDeleteBtn() {
     this.ui.delete
       .html(this._cachedDeleteHtml)
       .prop('disabled', false);
     this._cachedDeleteHtml = null;
   },
 
-  _resetForkBtn: function() {
+  _resetForkBtn() {
     this.ui.fork
       .html(this._cachedForkHtml)
       .prop('disabled', false);

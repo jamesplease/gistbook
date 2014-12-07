@@ -43,16 +43,16 @@ export default mn.LayoutView.extend({
   },
 
   // Store our options on the object itself
-  initialize: function(options) {
+  initialize(options) {
     mn.mergeOptions(this, options, this.menuWrapperOptions);
   },
 
-  createDisplayView: function() {
+  createDisplayView() {
     return this.blockChannel.request('displayView', this.model);
   },
 
   // Show the inert view after rendering
-  onRender: function() {
+  onRender() {
     this._showMenu();
     var region = this.getRegion('content');
     this.displayView = this.createDisplayView();
@@ -60,7 +60,7 @@ export default mn.LayoutView.extend({
   },
 
   // Show or hide each menu item based on options
-  _showMenu: function() {
+  _showMenu() {
     _.each(this.editOptions, function(val, key) {
       this.ui[key].toggleClass('active-option', val);
     }, this);

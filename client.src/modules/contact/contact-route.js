@@ -7,7 +7,7 @@ import Route from '../../base/route';
 import ContactView from './views/contact-view';
 
 export default Route.extend({
-  show: function() {
+  show() {
     Radio.command('rootView', 'showIn:container', new ContactView());
   }
 });

@@ -25,7 +25,7 @@ export default mn.ItemView.extend({
   // Serialize our element to a string, including the doctype.
   // This is what we send over to the server, and it's ultimately
   // what the server returns back to us for our iFrame source.
-  toString: function() {
+  toString() {
     return this.doctype + this.newline + this.el.outerHTML;
   }
 });

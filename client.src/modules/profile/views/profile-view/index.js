@@ -9,7 +9,7 @@ import GistList from '../gist-list';
 export default mn.LayoutView.extend({
   profileViewOptions: ['isSelf'],
 
-  initialize: function(options) {
+  initialize(options) {
     mn.mergeOptions(this, options, this.profileViewOptions);
     this.configureEvents();
   },
@@ -26,18 +26,18 @@ export default mn.LayoutView.extend({
     gistsContainer: '.boxed-group-body'
   },
 
-  onBeforeShow: function() {
+  onBeforeShow() {
     this.getRegion('gistsContainer').show(this.getChildView());
   },
 
-  getChildView: function() {
+  getChildView() {
     var childViewOptions = this.getChildViewOptions();
     var ChildView = this.noGists() ? NoGistsView : GistList;
 
     return new ChildView(childViewOptions);
   },
 
-  getChildViewOptions: function() {
+  getChildViewOptions() {
     return this.noGists() ? {
       model: this.model
     } : {
@@ -47,25 +47,25 @@ export default mn.LayoutView.extend({
     };
   },
 
-  noGists: function() {
+  noGists() {
     return !this.collection.length;
   },
   
-  templateHelpers: function() {
+  templateHelpers() {
     var self = this;
     return {
       gistbooks: this.collection,
-      gistbookText: function() {
+      gistbookText() {
         return self.collection.length === 1 ? 'Gistbook' : 'Gistbooks'; 
       }
     };
   },
 
-  configureEvents: function() {
+  configureEvents() {
     this.listenTo(this.collection, 'add remove reset', this.onCollectionChange);
   },
 
-  onCollectionChange: function() {
+  onCollectionChange() {
     this.ui.$count.text(this.collection.length); 
   }
 });

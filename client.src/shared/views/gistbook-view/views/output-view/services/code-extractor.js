@@ -15,12 +15,12 @@ export default mn.Object.extend({
   // The character used to join separate blocks of source code
   join: '\n',
 
-  initialize: function(options) {
+  initialize(options) {
     mn.mergeOptions(this, options, this.codeManagerOptions);
   },
 
   // Return a hash of the three source codes.
-  getCode: function() {
+  getCode() {
     return {
       html: this.getHtml(),
       css: this.getCss(),
@@ -29,31 +29,31 @@ export default mn.Object.extend({
   },
 
   // Retrieve the concatenated HTML from the Gistbook
-  getHtml: function() {
+  getHtml() {
     var htmlCollection = this.getSectionsOfType('html');
     return this.concatenate(htmlCollection);
   },
 
   // Retrieve the concatenated CSS from the Gistbook
-  getCss: function() {
+  getCss() {
     var cssCollection = this.getSectionsOfType('css');
     return this.concatenate(cssCollection);
   },
 
   // Retrieve the concatenated Javascript from the Gistbook
-  getJavascript: function() {
+  getJavascript() {
     var jsCollection = this.getSectionsOfType('javascript');
     return this.concatenate(jsCollection);
   },
 
   // Filter the collection by a particular type. Type should be
   // one of 'html', 'css', or 'javascript'.
-  getSectionsOfType: function(type) {
+  getSectionsOfType(type) {
     return this.sections.where({type: type});
   },
 
   // Returns the concatenated source of a subcollection.
-  concatenate: function(subcollection) {
+  concatenate(subcollection) {
     var result = '';
     var join = this.join;
     var source;

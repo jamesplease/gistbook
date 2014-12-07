@@ -15,7 +15,7 @@ var cache = createCache({
 });
 
 var ModuleBundler = mn.Object.extend({
-  getBundle: function(src) {
+  getBundle(src) {
     var modules = detective(src);
 
     if (modules.length === 0) {

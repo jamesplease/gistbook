@@ -59,65 +59,65 @@ export default mn.LayoutView.extend({
 
   // Sets our options, binds callback context, and creates
   // a cached model for users to mess around with
-  initialize: function(options) {
+  initialize(options) {
     this.gistSections = this.model.collection;
     mn.mergeOptions(this, options, this.controlsWrapperOptions);
     this._createCache();
   },
 
-  hideAddOptions: function() {
+  hideAddOptions() {
     this.ui.addRow.removeClass('active');
     overlayChannel.command('hide');
     this.ui.addSectionMenu.removeClass('visible');
   },
 
-  onClickAddRow: function() {
+  onClickAddRow() {
     this.ui.addRow.addClass('active');
     this.listenToOnce(overlayChannel, 'click', this.hideAddOptions);
     overlayChannel.command('show');
     this.ui.addSectionMenu.addClass('visible');
   },
 
-  onEdit: function() {
+  onEdit() {
     this.showActive();
   },
 
   // Refactor to use the channel
-  onDelete: function() {
+  onDelete() {
     this.model.collection.remove(this.model);
   },
 
   // When the user cancels editing, first reset the cache to match
   // the saved state. Then, show the preview
-  onCancel: function() {
+  onCancel() {
     this._resetCache();
     this.showDisplay();
   },
 
-  onAddText: function() {
+  onAddText() {
     this._addSection('text');
   },
 
-  onAddHtml: function() {
+  onAddHtml() {
     this._addSection('html');
   },
 
-  onAddCss: function() {
+  onAddCss() {
     this._addSection('css');
   },
 
-  onAddJavascript: function() {
+  onAddJavascript() {
     this._addSection('javascript');
   },
 
-  _addSection: function(type) {
+  _addSection(type) {
     var index = this.gistSections.indexOf(this.model);
     var newSection = this._createNewSection(type);
     this.gistSections.add(newSection, {at: index});
     this.hideAddOptions();
   },
 
-  showDisplay: function() {
+  showDisplay() {
     if (this.currentView) { this.stopListening(this.currentView); }
     var displayWrapper = this.getDisplayWrapper();
     this.getRegion('wrapper').show(displayWrapper);
@@ -125,7 +125,7 @@ export default mn.LayoutView.extend({
     this._configurePreviewListeners();
   },
 
-  showActive: function() {
+  showActive() {
     if (this.currentView) { this.stopListening(this.currentView); }
     var editWrapper = this.getEditWrapper();
     this.getRegion('wrapper').show(editWrapper);
@@ -136,14 +136,14 @@ export default mn.LayoutView.extend({
   // When the user updates, first update the cache with the value
   // from the AceEditor. Then persist those changes to the actual model.
   // Finally, take them to the preview view.
-  onUpdate: function() {
+  onUpdate() {
     this._updateCache();
     this._saveCache();
     this.showDisplay();
   },
 
   // Determine which view to show
-  onRender: function() {
+  onRender() {
     if (this.initialMode === 'edit') {
       this.showActive();
     } else {
@@ -151,7 +151,7 @@ export default mn.LayoutView.extend({
     }
   },
 
-  getDisplayWrapper: function() {
+  getDisplayWrapper() {
     return new DisplayWrapper({
       mode: this.mode,
       editOptions: this.editOptions,
@@ -160,7 +160,7 @@ export default mn.LayoutView.extend({
     });
   },
 
-  getModel: function() {
+  getModel() {
     var model;
     if (this.cache) {
       this.cachedModel = model = new bb.Model(
@@ -172,7 +172,7 @@ export default mn.LayoutView.extend({
     return model;
   },
 
-  getEditWrapper: function() {
+  getEditWrapper() {
     return new EditWrapper({
       model: this.cachedModel,
       blockChannel: radioHelpers.objChannel(this.model)
@@ -182,7 +182,7 @@ export default mn.LayoutView.extend({
   // Store a cached model on the view. The user can manipulate
   // this all they want. If they save the block we will persist
   // it to the model
-  _createCache: function() {
+  _createCache() {
     this.cachedModel = new bb.Model(
       this.model.toJSON()
     );
@@ -190,17 +190,17 @@ export default mn.LayoutView.extend({
 
   // Call this when the user hits update and wants to save
   // their changes to the model
-  _saveCache: function() {
+  _saveCache() {
     this.model.set(this.cachedModel.toJSON());
   },
 
   // If the user changes the cache and wants to reset it,
   // call this
-  _resetCache: function() {
+  _resetCache() {
     this.cachedModel.set(this.model.toJSON());
   },
 
-  _createNewSection: function(type) {
+  _createNewSection(type) {
     return new bb.Model({
       type: type,
       source: ''
@@ -209,12 +209,12 @@ export default mn.LayoutView.extend({
 
   // Update the cache with the latest content of the text editor. Only
   // makes sense to be called when the currentView is the cache
-  _updateCache: function() {
+  _updateCache() {
     var cachedSource = this.getRegion('wrapper').currentView.cache;
     this.cachedModel.set('source', cachedSource);
   },
 
-  _configureEditListeners: function() {
+  _configureEditListeners() {
     this.listenTo(this.currentView, {
       cancel: this.onCancel,
       update: this.onUpdate,
@@ -222,7 +222,7 @@ export default mn.LayoutView.extend({
     });
   },
 
-  _configurePreviewListeners: function() {
+  _configurePreviewListeners() {
     this.listenTo(this.currentView, {
       edit: this.onEdit,
       delete: this.onDelete

@@ -20,7 +20,7 @@ var RootView = mn.LayoutView.extend({
     footer: 'footer'
   },
 
-  initialize: function() {
+  initialize() {
     this.getRegion('footer').show(new FooterView());
     this.showMenu();
     this.listenTo(authChannel, 'logout', this.showMenu);
@@ -28,7 +28,7 @@ var RootView = mn.LayoutView.extend({
     Radio.comply('rootView', 'showIn:container', containerRegion.show, containerRegion);
   },
 
-  showMenu: function() {
+  showMenu() {
     var auth = authChannel.request('authorized');
     var model = auth ? Radio.request('user', 'user') : undefined;
     var View = auth ? AuthMenuView : UnauthMenuView;

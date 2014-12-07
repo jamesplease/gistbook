@@ -23,13 +23,13 @@ export default mn.ItemView.extend({
 
   displayTitleViewOptions: ['editable'],
 
-  initialize: function(options) {
+  initialize(options) {
     mn.mergeOptions(this, options, this.displayTitleViewOptions);
     this._setClass();
   },
 
   // Sets whether the view is editable or not.
-  _setClass: function() {
+  _setClass() {
     this.$el.toggleClass('editable', this.editable);
   }
 });

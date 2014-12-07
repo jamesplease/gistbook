@@ -14,7 +14,7 @@ var Overlay = mn.ItemView.extend({
 
   template: false,
 
-  initialize: function() {
+  initialize() {
     overlayChannel.comply({
       show: this.show,
       hide: this.hide
@@ -25,15 +25,15 @@ var Overlay = mn.ItemView.extend({
     click: 'click'
   },
 
-  onClick: function() {
+  onClick() {
     overlayChannel.trigger('click');
   },
 
-  show: function() {
+  show() {
     this.$el.addClass('visible');
   },
 
-  hide: function() {
+  hide() {
     this.$el.removeClass('visible');
   }
 });

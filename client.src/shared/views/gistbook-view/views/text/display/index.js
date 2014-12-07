@@ -18,7 +18,7 @@ export default mn.ItemView.extend({
 
   // After render, check if the user has inputted any text. If so,
   // pass it along to be rendered by Mathjax and Marked.
-  onRender: function() {
+  onRender() {
     var text = this.model.get('source');
 
     if (!text) { return; }
@@ -28,13 +28,13 @@ export default mn.ItemView.extend({
   },
 
   // Parse the text of the element as Mathjax, and then pass it along to Marked.
-  _parseText: function(text) {
+  _parseText(text) {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, this.$el[0]]);
     MathJax.Hub.Queue(_.bind(this._parseMarked, this));
   },
 
   // Parse the element's HTML as Markdown, then set the element's text.
-  _parseMarked: function() {
+  _parseMarked() {
     var $el = this.$el;
     var self = this;
     marked($el.html(), function(err, content) {
@@ -43,7 +43,7 @@ export default mn.ItemView.extend({
     });
   },
 
-  _parseEmoji: function(el) {
+  _parseEmoji(el) {
     emojify.run(el);
   }
 });

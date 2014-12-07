@@ -13,7 +13,7 @@ import IFrameView from '../views/iframe';
 export default mn.Object.extend({
   url: '/compile',
 
-  compile: function(code) {
+  compile(code) {
 
     // Create our document view. This is ultimately what
     // we load into the iFrame.
@@ -31,29 +31,29 @@ export default mn.Object.extend({
       .catch(_.bind(this.onPostError, this));
   },
 
-  post: function(serializedView) {
+  post(serializedView) {
     return Promise.resolve($.post(this.url, serializedView));
   },
 
   // If the server responds that we've succeeded, then we
   // create the iFrame and share that the compile was a success.
-  onPostSuccess: function(res) {
+  onPostSuccess(res) {
     var iFrameView = this.createIFrameView(res.token);
     this.trigger('compile', iFrameView);
   },
 
   // When the server responds that we errored, we emit it as an event.
-  onPostError: function(err) {
+  onPostError(err) {
     this.trigger('error:compile', err);
   },
 
-  createDocumentView: function(code) {
+  createDocumentView(code) {
     return new DocumentView({
       model: new bb.Model(code)
     });
   },
 
-  createIFrameView: function(token) {
+  createIFrameView(token) {
     var model = new bb.Model({
       token: token
     });
@@ -62,7 +62,7 @@ export default mn.Object.extend({
     });
   },
 
-  serializeDocumentView: function(documentView) {
+  serializeDocumentView(documentView) {
     return {
       html: documentView.toString()
     };

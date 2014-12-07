@@ -48,11 +48,11 @@ export default mn.ItemView.extend({
     'keypress': 'onKeypress',
   },
 
-  onBlur: function() {
+  onBlur() {
     this.update();
   },
 
-  onKeypress: function(e) {
+  onKeypress(e) {
     var code = (e.keyCode ? e.keyCode : e.which);
     if (code !== 13 || !e.shiftKey) {
       return;
@@ -61,16 +61,16 @@ export default mn.ItemView.extend({
     this.editor.blur();
   },
 
-  value: function() {
+  value() {
     return this.editor.getSession().getValue();
   },
 
-  update: function() {
+  update() {
     this.model.set('source', this.value());
   },
 
   // Merge the options
-  initialize: function(options) {
+  initialize(options) {
     mn.mergeOptions(this, options, this.aceEditorViewOptions);
     this.listenTo(aceChannel, {
       dragStart: this._onDragStart,
@@ -83,26 +83,26 @@ export default mn.ItemView.extend({
   // that appears during drag and drop interface. Ideally this
   // won't always be the case. Related issue: ace#2240
   // https://github.com/ajaxorg/ace/issues/2240
-  _onDragStart: function() {
+  _onDragStart() {
     this.editor.renderer.$fontMetrics.el.style.display = 'none';
   },
-  _onDragEnd: function() {
+  _onDragEnd() {
     this.editor.renderer.$fontMetrics.el.style.display = 'block';
   },
 
   // Create the editor and configure it
-  onRender: function() {
+  onRender() {
     this.editor = ace.edit(this.ui.aceContainer[0]);
     this._configureEditor();
   },
 
   // Clean up the editor before we close the view down
-  onBeforeDestroy: function() {
+  onBeforeDestroy() {
     this.editor.destroy();
   },
 
   // Configure the editor based on our options
-  _configureEditor: function() {
+  _configureEditor() {
     var themePath = this._getThemePath(this.theme);
     var modePath  = this._getModePath(this.mode);
 
@@ -127,12 +127,12 @@ export default mn.ItemView.extend({
   },
 
   // Where ace stores its themes
-  _getThemePath: function(themeName) {
+  _getThemePath(themeName) {
     return 'ace/theme/' + themeName;
   },
 
   // Where ace stores modes
-  _getModePath: function(modeName) {
+  _getModePath(modeName) {
     return 'ace/mode/' + modeName;
   }
 });

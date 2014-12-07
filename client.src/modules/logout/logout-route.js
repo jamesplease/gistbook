@@ -8,7 +8,7 @@ import Route from '../../base/route';
 var authChannel = Radio.channel('auth');
 
 export default Route.extend({
-  redirect: function() {
+  redirect() {
     authChannel.command('logout');
     return '';
   }

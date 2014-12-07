@@ -14,7 +14,7 @@ export default mn.ItemView.extend({
   className: 'gistbook-textarea',
 
   // Get the value of the element
-  value: function() {
+  value() {
     return this.el.value;
   }
 });

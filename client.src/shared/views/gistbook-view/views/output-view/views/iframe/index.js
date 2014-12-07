@@ -14,11 +14,11 @@ export default mn.ItemView.extend({
     sandbox: 'allow-scripts allow-popups allow-pointer-lock'
   },
 
-  onRender: function() {
+  onRender() {
     this.$el.attr('src', this._generateSrc());
   },
 
-  _generateSrc: function() {
+  _generateSrc() {
     return '/output/' + this.model.get('token');
   },
 

@@ -14,7 +14,7 @@ import radioHelpers from './helpers/radio-helpers';
 export default mn.LayoutView.extend({
   gistbookViewOptions: ['newGist', 'ownGistbook'],
 
-  initialize: function(options) {
+  initialize(options) {
     mn.mergeOptions(this, options, this.gistbookViewOptions);
   },
 
@@ -34,7 +34,7 @@ export default mn.LayoutView.extend({
 
   className: 'gistbook',
 
-  onBeforeShow: function() {
+  onBeforeShow() {
     this.getRegion('sectionsContainer').show(this._createSectionsView());
     this.getRegion('output').show(new OutputView({
       sections: this.sections
@@ -42,7 +42,7 @@ export default mn.LayoutView.extend({
     this._showDisplayTitle();
   },
 
-  _showDisplayTitle: function() {
+  _showDisplayTitle() {
     // Remove listeners on the edit title view, if it exists
     var displayHeader = this._createDisplayHeaderView();
     this.getRegion('header').show(displayHeader);
@@ -50,33 +50,33 @@ export default mn.LayoutView.extend({
     this.titleView = displayHeader;
   },
 
-  _showEditTitle: function() {
+  _showEditTitle() {
     var editTitleView = this._createEditHeaderView();
     this.getRegion('header').show(editTitleView);
     this.listenToOnce(editTitleView, 'save cancel', this._showDisplayTitle);
     this.titleView = editTitleView;
   },
 
-  onBeforeDestroy: function() {
+  onBeforeDestroy() {
     this.pageChannel.reset();
     delete this.sections;
     delete this.titleView;
   },
 
-  _createDisplayHeaderView: function() {
+  _createDisplayHeaderView() {
     return new DisplayTitleView({
       model: this.model,
       editable: this.ownGistbook
     });
   },
 
-  _createEditHeaderView: function() {
+  _createEditHeaderView() {
     return new EditTitleView({
       model: this.model
     });
   },
 
-  _createSectionsView: function() {
+  _createSectionsView() {
     this.pageChannel = radioHelpers.objChannel(this.model);
     return new SectionsView({
       collection: this._createSectionsCollection(),
@@ -86,7 +86,7 @@ export default mn.LayoutView.extend({
     });
   },
 
-  _createSectionsCollection: function() {
+  _createSectionsCollection() {
     this.sections = new bb.Collection(this.model.get('pages')[0].sections);
     return this.sections;
   }

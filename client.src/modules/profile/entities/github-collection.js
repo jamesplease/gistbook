@@ -13,7 +13,7 @@ export default bb.Collection.extend({
   // This is the property that we set on a per-collection basis
   collectionUrl: '',
 
-  url: function() {
+  url() {
     return this.urlRoot + _.result(this, 'collectionUrl');
   }
 });

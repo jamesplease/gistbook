@@ -7,18 +7,18 @@ import * as _ from 'underscore';
 import * as mn from 'marionette';
 
 _.extend(mn.CollectionView.prototype, {
-  _getImmediateChildren: function() {
+  _getImmediateChildren() {
     return _.values(this.children._views);
   }
 });
 
 _.extend(mn.View.prototype, {
-  _getImmediateChildren: function() {
+  _getImmediateChildren() {
     return [];
   },
 
   // Returns an array of every nested view within this view
-  _getNestedViews: function() {
+  _getNestedViews() {
     var children = this._getImmediateChildren();
 
     if (!children.length) { return children; }
@@ -34,7 +34,7 @@ _.extend(mn.View.prototype, {
 });
 
 _.extend(mn.LayoutView.prototype, {
-  _getImmediateChildren: function() {
+  _getImmediateChildren() {
     return _.chain(this.regionManager.getRegions())
       .pluck('currentView')
       .filter(function(view) { return !!view; })

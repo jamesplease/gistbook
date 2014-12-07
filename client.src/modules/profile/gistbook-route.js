@@ -8,14 +8,14 @@ import GistView from '../../shared/views/gist-view';
 import Gist from '../../shared/entities/gist';
 
 export default Route.extend({
-  fetch: function(urlData) {
+  fetch(urlData) {
     this.gistbook = new Gist({
       id: urlData.params.gistbookId
     });
     return this.gistbook.fetch({ cache: false });
   },
 
-  show: function(data, urlData) {
+  show(data, urlData) {
     var username = urlData.params.username;
     var user = Radio.request('user', 'user');
     var view = new GistView({

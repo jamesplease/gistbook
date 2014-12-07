@@ -33,13 +33,13 @@ export default mn.LayoutView.extend({
 
   // Store our options on the object itself.
   // Also set the initial mode to be code.
-  initialize: function(options) {
+  initialize(options) {
     mn.mergeOptions(this, options, this.editWrapperOptions);
     this.cache = this.model.toJSON();
     this.mode = 'write';
   },
 
-  serializeData: function() {
+  serializeData() {
     var data = mn.ItemView.prototype.serializeData.call(this);
     data.sourceTabText = this.sourceTabText;
     return data;
@@ -64,7 +64,7 @@ export default mn.LayoutView.extend({
 
   // On preview, update the cache with the changes in the Ace Editor
   // Then, show the preview state
-  onPreview: function() {
+  onPreview() {
     if (this.mode === 'preview') {
       return;
     }
@@ -75,7 +75,7 @@ export default mn.LayoutView.extend({
     this.mode = 'preview';
   },
 
-  onWrite: function() {
+  onWrite() {
     if (this.mode === 'write') {
       return;
     }
@@ -86,35 +86,35 @@ export default mn.LayoutView.extend({
 
   // Update the cache when the user clicks update,
   // only if you're in code mode
-  onUpdate: function() {
+  onUpdate() {
     if (this.mode === 'preview') {
       return;
     }
     this._setCache();
   },
 
-  transitionUiToPreview: function() {
+  transitionUiToPreview() {
     this.ui.write.removeClass('active-tab');
     this.ui.preview.addClass('active-tab');
   },
 
-  transitionUiToCode: function() {
+  transitionUiToCode() {
     this.ui.preview.removeClass('active-tab');
     this.ui.write.addClass('active-tab');
   },
 
-  getEditTextView: function() {
+  getEditTextView() {
     return new EditTextView({
       model: this.model
     });
   },
 
-  getPreviewView: function() {
+  getPreviewView() {
     return this.blockChannel.request('displayView', this.model);
   },
 
   // Show the Ace Editor in our region; also set our cache
-  showEditor: function() {
+  showEditor() {
     var textEditorView = this.getEditTextView();
     var region = this.getRegion('content');
     region.show(textEditorView);
@@ -122,7 +122,7 @@ export default mn.LayoutView.extend({
   },
 
   // The preview is just an inert math view
-  showPreview: function() {
+  showPreview() {
     this._setCache();
     var region = this.getRegion('content');
     var previewView = this.getPreviewView();
@@ -135,19 +135,19 @@ export default mn.LayoutView.extend({
   },
 
   // Show the editor view on the first render
-  onRender: function() {
+  onRender() {
     this._showMenu();
     this.showEditor();
   },
 
   // Set the cache from the value in the currentView
-  _setCache: function() {
+  _setCache() {
     var region = this.getRegion('content');
     this.cache = region.currentView.value();
   },
 
   // Show or hide each menu item based on options
-  _showMenu: function() {
+  _showMenu() {
     _.each(this.editOptions, function(val, key) {
       this.ui[key].toggleClass('active-option', val);
     }, this);

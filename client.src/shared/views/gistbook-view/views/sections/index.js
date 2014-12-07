@@ -20,7 +20,7 @@ export default mn.CollectionView.extend({
 
   tagName: 'ul',
 
-  initialize: function(options) {
+  initialize(options) {
     mn.mergeOptions(this, options, this.sectionsOptions);
     this.pageChannel = options.pageChannel;
     this._renderedBefore = false;
@@ -29,22 +29,22 @@ export default mn.CollectionView.extend({
   // This is a magical method that determines which factory we should use
   // based on the type of the gistbook section and whether we're authorized
   // or not
-  getChildView: function(model) {
+  getChildView(model) {
     var factoryMethod = this._factoryMethodName(model.get('type'));
     return this[factoryMethod](model);
   },
 
-  onAttach: function() {
+  onAttach() {
     var self = this;
     this._sortable = new Sortable(this.el, {
       setData: false,
       handle: '.gistblock-move',
       draggable: '.controls-wrapper-view',
       ghostClass: 'gistblock-placeholder',
-      onStart: function() {
+      onStart() {
         aceChannel.trigger('dragStart');
       },
-      onEnd: function() {
+      onEnd() {
         aceChannel.trigger('dragEnd');
         self._resortByDom();
       }
@@ -52,7 +52,7 @@ export default mn.CollectionView.extend({
   },
 
   // Silently update the collection based on the new DOM indices
-  _resortByDom: function() {
+  _resortByDom() {
     var newCollection = {};
     var newArray = [];
     var index, $children = this.$el.children();
@@ -70,21 +70,21 @@ export default mn.CollectionView.extend({
   },
 
   // Make it sortable if we're authorized
-  onRender: function() {
+  onRender() {
     this.$el.addClass('gistbook-'+this._style().toLowerCase());
     this._renderedBefore = true;
   },
 
-  _style: function() {
+  _style() {
     return this.ownGistbook || this.newGist ? 'Edit' : 'Display';
   },
 
-  _factoryMethodName: function(viewType) {
+  _factoryMethodName(viewType) {
     var style = this._style();
     return '_create' + style + stringHelpers.capitalize(viewType) + 'View';
   },
 
-  _createEditTextView: function(model) {
+  _createEditTextView(model) {
     this._registerDisplayView(model, DisplayTextView);
     var initialMode = this.initialRender ? 'edit' : 'display';
     this.childViewOptions = {
@@ -93,7 +93,7 @@ export default mn.CollectionView.extend({
     return ControlsWrapper;
   },
 
-  _createDisplayTextView: function(model) {
+  _createDisplayTextView(model) {
     this.childViewOptions = {};
     return DisplayTextView.extend({
       tagName: 'li',
@@ -101,7 +101,7 @@ export default mn.CollectionView.extend({
     });
   },
 
-  _createEditJavascriptView: function(model) {
+  _createEditJavascriptView(model) {
     var CustomAceEditor = AceEditorView.extend({
       className: 'ace-editor ace-editor-javascript'
     });
@@ -117,7 +117,7 @@ export default mn.CollectionView.extend({
     return ControlsWrapper;
   },
 
-  _createDisplayJavascriptView: function(model) {
+  _createDisplayJavascriptView(model) {
     this.childViewOptions = {
       readOnly: true,
       hideCursor: true,
@@ -128,7 +128,7 @@ export default mn.CollectionView.extend({
     });
   },
 
-  _createEditHtmlView: function(model) {
+  _createEditHtmlView(model) {
     var CustomAceEditor = AceEditorView.extend({
       className: 'ace-editor ace-editor-html'
     });
@@ -145,7 +145,7 @@ export default mn.CollectionView.extend({
     return ControlsWrapper;
   },
 
-  _createDisplayHtmlView: function(model) {
+  _createDisplayHtmlView(model) {
     this.childViewOptions = {
       readOnly: true,
       hideCursor: true,
@@ -157,7 +157,7 @@ export default mn.CollectionView.extend({
     });
   },
 
-  _createEditCssView: function(model) {
+  _createEditCssView(model) {
     var CustomAceEditor = AceEditorView.extend({
       className: 'ace-editor ace-editor-css'
     });
@@ -174,7 +174,7 @@ export default mn.CollectionView.extend({
     return ControlsWrapper;
   },
 
-  _createDisplayCssView: function(model) {
+  _createDisplayCssView(model) {
     this.childViewOptions = {
       readOnly: true,
       hideCursor: true,
@@ -187,7 +187,7 @@ export default mn.CollectionView.extend({
   },
 
   // Register the DisplayView for a particular Gistblock on that block's Channel
-  _registerDisplayView: function(model, ViewClass) {
+  _registerDisplayView(model, ViewClass) {
     var self = this;
     radioHelpers.objChannel(model).reply('displayView', function(model) {
       var options = _.extend({}, self.childViewOptions, {model:model});

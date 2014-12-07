@@ -18,7 +18,7 @@ export default mn.ItemView.extend({
     'click @ui.confirm': 'onConfirm'
   },
 
-  onConfirm: function() {
+  onConfirm() {
     modalChannel.command('hide');
   }
 });

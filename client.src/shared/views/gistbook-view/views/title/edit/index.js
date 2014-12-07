@@ -25,12 +25,12 @@ export default mn.ItemView.extend({
     'click @ui.cancel': 'cancel'
   },
 
-  onSave: function() {
+  onSave() {
     var newTitle = this.ui.input.val();
     this.model.set('title', newTitle);
   },
 
-  onKeypress: function(e) {
+  onKeypress(e) {
     if (e.keyCode !== 13) {
       return;
     }
