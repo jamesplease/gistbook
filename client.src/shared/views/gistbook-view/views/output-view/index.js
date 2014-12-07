@@ -6,10 +6,10 @@
 import * as _ from 'underscore';
 import * as mn from 'marionette';
 import * as Spinner from 'spin.js';
-import CodeManager from '../../managers/code-manager';
-import moduleBundler from '../../managers/module-bundler';
-import Compiler from '../../managers/compiler';
-import ErrorView from './compile-error-view';
+import CodeExtractor from './services/code-extractor';
+import moduleBundler from './services/module-bundler';
+import Compiler from './services/compiler';
+import ErrorView from './views/compile-error-view';
 
 export default mn.LayoutView.extend({
   initialize: function(options) {
@@ -54,7 +54,7 @@ export default mn.LayoutView.extend({
     this._compiling = true;
     this.ui.compile.prop('disabled', true);
     _.delay(_.bind(this._showSpinner, this), 250);
-    var code = this.codeManager.getCode();
+    var code = this.codeExtractor.getCode();
     var self = this;
     this.listenToOnce(moduleBundler, 'retrieve', function(js) {
       code.javascript = js;
@@ -90,7 +90,7 @@ export default mn.LayoutView.extend({
   },
 
   createManagers: function() {
-    this.codeManager = new CodeManager({
+    this.codeExtractor = new CodeExtractor({
       sections: this.sections
     });
 

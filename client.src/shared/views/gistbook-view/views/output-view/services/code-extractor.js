@@ -1,5 +1,5 @@
 //
-// codeManager
+// codeExtractor
 // A gistbook page stores a collection of Models for each type of
 // code: HTML, JS, and CSS.
 // This manager has methods to loop through the page to get all

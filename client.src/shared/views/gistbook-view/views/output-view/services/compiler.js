@@ -7,8 +7,8 @@ import * as $ from 'jquery';
 import * as _ from 'underscore';
 import * as bb from 'backbone';
 import * as mn from 'marionette';
-import DocumentView from '../views/output/document-view';
-import IFrameView from '../views/output/iframe';
+import DocumentView from '../views/document-view';
+import IFrameView from '../views/iframe';
 
 export default mn.Object.extend({
   url: '/compile',
