@@ -4,8 +4,7 @@
 // features are activated whenever the URL changes.
 //
 
-import * as Radio from 'radio';
-import Router from '../vendor/routing/router';
+import Router from '../base/router';
 import HomeRoute from '../modules/home/home-route';
 import AboutRoute from '../modules/about/about-route';
 import TermsRoute from '../modules/terms/terms-route';
@@ -17,12 +16,6 @@ import GistbookRoute from '../modules/profile/gistbook-route';
 import SettingsRoute from '../modules/settings/settings-route';
 
 var GistbookRouter = Router.extend({
-  initialize() {
-    Radio.comply('router', 'navigate', route => {
-      this.navigate(route, {trigger:true});
-    });
-  },
-
   routes: {
     '': new HomeRoute(),
     'new': new NewGistbookRoute(),
