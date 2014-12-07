@@ -33,7 +33,7 @@ app.VERSION = window._initData.VERSION;
 window.app = app;
 
 // Once the app is ready, start history and interception
-app.on('start', function() {
+app.on('start', () => {
   bb.history.start({pushState: true});
   Intercept.start();
 });

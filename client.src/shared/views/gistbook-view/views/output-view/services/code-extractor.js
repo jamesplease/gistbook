@@ -58,7 +58,7 @@ export default mn.Object.extend({
     var join = this.join;
     var source;
     var length = subcollection.length - 1;
-    _.each(subcollection, function(model, index) {
+    _.each(subcollection, (model, index) => {
       source = model.get('source');
       result += source ? source : '';
       result += index !== length ? join : '';

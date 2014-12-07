@@ -23,13 +23,13 @@ export default Route.extend({
 
     this.githubUser = this._getUser(isSelf, urlData);
 
-    var fetch = [this.gistbooks.fetch({ cache: false })];
+    var fetchedData = [this.gistbooks.fetch({ cache: false })];
 
     if (!isSelf) {
-      fetch.push(this.githubUser.fetch({ cache: false }));
+      fetchedData.push(this.githubUser.fetch({ cache: false }));
     }
 
-    return Promise.all(fetch);
+    return Promise.all(fetchedData);
   },
 
   show(data, urlData) {

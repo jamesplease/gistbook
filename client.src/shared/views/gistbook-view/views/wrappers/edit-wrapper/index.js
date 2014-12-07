@@ -148,8 +148,8 @@ export default mn.LayoutView.extend({
 
   // Show or hide each menu item based on options
   _showMenu() {
-    _.each(this.editOptions, function(val, key) {
+    _.each(this.editOptions, (val, key) => {
       this.ui[key].toggleClass('active-option', val);
-    }, this);
+    });
   }
 });

@@ -53,12 +53,12 @@ var Auth = bb.Model.extend({
 
   // Register our events on the channel
   configureEvents() {
-    this.channel.reply('authorized', function() {
+    this.channel.reply('authorized', () => {
       return this.get('authorized');
-    }, this);
-    this.channel.reply('token', function() {
+    });
+    this.channel.reply('token', () => {
       return this.get('token');
-    }, this);
+    });
     this.channel.comply('logout', this.logout, this);
   },
 
@@ -66,7 +66,7 @@ var Auth = bb.Model.extend({
   _configureAjax() {
     var self = this;
     $.ajaxSetup({
-      beforeSend (jqXHR, settings) {
+      beforeSend(jqXHR, settings) {
         if (self.get('authorized')) {
           jqXHR.setRequestHeader('Authorization', 'token ' + self.get('token'));
         }

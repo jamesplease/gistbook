@@ -18,9 +18,9 @@ import SettingsRoute from '../modules/settings/settings-route';
 
 var GistbookRouter = Router.extend({
   initialize() {
-    Radio.comply('router', 'navigate', function(route) {
+    Radio.comply('router', 'navigate', route => {
       this.navigate(route, {trigger:true});
-    }, this);
+    });
   },
 
   routes: {

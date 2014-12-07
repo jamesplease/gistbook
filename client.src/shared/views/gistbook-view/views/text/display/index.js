@@ -36,14 +36,13 @@ export default mn.ItemView.extend({
   // Parse the element's HTML as Markdown, then set the element's text.
   _parseMarked() {
     var $el = this.$el;
-    var self = this;
-    marked($el.html(), function(err, content) {
+    marked($el.html(), (err, content) => {
       $el.html(content);
-      self._parseEmoji(self.el);
+      this._parseEmoji();
     });
   },
 
-  _parseEmoji(el) {
-    emojify.run(el);
+  _parseEmoji() {
+    emojify.run(this.el);
   }
 });

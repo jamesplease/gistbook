@@ -54,10 +54,9 @@ export default mn.LayoutView.extend({
     this.ui.compile.prop('disabled', true);
     this._showSpinner();
     var code = this.codeExtractor.getCode();
-    var self = this;
-    this.listenToOnce(moduleBundler, 'retrieve', function(js) {
+    this.listenToOnce(moduleBundler, 'retrieve', js => {
       code.javascript = js;
-      self.compiler.compile(code);
+      this.compiler.compile(code);
     });
     moduleBundler.getBundle(code.javascript);
   },

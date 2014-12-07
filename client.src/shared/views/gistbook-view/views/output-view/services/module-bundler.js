@@ -3,9 +3,9 @@
 // Adds support for 'require' calls in Gistbooks
 //
 
+import * as _ from 'underscore';
 import * as bb from 'backbone';
 import * as mn from 'marionette';
-import * as _ from 'underscore';
 import * as detective from 'detective';
 import * as createCache from 'browser-module-cache';
 
@@ -26,11 +26,10 @@ var ModuleBundler = mn.Object.extend({
     var allBundles = '';
     var downloads = [];
 
-    var self = this;
-    cache.get(function(err, cached) {
+    cache.get((err, cached) => {
       if (err) { throw new Error(err); }
 
-      _.each(modules, function(module) {
+      _.each(modules, module => {
         if (cached[module]) {
           allBundles += cached[module].bundle;
         } else {
@@ -41,12 +40,12 @@ var ModuleBundler = mn.Object.extend({
       // If everything is cached, then we return
       // all of the cached source
       if (!downloads.length) {
-        self.trigger('retrieve', allBundles + src);
+        this.trigger('retrieve', allBundles + src);
         return;
       }
 
       var dependencies = {};
-      _.each(downloads, function(module) {
+      _.each(downloads, module => {
         dependencies[module] = 'latest';
       });
 
@@ -55,12 +54,13 @@ var ModuleBundler = mn.Object.extend({
         dependencies: dependencies
       };
 
-      return bb.$.post('https://wzrd.bocoup.com/multi', JSON.stringify(body)).then(function(data) {
-        _.each(data, function(datum) {
+      return bb.$.post('https://wzrd.bocoup.com/multi', JSON.stringify(body)).then(data => {
+        _.each(data, datum => {
           allBundles += datum.bundle;
         });
-        cache.put(data, function() {});
-        self.trigger('retrieve', allBundles + src);
+        cache.put(data, () => {
+          this.trigger('retrieve', allBundles + src);
+        });
       });
     });
   }

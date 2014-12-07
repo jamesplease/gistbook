@@ -57,10 +57,10 @@ export default mn.CollectionView.extend({
     var newArray = [];
     var index, $children = this.$el.children();
 
-    this.children.each(function(view, i) {
+    this.children.each((view, i) => {
       index = $children.index(view.el);
       newCollection[index] = view.model;
-      newArray = _.sortBy(newCollection, function(key, i) {
+      newArray = _.sortBy(newCollection, (key, i) => {
         return i;
       });
       view._index = index;
@@ -188,9 +188,8 @@ export default mn.CollectionView.extend({
 
   // Register the DisplayView for a particular Gistblock on that block's Channel
   _registerDisplayView(model, ViewClass) {
-    var self = this;
-    radioHelpers.objChannel(model).reply('displayView', function(model) {
-      var options = _.extend({}, self.childViewOptions, {model:model});
+    radioHelpers.objChannel(model).reply('displayView', model => {
+      var options = _.extend({}, this.childViewOptions, {model:model});
       return new ViewClass(options);
     });
   }

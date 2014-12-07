@@ -57,7 +57,7 @@ export default mn.LayoutView.extend({
   // Syncs the 'nested' data structure with the parent
   _sync() {
     var sections = this.gistbookView.sections;
-    this.gistbook.pages[0].sections = _.filter(sections.toJSON(), function(section) {
+    this.gistbook.pages[0].sections = _.filter(sections.toJSON(), section => {
       return !/^\s*$/.test(section.source);
     });
     this.gistbook.title = this.gistbookModel.get('title');
@@ -68,13 +68,12 @@ export default mn.LayoutView.extend({
   _fork() {
     var baseUrl = githubApiHelpers.url + '/gists';
     var oldDescription = this.model.get('description');
-    var self = this;
 
     // First, we fork the old Gist
     bb.$.post(baseUrl + '/' + this.model.get('id') + '/forks')
 
       // Now we need to update the Gist's description
-      .then(function(resp) {
+      .then(resp => {
         return bb.$.ajax({
           type: 'PATCH',
           url: baseUrl + '/' + resp.id,
@@ -84,8 +83,8 @@ export default mn.LayoutView.extend({
 
       // Lastly, we redirect to the newly created fork
       .then(this._onForkComplete)
-      .fail(function() {
-        self.menu.trigger('error:fork');
+      .fail(() => {
+        this.menu.trigger('error:fork');
       });
   },
 
@@ -95,14 +94,13 @@ export default mn.LayoutView.extend({
   },
 
   _delete() {
-    var self = this;
     this.model.destroy()
-      .then(function() {
-        self.menu.trigger('delete');
+      .then(() => {
+        this.menu.trigger('delete');
         routerChannel.command('navigate', Radio.request('user', 'user').get('login'));
       })
-      .catch(function() {
-        self.menu.trigger('error:delete');
+      .catch(() => {
+        this.menu.trigger('error:delete');
       });
   },
 
@@ -128,18 +126,17 @@ export default mn.LayoutView.extend({
     };
     var isNew = this.isNew();
     var saveOptions = isNew ? undefined : {patch:true};
-    var self = this;
     this.model.save(attrs, saveOptions)
-      .then(function(gistData) {
-        self.menu.trigger('save');
+      .then(gistData => {
+        this.menu.trigger('save');
         if (isNew) {
           var username = gistData.owner ? gistData.owner.login : 'anonymous';
           var url = '/' + username + '/' + gistData.id;
           Radio.command('router', 'navigate', url);
         }
       })
-      .catch(function() {
-        self.menu.trigger('error:save');
+      .catch(() => {
+        this.menu.trigger('error:save');
         console.log('Gist not saved', arguments);
       });
   },
