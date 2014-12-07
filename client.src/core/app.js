@@ -7,13 +7,13 @@
 import * as bb from 'backbone';
 import * as mn from 'marionette';
 import * as Intercept from 'backbone.intercept';
-import env from './env';
-import auth from '../vendor/auth';
+import env from './services/env';
+import auth from './services/auth';
 import user from './entities/user';
 import router from './router';
-import overlay from '../vendor/overlay';
+import overlay from './views/overlay';
 import rootView from './views/root-view';
-import modalWrapper from '../vendor/modal-wrapper';
+import modalWrapper from './views/modal-wrapper';
 
 // Create the app
 var app = new mn.Application();

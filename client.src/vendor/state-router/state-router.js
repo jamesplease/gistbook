@@ -4,7 +4,7 @@ import * as _ from 'underscore';
 import * as BaseRouter from 'backbone.base-router';
 import Route from './route';
 
-export default BaseRouter.extend({
+var StateRouter = BaseRouter.extend({
   onNavigate(routeData) {
     var newRoute = routeData.linked;
 
@@ -53,3 +53,7 @@ export default BaseRouter.extend({
     }
   }
 });
+
+StateRouter.Route = Route;
+
+export default StateRouter;
