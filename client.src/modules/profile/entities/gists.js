@@ -5,7 +5,7 @@
 
 import * as _ from 'underscore';
 import Gist from '../../../shared/entities/gist';
-import GithubCollection from '../../../shared/entities/github-collection';
+import GithubCollection from './github-collection';
 import gistbookHelpers from '../../../helpers/gistbook-helpers';
 
 export default GithubCollection.extend({

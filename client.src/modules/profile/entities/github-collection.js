@@ -5,7 +5,7 @@
 
 import * as _ from 'underscore';
 import * as bb from 'backbone';
-import githubApiHelpers from '../../helpers/github-api-helpers';
+import githubApiHelpers from '../../../helpers/github-api-helpers';
 
 export default bb.Collection.extend({
   urlRoot: githubApiHelpers.url,

@@ -6,7 +6,7 @@ import * as Radio from 'radio';
 import Route from '../../base/route';
 import ProfileView from './views/profile-view';
 import Gists from './entities/gists';
-import GithubUser from '../../shared/entities/github-user';
+import GithubUser from './entities/github-user';
 
 export default Route.extend({
   fetch: function(urlData) {
