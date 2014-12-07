@@ -129,10 +129,6 @@ module.exports = function(grunt) {
       grunt: {
         files: ['gruntfile.js']
       },
-      // scripts: {
-      //   files: ['<%= app.src %>/**/*.js'],
-      //   tasks: ['jshint', 'webpack:dev']
-      // },
       styles: {
         files: ['<%= app.src %>/**/*.styl'],
         tasks: ['stylus:dev']
@@ -152,7 +148,7 @@ module.exports = function(grunt) {
 
       // Refresh the browser when clientside code change
       assets: {
-        files: '<%= app.dev %>/**/*',
+        files: ['<%= app.dev %>/**/*', '!<%= app.dev %>/img/emoji/**'],
         options: {
           spawn: false,
           livereload: 35729
