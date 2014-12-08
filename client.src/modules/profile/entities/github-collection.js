@@ -4,10 +4,10 @@
 //
 
 import * as _ from 'underscore';
-import * as bb from 'backbone';
+import { BaseCollection } from '../../../base/entities';
 import githubApiHelpers from '../../../helpers/github-api-helpers';
 
-export default bb.Collection.extend({
+export default BaseCollection.extend({
   urlRoot: githubApiHelpers.url,
 
   // This is the property that we set on a per-collection basis

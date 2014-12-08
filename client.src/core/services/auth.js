@@ -71,7 +71,7 @@ var Auth = bb.Model.extend({
           jqXHR.setRequestHeader('Authorization', 'token ' + self.get('token'));
         }
         return true;
-    }
+      }
     });
   }
 });

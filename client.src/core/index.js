@@ -27,6 +27,9 @@ emojify.setConfig({
 import dev from './services/dev';
 dev.start();
 
+// Configure AJAX to look out for ETag and LastModified headers
+import './services/ajax-if-modified';
+
 // Load & start our app
 import app from './app';
 app.start();
