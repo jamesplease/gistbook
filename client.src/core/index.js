@@ -27,6 +27,9 @@ dev.start();
 // Configure AJAX to look out for ETag and LastModified headers
 import './services/ajax-if-modified';
 
+// Load semantic ui
+import './services/semantic-ui';
+
 // Load & start our app
 import app from './app';
 app.start();

@@ -186,7 +186,8 @@ module.exports = function(grunt) {
           loaders: [
             {test: /templates/, loader: 'imports?_=underscore!exports?this.JST'},
             {test: /\.js$/, exclude: /node_modules/, loader: '6to5-loader'},
-            {test: /package\.json/, loader: 'json-loader'}
+            {test: /package\.json/, loader: 'json-loader'},
+            {test: /semantic/, loader: 'imports?jQuery=jquery'}
           ]
         },
         resolve: {
@@ -194,7 +195,8 @@ module.exports = function(grunt) {
             marionette: 'backbone.marionette',
             'backbone.wreqr': 'backbone.radio',
             radio: 'backbone.radio',
-            _: 'underscore'
+            _: 'underscore',
+            semantic: 'semantic-ui/src/definitions/modules'
           },
           modulesDirectories: ['node_modules', '<%= app.tmp %>', '<%= app.src %>']
         },
