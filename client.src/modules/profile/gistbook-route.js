@@ -3,9 +3,9 @@
 //
 
 import * as Radio from 'radio';
-import Route from '../../base/route';
-import GistView from '../../shared/views/gist-view';
-import Gist from '../../shared/entities/gist';
+import Route from 'base/route';
+import GistView from 'shared/views/gist-view';
+import Gist from 'shared/entities/gist';
 
 export default Route.extend({
   fetch(urlData) {

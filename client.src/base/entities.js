@@ -7,7 +7,7 @@
 
 import * as _ from 'underscore';
 import * as bb from 'backbone';
-import etagCache from '../core/services/etag-cache';
+import etagCache from 'core/services/etag-cache';
 
 var checkEtagCache = function(resp, textStatus, jqXHR) {
   var ETag = jqXHR.getResponseHeader('ETag');

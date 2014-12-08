@@ -4,7 +4,7 @@
 //
 
 import * as Radio from 'radio';
-import StateRouter from '../vendor/state-router/state-router';
+import StateRouter from 'vendor/state-router/state-router';
 
 export default StateRouter.extend({
   initialize() {

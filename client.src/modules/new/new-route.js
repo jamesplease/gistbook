@@ -5,7 +5,7 @@
 // over there.
 //
 
-import Route from '../../base/route';
+import Route from 'base/route';
 
 export default Route.extend({
   redirect: ''

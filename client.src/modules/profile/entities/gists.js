@@ -4,9 +4,9 @@
 //
 
 import * as _ from 'underscore';
-import Gist from '../../../shared/entities/gist';
+import Gist from 'shared/entities/gist';
 import GithubCollection from './github-collection';
-import gistbookHelpers from '../../../helpers/gistbook-helpers';
+import gistbookHelpers from 'helpers/gistbook-helpers';
 
 export default GithubCollection.extend({
   constructor(options) {

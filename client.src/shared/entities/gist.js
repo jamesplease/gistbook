@@ -6,8 +6,8 @@
 
 import * as _ from 'underscore';
 import * as Radio from 'radio';
-import { BaseModel } from '../../base/entities';
-import githubApiHelpers from '../../helpers/github-api-helpers';
+import { BaseModel } from 'base/entities';
+import githubApiHelpers from 'helpers/github-api-helpers';
 
 export default BaseModel.extend({
   defaults() {

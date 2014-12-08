@@ -196,7 +196,7 @@ module.exports = function(grunt) {
             radio: 'backbone.radio',
             _: 'underscore'
           },
-          modulesDirectories: ['node_modules', '<%= app.tmp %>']
+          modulesDirectories: ['node_modules', '<%= app.tmp %>', '<%= app.src %>']
         },
         cache: true,
         watch: true

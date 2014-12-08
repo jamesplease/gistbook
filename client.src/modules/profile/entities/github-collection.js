@@ -4,8 +4,8 @@
 //
 
 import * as _ from 'underscore';
-import { BaseCollection } from '../../../base/entities';
-import githubApiHelpers from '../../../helpers/github-api-helpers';
+import { BaseCollection } from 'base/entities';
+import githubApiHelpers from 'helpers/github-api-helpers';
 
 export default BaseCollection.extend({
   urlRoot: githubApiHelpers.url,

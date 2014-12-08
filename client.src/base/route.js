@@ -3,10 +3,10 @@
 // The base route for this application
 //
 
-import StateRouter from '../vendor/state-router/state-router';
-import rootView from '../core/views/root-view';
-import loadingView from '../shared/views/loading-view';
-import ServerErrorView from '../shared/views/server-error-view';
+import StateRouter from 'vendor/state-router/state-router';
+import rootView from 'core/views/root-view';
+import loadingView from 'shared/views/loading-view';
+import ServerErrorView from 'shared/views/server-error-view';
 
 loadingView.render();
 

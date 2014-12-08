@@ -7,11 +7,11 @@ import * as _ from 'underscore';
 import * as bb from 'backbone';
 import * as mn from 'marionette';
 import * as Radio from 'radio';
-import githubApiHelpers from '../../../helpers/github-api-helpers';
+import githubApiHelpers from 'helpers/github-api-helpers';
 import GistbookView from '../gistbook-view';
 import Gist from '../../entities/gist';
 import ExistingMenu from '../existing-menu';
-import gistbookHelpers from '../../../helpers/gistbook-helpers';
+import gistbookHelpers from 'helpers/gistbook-helpers';
 
 var routerChannel = Radio.channel('router');
 
