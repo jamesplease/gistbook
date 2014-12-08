@@ -1,6 +1,12 @@
-import * as mn from 'marionette';
+//
+// LoadingView
+// Displayed inside of the main region when the app is
+// transitioning; dims the contents of the region.
+//
 
-var LoadingView = mn.ItemView.extend({
+import ItemView from 'base/item-view';
+
+var LoadingView = ItemView.extend({
   template: false,
 
   className: 'loading-view'

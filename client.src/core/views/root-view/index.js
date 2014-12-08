@@ -3,15 +3,15 @@
 //
 
 import * as bb from 'backbone';
-import * as mn from 'marionette';
 import * as Radio from 'radio';
+import LayoutView from 'base/layout-view';
 import FooterView from '../footer-view';
 import AuthMenuView from '../menu-views/auth-menu-view';
 import UnauthMenuView from '../menu-views/unauth-menu-view';
 
 var authChannel = Radio.channel('auth');
 
-var RootView = mn.LayoutView.extend({
+var RootView = LayoutView.extend({
   el: bb.$('body'),
 
   regions: {

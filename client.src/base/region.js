@@ -1,18 +1,16 @@
-/* jshint
-  maxcomplexity: 20,
-  maxstatements: 40
-*/
+/* jshint maxstatements: 50, maxcomplexity: 20 */
 
 //
-// getNestedViews
-// A shim for a Marionette 2.3 feature.
-// Triggers the attach method on children views
+// Region
 //
 
 import * as _ from 'underscore';
 import * as mn from 'marionette';
 
-_.extend(mn.Region.prototype, {
+export default mn.Region.extend({
+
+  // A shim for a Marionette 2.3 feature.
+  // Triggers the attach method on children views
   show(view, options){
     this._ensureElement();
 

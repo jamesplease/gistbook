@@ -8,13 +8,14 @@
 import * as bb from 'backbone';
 import * as mn from 'marionette';
 import * as Radio from 'radio';
+import LayoutView from 'base/layout-view';
 import DisplayWrapper from '../display-wrapper';
 import EditWrapper from '../edit-wrapper';
 import radioHelpers from '../../../helpers/radio-helpers';
 
 var overlayChannel = Radio.channel('overlay');
 
-export default mn.LayoutView.extend({
+export default LayoutView.extend({
   template: 'controlsWrapper',
 
   className: 'controls-wrapper-view',

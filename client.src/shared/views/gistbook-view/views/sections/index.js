@@ -7,6 +7,7 @@ import * as Sortable from 'sortable';
 import * as _ from 'underscore';
 import * as mn from 'marionette';
 import * as Radio from 'radio';
+import CollectionView from 'base/collection-view';
 import DisplayTextView from '../text/display';
 import ControlsWrapper from '../wrappers/controls-wrapper';
 import AceEditorView from '../ace-editor-view';
@@ -15,7 +16,7 @@ import radioHelpers from '../../helpers/radio-helpers';
 
 var aceChannel = Radio.channel('ace');
 
-export default mn.CollectionView.extend({
+export default CollectionView.extend({
   sectionsOptions: ['newGist', 'ownGistbook'],
 
   tagName: 'ul',

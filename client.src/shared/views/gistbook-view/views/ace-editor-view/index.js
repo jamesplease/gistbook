@@ -8,10 +8,11 @@
 
 import * as mn from 'marionette';
 import * as Radio from 'radio';
+import ItemView from 'base/item-view';
 
 var aceChannel = Radio.channel('ace');
  
-export default mn.ItemView.extend({
+export default ItemView.extend({
   template: 'aceEditorView',
 
   // Defaults for the Ace Editorxw

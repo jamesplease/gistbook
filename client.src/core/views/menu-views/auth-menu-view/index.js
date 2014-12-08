@@ -3,9 +3,9 @@
 // The menu that's displayed once you're logged in
 //
 
-import * as mn from 'marionette';
+import ItemView from 'base/item-view';
 
-export default mn.ItemView.extend({
+export default ItemView.extend({
   tagName: 'nav',
   template: 'menuView',
 

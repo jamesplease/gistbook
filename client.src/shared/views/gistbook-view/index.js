@@ -5,13 +5,14 @@
 
 import * as bb from 'backbone';
 import * as mn from 'marionette';
+import LayoutView from 'base/layout-view';
 import SectionsView from './views/sections';
 import OutputView from './views/output-view';
 import DisplayTitleView from './views/title/display';
 import EditTitleView from './views/title/edit';
 import radioHelpers from './helpers/radio-helpers';
 
-export default mn.LayoutView.extend({
+export default LayoutView.extend({
   gistbookViewOptions: ['newGist', 'ownGistbook'],
 
   initialize(options) {

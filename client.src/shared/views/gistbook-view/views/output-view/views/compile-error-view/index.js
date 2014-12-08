@@ -2,9 +2,9 @@
 // CompileErrorView
 //
 
-import * as mn from 'marionette';
+import ItemView from 'base/item-view';
 
-export default mn.ItemView.extend({
+export default ItemView.extend({
   template: 'compileErrorView',
   className: 'notification notification-danger error-view'
 });

@@ -9,11 +9,8 @@
 // unless you're absolutely sure you know what you're doing!
 import 'shims/radio-shim';
 import 'shims/is-node-attached-shim';
-import 'shims/get-nested-view-shim';
 import 'shims/backbone-sync-shim';
-import 'shims/trigger-attach-shim';
 import 'shims/render-shim';
-import 'shims/to-json-shim';
 import 'shims/merge-options-shim';
 
 import * as emojify from 'emojify.js';

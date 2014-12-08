@@ -2,12 +2,12 @@
 // RevokeModal
 //
 
-import * as mn from 'marionette';
 import * as Radio from 'radio';
+import ItemView from 'base/item-view';
 
 var modalChannel = Radio.channel('modal');
 
-export default mn.ItemView.extend({
+export default ItemView.extend({
   template: 'revokeModal',
 
   ui: {

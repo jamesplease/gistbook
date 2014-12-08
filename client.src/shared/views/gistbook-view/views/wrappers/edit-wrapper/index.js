@@ -6,9 +6,10 @@
 
 import * as _ from 'underscore';
 import * as mn from 'marionette';
+import LayoutView from 'base/layout-view';
 import EditTextView from '../../text/edit';
 
-export default mn.LayoutView.extend({
+export default LayoutView.extend({
   template: 'editWrapper',
 
   className: 'gistblock-editor',
@@ -40,7 +41,7 @@ export default mn.LayoutView.extend({
   },
 
   serializeData() {
-    var data = mn.ItemView.prototype.serializeData.call(this);
+    var data = LayoutView.prototype.serializeData.call(this);
     data.sourceTabText = this.sourceTabText;
     return data;
   },

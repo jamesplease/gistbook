@@ -6,12 +6,13 @@
 //
 
 import * as mn from 'marionette';
+import LayoutView from 'base/layout-view';
 
-export default mn.LayoutView.extend({
+export default LayoutView.extend({
   wrapperOptions: ['region'],
 
   constructor(options) {
-    mn.LayoutView.prototype.constructor.apply(this, arguments);
+    LayoutView.prototype.constructor.apply(this, arguments);
     mn.mergeOptions(this, options, this.wrapperOptions);
     this._createRegions();
     this._setEvents();

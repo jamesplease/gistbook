@@ -3,12 +3,12 @@
 //
 
 import * as _ from 'underscore';
-import * as mn from 'marionette';
 import * as Radio from 'radio';
+import ItemView from 'base/item-view';
 import RevokeModalView from '../revoke-modal';
 import scopeMap from 'helpers/scope-map';
 
-export default mn.ItemView.extend({
+export default ItemView.extend({
   template: 'settingsView',
 
   className: 'settings',

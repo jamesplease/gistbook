@@ -6,6 +6,7 @@
 import * as _ from 'underscore';
 import * as bb from 'backbone';
 import * as mn from 'marionette';
+import LayoutView from 'base/layout-view';
 import * as Radio from 'radio';
 import githubApiHelpers from 'helpers/github-api-helpers';
 import GistbookView from '../gistbook-view';
@@ -15,7 +16,7 @@ import gistbookHelpers from 'helpers/gistbook-helpers';
 
 var routerChannel = Radio.channel('router');
 
-export default mn.LayoutView.extend({
+export default LayoutView.extend({
   gistViewOptions: ['newGist', 'ownGistbook'],
 
   className: 'home',

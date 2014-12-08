@@ -3,10 +3,11 @@
 //
 
 import * as mn from 'marionette';
+import LayoutView from 'base/layout-view';
 import NoGistsView from '../no-gists';
 import GistList from '../gist-list';
 
-export default mn.LayoutView.extend({
+export default LayoutView.extend({
   profileViewOptions: ['isSelf'],
 
   initialize(options) {

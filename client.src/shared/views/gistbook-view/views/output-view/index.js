@@ -3,14 +3,14 @@
 // Manages compiling a Gistbook Page
 //
 
-import * as mn from 'marionette';
+import LayoutView from 'base/layout-view';
 import * as Spinner from 'spin.js';
 import CodeExtractor from './services/code-extractor';
 import moduleBundler from './services/module-bundler';
 import Compiler from './services/compiler';
 import ErrorView from './views/compile-error-view';
 
-export default mn.LayoutView.extend({
+export default LayoutView.extend({
   initialize(options) {
     this.sections = options.sections;
     this.createManagers();

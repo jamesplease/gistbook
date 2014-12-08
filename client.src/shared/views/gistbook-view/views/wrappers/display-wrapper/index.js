@@ -5,8 +5,9 @@
 
 import * as _ from 'underscore';
 import * as mn from 'marionette';
+import LayoutView from 'base/layout-view';
 
-export default mn.LayoutView.extend({
+export default LayoutView.extend({
   template: 'displayWrapper',
 
   className: 'gistblock-menu',

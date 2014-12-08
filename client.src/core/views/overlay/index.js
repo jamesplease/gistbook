@@ -4,12 +4,12 @@
 // The overlay z-index is 10000, so anything below that is masked
 //
 
-import * as mn from 'marionette';
 import * as Radio from 'radio';
+import ItemView from 'base/item-view';
 
 var overlayChannel = Radio.channel('overlay');
 
-var Overlay = mn.ItemView.extend({
+var Overlay = ItemView.extend({
   className: 'overlay',
 
   template: false,

@@ -4,11 +4,11 @@
 //
 
 import * as _ from 'underscore';
-import * as mn from 'marionette';
+import ItemView from 'base/item-view';
 import * as marked from 'marked';
 import * as emojify from 'emojify.js';
 
-export default mn.ItemView.extend({
+export default ItemView.extend({
   template: false,
 
   // They're not always displayed as sole gistblocks, such as

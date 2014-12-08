@@ -4,9 +4,9 @@
 // into the iFrame view to render the output.
 //
 
-import * as mn from 'marionette';
+import ItemView from 'base/item-view';
 
-export default mn.ItemView.extend({
+export default ItemView.extend({
   template: 'documentView',
 
   tagName: 'html',
