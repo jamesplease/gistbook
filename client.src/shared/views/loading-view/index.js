@@ -7,8 +7,7 @@
 import ItemView from 'base/item-view';
 
 var LoadingView = ItemView.extend({
-  template: false,
-
+  template: 'loadingView',
   className: 'loading-view'
 });
 
