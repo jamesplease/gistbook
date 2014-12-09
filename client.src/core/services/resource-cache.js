@@ -1,36 +1,32 @@
 //
 // Resource Cache
-// Caches API resources by URI
+// Caches API resources by ETag
 //
 
-import * as _ from 'underscore';
-import * as $ from 'jquery';
+import * as bb from 'backbone';
 
 var cache = {};
-var cacheTypes = ['PUT', 'GET', 'POST', 'PATCH'];
 
 // Configure jQuery to handle resources that haven't been
 // modified since the last request
-$.ajaxSetup({
+bb.$.ajaxSetup({
   ifModified: true
 });
 
-$(document).ajaxSuccess(function(event, xhr, settings) {
-  var baseUrl = settings.url.split('?')[0];
-
-  // Do nothing if the request type isn't one that we cache
-  if (!_.contains(cacheTypes, settings.type)) { return; }
-
-  // Upon success, we save the response to the cache
-  xhr.then(function(resp, textStatus, jqXHR) {
-    if (textStatus !== 'notmodified') {
-      cache[baseUrl] = resp;
+// Override Backbone.ajax to save & load cached resources
+bb.ajax = function(options, ...args) {
+  var success = options.success;
+  options.success = function(resp, textStatus, jqXHR) {
+    var ETag = jqXHR.getResponseHeader('ETag');
+    if (textStatus === 'notmodified') {
+      resp = cache[jqXHR.getResponseHeader('ETag')];
+    } else if (ETag) {
+      cache[ETag] = resp;
     }
-  });
-});
-
-export default {
-  get(uri) {
-    return cache[uri] || undefined;
-  }
+    if (success) {
+      success(resp, textStatus, jqXHR);
+    }
+  };
+  args.unshift(options);
+  return bb.$.ajax.apply(bb.$, args);
 };
