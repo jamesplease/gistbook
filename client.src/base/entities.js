@@ -9,7 +9,7 @@ import * as _ from 'underscore';
 import * as bb from 'backbone';
 import resourceCache from 'core/services/resource-cache';
 
-var checkEtagCache = function(resp, textStatus, jqXHR, url) {
+var checkResourceCache = function(resp, textStatus, url) {
   if (textStatus === 'notmodified') {
     resp = resourceCache.get(url);
   }
@@ -35,7 +35,7 @@ export var BaseModel = bb.Model.extend({
     var success = options.success;
     var url = this.url();
     options.success = function(resp, textStatus, jqXHR) {
-      resp = checkEtagCache(resp, textStatus, jqXHR, url);
+      resp = checkResourceCache(resp, textStatus, url);
       if (!model.set(model.parse(resp, options), options)) { return false; }
       if (success) { success(model, resp, options); }
       model.trigger('sync', model, resp, options);
@@ -53,7 +53,7 @@ export var BaseCollection = bb.Collection.extend({
     var url = _.result(this, 'url');
     var collection = this;
     options.success = function(resp, textStatus, jqXHR) {
-      resp = checkEtagCache(resp, textStatus, jqXHR, url);
+      resp = checkResourceCache(resp, textStatus, url);
       var method = options.reset ? 'reset' : 'set';
       collection[method](resp, options);
       if (success) { success(collection, resp, options); }
