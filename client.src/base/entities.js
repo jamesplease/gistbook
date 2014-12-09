@@ -7,14 +7,11 @@
 
 import * as _ from 'underscore';
 import * as bb from 'backbone';
-import etagCache from 'core/services/etag-cache';
+import resourceCache from 'core/services/resource-cache';
 
-var checkEtagCache = function(resp, textStatus, jqXHR) {
-  var ETag = jqXHR.getResponseHeader('ETag');
+var checkEtagCache = function(resp, textStatus, jqXHR, url) {
   if (textStatus === 'notmodified') {
-    resp = etagCache.get(ETag);
-  } else {
-    etagCache.set(ETag, resp);
+    resp = resourceCache.get(url);
   }
   return resp;
 };
@@ -36,8 +33,9 @@ export var BaseModel = bb.Model.extend({
     if (options.parse === void 0) { options.parse = true; }
     var model = this;
     var success = options.success;
+    var url = this.url();
     options.success = function(resp, textStatus, jqXHR) {
-      resp = checkEtagCache(resp, textStatus, jqXHR);
+      resp = checkEtagCache(resp, textStatus, jqXHR, url);
       if (!model.set(model.parse(resp, options), options)) { return false; }
       if (success) { success(model, resp, options); }
       model.trigger('sync', model, resp, options);
@@ -52,9 +50,10 @@ export var BaseCollection = bb.Collection.extend({
     options = options ? _.clone(options) : {};
     if (options.parse === void 0) { options.parse = true; }
     var success = options.success;
+    var url = _.result(this, 'url');
     var collection = this;
     options.success = function(resp, textStatus, jqXHR) {
-      resp = checkEtagCache(resp, textStatus, jqXHR);
+      resp = checkEtagCache(resp, textStatus, jqXHR, url);
       var method = options.reset ? 'reset' : 'set';
       collection[method](resp, options);
       if (success) { success(collection, resp, options); }
