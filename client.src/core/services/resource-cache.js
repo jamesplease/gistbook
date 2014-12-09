@@ -9,6 +9,12 @@ import * as $ from 'jquery';
 var cache = {};
 var cacheTypes = ['PUT', 'GET', 'POST', 'PATCH'];
 
+// Configure jQuery to handle resources that haven't been
+// modified since the last request
+$.ajaxSetup({
+  ifModified: true
+});
+
 $(document).ajaxSuccess(function(event, xhr, settings) {
   var baseUrl = settings.url.split('?')[0];
 
