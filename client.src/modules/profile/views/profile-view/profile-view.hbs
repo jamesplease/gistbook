@@ -5,18 +5,18 @@
   <div class='boxed-group-body'></div>
 </div>
 <div class='profile-left-bar'>
-  <img src='<%- avatar_url %>' alt='<%- name %>'>
+  <img src='{{ avatar_url }}' alt='{{ name }}'>
   <div class='profile-names'>
-    <span class='full-name'><%- name %></span>
-    <span class='username'><%- login %></span>
+    <span class='full-name'>{{ name }}</span>
+    <span class='username'>{{ login }}</span>
   </div>
   <div class='gistbook-count'>
-    <span><%- gistbooks.length %></span> <%- gistbookText() %>
+    <span>{{ gistbooks.length }}</span> {{ gistbooksLabel }}
   </div>
-  <a href='<%- html_url %>' target='_blank'>
+  <a href='{{ html_url }}' target='_blank'>
     <button>
       <span class='octicon octicon-octoface'></span>
-      <%- login %> on Github
+      {{ login }} on Github
     </button>
   </a>
 </div>

@@ -13,12 +13,15 @@ import 'shims/backbone-sync-shim';
 import 'shims/render-shim';
 import 'shims/merge-options-shim';
 
+// Load and configure emojify
 import * as emojify from 'emojify.js';
-
 emojify.setConfig({
   ignore_emoticons: true,
   img_dir: '/img/emoji'
 });
+
+// Load our Handlebars helpers
+import '../helpers/hbs-helpers';
 
 // Setup dev environment
 import dev from './services/dev';

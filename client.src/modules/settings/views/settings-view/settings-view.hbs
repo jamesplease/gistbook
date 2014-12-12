@@ -11,9 +11,9 @@
     </p>
     <p>
       <ul class='bullet'>
-      <% _.each(scopes, function(scope) { %>
-        <li><%- mapScope(scope) %></li>
-      <% }); %>
+      {{#each scopes }}
+        <li>{{ scopeMap this }}</li>
+      {{/each}}
       </ul>
     </p>
     <p>
