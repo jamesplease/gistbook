@@ -19,7 +19,7 @@ bb.ajax = function(options, ...args) {
   options.success = function(resp, textStatus, jqXHR) {
     var ETag = jqXHR.getResponseHeader('ETag');
     if (textStatus === 'notmodified') {
-      resp = cache[jqXHR.getResponseHeader('ETag')];
+      resp = cache[ETag];
     } else if (ETag) {
       cache[ETag] = resp;
     }
