@@ -53,12 +53,9 @@ export default LayoutView.extend({
   },
   
   templateHelpers() {
-    var self = this;
     return {
       gistbooks: this.collection,
-      gistbookText() {
-        return self.collection.length === 1 ? 'Gistbook' : 'Gistbooks'; 
-      }
+      gistbooksLabel: this.collection.length === 1 ? 'Gistbook' : 'Gistbooks'
     };
   },
 

@@ -3,11 +3,10 @@
 // Modify text based on a textarea
 //
 
-import * as _ from 'underscore';
 import ItemView from 'base/item-view';
 
 export default ItemView.extend({
-  template: _.template('<%= source %>'),
+  template: 'editTextView',
 
   tagName: 'textarea',
 

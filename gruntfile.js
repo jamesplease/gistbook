@@ -31,7 +31,7 @@ module.exports = function(grunt) {
       }
     },
 
-    jst: {
+    handlebars: {
       templates: {
         options: {
           prettify: true,
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          '<%= app.tmp %>/templates.js': ['<%= app.src %>/**/*.jst']
+          '<%= app.tmp %>/templates.js': ['<%= app.src %>/**/*.hbs']
         }
       }
     },
@@ -141,9 +141,9 @@ module.exports = function(grunt) {
         files: ['<%= app.src %>/fonts/**/*'],
         tasks: ['copy:fonts']
       },
-      jst: {
-        files: ['<%= app.src %>/**/*.jst'],
-        tasks: ['jst', 'webpack:dev']
+      hbs: {
+        files: ['<%= app.src %>/**/*.hbs'],
+        tasks: ['handlebars', 'webpack:dev']
       },
 
       // Refresh the browser when clientside code change
@@ -184,13 +184,14 @@ module.exports = function(grunt) {
         entry: './<%= app.src %>/core/index.js',
         module: {
           loaders: [
-            {test: /templates/, loader: 'imports?_=underscore!exports?this.JST'},
+            {test: /templates/, loader: 'imports?Handlebars=handlebars/dist/handlebars.runtime.js!exports?this.JST'},
             {test: /\.js$/, exclude: /node_modules/, loader: '6to5-loader'},
             {test: /package\.json/, loader: 'json-loader'}
           ]
         },
         resolve: {
           alias: {
+            handlebars: 'handlebars/dist/handlebars.runtime.js',
             marionette: 'backbone.marionette',
             'backbone.wreqr': 'backbone.radio',
             radio: 'backbone.radio',
@@ -236,7 +237,7 @@ module.exports = function(grunt) {
 
     var taskArray = [
       'clean:'+target,
-      'jst',
+      'handlebars',
       'webpack:'+target,
       'copy:favicon_'+target,
       'copy:emoji_'+target,

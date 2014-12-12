@@ -9,22 +9,15 @@
 import * as mn from 'marionette';
 import * as templates from 'templates';
 
-mn.Renderer.render = function(template, data) {
-  if (!template) {
-    throw new Error('Cannot render the template since its false, null or undefined.',
-      'TemplateNotFoundError');
+mn.Renderer.render = function(templateName, data) {
+  var err, templateFunc = templates[templateName];
+
+  if (typeof templateName !== 'string') {
+    err = 'Templates must be specified by name in Gistbook';
+  } else if (!templateFunc) {
+    err = 'Cannot render the view because the template was not found.';
   }
 
-  var templateFunc;
-  if (typeof template === 'function') {
-    templateFunc = template;
-  } else if (typeof template === 'string') {
-    templateFunc = templates[template];
-  }
-
-  if (!templateFunc) {
-    throw new Error('Cannot render the view because the template was not found.');
-  }
-
+  if (err) { throw new Error(err); }
   return templateFunc(data);
 };
