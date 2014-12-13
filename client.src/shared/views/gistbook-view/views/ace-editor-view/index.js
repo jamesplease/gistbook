@@ -15,7 +15,7 @@ var aceChannel = Radio.channel('ace');
 export default ItemView.extend({
   template: 'aceEditorView',
 
-  // Defaults for the Ace Editorxw
+  // Defaults for the Ace Editor
   readOnly: false,
   tabSize: 2,
   softTabs: true,
