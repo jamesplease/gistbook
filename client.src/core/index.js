@@ -8,7 +8,6 @@
 // in a Marionette v3-like state. I cannot suggest you use them
 // unless you're absolutely sure you know what you're doing!
 import 'shims/radio-shim';
-import 'shims/is-node-attached-shim';
 import 'shims/backbone-sync-shim';
 import 'shims/render-shim';
 import 'shims/merge-options-shim';
