@@ -44,7 +44,6 @@ export default LayoutView.extend({
   },
 
   _showDisplayTitle() {
-    // Remove listeners on the edit title view, if it exists
     var displayHeader = this._createDisplayHeaderView();
     this.getRegion('header').show(displayHeader);
     this.listenToOnce(displayHeader, 'edit', this._showEditTitle);
