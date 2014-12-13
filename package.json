@@ -65,7 +65,7 @@
     "backbone.babysitter": "^0.1.1",
     "backbone.base-router": "^0.4.1",
     "backbone.intercept": "^0.3.0",
-    "backbone.marionette": "^2.2.0",
+    "backbone.marionette": "^2.3.0-pre",
     "backbone.radio": "^0.6.0",
     "body-parser": "^1.7.0",
     "browser-module-cache": "^0.1.3",
