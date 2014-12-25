@@ -13,7 +13,7 @@ git clone https://github.com/jmeas/gistbook.git
 Navigate into the root directory of the project and install the dependencies.
 
 ```sh
-cd gistbook && bower install && npm install
+cd gistbook && npm install
 ```
 
 ### Developing locally
