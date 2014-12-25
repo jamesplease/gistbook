@@ -4,6 +4,7 @@
   "description": "A place to share code snippets on the web.",
   "main": "index.js",
   "scripts": {
+    "postinstall": "bower install",
     "test": "grunt test",
     "get-secrets": "./.bin/get-secrets",
     "configure-hosts-local": "hostile set 127.0.0.1 gistbook.loc",
@@ -40,6 +41,7 @@
     "6to5": "^1.10.10",
     "6to5-loader": "^0.2.3",
     "bach": "^0.4.0",
+    "bower": "^1.3.12",
     "chalk": "^0.5.1",
     "exports-loader": "^0.6.2",
     "grunt": "~0.4.2",
