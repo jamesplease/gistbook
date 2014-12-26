@@ -27,7 +27,9 @@ an example file in the directory that shows you the format.
 
 To build and start the development version of the app, run `grunt work -f`.
 
-Once the app is built, you can access it at `http://gistbook.loc:3000`.
+Once the app is built, you can access it at `http://gistbook.loc:3344`.
+
+_**Note:** Logging in through Github will only work on port 3344._
 
 ### Deploying
 
