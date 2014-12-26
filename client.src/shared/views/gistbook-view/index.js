@@ -47,20 +47,17 @@ export default LayoutView.extend({
     var displayHeader = this._createDisplayHeaderView();
     this.getRegion('header').show(displayHeader);
     this.listenToOnce(displayHeader, 'edit', this._showEditTitle);
-    this.titleView = displayHeader;
   },
 
   _showEditTitle() {
     var editTitleView = this._createEditHeaderView();
     this.getRegion('header').show(editTitleView);
     this.listenToOnce(editTitleView, 'save cancel', this._showDisplayTitle);
-    this.titleView = editTitleView;
   },
 
   onBeforeDestroy() {
     this.pageChannel.reset();
     delete this.sections;
-    delete this.titleView;
   },
 
   _createDisplayHeaderView() {
