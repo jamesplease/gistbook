@@ -40,7 +40,7 @@ module.exports = function(grunt) {
           // For instance, some-name.okay.ext => someNameOkay
           processName: function(filename) {
             var basename = path.basename( filename, path.extname(filename) );
-            return basename.replace(/[-\.]([a-z])/g, function (g) { return g[1].toUpperCase(); });
+            return basename.replace(/[-\.]([a-z0-9])/g, function (g) { return g[1].toUpperCase(); });
           }
         },
         files: {

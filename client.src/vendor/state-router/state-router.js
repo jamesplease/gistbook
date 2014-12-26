@@ -48,7 +48,7 @@ var StateRouter = BaseRouter.extend({
         })
         .catch(e => {
           if (newRoute !== this.currentRoute) { return; }
-          newRoute.onError(e, routeData);
+          newRoute.triggerMethod('error', e, routeData);
         });
     }
   }
