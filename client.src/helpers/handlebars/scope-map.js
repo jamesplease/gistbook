@@ -5,6 +5,6 @@
 import * as hbs from 'handlebars';
 import scopeMap from '../scope-map';
 
-hbs.registerHelper('scopeMap', (scopeName) => {
+hbs.registerHelper('scopeMap', scopeName => {
   return scopeMap[scopeName] || scopeName;
 });
