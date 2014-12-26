@@ -15,7 +15,11 @@ const MANIFEST = require('../package.json');
 const VERSION = MANIFEST.version;
 
 const VIEWS_DIR = path.join(BASE_DIR, 'views');
-const PORT = process.env.PORT || 3000;
+
+// Github authentication will only respond to this port
+// during development. Only change the port if you
+// don't need to develop with authentication.
+const PORT = 3344;
 
 // Start the app
 var app = express();
