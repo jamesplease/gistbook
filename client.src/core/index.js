@@ -10,6 +10,7 @@
 import 'shims/radio-shim';
 import 'shims/backbone-sync-shim';
 import 'shims/render-shim';
+import 'shims/to-json-shim';
 import 'shims/merge-options-shim';
 
 // Load and configure emojify
