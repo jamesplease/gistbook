@@ -17,7 +17,7 @@ import gistbookHelpers from 'helpers/gistbook-helpers';
 var routerChannel = Radio.channel('router');
 
 export default LayoutView.extend({
-  gistViewOptions: ['newGist', 'ownGistbook'],
+  gistViewOptions: ['newGist', 'ownGistbook', 'homePage'],
 
   className: 'home',
 
@@ -38,13 +38,18 @@ export default LayoutView.extend({
 
   // Show a new Gistbook
   onBeforeShow() {
-    if (!Radio.request('auth', 'authorized') && !this.newGist) {
+    if (this._showHeader()) {
       this.ui.gistHeader.addClass('hide');
+    } else {
+      this.getRegion('menuContainer').show(this.createMenu());
+      this.registerMenuListeners();
     }
     this.getRegion('gistbookContainer').show(this.createNewGistbook());
 
-    this.getRegion('menuContainer').show(this.createMenu());
-    this.registerMenuListeners();
+  },
+
+  _showHeader() {
+    return (!Radio.request('auth', 'authorized') && !this.newGist) || this.homePage;
   },
 
   registerMenuListeners() {
@@ -175,7 +180,15 @@ export default LayoutView.extend({
   },
 
   _convertGistToGistbook(gist) {
-    this.gistbook = !this.isNew() ? gistbookHelpers.gistbookFromGist(gist) : gistbookHelpers.newGistbook();
+    var gistbook;
+    if (this.homePage) {
+      gistbook = gistbookHelpers.getHomePage();
+    } else if (!this.isNew()) {
+      gistbook = gistbookHelpers.gistbookFromGist(gist);
+    } else {
+      gistbook = gistbookHelpers.newGistbook();
+    }
+    this.gistbook = gistbook;
     return this.gistbook;
   },
 
