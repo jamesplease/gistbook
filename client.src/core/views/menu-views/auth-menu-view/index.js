@@ -10,7 +10,7 @@ export default ItemView.extend({
   template: 'menuView',
 
   ui: {
-    $menuToggle: '.octicon-three-bars',
+    $menuToggle: '.octicon-triangle-down',
     $menuItem: '.dropdown-menu a',
     $dropdown: '.dropdown-menu',
     $dropdownMask: '.dropdown-mask'
