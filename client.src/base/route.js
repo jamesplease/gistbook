@@ -6,9 +6,9 @@
 import StateRouter from '../vendor/state-router/state-router';
 import rootView from '../core/views/root-view';
 import loadingView from '../shared/views/loading-view';
-import Error404View from '../shared/views/error-404-view';
-import ErrorRateLimitView from '../shared/views/error-rate-limit-view';
-import ErrorGenericView from '../shared/views/error-generic-view';
+import Error404View from '../shared/views/error-views/not-found-view';
+import ErrorRateLimitView from '../shared/views/error-views/rate-limit-view';
+import ErrorGenericView from '../shared/views/error-views/generic-error-view';
 
 loadingView.render();
 
