@@ -9,20 +9,22 @@
 
   > ul > li
     position relative
-    display -webkit-flex
-    display flex
-    align-items center
     margin-right 3px
+    
+    a
+      display inline
 
     &:last-child
       margin-right 0
 
     .octicon-triangle-down
+      color #aaa
       padding 3px
       cursor pointer
 
-      &:hover
-        color $hoverLinkColor
+      &:hover,
+      &.active
+        color #333
 
   .new-button
     margin-right 30px
@@ -76,7 +78,7 @@
         background $lightBackground
 
       a
-        color #000
+        color #333
         box-sizing border-box
         padding-left 15px
         display block
