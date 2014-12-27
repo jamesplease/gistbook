@@ -3,6 +3,7 @@
 // A model representing a new Gistbook
 //
 
+import * as _ from 'underscore';
 import { BaseModel, BaseCollection } from 'base/entities';
 
 export default BaseModel.extend({
@@ -16,6 +17,7 @@ export default BaseModel.extend({
   // Gistbooks have a collection of pages
   // Pages have a collection of sections
   parse(data) {
+    data = _.clone(data);
 
     // Create our nested pages
     data.pages = new BaseCollection(data.pages);
