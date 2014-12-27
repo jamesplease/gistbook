@@ -24,6 +24,7 @@ export default Route.extend({
   show() {
     var gistView = new GistView({
       model: new Gist(),
+      ownGistbook: false,
       homePage: true
     });
     Radio.command('rootView', 'showIn:container', gistView);
