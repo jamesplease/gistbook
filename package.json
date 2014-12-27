@@ -1,6 +1,6 @@
 {
   "name": "gistbook",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "A place to share code snippets on the web.",
   "main": "index.js",
   "scripts": {
