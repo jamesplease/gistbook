@@ -12,6 +12,9 @@ var StateRouter = BaseRouter.extend({
       throw new Error('A Route object must be associated with each route.');
     }
 
+    // Whether the navigation should be cancelled or not
+    if (_.result(this.currentRoute, 'cancel')) { return; }
+
     var redirect = _.result(newRoute, 'redirect');
     if (_.isString(redirect)) {
       this.navigate(redirect, {trigger:true});
