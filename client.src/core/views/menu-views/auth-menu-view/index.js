@@ -23,17 +23,15 @@ export default ItemView.extend({
   },
 
   toggleMenu() {
-    this.ui.$dropdownMask.toggleClass('show');
-    this.ui.$dropdown.toggleClass('show');
-  },
-
-  showMenu() {
-    this.ui.$dropdownMask.addClass('show');
-    this.ui.$dropdown.addClass('show');
+    this._modifyClass('toggle');
   },
 
   hideMenu() {
-    this.ui.$dropdownMask.removeClass('show');
-    this.ui.$dropdown.removeClass('show');
+    this._modifyClass('remove');
+  },
+
+  _modifyClass(methodName) {
+    this.ui.$dropdownMask[methodName + 'Class']('show');
+    this.ui.$dropdown[methodName + 'Class']('show');
   }
 });
