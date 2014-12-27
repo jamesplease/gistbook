@@ -3,3 +3,10 @@
 {{#unless loggedIn }}
 <p>To increase your limit, you should sign in.</p>
 {{/unless }}
+<p>
+  Your rate limit will reset in
+  <b class='time-left'>
+    <span class='minutes-left'>{{ minutesLeft }}</span> minutes,
+    <span class='seconds-left'>{{ secondsLeft }}</span> seconds
+  </b>.
+</p>

@@ -86,6 +86,6 @@
     "semantic-ui": "^1.1.2",
     "sortable": "git://github.com/jmeas/Sortable.git#optional-set-text",
     "spin.js": "^2.0.1",
-    "underscore": "1.6.0"
+    "underscore": "1.7.0"
   }
 }
