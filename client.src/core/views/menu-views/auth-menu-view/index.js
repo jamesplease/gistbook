@@ -33,5 +33,6 @@ export default ItemView.extend({
   _modifyClass(methodName) {
     this.ui.$dropdownMask[methodName + 'Class']('show');
     this.ui.$dropdown[methodName + 'Class']('show');
+    this.ui.$menuToggle[methodName + 'Class']('active');
   }
 });

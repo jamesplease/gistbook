@@ -95,6 +95,9 @@ export default ItemView.extend({
   onRender() {
     this.editor = ace.edit(this.ui.aceContainer[0]);
     this._configureEditor();
+    if (this.readOnly) {
+      this.$el.addClass('read-only');
+    }
   },
 
   // Clean up the editor before we close the view down
