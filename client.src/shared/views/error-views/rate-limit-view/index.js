@@ -1,5 +1,5 @@
 //
-// Error Rate Limit View
+// Rate Limit View
 // When you've run into the rate limit, you will
 // see this view
 //
@@ -15,9 +15,9 @@ export default mn.ItemView.extend({
 
   errorRateLimitOptions: ['resetTimestamp'],
 
-  template: 'errorRateLimitView',
+  template: 'rateLimitView',
   
-  className: 'error-rate-limit',
+  className: 'error-rate-limit error-page',
 
   ui: {
     $minutesLeft: '.minutes-left',
