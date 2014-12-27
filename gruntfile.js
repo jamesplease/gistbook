@@ -186,7 +186,7 @@ module.exports = function(grunt) {
           loaders: [
             {test: /templates/, loader: 'imports?Handlebars=handlebars/dist/handlebars.runtime.js!exports?this.JST'},
             {test: /\.js$/, exclude: /node_modules/, loader: '6to5-loader'},
-            {test: /package\.json/, loader: 'json-loader'}
+            {test: /\.json$/, loader: 'json-loader'}
           ]
         },
         resolve: {

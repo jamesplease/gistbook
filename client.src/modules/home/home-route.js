@@ -1,6 +1,7 @@
 //
 // HomeRoute
-// Home is where we make a Gistbook
+// Home is a kitchen sink Gistbook that demonstrates
+// all of the features of the app
 //
 
 import * as Radio from 'radio';
@@ -23,7 +24,7 @@ export default Route.extend({
   show() {
     var gistView = new GistView({
       model: new Gist(),
-      newGist: true
+      homePage: true
     });
     Radio.command('rootView', 'showIn:container', gistView);
   }

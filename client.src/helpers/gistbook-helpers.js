@@ -3,6 +3,7 @@
 //
 
 import * as Radio from 'radio';
+import * as homePageGistbook from './home-page.json';
 
 var authChannel = Radio.channel('auth');
 var userChannel = Radio.channel('user');
@@ -18,6 +19,10 @@ var gistbookHelpers = {
 
     // They're always stored as `gistbook.json`
     return !!files['gistbook.json'];
+  },
+
+  getHomePage() {
+    return homePageGistbook;
   },
 
   // Returns a new, empty Gistbook – like magic!
@@ -41,7 +46,7 @@ var gistbookHelpers = {
       sections: [
         {
           type: 'text',
-          source: 'Welcome to Gistbook!'
+          source: 'This is a new Gistbook.'
         },
         {
           type: 'html',
