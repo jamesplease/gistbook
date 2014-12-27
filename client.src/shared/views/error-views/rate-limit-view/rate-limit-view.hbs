@@ -2,6 +2,14 @@
 <p>You've reached Github's rate limit for this hour.</p>
 {{#unless loggedIn }}
 <p>To increase your limit, you should sign in.</p>
+<p class='standalone'>
+  <a href='/login' bypass>
+    <button class='large'>
+      <span class='octicon octicon-octoface'></span>
+      Login with Github
+    </button>
+  </a>
+</p>
 {{/unless }}
 <p>
   Your rate limit will reset in
