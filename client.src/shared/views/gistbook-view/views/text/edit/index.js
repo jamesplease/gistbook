@@ -12,8 +12,10 @@ export default ItemView.extend({
 
   className: 'gistbook-textarea',
 
-  // Get the value of the element
+  // Get the value of the element,
+  // stripping line breaks from the
+  // start and end
   value() {
-    return this.el.value;
+    return this.el.value.replace(/^\s+|\s+$/g, '');
   }
 });
