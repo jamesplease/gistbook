@@ -170,7 +170,7 @@ module.exports = function(grunt) {
     express: {
       options: {
         script: '<%= app.server %>/app.js',
-        output: 'Gistbook is listening on port 3000'
+        output: 'Gistbook is listening on port 3344'
       },
       dev: {
         options: {
