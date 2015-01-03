@@ -18,7 +18,7 @@ cd gistbook && npm install
 
 ### Developing locally
 
-If this is your first time setting up Gistbook locally, run `sudo npm run provision-hosts-local`.
+If this is your first time setting up Gistbook locally, run `sudo npm run configure-hosts-local`.
 
 Next, create a personal access token for your Github account. You can generate one from
 your [Settings page](https://github.com/settings/applications). Make sure that it has `user` and `gist` access,
