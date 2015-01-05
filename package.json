@@ -77,6 +77,7 @@
     "emojify.js": "^0.9.5",
     "express": "^4.0.0",
     "express-handlebars": "^1.1.0",
+    "express-routebuilder": "^2.0.0",
     "grunt-contrib-handlebars": "^0.9.1",
     "handlebars": "^2.0.0",
     "jquery": "^2.1.0",

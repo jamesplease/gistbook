@@ -1,7 +1,7 @@
 // Load dependencies
 const path = require('path');
 const express = require('express');
-const routeBuilder = require('./helpers/route-builder');
+const routeBuilder = require('express-routebuilder');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 
@@ -72,7 +72,9 @@ var routes = {
   }
 };
 
-app.use(routeBuilder(express, routes));
+var router = express.Router();
+routeBuilder(router, routes);
+app.use(router);
 
 // Start the app
 app.listen(PORT);
