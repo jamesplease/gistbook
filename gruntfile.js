@@ -52,7 +52,7 @@ module.exports = function(grunt) {
     stylus: {
       options: {
         'include css': true,
-        import: ['variables', 'nib'],
+        import: ['variables', 'nib', 'mixins'],
         paths: ['bower_components']
       },
       dev: {
