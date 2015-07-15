@@ -1,6 +1,6 @@
 # Gistbook [![Travis build status](http://img.shields.io/travis/jmeas/gistbook.svg?style=flat)](https://travis-ci.org/jmeas/gistbook)
 
-This is the development repository for [Gistbook.io](https://gistbook.io/).
+This is the development repository for Gistbook, a web application that is no longer hosted.
 
 ### Installation
 
